@@ -1,0 +1,4 @@
+```mysql
+-- Age
+SELECT TIMESTAMPDIFF(YEAR, '1980-01-01', CURDATE()) AS age
+```
