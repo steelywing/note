@@ -2,6 +2,7 @@
 https://github.com/medialize/URI.js
 
 #### Absolute URL for browser
+https://davidwalsh.name/get-absolute-url
 ```js
 var getAbsUrl = (function() {
   var a;
