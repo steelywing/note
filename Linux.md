@@ -7,3 +7,9 @@ dconf-editor
 # or
 gsettings set org.gnome.Vino require-encryption false
 ```
+
+Open file manager from CLI
+
+```sh
+xdg-open <path>
+```
