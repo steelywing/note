@@ -13,3 +13,18 @@ Open file manager from CLI
 ```sh
 xdg-open <path>
 ```
+
+Remove current session bash history
+```sh
+unset HISTFILE
+# or
+kill -9 $$
+# $$ == Current shell PID
+```
+
+Delete all bash history
+```sh
+history -c
+# or
+HISTSIZE=0
+```
