@@ -28,3 +28,15 @@ history -c
 # or
 HISTSIZE=0
 ```
+
+Grub
+```sh
+# Find all OS, update Grub config, install Grub
+update-grub
+
+# Auto-Generate Grub config path
+vi /boot/grub/grub.cfg
+
+# Grub option
+vi /etc/default/grub
+```
