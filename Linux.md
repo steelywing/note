@@ -24,7 +24,10 @@ kill -9 $$
 
 Delete all bash history
 ```sh
+# For Bash
 history -c
+# or
+echo > $HISTFILE
 # or
 HISTSIZE=0
 ```
