@@ -34,7 +34,7 @@ HISTSIZE=0
 
 Grub
 ```sh
-# Find all OS, update Grub config, install Grub
+# Find all OS, update Grub config, install Grub to MBR / UEFI
 update-grub
 
 # Auto-Generate Grub config path
