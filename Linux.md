@@ -43,3 +43,10 @@ vi /boot/grub/grub.cfg
 # Grub option
 vi /etc/default/grub
 ```
+
+Grub save default
+```sh
+# Add the following lines to /etc/default/grub
+GRUB_DEFAULT=saved
+GRUB_SAVEDEFAULT=true
+```
