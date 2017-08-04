@@ -37,21 +37,21 @@ Switch(config-if)# no shutdown
 
 ## Monitor logging in Telnet / SSH
 ```
-! Enable
-Switch# terminal monitor
-! Disable
-Switch# terminal no monitor
+Switch# terminal [no] monitor
 ```
 
 ## Monitor logging in Console
 ```
-! Enable
-Switch(config)# logging console
-! Disable
-Switch(config)# no logging console
+Switch(config)# [no] logging console
 ```
 
-## Set device name
+## CDP
+```
+Switch# show cdp neighbors [detail]
+Switch# show cdp neighbors <interface>/<port number> detail
+```
+
+## Device name
 ```
 Switch(config)# hostname <host name>
 ```
@@ -318,7 +318,7 @@ Switch(config)# ip domain-name <domain>
 Switch(config)# crypto key generate rsa
 ```
 
-## Config SSH
+## Config SSH public key
 ```
 Switch(config)# ip ssh pubkey-chain
 Switch(config)# username <username>
