@@ -1,6 +1,8 @@
 ## TODO
 - ACL
+- VACL
 - DHCP pool
+- Policy map
 
 
 ## Cut command before cursor
@@ -48,6 +50,11 @@ Switch# terminal [no] monitor
 ## Monitor logging in Console
 ```
 Switch(config)# [no] logging console
+```
+
+## Interface status
+```
+Switch# show int status
 ```
 
 ## CDP
@@ -211,6 +218,11 @@ Switch(config-if)#
 Switch(config)# int range <interface>/<port number> - <port number>
 ```
 
+## Description
+```
+Switch(config-if)# description <description>
+```
+
 ## Change to layer 3 mode
 ```
 Switch(config-if)# no switchport
@@ -234,6 +246,12 @@ Switch(config-if)# switchport mode trunk
 ## Set to access mode
 ```
 Switch(config-if)# switchport mode access
+```
+
+## Allow specify VLAN on trunk
+Default allow all
+```
+Switch(config-if)# switchport trunk allowed vlan <VLAN ID list>
 ```
 
 ## Set VLAN
@@ -266,7 +284,7 @@ Switch(config-if)# spanning-tree bpdufilter [enable|disable]
 Switch(config-if)# spanning-tree bpduguard [enable|disable]
 ```
 
-## Trust DHCP from this port
+## Trust DHCP from this port (for DHCP snooping)
 ```
 Switch(config-if)# ip dhcp snooping trust
 ```
