@@ -149,7 +149,7 @@ Switch(config-line)#
 ```
 
 ## Password
-Unnecessary if using "login local"
+Unnecessary if using `login local`
 ```
 Switch(config-line)# password <password>
 ```
