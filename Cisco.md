@@ -29,6 +29,12 @@ Switch# conf t
 Switch(config)# exit
 ```
 
+## Reset err-disable port
+```
+Switch(config-if)# shutdown
+Switch(config-if)# no shutdown
+```
+
 ## Monitor logging in Telnet / SSH
 ```
 ! Enable
@@ -312,10 +318,10 @@ Switch(config)# ip domain-name <domain>
 Switch(config)# crypto key generate rsa
 ```
 
-## Config SSH public key
+## Config SSH
 ```
 Switch(config)# ip ssh pubkey-chain
-Switch(config)# username root
+Switch(config)# username <username>
 Switch(config)# key-string
 <public key>
 Switch(config)# 
@@ -325,4 +331,3 @@ Switch(config)#
 ```
 write
 ```
-
