@@ -1,3 +1,8 @@
+## TODO
+- ACL
+- DHCP pool
+
+
 ## Cut command before cursor
 Ctrl + X
 
@@ -131,7 +136,8 @@ Switch(config)# snmp-server community <community string> ro
 Switch(config)# username <username> privilege 15 password <password>
 ```
 
-## Set enable password (Unnecessary if using privilege 15 user)
+## Set enable password
+Unnecessary for `privilege 15` user
 ```
 Switch(config)# enable secret <password>
 ```
@@ -287,16 +293,19 @@ Switch(config)# ip ftp password <password>
 ```
 
 ## Archive
+`$h` = hostname, `$t` = time
 ```
 Switch(config)# archive
 Switch(config-archive)# path ftp://<ip>/$h/$h-$t
+Switch(config-archive)# path scp://<username>:<password>@<ip>/$h/$h-$t
 ```
 
 ## Banner
+`$(hostname)` = hostname
 ```
 Switch(config)# banner login ^
 <Banner>
-Variable: $(hostname)
+$(hostname)
 ^
 Switch(config)# 
 ```
