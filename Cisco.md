@@ -80,7 +80,7 @@ Switch# show cdp neighbors <interface>/<port number> detail
 Switch(config)# hostname <host name>
 ```
 
-## VLAN
+## [VLAN](https://www.cisco.com/c/en/us/support/docs/lan-switching/vlan/10023-3.html)
 ```
 ! Create VLAN
 Switch(config)# vlan <VLAN ID>[-<VLAN ID>]
@@ -89,6 +89,9 @@ Switch(config-vlan)#
 ! If above not working
 Switch# vlan database
 Switch(vlan)# vlan <VLAN ID>[-<VLAN ID>]
+
+! Remove VLAN
+Switch(config)# no vlan <VLAN ID>[-<VLAN ID>]
 
 ! VLAN name
 Switch(config-vlan)# name <name>
