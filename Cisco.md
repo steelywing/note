@@ -28,11 +28,13 @@ Switch#
 ## Enter config mode
 ```
 Switch# conf t
+Switch(config)# 
 ```
 
 ## Exit config mode
 ```
 Switch(config)# exit
+Switch# 
 ```
 
 ## Hint
