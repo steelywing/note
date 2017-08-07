@@ -173,7 +173,7 @@ Switch(config)# line vty 0 15
 Switch(config-line)# 
 ```
 
-## Password
+## Login password
 Unnecessary if using `login local`
 ```
 Switch(config-line)# password <password>
