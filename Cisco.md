@@ -14,6 +14,7 @@
 ```
 Switch> enable
 Switch#
+
 ! or
 Switch> en
 Switch#
@@ -239,6 +240,8 @@ Switch(config)# int port-channel <port channel number>
 ## Config switch port interface
 ```
 Switch(config)# interface <interface>/<port number>
+Switch(config-if)# 
+
 ! or
 Switch(config)# int <interface>/<port number>
 Switch(config-if)# 
@@ -400,8 +403,10 @@ Configure system resources
 ```
 ! If switch stacked, check SDM is match
 Switch# show switch
+
 ! Show current SDM prefer
 Switch# show sdm prefer
+
 ! Config SDM prefer
 Switch(config)# sdm prefer ?
 ```
