@@ -113,14 +113,16 @@ Switch(config)# spanning-tree portfast default
 Switch(config)# spanning-tree portfast bpduguard default
 ```
 
-## DHCP snooping (drop DHCP on untrust interface)
+## DHCP snooping
+Drop DHCP on untrust interface
 ```
 Switch(config)# ip dhcp snooping
 Switch(config)# ip dhcp snooping vlan 1 4094
 Switch(config)# no ip dhcp snooping information option
 ```
 
-## Gateway (for no ip routing switch)
+## Gateway
+This is for `no ip routing`, if `ip routing`, use default route `ip route 0.0.0.0 0.0.0.0 <gateway>`
 ```
 Switch(config)# ip default-gateway <gateway>
 ```
@@ -271,7 +273,8 @@ Switch(config-if)# switchport trunk allowed vlan <VLAN ID list>
 Switch(config-if)# switchport access vlan <VLAN ID>
 ```
 
-## Enable protected mode (traffic will not send to other protected port)
+## Enable protected mode
+Traffic will not send to other protected port
 ```
 Switch(config-if)# switchport protected
 ```
@@ -286,17 +289,20 @@ Switch(config-if)# spanning-tree portfast [disable]
 Switch(config-if)# spanning-tree guard root
 ```
 
-## BPDU filter (ignore BPDU)
+## BPDU filter
+Ignore BPDU
 ```
 Switch(config-if)# spanning-tree bpdufilter [enable|disable]
 ```
 
-## BPDU guard (err-disable port if detect BPDU)
+## BPDU guard
+`err-disable` port if detect BPDU
 ```
 Switch(config-if)# spanning-tree bpduguard [enable|disable]
 ```
 
-## Trust DHCP from this port (for DHCP snooping)
+## Trust DHCP from this port
+For DHCP snooping
 ```
 Switch(config-if)# ip dhcp snooping trust
 ```
