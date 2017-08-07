@@ -370,7 +370,7 @@ If TCAM ACL full, switch will randomly drop traffic.
 Switch# show platform tcam utilization asic all
 ```
 
-## [SDM (TCAM, ACL, Routing)](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-2_55_se/configuration/guide/scg3750/swsdm.html)
+## [SDM - Switch Database Management (TCAM, ACL, Routing)](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-2_55_se/configuration/guide/scg3750/swsdm.html)
 Configure system resources 
 ```
 ! If switch stacked, check SDM is match
