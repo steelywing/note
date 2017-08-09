@@ -139,6 +139,12 @@ Switch(config)# ip dhcp snooping vlan 1 4094
 Switch(config)# no ip dhcp snooping information option
 ```
 
+## Trust DHCP from this port
+For DHCP snooping
+```
+Switch(config-if)# ip dhcp snooping trust
+```
+
 ## Gateway
 This is for `no ip routing`, if `ip routing`, use default route `ip route 0.0.0.0 0.0.0.0 <gateway>`
 ```
@@ -319,12 +325,6 @@ Switch(config-if)# spanning-tree bpdufilter [enable|disable]
 `err-disable` port if detect BPDU
 ```
 Switch(config-if)# spanning-tree bpduguard [enable|disable]
-```
-
-## Trust DHCP from this port
-For DHCP snooping
-```
-Switch(config-if)# ip dhcp snooping trust
 ```
 
 ## Assign to port channel group (LACP)
