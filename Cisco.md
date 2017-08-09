@@ -126,7 +126,7 @@ Switch(config)# spanning-tree loopguard default
 Switch(config)# spanning-tree portfast default
 ```
 
-## Enable BPDU guard on all port fast access port
+## Enable BPDU guard on all port fast port
 ```
 Switch(config)# spanning-tree portfast bpduguard default
 ```
