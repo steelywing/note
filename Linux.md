@@ -50,3 +50,14 @@ Grub save default
 GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
 ```
+
+Ping
+```sh
+# Display timeout
+ping -O <IP>
+
+# Display time
+ping <IP> | while read log; do
+  echo "$(date): $log";
+done
+```
