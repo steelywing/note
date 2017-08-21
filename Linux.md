@@ -70,16 +70,20 @@ jobs
 # Run command in background
 <command> &
 
-# Send job to background
+# Resume job in background (default is current job)
+%[<job spec>] &
+# or
 bg [%<job spec>]
 
-# Send job to foreground
+# Resume job in foreground (default is current job)
+%[<job spec>]
+# or
 fg [%<job spec>]
 
 # Kill job
 kill [%<job spec>]
 
-# Don't terminate job when terminal exit
+# Don't terminate job when terminal exit (default is all jobs)
 disown [%<job spec>]
 
 # Don't terminate command when terminal exit (no hangup)
