@@ -1,4 +1,4 @@
-Ubuntu sharing desktop disable encryption ([reference](https://askubuntu.com/a/487267/235264))
+## [Ubuntu sharing desktop disable encryption reference](https://askubuntu.com/a/487267/235264)
 
 ```sh
 dconf-editor
@@ -8,13 +8,13 @@ dconf-editor
 gsettings set org.gnome.Vino require-encryption false
 ```
 
-Open file manager from CLI
+## Open file manager from CLI
 
 ```sh
 xdg-open <path>
 ```
 
-Remove current session bash history
+## Remove current session bash history
 ```sh
 unset HISTFILE
 # or
@@ -22,7 +22,7 @@ kill -9 $$
 # $$ == Current shell PID
 ```
 
-Delete all bash history
+## Delete all bash history
 ```sh
 # For Bash
 history -c
@@ -32,7 +32,7 @@ echo > $HISTFILE
 HISTSIZE=0
 ```
 
-Grub
+## Grub
 ```sh
 # Find all OS, update Grub config, install Grub to MBR / UEFI
 update-grub
@@ -42,16 +42,14 @@ vi /boot/grub/grub.cfg
 
 # Grub option
 vi /etc/default/grub
-```
 
-Grub save default
-```sh
+# Set default to last selected option
 # Add the following lines to /etc/default/grub
 GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
 ```
 
-Ping
+## Ping
 ```sh
 # Display timeout
 ping -O <IP>
@@ -60,4 +58,30 @@ ping -O <IP>
 ping <IP> | while read log; do
   echo "$(date): $log";
 done
+```
+
+## [Jobs](http://www.linuxnix.com/11-fc-bg-jobs-commands-know/)
+Suspend current process `Ctrl+Z`
+
+```sh
+# List job
+jobs
+
+# Run command in background
+<command> &
+
+# Send job to background
+bg [%<Job Spec>]
+
+# Send job to foreground
+fg [%<Job Spec>]
+
+# Kill job
+kill [%<Job Spec>]
+
+# Don't terminate job when terminal exit
+disown [%<Job Spec>]
+
+# Don't terminate command when terminal exit (no hangup)
+nohup <command>
 ```
