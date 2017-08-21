@@ -52,10 +52,10 @@ GRUB_SAVEDEFAULT=true
 ## Ping
 ```sh
 # Display timeout
-ping -O <IP>
+ping -O <ip>
 
 # Display time
-ping <IP> | while read log; do
+ping <ip> | while read log; do
   echo "$(date): $log";
 done
 ```
@@ -71,16 +71,16 @@ jobs
 <command> &
 
 # Send job to background
-bg [%<Job Spec>]
+bg [%<job spec>]
 
 # Send job to foreground
-fg [%<Job Spec>]
+fg [%<job spec>]
 
 # Kill job
-kill [%<Job Spec>]
+kill [%<job spec>]
 
 # Don't terminate job when terminal exit
-disown [%<Job Spec>]
+disown [%<job spec>]
 
 # Don't terminate command when terminal exit (no hangup)
 nohup <command>
