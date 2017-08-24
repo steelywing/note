@@ -410,3 +410,9 @@ Switch# show sdm prefer
 ! Config SDM prefer
 Switch(config)# sdm prefer ?
 ```
+
+## [Disable GBIC module (non Cisco) checking](https://www.cisco.com/c/en/us/support/docs/interfaces-modules/gbics/200296-Unsupported-GBIC-SFP-in-sub-module-of.html)
+```
+Switch(config)# no errdisable detect cause gbic-invalid
+Switch(config)# service unsupported-transceiver
+```
