@@ -417,6 +417,12 @@ Switch(config)# no errdisable detect cause gbic-invalid
 Switch(config)# service unsupported-transceiver
 ```
 
+## ACL
+Check TCAM (ACL, MAC, QOS, route) utilization
+```
+Switch# show platform tcam utilization asic all
+```
+
 ## [VACL (VLAN ACL)](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst6500/ios/15-0SY/configuration/guide/15_0_sy_swcg/vlan_acls.html)
 VACL default (no match) is `drop`
 ```
