@@ -417,7 +417,7 @@ Switch(config)# no errdisable detect cause gbic-invalid
 Switch(config)# service unsupported-transceiver
 ```
 
-## VACL (VLAN ACL)
+## [VACL (VLAN ACL)](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst6500/ios/15-0SY/configuration/guide/15_0_sy_swcg/vlan_acls.html)
 VACL default (no match) is `drop`
 ```
 Switch(config)# vlan access-map <access-map name> <sequence number>
@@ -429,7 +429,7 @@ Switch(config-access-map)# exit
 Switch(config)# vlan filter <access-map name> vlan-list <VLAN list>
 ```
 
-Block specify MAC address
+[Block specify MAC address](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3550-series-switches/64844-mac-acl-block-arp.html)
 ```
 Switch(config)# mac access-list extended blacklist
     permit  host <MAC address> any
