@@ -392,7 +392,7 @@ Switch(config)# key-string
 Switch(config)# 
 ```
 
-## [Show TCAM (ACL, MAC, QOS, route) utilization](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3850-series-switches/118957-troubleshoot-sec-acl-tcam-cat3850.html)
+## [Show TCAM (ACL, MAC, QOS, Route) utilization](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3850-series-switches/118957-troubleshoot-sec-acl-tcam-cat3850.html)
 If TCAM ACL full, switch will randomly drop traffic.
 ```
 Switch# show platform tcam utilization asic all
