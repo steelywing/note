@@ -1,6 +1,5 @@
 ## TODO
 - ACL
-- VACL
 - DHCP pool
 - Policy map
 
@@ -455,4 +454,9 @@ ACL default (no match) is `drop`
 Switch(config)# mac access-list extended <name>
 ! <MAC address> = {any|host <MAC address>|<MAC address> <MAC address mask>}
 Switch(config-ext-macl)# {permit|deny} <source MAC address> <destination MAC address>
+```
+
+## ARP inspection
+```
+Switch(config)# ip arp inspection vlan <VLAN list>
 ```
