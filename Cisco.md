@@ -458,5 +458,8 @@ Switch(config-ext-macl)# {permit|deny} <source MAC address> <destination MAC add
 
 ## ARP inspection
 ```
+! If ARP over 15 packets per second, place the port in error-disabled state
 Switch(config)# ip arp inspection vlan <VLAN list>
+! Auto recovery
+Switch(config)# errdisable recovery cause arp-inspection
 ```
