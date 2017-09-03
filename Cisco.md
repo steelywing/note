@@ -456,7 +456,7 @@ Switch(config)# mac access-list extended <name>
 Switch(config-ext-macl)# {permit|deny} <source MAC address> <destination MAC address>
 ```
 
-## ARP inspection
+## [ARP inspection](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750x_3560x/software/release/12-2_55_se/configuration/guide/3750xscg/swdynarp.html)
 ```
 ! If ARP over 15 packets per second, place the port in error-disabled state
 Switch(config)# ip arp inspection vlan <VLAN list>
