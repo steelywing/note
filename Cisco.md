@@ -67,13 +67,18 @@ Switch(config)# [no] logging console
 ## Interface
 Interface status
 ```
-Switch# show int status
+Switch# show interfaces status
 ```
 
 Test cable TDR (Time-Domain Reflectometer)
 ```
 Switch# test cable-diagnostics tdr interface <interface>
 Switch# show cable-diagnostics tdr interface <interface>
+```
+
+Transceiver (fiber loss)
+```
+Switch# show interfaces transceiver
 ```
 
 ## CDP
