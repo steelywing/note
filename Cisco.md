@@ -463,3 +463,35 @@ Switch(config)# ip arp inspection vlan <VLAN list>
 ! Auto recovery
 Switch(config)# errdisable recovery cause arp-inspection
 ```
+
+## OSPF
+```
+Switch(config)# router ospf <process ID>
+Switch(config-router)# network <IP> <netmask> area <area ID>
+! or
+Switch(config-if)# ip ospf <process ID> area <area ID>
+
+! List LSAs (Link State Advertisements)
+Switch# show ip ospf database
+
+! List OSPF neighbor
+Switch# show ip ospf neighbor
+
+! List OSPF routes
+Switch# show ip route ospf
+```
+
+[Redistributing connected networks into OSPF](https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/18722-redist-conn.html)
+```
+Switch(config-router)# redistribute connected subnets
+```
+
+Redistributing static routes into OSPF
+```
+Switch(config-router)# redistribute static subnets
+```
+
+[Redistributing default route into OSPF](https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/47868-ospfdb9.html)
+```
+Switch(config-router)# redistribute connected subnets
+```
