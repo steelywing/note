@@ -493,5 +493,5 @@ Switch(config-router)# redistribute static subnets
 
 [Redistributing default route into OSPF](https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/47868-ospfdb9.html)
 ```
-Switch(config-router)# redistribute connected subnets
+Switch(config-router)# default-information originate
 ```
