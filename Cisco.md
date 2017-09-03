@@ -65,7 +65,7 @@ Switch(config)# [no] logging console
 ```
 
 ## Interface
-Interface status
+Show interface status
 ```
 Switch# show interfaces status
 ```
@@ -76,7 +76,7 @@ Switch# test cable-diagnostics tdr interface <interface>
 Switch# show cable-diagnostics tdr interface <interface>
 ```
 
-Transceiver (fiber loss)
+Show transceiver (fiber gain/loss)
 ```
 Switch# show interfaces transceiver
 ```
