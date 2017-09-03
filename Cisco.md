@@ -64,9 +64,16 @@ Switch# terminal [no] monitor
 Switch(config)# [no] logging console
 ```
 
-## Interface status
+## Interface
+Interface status
 ```
 Switch# show int status
+```
+
+Test cable TDR (Time-Domain Reflectometer)
+```
+Switch# test cable-diagnostics tdr interface <interface>
+Switch# show cable-diagnostics tdr interface <interface>
 ```
 
 ## CDP
