@@ -1,5 +1,4 @@
 ## TODO
-- ACL
 - DHCP pool
 - Policy map
 
@@ -27,7 +26,7 @@ Switch#
 
 ## Enter config mode
 ```
-Switch# conf t
+Switch# conf[igure] t[erminal]
 Switch(config)# 
 ```
 
@@ -81,10 +80,10 @@ Show transceiver (fiber gain/loss)
 Switch# show interfaces transceiver
 ```
 
-## CDP
+## CDP (Cisco Discovery Protocol)
 ```
 Switch# show cdp neighbors [detail]
-Switch# show cdp neighbors <interface>/<port number> detail
+Switch# show cdp neighbors <interface> detail
 ```
 
 ## Device name
@@ -109,7 +108,7 @@ Switch(config)# no vlan <VLAN ID>[-<VLAN ID>]
 Switch(config-vlan)# name <name>
 ```
 
-## VTP
+## VTP (VLAN Trunk Protocol)
 ```
 Switch(config)# vtp mode <mode>
 Switch(config)# vtp domain <name>
@@ -127,9 +126,19 @@ Switch(config)# service timestamps log datetime localtime
 Switch(config)# service timestamps debug datetime localtime
 ```
 
+## Root guard
+```
+Switch(config-if)# spanning-tree guard root
+```
+
 ## Enable loop guard on all port
 ```
 Switch(config)# spanning-tree loopguard default
+```
+
+## Port fast
+```
+Switch(config-if)# spanning-tree portfast [disable]
 ```
 
 ## Enable port fast on all access port
@@ -137,16 +146,28 @@ Switch(config)# spanning-tree loopguard default
 Switch(config)# spanning-tree portfast default
 ```
 
+## BPDU guard
+`err-disable` port if detect BPDU
+```
+Switch(config-if)# spanning-tree bpduguard (enable|disable)
+```
+
 ## Enable BPDU guard on all port fast port
 ```
 Switch(config)# spanning-tree portfast bpduguard default
+```
+
+## BPDU filter
+Ignore BPDU
+```
+Switch(config-if)# spanning-tree bpdufilter (enable|disable)
 ```
 
 ## DHCP snooping
 Drop DHCP on untrust interface
 ```
 Switch(config)# ip dhcp snooping
-Switch(config)# ip dhcp snooping vlan 1 4094
+Switch(config)# ip dhcp snooping vlan <VLAN list>
 Switch(config)# no ip dhcp snooping information option
 ```
 
@@ -216,12 +237,12 @@ Unnecessary if using `login local`
 Switch(config-line)# password <password>
 ```
 
-## Use password to login
+## Use password to authenticate
 ```
 Switch(config-line)# login
 ```
 
-## Use user to login
+## Use user to authenticate
 ```
 Switch(config-line)# login local
 ```
@@ -244,29 +265,25 @@ Switch(config-line)# escape-character 3
 
 ## Config VLAN interface
 ```
-Switch(config)# int vlan <VLAN ID>
+Switch(config)# interface vlan <VLAN ID>
 Switch(config-if)# ip address <IP> <netmask>
 Switch(config-if)# no shutdown
 ```
 
-## Config port channel
+## Port channel
 ```
-Switch(config)# int port-channel <port channel number>
+Switch(config)# interface port-channel <port channel number>
 ```
 
-## Config switch port interface
+## Config interface
 ```
 Switch(config)# interface <interface>/<port number>
 Switch(config-if)# 
-
-! or
-Switch(config)# int <interface>/<port number>
-Switch(config-if)# 
 ```
 
-## Config a range of switch port
+## Config a range of interface
 ```
-Switch(config)# int range <interface>/<port number> - <port number>
+Switch(config)# interface range <interface>/<port number> - <port number>
 ```
 
 ## Description
@@ -316,28 +333,6 @@ Traffic will not send to other protected port
 Switch(config-if)# switchport protected
 ```
 
-## Port fast
-```
-Switch(config-if)# spanning-tree portfast [disable]
-```
-
-## Root guard
-```
-Switch(config-if)# spanning-tree guard root
-```
-
-## BPDU filter
-Ignore BPDU
-```
-Switch(config-if)# spanning-tree bpdufilter [enable|disable]
-```
-
-## BPDU guard
-`err-disable` port if detect BPDU
-```
-Switch(config-if)# spanning-tree bpduguard [enable|disable]
-```
-
 ## Assign to port channel group (LACP)
 ```
 Switch(config-if)# channel-group <port channel number> mode active
@@ -353,17 +348,15 @@ Switch# show etherchannel summary
 Switch(config)# no ip domain-lookup
 ```
 
-## Config archive FTP login
-```
-Switch(config)# ip ftp username <username>
-Switch(config)# ip ftp password <password>
-```
-
 ## Archive
 `$h` = hostname, `$t` = time
 ```
+! Archive FTP login
+Switch(config)# ip ftp username <username>
+Switch(config)# ip ftp password <password>
+
 Switch(config)# archive
-Switch(config-archive)# path ftp://<ip>/$h/$h-$t
+Switch(config-archive)# path ftp://<IP>/$h/$h-$t
 Switch(config-archive)# path scp://<username>:<password>@<ip>/$h/$h-$t
 ```
 
@@ -371,8 +364,7 @@ Switch(config-archive)# path scp://<username>:<password>@<ip>/$h/$h-$t
 `$(hostname)` = hostname
 ```
 Switch(config)# banner login ^
-<Banner>
-$(hostname)
+<banner>
 ^
 Switch(config)# 
 ```
@@ -422,7 +414,7 @@ Switch# show sdm prefer
 Switch(config)# sdm prefer ?
 ```
 
-## [Disable GBIC module (non Cisco) checking](https://www.cisco.com/c/en/us/support/docs/interfaces-modules/gbics/200296-Unsupported-GBIC-SFP-in-sub-module-of.html)
+## [Disable (non Cisco) GBIC module checking](https://www.cisco.com/c/en/us/support/docs/interfaces-modules/gbics/200296-Unsupported-GBIC-SFP-in-sub-module-of.html)
 ```
 Switch(config)# no errdisable detect cause gbic-invalid
 Switch(config)# service unsupported-transceiver
@@ -432,7 +424,7 @@ Switch(config)# service unsupported-transceiver
 VACL default (no match) is `drop`
 ```
 Switch(config)# vlan access-map <access-map name> <sequence number>
-Switch(config-access-map)# action {forward|drop}
+Switch(config-access-map)# action (forward|drop)
 Switch(config-access-map)# match ip address <IP ACL>
 Switch(config-access-map)# match mac address <MAC ACL>
 Switch(config-access-map)# exit
@@ -458,14 +450,30 @@ Switch(config)# vlan filter <access-map name> vlan-list <VLAN list>
 ```
 
 ## IP ACL
-ACL default (no match) is `drop`
+ACL default (no match) is `drop`, match = `(packet_ip & ~inverse_mask) == acl_ip`
+```
+! <address> = (any|<IP> <inverse mask>|host <IP>)
+
+! Standard ACL
+Switch(config)# ip access-list standard (<ACL name>|<1-99>|<1300-1999>)
+Switch(config-std-nacl)# [<sequence number>] (permit|deny) <source address>
+
+! Extended ACL
+Switch(config)# ip access-list extended (<ACL name>|<100-199>|<2000-2699>)
+Switch(config-ext-nacl)# [<sequence number>] (permit|deny) (ip|udp|tcp) <source address> [(eq|neq|lt|gt) <source port>] <destination address> [(eq|neq|lt|gt) <destination port>]
+```
+
+List ACL
+```
+Switch# show ip access-lists
+```
 
 ## MAC ACL
 ACL default (no match) is `drop`
 ```
 Switch(config)# mac access-list extended <name>
-! <MAC address> = {any|host <MAC address>|<MAC address> <MAC address mask>}
-Switch(config-ext-macl)# {permit|deny} <source MAC address> <destination MAC address>
+! <MAC address> = (any|host <MAC address>|<MAC address> <MAC address mask>)
+Switch(config-ext-macl)# (permit|deny) <source MAC address> <destination MAC address>
 ```
 
 ## [ARP inspection](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750x_3560x/software/release/12-2_55_se/configuration/guide/3750xscg/swdynarp.html)
