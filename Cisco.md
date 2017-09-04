@@ -63,23 +63,6 @@ Switch# terminal [no] monitor
 Switch(config)# [no] logging console
 ```
 
-## Interface
-Show interface status
-```
-Switch# show interfaces status
-```
-
-Test cable TDR (Time-Domain Reflectometer)
-```
-Switch# test cable-diagnostics tdr interface <interface>
-Switch# show cable-diagnostics tdr interface <interface>
-```
-
-Show transceiver (fiber gain/loss)
-```
-Switch# show interfaces transceiver
-```
-
 ## CDP (Cisco Discovery Protocol)
 ```
 Switch# show cdp neighbors [<interface>] [detail]
@@ -283,60 +266,75 @@ Show port channel summary
 Switch# show etherchannel summary
 ```
 
-## Config interface
+## Interface
+Show interface status
+```
+Switch# show interfaces status
+```
+
+Test cable TDR (Time-Domain Reflectometer)
+```
+Switch# test cable-diagnostics tdr interface <interface>
+Switch# show cable-diagnostics tdr interface <interface>
+```
+
+Show transceiver (fiber gain/loss)
+```
+Switch# show interfaces transceiver
+```
+
+Config interface
 ```
 Switch(config)# interface <interface>/<port number>
 Switch(config-if)# 
 ```
 
-## Config a range of interface
+Config a range of interface
 ```
 Switch(config)# interface range <interface>/<port number> - <port number>
 ```
 
-## Description
+Description
 ```
 Switch(config-if)# description <description>
 ```
 
-## Change to layer 3 mode
+Layer 3 mode
 ```
 Switch(config-if)# no switchport
 ```
 
-## Change to layer 2 mode
+Layer 2 mode
 ```
 Switch(config-if)# switchport
 ```
 
-## Set trunk encapsulation to 802.1Q
+Set trunk encapsulation to 802.1Q
 ```
 Switch(config-if)# switchport trunk encapsulation dot1q
 ```
 
-## Set to trunk mode
+Trunk mode
 ```
 Switch(config-if)# switchport mode trunk
 ```
 
-## Set to access mode
+Access mode
 ```
 Switch(config-if)# switchport mode access
 ```
 
-## Allow specify VLAN on trunk
-Default allow all
+Allow specify VLAN on trunk (default allow all)
 ```
 Switch(config-if)# switchport trunk allowed vlan <VLAN ID list>
 ```
 
-## Set VLAN
+Set VLAN
 ```
 Switch(config-if)# switchport access vlan <VLAN ID>
 ```
 
-## Enable protected mode
-Traffic will not send to other protected port
+Enable protected mode (traffic will not send to other protected port)
 ```
 Switch(config-if)# switchport protected
 ```
