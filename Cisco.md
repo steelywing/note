@@ -82,8 +82,7 @@ Switch# show interfaces transceiver
 
 ## CDP (Cisco Discovery Protocol)
 ```
-Switch# show cdp neighbors [detail]
-Switch# show cdp neighbors <interface> detail
+Switch# show cdp neighbors [<interface>] [detail]
 ```
 
 ## Device name
@@ -122,8 +121,7 @@ Switch(config)# service password-encryption
 
 ## Display timestamp in log
 ```
-Switch(config)# service timestamps log datetime localtime
-Switch(config)# service timestamps debug datetime localtime
+Switch(config)# service timestamps (log|debug) datetime localtime
 ```
 
 ## Root guard
@@ -252,10 +250,9 @@ Switch(config-line)# login local
 Switch(config-line)# exec-timeout 30
 ```
 
-## Enable Telnet and SSH
-Default is not both
+## Enable Telnet or SSH
 ```
-Switch(config-line)# transport input all
+Switch(config-line)# transport input (all|telnet|ssh|none)
 ```
 
 ## Ctrl-C to break
@@ -270,9 +267,20 @@ Switch(config-if)# ip address <IP> <netmask>
 Switch(config-if)# no shutdown
 ```
 
-## Port channel
+## Port channel (ether channel)
+Create port channel interface
 ```
 Switch(config)# interface port-channel <port channel number>
+```
+
+Assign interface to port channel group (LACP)
+```
+Switch(config-if)# channel-group <port channel number> mode active
+```
+
+Show port channel summary
+```
+Switch# show etherchannel summary
 ```
 
 ## Config interface
@@ -331,16 +339,6 @@ Switch(config-if)# switchport access vlan <VLAN ID>
 Traffic will not send to other protected port
 ```
 Switch(config-if)# switchport protected
-```
-
-## Assign to port channel group (LACP)
-```
-Switch(config-if)# channel-group <port channel number> mode active
-```
-
-## Show port channel (ether channel) summary
-```
-Switch# show etherchannel summary
 ```
 
 ## Disable domain name lookup in global mode
