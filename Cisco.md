@@ -512,7 +512,7 @@ Switch(config-router)# redistribute static subnets
 Switch(config-router)# default-information originate
 ```
 
-## SPAN (Switched Port Analyzer)
+## [SPAN (Switched Port Analyzer)](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-1_19_ea1/configuration/guide/3750scg/swspan.html)
 Port mirror
 ```
 ! <VLAN list> = <VLAN ID> [[,|-] <VLAN ID>...]
