@@ -511,3 +511,24 @@ Switch(config-router)# redistribute static subnets
 ```
 Switch(config-router)# default-information originate
 ```
+
+## SPAN (Switched Port Analyzer)
+Port mirror
+```
+! <VLAN list> = <VLAN ID> [[,|-] <VLAN ID>...]
+
+! Monitor interface
+Switch(config)# monitor session <session number> source interface <interface> [both|rx|tx]
+
+! Monitor all ports of specify VLAN
+Switch(config)# monitor session <session number> source vlan <VLAN list> [both|rx|tx]
+
+! Mirror to specify interface
+Switch(config)# monitor session <session number> destination interface <interface>
+
+! Filter VLAN
+Switch(config)# monitor session <session number> filter <VLAN list>
+
+! Remove monitor session
+Switch(config)# no monitor session <session number>
+```
