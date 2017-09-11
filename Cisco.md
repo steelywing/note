@@ -63,6 +63,11 @@ Switch# terminal [no] monitor
 Switch(config)# [no] logging console
 ```
 
+## Show temperature, fan status
+```
+Switch# show env all
+```
+
 ## CDP (Cisco Discovery Protocol)
 ```
 Switch# show cdp neighbors [<interface>] [detail]
