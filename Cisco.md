@@ -63,7 +63,7 @@ Switch# terminal [no] monitor
 Switch(config)# [no] logging console
 ```
 
-## Show temperature, fan status
+## Show temperature, fan, power status
 ```
 Switch# show env all
 ```
