@@ -63,9 +63,25 @@ Switch# terminal [no] monitor
 Switch(config)# [no] logging console
 ```
 
-## Show temperature, fan, power status
+## Diagnostic
+Get CPU usage
+```
+Switch# show processes cpu [sorted|history]
+```
+
+Get temperature, fan, power status
 ```
 Switch# show env all
+```
+
+Get version, up time
+```
+Switch# show version
+```
+
+Get IP traffic info
+```
+Switch# show ip traffic 
 ```
 
 ## CDP (Cisco Discovery Protocol)
