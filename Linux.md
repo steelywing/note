@@ -89,3 +89,14 @@ disown [%<job spec>]
 # Don't terminate command when terminal exit (no hangup)
 nohup <command>
 ```
+
+## File permission
+Only change directory permission
+```sh
+chmod <permission> $(find -type d)
+```
+
+Only change file permission
+```sh
+chmod <permission> $(find -type f)
+```
