@@ -1,3 +1,36 @@
+## User
+```sh
+# Change password
+passwd [<user>]
+
+# Lock user
+passwd -l <user>
+
+# Unlock user
+passwd -u <user>
+
+# Expire user password (force user to change password)
+passwd -e <user>
+
+# Set password expire day
+passwd -x <day> <user>
+
+# User database file
+/etc/passwd
+
+# Password file
+/etc/shadow
+```
+
+## Shell
+```sh
+# Shell list
+/etc/shells
+
+# Chanage shell
+chsh -s <shell> <user>
+```
+
 ## [Ubuntu sharing desktop disable encryption reference](https://askubuntu.com/a/487267/235264)
 
 ```sh
