@@ -2,4 +2,6 @@
 ![Windows Firewall](img/windows-firewall.png)
 
 ## Remote Desktop
-Toggle full screen `Ctrl + Alt + Break`
+- Toggle full screen `Ctrl + Alt + Break`
+- List remote desktop session `query session`
+- Attach remote desktop session to console `tscon <session ID> /dest:console`
