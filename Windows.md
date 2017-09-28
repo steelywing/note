@@ -8,3 +8,23 @@
 - Toggle full screen `Ctrl + Alt + Break`
 - List remote desktop session `query session`
 - Attach remote desktop session to console `tscon <session ID> /dest:console`
+
+## Remote PowerShell
+Enable remote PowerShell
+```
+# Change network profile to private
+
+# Enable WinRM service
+Enable-PSRemoting -Force
+
+# Add host to trusted hosts
+Set-Item WSMan:\localhost\Client\TrustedHosts (<IP|host name>[,<IP|host name>]|*)
+
+# Restart WinRM
+Restart-Service WinRM
+```
+
+Connect to remote PowerShell
+```
+Enter-PSSession -ComputerName <IP|host name> -Credential <user name>
+```
