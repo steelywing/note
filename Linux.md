@@ -1,5 +1,17 @@
 ## User
 ```sh
+# Add user (Debian)
+adduser <user>
+
+# Delete user (Debian)
+deluser <user>
+
+# Add user
+useradd <user>
+
+# Delete user
+userdel <user>
+
 # Change password
 passwd [<user>]
 
