@@ -164,3 +164,12 @@ service <service> (start|stop)
 # systemd
 systemctl (start|stop) <service>
 ```
+
+## Manual
+```
+# Show manual
+man [<page>]
+
+# Search manual
+apropos <keyword>
+```
