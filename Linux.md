@@ -166,7 +166,7 @@ systemctl (start|stop) <service>
 ```
 
 ## Manual
-```
+```sh
 # Show manual
 man [<page>]
 
