@@ -28,3 +28,9 @@ Connect to remote PowerShell
 ```
 Enter-PSSession -ComputerName <IP|host name> -Credential <user name>
 ```
+
+## Hibernate
+Disable hibernate (remove `hiberfil.sys` file)
+```
+powercfg /(hibernate|h) off
+```
