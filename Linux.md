@@ -173,3 +173,6 @@ man [<page>]
 # Search manual
 apropos <keyword>
 ```
+
+## iptables
+![iptables](img/iptables.png)
