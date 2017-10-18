@@ -84,6 +84,11 @@ Get IP traffic info
 Switch# show ip traffic 
 ```
 
+Interface Capabilities (Type, POE, ...)
+```
+Switch# show interfaces [<Interface>] capabilities
+```
+
 ## CDP (Cisco Discovery Protocol)
 ```
 Switch# show cdp neighbors [<interface>] [detail]
