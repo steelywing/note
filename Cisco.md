@@ -84,7 +84,7 @@ Get IP traffic info
 Switch# show ip traffic 
 ```
 
-Interface Capabilities (Type, POE, ...)
+Interface capabilities (type, POE, ...)
 ```
 Switch# show interfaces [<Interface>] capabilities
 ```
