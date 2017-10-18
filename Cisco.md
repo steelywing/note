@@ -536,7 +536,7 @@ Switch(config-router)# default-information originate
 ## [SPAN (Switched Port Analyzer)](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-1_19_ea1/configuration/guide/3750scg/swspan.html)
 Port mirror
 ```
-! <VLAN list> = <VLAN ID> [[,|-] <VLAN ID>...]
+! <VLAN list> = <VLAN ID> [(,|-) <VLAN ID>]...
 
 ! Monitor interface
 Switch(config)# monitor session <session number> source interface <interface> [both|rx|tx]
