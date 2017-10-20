@@ -77,15 +77,18 @@ echo > $HISTFILE
 HISTSIZE=0
 ```
 
-## Grub
+## `grub`
+
+Hold `Shift` when boot to show `grub`
+
 ```sh
-# Find all OS, update Grub config, install Grub to MBR / UEFI
+# Find all OS, update GRUB config, install GRUB to MBR / UEFI
 update-grub
 
-# Auto-Generate Grub config path
+# Auto-Generate GRUB config path
 vi /boot/grub/grub.cfg
 
-# Grub option
+# GRUB option
 vi /etc/default/grub
 
 # Set default to last selected option
@@ -105,35 +108,58 @@ ping <ip> | while read log; do
 done
 ```
 
+## Hardware
+
+| Command | Description |
+| --- | --- |
+| `lsusb` | List USB devices |
+| `lsblk` | List block devices |
+| `lspci` | List PCI devices |
+| `lspci -nn` | List PCI devices and devices code |
+| `lspci -k` | List PCI devices and kernel driver |
+| `cat /proc/cpuinfo` | Show CPU info |
+| `free` | Show memory info |
+| `df` | Disk free space |
+| `df -h` | Disk free space in human readable format |
+
+## Kernel module
+
+`module-name` is same as `module_name`
+
+| Command | Description |
+| --- | --- |
+| `lsmod` | List module |
+| `insmod <module>` | Add module |
+| `rmmod <module>` | Remove module |
+| `modprobe <module>` | Add module and dependencies |
+| `modprobe -r <module>` | Remove module and dependencies |
+| Insert `blacklist <module>` into `/etc/modprobe.d/*.conf` | Blacklist module |
+| Insert `install <module> /bin/false` into `/etc/modprobe.d/*.conf` | Blacklist module even other modules depend on it |
+
+## `bash`
+
+| Command | Description |
+| --- | --- |
+| `Tab` | Complete command |
+| `Ctrl`+`D` | Exit |
+| `Ctrl`+`L` | Clear screen |
+| `Ctrl`+`R` | Search history |
+| `!!` | Previous command |
+| `!<string>` | Most recent command starting with `<string>` |
+
 ## [Jobs](http://www.linuxnix.com/11-fc-bg-jobs-commands-know/)
-Suspend current process `Ctrl+Z`
 
-```sh
-# List job
-jobs
-
-# Run command in background
-<command> &
-
-# Resume job in background (default is current job)
-%[<job spec>] &
-# or
-bg [%<job spec>]
-
-# Resume job in foreground (default is current job)
-%[<job spec>]
-# or
-fg [%<job spec>]
-
-# Kill job
-kill [%<job spec>]
-
-# Don't terminate job when terminal exit (default is all jobs)
-disown [%<job spec>]
-
-# Don't terminate command when terminal exit (no hangup)
-nohup <command>
-```
+| Command | Description |
+| --- | --- |
+| `Ctrl`+`Z` | Suspend current process |
+| `Ctrl`+`C` | Terminate current process |
+| `jobs` | List job |
+| `<command> &` | Run command in background |
+| `%[<job spec>] &` or `bg [%<job spec>]` | Resume job in background (default is current job) |
+| `%[<job spec>]` or `fg [%<job spec>]` | Resume job in foreground (default is current job) |
+| `kill [%<job spec>]` | Kill job |
+| `disown [%<job spec>]` | Don't terminate job when terminal exit (default is all jobs) |
+| `nohup <command>` | Don't terminate command when terminal exit (no hangup) |
 
 ## File permission
 Only change directory permission
