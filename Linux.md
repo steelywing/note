@@ -150,19 +150,19 @@ chmod <permission> $(find -type f)
 Enable / Disable service auto start
 ```sh
 # Ubuntu <= 14
-update-rc.d <service> (enable|disable)
+update-rc.d <service> {enable|disable}
 
 # systemd
-systemctl (enable|disable) <service>
+systemctl {enable|disable} <service>
 ```
 
 Start / Stop service
 ```sh
 # Ubuntu <= 14
-service <service> (start|stop)
+service <service> {start|stop}
 
 # systemd
-systemctl (start|stop) <service>
+systemctl {start|stop} <service>
 ```
 
 ## Manual
