@@ -130,7 +130,7 @@ Switch(config)# service password-encryption
 
 ## Display timestamp in log
 ```
-Switch(config)# service timestamps (log|debug) datetime localtime
+Switch(config)# service timestamps {log|debug} datetime localtime
 ```
 
 ## Root guard
@@ -156,7 +156,7 @@ Switch(config)# spanning-tree portfast default
 ## BPDU guard
 `err-disable` port if detect BPDU
 ```
-Switch(config-if)# spanning-tree bpduguard (enable|disable)
+Switch(config-if)# spanning-tree bpduguard {enable|disable}
 ```
 
 ## Enable BPDU guard on all port fast port
@@ -167,7 +167,7 @@ Switch(config)# spanning-tree portfast bpduguard default
 ## BPDU filter
 Ignore BPDU
 ```
-Switch(config-if)# spanning-tree bpdufilter (enable|disable)
+Switch(config-if)# spanning-tree bpdufilter {enable|disable}
 ```
 
 ## DHCP snooping
@@ -261,7 +261,7 @@ Switch(config-line)# exec-timeout 30
 
 ## Enable Telnet or SSH
 ```
-Switch(config-line)# transport input (all|telnet|ssh|none)
+Switch(config-line)# transport input {all|telnet|ssh|none}
 ```
 
 ## Ctrl-C to break
@@ -446,7 +446,7 @@ Switch(config)# service unsupported-transceiver
 VACL default (no match) is `drop`
 ```
 Switch(config)# vlan access-map <access-map name> <sequence number>
-Switch(config-access-map)# action (forward|drop)
+Switch(config-access-map)# action {forward|drop}
 Switch(config-access-map)# match ip address <IP ACL>
 Switch(config-access-map)# match mac address <MAC ACL>
 Switch(config-access-map)# exit
@@ -474,15 +474,15 @@ Switch(config)# vlan filter <access-map name> vlan-list <VLAN list>
 ## IP ACL
 ACL default (no match) is `drop`, match = `(packet_ip & ~inverse_mask) == acl_ip`
 ```
-! <address> = (any|<IP> <inverse mask>|host <IP>)
+! <address> = {any|<IP> <inverse mask>|host <IP>}
 
 ! Standard ACL
-Switch(config)# ip access-list standard (<ACL name>|<1-99>|<1300-1999>)
-Switch(config-std-nacl)# [<sequence number>] (permit|deny) <source address>
+Switch(config)# ip access-list standard {<ACL name>|<1-99>|<1300-1999>}
+Switch(config-std-nacl)# [<sequence number>] {permit|deny} <source address>
 
 ! Extended ACL
-Switch(config)# ip access-list extended (<ACL name>|<100-199>|<2000-2699>)
-Switch(config-ext-nacl)# [<sequence number>] (permit|deny) (ip|udp|tcp) <source address> [(eq|neq|lt|gt) <source port>] <destination address> [(eq|neq|lt|gt) <destination port>]
+Switch(config)# ip access-list extended {<ACL name>|<100-199>|<2000-2699>}
+Switch(config-ext-nacl)# [<sequence number>] {permit|deny} {ip|udp|tcp} <source address> [{eq|neq|lt|gt} <source port>] <destination address> [{eq|neq|lt|gt} <destination port>]
 ```
 
 List ACL
@@ -494,8 +494,8 @@ Switch# show ip access-lists
 ACL default (no match) is `drop`
 ```
 Switch(config)# mac access-list extended <name>
-! <MAC address> = (any|host <MAC address>|<MAC address> <MAC address mask>)
-Switch(config-ext-macl)# (permit|deny) <source MAC address> <destination MAC address>
+! <MAC address> = {any|host <MAC address>|<MAC address> <MAC address mask>}
+Switch(config-ext-macl)# {permit|deny} <source MAC address> <destination MAC address>
 ```
 
 ## [ARP inspection](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750x_3560x/software/release/12-2_55_se/configuration/guide/3750xscg/swdynarp.html)
@@ -541,7 +541,7 @@ Switch(config-router)# default-information originate
 ## [SPAN (Switched Port Analyzer)](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-1_19_ea1/configuration/guide/3750scg/swspan.html)
 Port mirror
 ```
-! <VLAN list> = <VLAN ID> [(,|-) <VLAN ID>]...
+! <VLAN list> = <VLAN ID> [{,|-} <VLAN ID>]...
 
 ! Monitor interface
 Switch(config)# monitor session <session number> source interface <interface> [both|rx|tx]
