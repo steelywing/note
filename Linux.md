@@ -159,25 +159,25 @@ Ubuntu <= 14 (System V)
 
 | Command | Description |
 | --- | --- |
-| `update-rc.d <service> {enable|disable}` | Enable / Disable service auto start |
-| `service <service> {start|stop}` | Start / Stop service |
+| `update-rc.d <service> {enable\|disable}` | Enable / Disable service auto start |
+| `service <service> {start\|stop}` | Start / Stop service |
 | `service <service> status` | Show service status |
 
 Red Hat <= 6 (System V)
 
 | Command | Description |
 | --- | --- |
-| `chkconfig --{add|del} <service>` | Add / Delete service |
-| `chkconfig <service> {on|off}` | Enable / Disable service auto start |
-| `service <service> {start|stop}` | Start / Stop service |
+| `chkconfig --{add&\|del} <service>` | Add / Delete service |
+| `chkconfig <service> {on\|off}` | Enable / Disable service auto start |
+| `service <service> {start\|stop}` | Start / Stop service |
 | `service <service> status` | Show service status |
 
 Ubuntu 16, Red Hat 7 (systemd)
 
 | Command | Description |
 | --- | --- |
-| `systemctl {enable|disable} <service>` | Enable / Disable service auto start |
-| `systemctl {start|stop} <service>` | Start / Stop service |
+| `systemctl {enable\|disable} <service>` | Enable / Disable service auto start |
+| `systemctl {start\|stop} <service>` | Start / Stop service |
 | `systemctl status <service>` | Show service status |
 
 ## Manual
