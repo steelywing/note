@@ -43,22 +43,6 @@ passwd -x <day> <user>
 chsh -s <shell> <user>
 ```
 
-## [Ubuntu sharing desktop disable encryption reference](https://askubuntu.com/a/487267/235264)
-
-```sh
-dconf-editor
-# org > gnome > desktop > remote-accessand > require-encryption
-
-# or
-gsettings set org.gnome.Vino require-encryption false
-```
-
-## Open file manager from CLI
-
-```sh
-xdg-open <path>
-```
-
 ## Remove current session bash history
 ```sh
 unset HISTFILE
@@ -78,14 +62,12 @@ HISTSIZE=0
 ```
 
 ## `grub`
-
 Hold `Shift` when boot to show `grub`
-
 ```sh
 # Find all OS, update GRUB config, install GRUB to MBR / UEFI
 update-grub
 
-# Auto-Generate GRUB config path
+# GRUB auto-generate config path
 vi /boot/grub/grub.cfg
 
 # GRUB option
@@ -123,7 +105,6 @@ done
 | `df -h` | Disk free space in human readable format |
 
 ## Kernel module
-
 `module-name` is same as `module_name`
 
 | Command | Description |
@@ -147,7 +128,8 @@ done
 | `!!` | Previous command |
 | `!<string>` | Most recent command starting with `<string>` |
 
-## [Jobs](http://www.linuxnix.com/11-fc-bg-jobs-commands-know/)
+## Jobs
+[Reference](http://www.linuxnix.com/11-fc-bg-jobs-commands-know/)
 
 | Command | Description |
 | --- | --- |
@@ -173,23 +155,27 @@ chmod <permission> $(find -type f)
 ```
 
 ## Service
-Enable / Disable service auto start
-```sh
-# Ubuntu <= 14
-update-rc.d <service> {enable|disable}
+Ubuntu <= 14 (System V)
+| Command | Description |
+| --- | --- |
+| `update-rc.d <service> {enable|disable}` | Enable / Disable service auto start |
+| `service <service> {start|stop}` | Start / Stop service |
+| `service <service> status` | Show service status |
 
-# systemd
-systemctl {enable|disable} <service>
-```
+Red Hat <= 6 (System V)
+| Command | Description |
+| --- | --- |
+| `chkconfig --{add|del} <service>` | Add / Delete service |
+| `chkconfig <service> {on|off}` | Enable / Disable service auto start |
+| `service <service> {start|stop}` | Start / Stop service |
+| `service <service> status` | Show service status |
 
-Start / Stop service
-```sh
-# Ubuntu <= 14
-service <service> {start|stop}
-
-# systemd
-systemctl {start|stop} <service>
-```
+Ubuntu 16, Red Hat 7 (systemd)
+| Command | Description |
+| --- | --- |
+| `systemctl {enable|disable} <service>` | Enable / Disable service auto start |
+| `systemctl {start|stop} <service>` | Start / Stop service |
+| `systemctl status <service>` | Show service status |
 
 ## Manual
 ```sh
@@ -200,5 +186,34 @@ man [<page>]
 apropos <keyword>
 ```
 
+## Time
+Force sync time
+```sh
+service ntpd stop
+ntpd -gq
+service ntpd start
+```
+
+## DNS
+```sh
+vi /etc/resolv.conf
+```
+
 ## iptables
-![iptables](img/iptables.png)
+![iptables flow chart](img/iptables.png)
+
+## Ubuntu
+Disable sharing desktop encryption 
+```sh
+dconf-editor
+# org > gnome > desktop > remote-accessand > require-encryption
+
+# or
+gsettings set org.gnome.Vino require-encryption false
+```
+[Reference](https://askubuntu.com/a/487267/235264)
+
+## Open file manager from CLI
+```sh
+xdg-open <path>
+```
