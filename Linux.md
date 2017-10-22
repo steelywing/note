@@ -167,7 +167,7 @@ Red Hat <= 6 (System V)
 
 | Command | Description |
 | --- | --- |
-| `chkconfig --{add&\|del} <service>` | Add / Delete service |
+| `chkconfig --{add\|del} <service>` | Add / Delete service |
 | `chkconfig <service> {on\|off}` | Enable / Disable service auto start |
 | `service <service> {start\|stop}` | Start / Stop service |
 | `service <service> status` | Show service status |
