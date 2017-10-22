@@ -156,6 +156,7 @@ chmod <permission> $(find -type f)
 
 ## Service
 Ubuntu <= 14 (System V)
+
 | Command | Description |
 | --- | --- |
 | `update-rc.d <service> {enable|disable}` | Enable / Disable service auto start |
@@ -163,6 +164,7 @@ Ubuntu <= 14 (System V)
 | `service <service> status` | Show service status |
 
 Red Hat <= 6 (System V)
+
 | Command | Description |
 | --- | --- |
 | `chkconfig --{add|del} <service>` | Add / Delete service |
@@ -171,6 +173,7 @@ Red Hat <= 6 (System V)
 | `service <service> status` | Show service status |
 
 Ubuntu 16, Red Hat 7 (systemd)
+
 | Command | Description |
 | --- | --- |
 | `systemctl {enable|disable} <service>` | Enable / Disable service auto start |
