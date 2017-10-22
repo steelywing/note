@@ -36,7 +36,6 @@ powercfg /(hibernate|h) off
 ```
 
 ## `.cab` file
-
 - Extract `.cab`: `expand <file.cab>`
 - Create `.cab`: `makecab <file> <file.cab>`
 
@@ -60,7 +59,6 @@ cacls <file> /r <user>
 ```
 
 ## Registry
-
 [Registry file location](http://msdn.microsoft.com/en-us/library/ms724877%28v=vs.85%29.aspx)
 
 | Registry hive | Supporting files |
@@ -74,7 +72,6 @@ cacls <file> /r <user>
 | HKEY_USERS\.DEFAULT | Default, Default.log, Default.sav |
 
 Edit registry file
-
 - Execute `regedit`
 - Select the `HKEY_LOCAL_MACHINE` root key
 - Menu `File` > `Load Hive...`
@@ -82,3 +79,20 @@ Edit registry file
 - You will be prompted for a name to load the hive into. The name does not matter. It just loads the registry hive into a subfolder using the name you provide
 - You can then edit the registry you just loaded in the same manner as any other registry. All changes are made in real time, just as normal
 - When you're done, go to the menu `File` > `Unload Hive...`
+
+## Cortana
+Disable Cortana in Windows 10
+```sh
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /t REG_DWORD /d 0 /f
+
+# PowerShell
+New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Name "AllowCortana" -PropertyType DWord -Value 0 -Force
+```
+
+Enable Cortana in Windows 10
+```sh
+reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /f
+
+# PowerShell
+Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Name "AllowCortana"
+```
