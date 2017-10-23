@@ -61,8 +61,8 @@ echo > $HISTFILE
 HISTSIZE=0
 ```
 
-## `grub`
-Hold `Shift` when boot to show `grub`
+## GRUB
+Hold `Shift` when boot to show GRUB
 ```sh
 # Find all OS, update GRUB config, install GRUB to MBR / UEFI
 update-grub
@@ -117,7 +117,7 @@ done
 | Insert `blacklist <module>` into `/etc/modprobe.d/*.conf` | Blacklist module |
 | Insert `install <module> /bin/false` into `/etc/modprobe.d/*.conf` | Blacklist module even other modules depend on it |
 
-## `bash`
+## Bash
 
 | Command | Description |
 | --- | --- |
