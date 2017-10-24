@@ -1,5 +1,6 @@
-## Windows firewall change default to block ([reference](https://www.howtogeek.com/112564/how-to-create-advanced-firewall-rules-in-the-windows-firewall/))
+## Windows firewall change default to block
 ![Windows Firewall](img/windows-firewall.png)
+[reference](https://www.howtogeek.com/112564/how-to-create-advanced-firewall-rules-in-the-windows-firewall/)
 
 ## Credential manager
 ![Credential Manager](img/windows-credential-manager.png)
@@ -40,7 +41,7 @@ powercfg /(hibernate|h) {on|off}
 - Extract `.cab`: `expand <file.cab>`
 - Create `.cab`: `makecab <file> <file.cab>`
 
-## [File Permission (ACL)](http://technet.microsoft.com/en-us/library/bb490872.aspx)
+## File Permission (ACL)
 
 | Option | Permission |
 | --- | --- |
@@ -49,6 +50,8 @@ powercfg /(hibernate|h) {on|off}
 | `w` | Write |
 | `c` | Change (Write) |
 | `f` | Full Control |
+
+[Reference](http://technet.microsoft.com/en-us/library/bb490872.aspx)
 
 ```
 # Replace permission
@@ -60,7 +63,7 @@ cacls <file> /r <user>
 ```
 
 ## Registry
-[Registry file location](http://msdn.microsoft.com/en-us/library/ms724877%28v=vs.85%29.aspx)
+Registry file location
 
 | Registry hive | Supporting files |
 | --- | --- |
@@ -71,6 +74,8 @@ cacls <file> /r <user>
 | HKEY_LOCAL_MACHINE\Software | Software, Software.log, Software.sav |
 | HKEY_LOCAL_MACHINE\System | System, System.alt, System.log, System.sav |
 | HKEY_USERS\.DEFAULT | Default, Default.log, Default.sav |
+
+[Reference](http://msdn.microsoft.com/en-us/library/ms724877%28v=vs.85%29.aspx)
 
 Edit registry file
 - Execute `regedit`
