@@ -30,10 +30,11 @@ Enter-PSSession -ComputerName <IP|host name> -Credential <user name>
 ```
 
 ## Hibernate
-Disable hibernate (remove `hiberfil.sys` file)
+Enable / Disable hibernate (remove `hiberfil.sys` file)
 ```
-powercfg /(hibernate|h) off
+powercfg /(hibernate|h) {on|off}
 ```
+[Reference](https://support.microsoft.com/en-us/help/920730/how-to-disable-and-re-enable-hibernation-on-a-computer-that-is-running)
 
 ## `.cab` file
 - Extract `.cab`: `expand <file.cab>`
