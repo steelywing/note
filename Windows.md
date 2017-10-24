@@ -1,6 +1,7 @@
 ## Windows firewall change default to block
+[Reference](https://www.howtogeek.com/112564/how-to-create-advanced-firewall-rules-in-the-windows-firewall/)
+
 ![Windows Firewall](img/windows-firewall.png)
-[reference](https://www.howtogeek.com/112564/how-to-create-advanced-firewall-rules-in-the-windows-firewall/)
 
 ## Credential manager
 ![Credential Manager](img/windows-credential-manager.png)
@@ -32,16 +33,18 @@ Enter-PSSession -ComputerName <IP|host name> -Credential <user name>
 
 ## Hibernate
 Enable / Disable hibernate (remove `hiberfil.sys` file)
+
+[Reference](https://support.microsoft.com/en-us/help/920730/how-to-disable-and-re-enable-hibernation-on-a-computer-that-is-running)
 ```
 powercfg /(hibernate|h) {on|off}
 ```
-[Reference](https://support.microsoft.com/en-us/help/920730/how-to-disable-and-re-enable-hibernation-on-a-computer-that-is-running)
 
 ## `.cab` file
 - Extract `.cab`: `expand <file.cab>`
 - Create `.cab`: `makecab <file> <file.cab>`
 
 ## File Permission (ACL)
+[Reference](http://technet.microsoft.com/en-us/library/bb490872.aspx)
 
 | Option | Permission |
 | --- | --- |
@@ -50,8 +53,6 @@ powercfg /(hibernate|h) {on|off}
 | `w` | Write |
 | `c` | Change (Write) |
 | `f` | Full Control |
-
-[Reference](http://technet.microsoft.com/en-us/library/bb490872.aspx)
 
 ```
 # Replace permission
@@ -65,6 +66,8 @@ cacls <file> /r <user>
 ## Registry
 Registry file location
 
+[Reference](http://msdn.microsoft.com/en-us/library/ms724877%28v=vs.85%29.aspx)
+
 | Registry hive | Supporting files |
 | --- | --- |
 | HKEY_CURRENT_CONFIG | System, System.alt, System.log, System.sav |
@@ -74,8 +77,6 @@ Registry file location
 | HKEY_LOCAL_MACHINE\Software | Software, Software.log, Software.sav |
 | HKEY_LOCAL_MACHINE\System | System, System.alt, System.log, System.sav |
 | HKEY_USERS\.DEFAULT | Default, Default.log, Default.sav |
-
-[Reference](http://msdn.microsoft.com/en-us/library/ms724877%28v=vs.85%29.aspx)
 
 Edit registry file
 - Execute `regedit`
