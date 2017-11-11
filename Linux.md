@@ -227,3 +227,8 @@ gsettings set org.gnome.Vino require-encryption false
 ```sh
 xdg-open <path>
 ```
+
+## Kernel info
+```sh
+uname -a
+```
