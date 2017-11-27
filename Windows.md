@@ -103,3 +103,8 @@ reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCo
 # PowerShell
 Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Name "AllowCortana"
 ```
+
+## Allow input unicode with ALT + "+\<Code\>"
+```sh
+reg add "HKCU\Control Panel\Input Method" /v "EnableHexNumpad" /t REG_SZ /d 1 /f
+```
