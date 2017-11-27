@@ -105,6 +105,7 @@ Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Sea
 ```
 
 ## Allow input unicode with ALT + "+\<Code\>"
+[Reference](http://www.fileformat.info/tip/microsoft/enter_unicode.htm)
 ```sh
 reg add "HKCU\Control Panel\Input Method" /v "EnableHexNumpad" /t REG_SZ /d 1 /f
 ```
