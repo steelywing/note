@@ -232,3 +232,14 @@ xdg-open <path>
 ```sh
 uname -a
 ```
+
+# Disk usage
+| Command | Description |
+| --- | --- |
+| `-h` | Human readable |
+| `-s` | Summarize: Display only a total for each argument |
+
+Sort human readable disk usage
+```sh
+du -hs <path> | sort -h -r
+```
