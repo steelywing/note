@@ -233,7 +233,7 @@ xdg-open <path>
 uname -a
 ```
 
-# Disk usage
+## Disk usage
 | Command | Description |
 | --- | --- |
 | `-h` | Human readable |
@@ -242,4 +242,10 @@ uname -a
 Sort human readable disk usage
 ```sh
 du -hs <path> | sort -h -r
+```
+
+## Find
+Pipe `find` to `ls`
+```sh
+find [<path>] [<expression>] -exec ls -lad {} +
 ```
