@@ -249,3 +249,16 @@ Pipe `find` to `ls`
 ```sh
 find [<path>] [<expression>] -exec ls -lad {} +
 ```
+
+## Directory Stack
+[Reference](https://unix.stackexchange.com/a/270437/104608)
+```sh
+# Push directory
+pushd <directory>
+
+# Pop and change to the directory
+popd
+
+# List directory stack
+dirs [-v]
+```
