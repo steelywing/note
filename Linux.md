@@ -262,3 +262,14 @@ popd
 # List directory stack
 dirs [-v]
 ```
+
+## Parameter
+| Parameter | Description |
+| --- | --- |
+| `$#` | Count of parameter |
+| `$0` | The path of shell script |
+| `basename $0` | The file name of shell script |
+| `$1` `$2` `$3` ... | Positional parameter |
+| `$*` `$@` | `$1 $2 $3...` |
+| `"$*"` | `"$1$IFS$2$IFS$3..."` |
+| `"$@"` | `"$1" "$2" "$3"..."` |
