@@ -15,6 +15,3 @@ find [<expression>] -print0 | while IFS= read -r -d $'\0' <file variable name>; 
   <...>
 done
 ```
-
-cron / crontab
-[Reference](https://www.computerhope.com/unix/ucrontab.htm)
