@@ -277,3 +277,12 @@ dirs [-v]
 
 ## cron / crontab
 [Reference](https://www.computerhope.com/unix/ucrontab.htm)
+
+## OpenJDK (Java)
+```
+# List installed JVM
+update-java-alternatives --list
+
+# Switch JVM
+update-java-alternatives --set <JVM name>
+```
