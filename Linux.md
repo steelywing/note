@@ -1,9 +1,9 @@
 ## User
 ```sh
-# Add user (Debian)
+# Add user (Debian only)
 adduser <user>
 
-# Delete user (Debian)
+# Delete user (Debian only)
 deluser <user>
 
 # Add user
