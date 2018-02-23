@@ -114,8 +114,8 @@ done
 | `rmmod <module>` | Remove module |
 | `modprobe <module>` | Add module and dependencies |
 | `modprobe -r <module>` | Remove module and dependencies |
-| Insert `blacklist <module>` into `/etc/modprobe.d/*.conf` | Blacklist module |
-| Insert `install <module> /bin/false` into `/etc/modprobe.d/*.conf` | Blacklist module even other modules depend on it |
+| Add `blacklist <module>` to `/etc/modprobe.d/*.conf` | Blacklist module |
+| Add `install <module> /bin/false` to `/etc/modprobe.d/*.conf` | Blacklist module even other modules depend on it |
 
 ## Bash
 
