@@ -279,7 +279,7 @@ dirs [-v]
 [Reference](https://www.computerhope.com/unix/ucrontab.htm)
 
 ## OpenJDK (Java)
-```
+```sh
 # List installed JVM
 update-java-alternatives --list
 
