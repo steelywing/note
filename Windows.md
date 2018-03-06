@@ -109,3 +109,9 @@ Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Sea
 ```sh
 reg add "HKCU\Control Panel\Input Method" /v "EnableHexNumpad" /t REG_SZ /d 1 /f
 ```
+
+## Enable / Disable the Local Built-In Administrator Account
+[Reference](https://social.technet.microsoft.com/wiki/contents/articles/3040.windows-7-enable-disable-the-local-built-in-administrator-account.aspx)
+```
+net user administrator /active:(yes|no)
+```
