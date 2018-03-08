@@ -587,4 +587,5 @@ Switch(config)# ip igmp snooping [vlan <VLAN ID>]
 ```
 Switch# show ip igmp groups [detail]
 Switch# show ip igmp membership
+Switch# show ip mroute
 ```
