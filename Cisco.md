@@ -602,7 +602,7 @@ Switch# show ip mroute
 ! Allow broadcast
 Switch(config-if)# ip directed-broadcast [<ACL ID>]
 
-! Forward broadcast packet to other interface
+! Forward broadcast packet to other IP
 Switch(config-if)# ip helper-address <IP>
 
 ! Allow forward broadcast (Default is all)
