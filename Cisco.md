@@ -595,3 +595,16 @@ Switch# show ip igmp groups [detail]
 Switch# show ip igmp membership
 Switch# show ip mroute
 ```
+
+## Broadcast
+[Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipapp/command/iap-cr-book/iap-i1.html)
+```
+! Allow broadcast
+Switch(config-if)# ip directed-broadcast [<ACL ID>]
+
+! Forward broadcast packet to other interface
+Switch(config-if)# ip helper-address <IP>
+
+! Allow forward broadcast (Default is all)
+Switch(config)# ip forward-protocol udp <Port Number>
+```
