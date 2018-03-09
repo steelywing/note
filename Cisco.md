@@ -114,6 +114,12 @@ Switch(config)# no vlan <VLAN ID>[-<VLAN ID>]
 
 ! VLAN name
 Switch(config-vlan)# name <name>
+
+! List VLAN
+Switch# show vlan
+
+! Show trunk port information
+Switch# show interfaces trunk
 ```
 
 ## VTP (VLAN Trunk Protocol)
