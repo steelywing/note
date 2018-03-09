@@ -423,14 +423,21 @@ Switch(config)# key-string
 Switch(config)# 
 ```
 
-## [Show TCAM (ACL, MAC, QOS, Route) utilization](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3850-series-switches/118957-troubleshoot-sec-acl-tcam-cat3850.html)
+## Show TCAM (ACL, MAC, QOS, Route) utilization
+
+[Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3850-series-switches/118957-troubleshoot-sec-acl-tcam-cat3850.html)
+
 If TCAM ACL full, switch will randomly drop traffic.
 ```
 Switch# show platform tcam utilization asic all
 ```
 
-## [SDM - Switch Database Management (TCAM, ACL, Routing)](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-2_55_se/configuration/guide/scg3750/swsdm.html)
+## SDM - Switch Database Management (TCAM, ACL, Routing)
+
+[Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-2_55_se/configuration/guide/scg3750/swsdm.html)
+
 Configure system resources 
+
 ```
 ! If switch stacked, check SDM is match
 Switch# show switch
@@ -442,13 +449,19 @@ Switch# show sdm prefer
 Switch(config)# sdm prefer ?
 ```
 
-## [Disable (non Cisco) GBIC module checking](https://www.cisco.com/c/en/us/support/docs/interfaces-modules/gbics/200296-Unsupported-GBIC-SFP-in-sub-module-of.html)
+## Disable (non Cisco) GBIC module checking
+
+[Reference](https://www.cisco.com/c/en/us/support/docs/interfaces-modules/gbics/200296-Unsupported-GBIC-SFP-in-sub-module-of.html)
+
 ```
 Switch(config)# no errdisable detect cause gbic-invalid
 Switch(config)# service unsupported-transceiver
 ```
 
-## [VACL (VLAN ACL)](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst6500/ios/15-0SY/configuration/guide/15_0_sy_swcg/vlan_acls.html)
+## VACL (VLAN ACL)
+
+[Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst6500/ios/15-0SY/configuration/guide/15_0_sy_swcg/vlan_acls.html)
+
 VACL default (no match) is `drop`
 ```
 Switch(config)# vlan access-map <access-map name> <sequence number>
@@ -478,7 +491,9 @@ Switch(config)# vlan filter <access-map name> vlan-list <VLAN list>
 ```
 
 ## IP ACL
+
 [Reference](https://www.cisco.com/c/en/us/support/docs/security/ios-firewall/23602-confaccesslists.html)
+
 [Sequencing Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_data_acl/configuration/xe-3s/sec-data-acl-xe-3s-book/sec-acl-seq-num.html)
 
 ACL default (no match) is `drop`, match = `(packet_ip & ~inverse_mask) == acl_ip`
