@@ -478,6 +478,9 @@ Switch(config)# vlan filter <access-map name> vlan-list <VLAN list>
 ```
 
 ## IP ACL
+[Reference](https://www.cisco.com/c/en/us/support/docs/security/ios-firewall/23602-confaccesslists.html)
+[Sequencing Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_data_acl/configuration/xe-3s/sec-data-acl-xe-3s-book/sec-acl-seq-num.html)
+
 ACL default (no match) is `drop`, match = `(packet_ip & ~inverse_mask) == acl_ip`
 ```
 ! <address> = {any|<IP> <inverse mask>|host <IP>}
@@ -489,6 +492,9 @@ Switch(config-std-nacl)# [<sequence number>] {permit|deny} <source address>
 ! Extended ACL
 Switch(config)# ip access-list extended {<ACL name>|<100-199>|<2000-2699>}
 Switch(config-ext-nacl)# [<sequence number>] {permit|deny} {ip|udp|tcp} <source address> [{eq|neq|lt|gt} <source port>] <destination address> [{eq|neq|lt|gt} <destination port>]
+
+! Resequencing access-list entries
+Switch(config)# ip access-list resequence <ACL ID> <Starting Sequence Number> <Increment>
 ```
 
 List ACL
