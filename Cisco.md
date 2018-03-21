@@ -1,5 +1,4 @@
 ## TODO
-- Policy map
 
 ## Cut command before cursor
 `Ctrl` + `X`
@@ -626,6 +625,25 @@ Switch(config)# monitor session <session number> filter <VLAN list>
 
 ! Remove monitor session
 Switch(config)# no monitor session <session number>
+```
+
+## QoS
+
+[Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3550-series-switches/24800-153.html)
+
+```
+! Enable QoS
+Switch(config)# mls qos
+
+! Class map
+Switch(config)# class-map match-all <class name>
+Switch(config-cmap)# match access-group <ACL>
+
+! Policy map
+Switch(config)# policy-map <policy name>
+(config-pmap)# class { <class name> | class-default }
+! Min Burst = BPS / 8,000
+(config-pmap-c)# police <BPS> <burst normal> <burst max> exceed-action drop
 ```
 
 ## Multicast
