@@ -371,6 +371,11 @@ Enable protected mode (traffic will not send to other protected port)
 Switch(config-if)# switchport protected
 ```
 
+Bandwidth limit
+```
+Switch(config-if)# srr-queue bandwidth limit <percentage>
+```
+
 ## Disable domain name lookup in global mode
 ```
 Switch(config)# no ip domain-lookup
