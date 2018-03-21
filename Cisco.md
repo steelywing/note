@@ -1,5 +1,4 @@
 ## TODO
-- DHCP pool
 - Policy map
 
 ## Cut command before cursor
@@ -86,7 +85,7 @@ Switch# show ip traffic
 
 Interface capabilities (type, POE, ...)
 ```
-Switch# show interfaces [<Interface>] capabilities
+Switch# show interfaces [<interface>] capabilities
 ```
 
 ## CDP (Cisco Discovery Protocol)
@@ -176,16 +175,53 @@ Ignore BPDU
 Switch(config-if)# spanning-tree bpdufilter {enable|disable}
 ```
 
-## DHCP snooping
-Drop DHCP on untrust interface
+## DHCP
+
+[Reference](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html)
+
+[Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_dhcp/configuration/15-sy/dhcp-15-sy-book/dhcp-prt-bsd-aa.html#GUID-D3427E9D-D0F3-4FFE-889C-8091A84006C6)
+
+```
+Switch(config)# ip dhcp excluded-address <First IP> <Last IP>
+Switch(config)# ip dhcp pool <pool name>
+Switch(dhcp-config)# network <network IP> { /<prefix length> | <network mask> }
+Switch(dhcp-config)# dns-server <DNS IP> [<DNS IP> ...]
+Switch(dhcp-config)# default-router <gateway IP>
+```
+
+Preassigning IP Addresses (Method 1)
+
+[Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_dhcp/configuration/15-sy/dhcp-15-sy-book/dhcp-prt-bsd-aa.html#GUID-D3427E9D-D0F3-4FFE-889C-8091A84006C6)
+
+```
+Switch(dhcp-config)# address <IP> { client-id <ID> | hardware-address <MAC address> }
+```
+
+Preassigning IP Addresses (Method 2)
+```
+Switch(config)# ip dhcp pool <pool name>
+Switch(dhcp-config)# host <IP> [ /<prefix length> | <network mask> ]
+Switch(dhcp-config)# client-identifier <ID>
+Switch(dhcp-config)# hardware-address <MAC address>
+```
+
+Debug
+```
+Switch# show ip dhcp binding
+Switch# show ip dhcp conflict 
+```
+
+DHCP snooping (Drop DHCP on untrust interface)
+
+[Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-2_52_se/configuration/guide/3750scg/swdhcp82.html)
+
 ```
 Switch(config)# ip dhcp snooping
 Switch(config)# ip dhcp snooping vlan <VLAN list>
 Switch(config)# no ip dhcp snooping information option
 ```
 
-## Trust DHCP from this port
-For DHCP snooping
+Trust DHCP from this port (For DHCP snooping)
 ```
 Switch(config-if)# ip dhcp snooping trust
 ```
