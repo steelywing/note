@@ -372,6 +372,7 @@ Switch(config-if)# switchport protected
 ```
 
 Bandwidth limit
+[Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3750-series-switches/91862-cat3750-qos-config.html)
 ```
 Switch(config-if)# srr-queue bandwidth limit <percentage>
 ```
