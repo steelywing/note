@@ -8,11 +8,7 @@
 
 ## Privileged EXEC Mode
 ```
-Switch> enable
-Switch#
-
-! or
-Switch> en
+Switch> en[able]
 Switch#
 ```
 
@@ -134,7 +130,7 @@ Switch(config)# service password-encryption
 
 ## Display timestamp in log
 ```
-Switch(config)# service timestamps {log|debug} datetime localtime
+Switch(config)# service timestamps { log | debug } datetime localtime
 ```
 
 ## Root guard
@@ -160,7 +156,7 @@ Switch(config)# spanning-tree portfast default
 ## BPDU guard
 `err-disable` port if detect BPDU
 ```
-Switch(config-if)# spanning-tree bpduguard {enable|disable}
+Switch(config-if)# spanning-tree bpduguard { enable | disable }
 ```
 
 ## Enable BPDU guard on all port fast port
@@ -171,7 +167,7 @@ Switch(config)# spanning-tree portfast bpduguard default
 ## BPDU filter
 Ignore BPDU
 ```
-Switch(config-if)# spanning-tree bpdufilter {enable|disable}
+Switch(config-if)# spanning-tree bpdufilter { enable | disable }
 ```
 
 ## DHCP
@@ -307,7 +303,7 @@ Switch(config-line)# exec-timeout 30
 
 ## Enable Telnet or SSH
 ```
-Switch(config-line)# transport input {all|telnet|ssh|none}
+Switch(config-line)# transport input { all | telnet | ssh | none }
 ```
 
 ## Ctrl-C to break
@@ -396,12 +392,12 @@ Access mode
 Switch(config-if)# switchport mode access
 ```
 
-Allow specify VLAN on trunk (default allow all)
+Allow specified VLAN on trunk (default allow all)
 ```
 Switch(config-if)# switchport trunk allowed vlan <VLAN ID list>
 ```
 
-Set VLAN
+Specify port VLAN
 ```
 Switch(config-if)# switchport access vlan <VLAN ID>
 ```
@@ -547,15 +543,15 @@ ACL default (no match) is `drop`, match = `(packet_ip & ~inverse_mask) == acl_ip
 ! <address> = {any|<IP> <inverse mask>|host <IP>}
 
 ! Standard ACL
-Switch(config)# ip access-list standard {<ACL name>|<1-99>|<1300-1999>}
-Switch(config-std-nacl)# [<sequence number>] {permit|deny} <source address>
+Switch(config)# ip access-list standard { <ACL name> | <1-99> | <1300-1999> }
+Switch(config-std-nacl)# [<sequence number>] { permit | deny } <source address>
 
 ! Extended ACL
-Switch(config)# ip access-list extended {<ACL name>|<100-199>|<2000-2699>}
-Switch(config-ext-nacl)# [<sequence number>] {permit|deny} {ip|udp|tcp} <source address> [{eq|neq|lt|gt} <source port>] <destination address> [{eq|neq|lt|gt} <destination port>]
+Switch(config)# ip access-list extended { <ACL name> | <100-199> | <2000-2699> }
+Switch(config-ext-nacl)# [<sequence number>] { permit | deny } { ip | udp | tcp } <source address> [{ eq | neq | lt | gt } <source port>] <destination address> [{ eq | neq | lt | gt } <destination port>]
 
 ! Resequencing access-list entries
-Switch(config)# ip access-list resequence <ACL ID> <Starting Sequence Number> <Increment>
+Switch(config)# ip access-list resequence <ACL ID> <starting sequence number> <increment>
 ```
 
 List ACL
@@ -617,10 +613,10 @@ Port mirror
 ! <VLAN list> = <VLAN ID> [{,|-} <VLAN ID>]...
 
 ! Monitor interface
-Switch(config)# monitor session <session number> source interface <interface> [both|rx|tx]
+Switch(config)# monitor session <session number> source interface <interface> [ both | rx | tx ]
 
 ! Monitor all ports of specify VLAN
-Switch(config)# monitor session <session number> source vlan <VLAN list> [both|rx|tx]
+Switch(config)# monitor session <session number> source vlan <VLAN list> [ both | rx | tx ]
 
 ! Mirror to specify interface
 Switch(config)# monitor session <session number> destination interface <interface>
@@ -692,5 +688,5 @@ Switch(config-if)# ip directed-broadcast [<ACL ID>]
 Switch(config-if)# ip helper-address <IP>
 
 ! Allow specified port forward broadcast (Default is all)
-Switch(config)# ip forward-protocol udp <Port Number>
+Switch(config)# ip forward-protocol udp <port number>
 ```
