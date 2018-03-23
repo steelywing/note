@@ -226,9 +226,14 @@ Switch(config-if)# ip dhcp snooping trust
 ```
 
 ## Gateway
-This is for `no ip routing`, if `ip routing`, use default route `ip route 0.0.0.0 0.0.0.0 <gateway>`
+For `no ip routing`
 ```
 Switch(config)# ip default-gateway <gateway>
+```
+
+For `ip routing`
+```
+Switch(config)# ip route 0.0.0.0 0.0.0.0 <gateway>
 ```
 
 ## Change switch to routing mode
