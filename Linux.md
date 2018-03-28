@@ -286,3 +286,16 @@ update-java-alternatives --list
 # Switch JVM
 update-java-alternatives --set <JVM name>
 ```
+
+# Linux Distribution / Version 
+```sh
+cat /etc/*-release
+cat /proc/version
+uname -a
+
+# For SystemD
+hostnamectl
+
+# For Debian
+lsb_release -a
+```
