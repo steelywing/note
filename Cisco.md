@@ -567,6 +567,12 @@ Switch(config)# mac access-list extended <name>
 Switch(config-ext-macl)# {permit|deny} <source MAC address> <destination MAC address>
 ```
 
+## Static ARP
+[Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_arp/configuration/15-mt/arp-15-mt-book/arp-config-arp.html)
+```
+Switch(config)# arp <IP address> <MAC address> arpa
+```
+
 ## [ARP inspection](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750x_3560x/software/release/12-2_55_se/configuration/guide/3750xscg/swdynarp.html)
 ```
 ! If ARP over 15 packets per second, place the port in error-disabled state
