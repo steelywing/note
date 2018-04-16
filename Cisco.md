@@ -666,6 +666,8 @@ Switch(config)# policy-map <policy name>
 ```
 Switch(config)# ip multicast-routing [distributed]
 Switch(config)# ip pim rp-address <IP> [<ACL ID>]
+
+! Layer 3 interface
 Switch(config-if)# ip pim ( sparse-mode | dense-mode | sparse-dense-mode )
 ```
 
