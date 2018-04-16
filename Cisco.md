@@ -656,6 +656,7 @@ Switch(config)# policy-map <policy name>
 ## Multicast
 
 ### PIM (Protocol Independent Multicast)
+
 [Overview](https://www.cisco.com/c/en/us/td/docs/ios/solutions_docs/ip_multicast/White_papers/mcst_ovr.html#wp1009074)
 
 [Quick Reference](https://www.cisco.com/c/en/us/support/docs/ip/ip-multicast/9356-48.html)
@@ -667,8 +668,14 @@ Switch(config)# policy-map <policy name>
 Switch(config)# ip multicast-routing [distributed]
 Switch(config)# ip pim rp-address <IP> [<ACL ID>]
 
-! Layer 3 interface
+! Enable PIM on Layer 3 interface
 Switch(config-if)# ip pim ( sparse-mode | dense-mode | sparse-dense-mode )
+```
+
+### IP Querier
+[Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/68131-cat-multicast-prob.html)
+```
+Switch(config)# ip igmp snooping querier [address <source IP>]
 ```
 
 ### IGMP
