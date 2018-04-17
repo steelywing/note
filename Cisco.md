@@ -685,12 +685,18 @@ Switch(config)# errdisable recovery cause arp-inspection
 [Reference](https://www.cisco.com/c/en/us/td/docs/ios/12_2/qos/configuration/guide/fqos_c/qcfpbr.html)
 
 ```
-Switch(config)# route-map <route map name> [<sequence>]
+! ACL permit: route-map is applied, the next route-map clause is not evaluated
+! ACL deny: route-map is not applied, the next route-map clause is evaluated
+
+! route-map permit: route is redistributed
+! route-map deny: route is not redistributed
+! route-map default is permit
+Switch(config)# route-map <route-map name> [permit|deny] [<sequence number>]
 ! Default is all
 Switch(config-route-map)# match ip address <ACL>
 Switch(config-route-map)# set ip next-hop <IP>
 
-Switch(config-if)# ip policy route-map <route map name>
+Switch(config-if)# ip policy route-map <route-map name>
 ```
 
 ## OSPF
