@@ -680,6 +680,19 @@ Switch(config)# ip arp inspection vlan <VLAN list>
 Switch(config)# errdisable recovery cause arp-inspection
 ```
 
+## Policy-Based Routing
+
+[Reference](https://www.cisco.com/c/en/us/td/docs/ios/12_2/qos/configuration/guide/fqos_c/qcfpbr.html)
+
+```
+Switch(config)# route-map <route map name> [<sequence>]
+! Default is all
+Switch(config-route-map)# match ip address <ACL>
+Switch(config-route-map)# set ip next-hop <IP>
+
+Switch(config-if)# ip policy route-map <route map name>
+```
+
 ## OSPF
 
 ```
