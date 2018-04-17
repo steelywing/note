@@ -758,9 +758,9 @@ Switch(config-cmap)# match access-group <ACL>
 
 ! Policy map
 Switch(config)# policy-map <policy name>
-(config-pmap)# class { <class name> | class-default }
+Switch(config-pmap)# class { <class name> | class-default }
 ! Min Burst = BPS / 8,000
-(config-pmap-c)# police <BPS> <burst normal> <burst max> exceed-action drop
+Switch(config-pmap-c)# police <BPS> <burst normal> <burst max> exceed-action drop
 ```
 
 ## Multicast
