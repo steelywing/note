@@ -838,5 +838,5 @@ Switch(config-if)# ip directed-broadcast [<ACL ID>]
 Switch(config-if)# ip helper-address <IP>
 
 ! Allow specified port forward broadcast (Default is all)
-Switch(config)# ip forward-protocol udp <port number>
+Switch(config)# ip forward-protocol udp [<port number>]
 ```
