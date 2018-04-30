@@ -15,6 +15,9 @@ userdel <user>
 # Change password
 passwd [<user>]
 
+# Delete password
+passwd -d <user>
+
 # Lock user
 passwd -l <user>
 
@@ -41,6 +44,8 @@ passwd -x <day> <user>
 
 # Chanage shell
 chsh -s <shell> <user>
+# or
+usermod -s <shell> <user>
 ```
 
 ## Remove current session bash history
