@@ -1,4 +1,5 @@
 ## User
+
 ```sh
 # Add user (Debian only)
 adduser <user>
@@ -37,7 +38,9 @@ passwd -x <day> <user>
 /etc/shadow
 ```
 
+
 ## Shell
+
 ```sh
 # Shell list
 /etc/shells
@@ -48,7 +51,9 @@ chsh -s <shell> <user>
 usermod -s <shell> <user>
 ```
 
+
 ## Remove current session bash history
+
 ```sh
 unset HISTFILE
 # or
@@ -56,7 +61,9 @@ kill -9 $$
 # $$ == Current shell PID
 ```
 
+
 ## Delete all bash history
+
 ```sh
 # For Bash
 history -c
@@ -66,8 +73,11 @@ echo > $HISTFILE
 HISTSIZE=0
 ```
 
+
 ## GRUB
+
 Hold `Shift` when boot to show GRUB
+
 ```sh
 # Find all OS, update GRUB config, install GRUB to MBR / UEFI
 update-grub
@@ -84,7 +94,9 @@ GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
 ```
 
+
 ## Ping
+
 ```sh
 # Display timeout
 ping -O <ip>
@@ -94,6 +106,7 @@ ping <ip> | while read log; do
   echo "$(date): $log";
 done
 ```
+
 
 ## Hardware
 
@@ -109,7 +122,9 @@ done
 | `df` | Disk free space |
 | `df -h` | Disk free space in human readable format |
 
+
 ## Kernel module
+
 `module-name` is same as `module_name`
 
 | Command | Description |
@@ -122,6 +137,7 @@ done
 | Add `blacklist <module>` to `/etc/modprobe.d/*.conf` | Blacklist module |
 | Add `install <module> /bin/false` to `/etc/modprobe.d/*.conf` | Blacklist module even other modules depend on it |
 
+
 ## Bash
 
 | Command | Description |
@@ -133,7 +149,9 @@ done
 | `!!` | Previous command |
 | `!<string>` | Most recent command starting with `<string>` |
 
+
 ## Jobs
+
 [Reference](http://www.linuxnix.com/11-fc-bg-jobs-commands-know/)
 
 | Command | Description |
@@ -148,8 +166,11 @@ done
 | `disown [%<job spec>]` | Don't terminate job when terminal exit (default is all jobs) |
 | `nohup <command>` | Don't terminate command when terminal exit (no hangup) |
 
+
 ## File permission
+
 Only change directory permission
+
 ```sh
 chmod <permission> $(find -type d)
 ```
@@ -159,7 +180,9 @@ Only change file permission
 chmod <permission> $(find -type f)
 ```
 
+
 ## Service
+
 Ubuntu <= 14 (System V)
 
 | Command | Description |
@@ -185,7 +208,9 @@ Ubuntu 16, Red Hat 7 (systemd)
 | `systemctl {start\|stop} <service>` | Start / Stop service |
 | `systemctl status <service>` | Show service status |
 
+
 ## Manual
+
 ```sh
 # Show manual
 man [<page>]
@@ -194,30 +219,27 @@ man [<page>]
 apropos <keyword>
 ```
 
+
 ## Time
+
 Force sync time
+
 ```sh
 service ntpd stop
 ntpd -gq
 service ntpd start
 ```
 
+
 ## DNS
+
 ```sh
 vi /etc/resolv.conf
 ```
 
-## iptables
-
-| Command | Description |
-| --- | --- |
-| `iptables -L -v` | iptables verbose list |
-| `iptables -S` | iptables list rules |
-| `service iptables save` | Save iptables (Red Hat <= 6) |
-
-![iptables flow chart](img/iptables.png)
 
 ## Ubuntu
+
 Disable sharing desktop encryption 
 ```sh
 dconf-editor
@@ -228,17 +250,23 @@ gsettings set org.gnome.Vino require-encryption false
 ```
 [Reference](https://askubuntu.com/a/487267/235264)
 
+
 ## Open file manager from CLI
+
 ```sh
 xdg-open <path>
 ```
 
+
 ## Kernel info
+
 ```sh
 uname -a
 ```
 
+
 ## Disk usage
+
 | Command | Description |
 | --- | --- |
 | `-h` | Human readable |
@@ -249,13 +277,17 @@ Sort human readable disk usage
 du -hs <path> | sort -h -r
 ```
 
+
 ## Find
+
 Pipe `find` to `ls`
 ```sh
 find [<path>] [<expression>] -exec ls -lad {} +
 ```
 
+
 ## Directory Stack
+
 [Reference](https://unix.stackexchange.com/a/270437/104608)
 ```sh
 # Push directory
@@ -268,7 +300,9 @@ popd
 dirs [-v]
 ```
 
+
 ## Parameter
+
 | Parameter | Description |
 | --- | --- |
 | `$#` | Count of parameter |
@@ -281,9 +315,12 @@ dirs [-v]
 
 
 ## cron / crontab
+
 [Reference](https://www.computerhope.com/unix/ucrontab.htm)
 
+
 ## OpenJDK (Java)
+
 ```sh
 # List installed JVM
 update-java-alternatives --list
@@ -292,7 +329,9 @@ update-java-alternatives --list
 update-java-alternatives --set <JVM name>
 ```
 
+
 # Linux Distribution / Version 
+
 ```sh
 cat /etc/*-release
 cat /proc/version
