@@ -330,7 +330,7 @@ update-java-alternatives --set <JVM name>
 ```
 
 
-# Linux Distribution / Version 
+## Linux Distribution / Version 
 
 ```sh
 cat /etc/*-release
@@ -342,4 +342,17 @@ hostnamectl
 
 # For Debian
 lsb_release -a
+```
+
+
+## Mount
+
+```sh
+mount <source> <directory>
+
+# remount mount point in fstab
+mount -o remount <directory>
+
+# remount mount point in fstab with RW (read-write) option
+mount -o remount,rw <directory>
 ```
