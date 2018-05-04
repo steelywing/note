@@ -241,6 +241,9 @@ vi /etc/resolv.conf
 ## Ubuntu
 
 Disable sharing desktop encryption 
+
+[Reference](https://askubuntu.com/a/487267/235264)
+
 ```sh
 dconf-editor
 # org > gnome > desktop > remote-accessand > require-encryption
@@ -248,7 +251,6 @@ dconf-editor
 # or
 gsettings set org.gnome.Vino require-encryption false
 ```
-[Reference](https://askubuntu.com/a/487267/235264)
 
 
 ## Open file manager from CLI
@@ -273,6 +275,7 @@ uname -a
 | `-s` | Summarize: Display only a total for each argument |
 
 Sort human readable disk usage
+
 ```sh
 du -hs <path> | sort -h -r
 ```
@@ -289,6 +292,7 @@ find [<path>] [<expression>] -exec ls -lad {} +
 ## Directory Stack
 
 [Reference](https://unix.stackexchange.com/a/270437/104608)
+
 ```sh
 # Push directory
 pushd <directory>
@@ -299,19 +303,6 @@ popd
 # List directory stack
 dirs [-v]
 ```
-
-
-## Parameter
-
-| Parameter | Description |
-| --- | --- |
-| `$#` | Count of parameter |
-| `$0` | The path of shell script |
-| `basename $0` | The file name of shell script |
-| `$1` `$2` `$3` ... | Positional parameter |
-| `$*` `$@` | `$1 $2 $3...` |
-| `"$*"` | `"$1$IFS$2$IFS$3..."` |
-| `"$@"` | `"$1" "$2" "$3"...` |
 
 
 ## cron / crontab
