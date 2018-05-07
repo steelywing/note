@@ -138,18 +138,6 @@ done
 | Add `install <module> /bin/false` to `/etc/modprobe.d/*.conf` | Blacklist module even other modules depend on it |
 
 
-## Bash
-
-| Command | Description |
-| --- | --- |
-| `Tab` | Complete command |
-| `Ctrl`+`D` | Exit |
-| `Ctrl`+`L` | Clear screen |
-| `Ctrl`+`R` | Search history |
-| `!!` | Previous command |
-| `!<string>` | Most recent command starting with `<string>` |
-
-
 ## Jobs
 
 [Reference](http://www.linuxnix.com/11-fc-bg-jobs-commands-know/)

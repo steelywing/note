@@ -1,3 +1,13 @@
+| Command | Description |
+| --- | --- |
+| `Tab` | Complete command |
+| `Ctrl`+`D` | Exit |
+| `Ctrl`+`L` | Clear screen |
+| `Ctrl`+`R` | Search history |
+| `!!` | Previous command |
+| `!<string>` | Most recent command starting with `<string>` |
+
+
 ## Parameter
 
 | Parameter | Description |
