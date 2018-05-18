@@ -402,7 +402,7 @@ Show interface status
 Switch# show interfaces status
 ```
 
-Test cable TDR (Time-Domain Reflectometer)
+Test cable TDR (Time-Domain Reflectometer) / pair length
 
 ```
 Switch# test cable-diagnostics tdr interface <interface>
