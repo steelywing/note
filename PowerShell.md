@@ -1,11 +1,39 @@
 ## Help
 ```powershell
-Get-Help [<cmdlet>] [-ShowWindow] [-Detailed|-Full|-Examples]
+Get-Help [<cmdlet>] [-ShowWindow] [-Detailed | -Full | -Examples]
 ```
+ `help` equal `Get-Help | more`
 
 ## Alias
 ```powershell
-Get-Alias [<alias>]
+Get-Alias [[-Name] <alias> | -Definition <cmdlet>]
+```
+
+## Gets the properties and methods of objects
+```powershell
+<cmdlet> | Get-Member
+```
+Alias: `gm`
+
+## Select property
+```powershell
+<command> | Select-Object [[-Property] <property>[, <property>]]
+
+# Expand property
+<command> | Select-Object -ExpandProperty <property>
+# or
+(<command>).<property>
+```
+Alias: `select`
+
+## Create property
+```powershell
+<command> | Select-Object @{N[ame]="<property name>"; E[xpression]={<expression>}}
+```
+
+## Current object
+```powershell
+$_
 ```
 
 ## Filter string
