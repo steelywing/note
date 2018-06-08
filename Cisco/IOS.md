@@ -152,10 +152,16 @@ Switch(config)# vtp password <password>
 Switch(config)# service password-encryption
 ```
 
-## Display timestamp in log
+## Log
 
+Display timestamp
 ```
 Switch(config)# service timestamps { log | debug } datetime localtime
+```
+
+Send log
+```
+Switch# send log <message>
 ```
 
 ## Root guard
