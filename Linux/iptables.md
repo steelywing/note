@@ -18,4 +18,27 @@
 iptables -P <chain> <target>
 ```
 
+## Add rule
+```sh
+iptables 
+    { -A <chain> | -I <chain> [rule number] }
+    [!][-i <interface>]
+    [!][-o <interface>]
+    [!][-p {icmp|tcp|udp}]
+    [!][--sport <src port>]
+    [!][--dport <dst port>]
+    [-m state [!] --state {ESTABLISHED|NEW|RELATED}]
+    -j <target>
+```
+
+## Redirect input to other port
+
+[Reference](https://www.netfilter.org/documentation/HOWTO/NAT-HOWTO-6.html)
+
+```sh
+iptables -t nat -A PREROUTING [-i <interface>] -p tcp --dport <from port> -j REDIRECT --to-port <to port>
+```
+
+## Flow
+
 ![iptables flow chart](img/iptables.png)
