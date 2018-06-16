@@ -376,6 +376,8 @@ Switch(config-if)# no shutdown
 
 ## Port channel (Ether channel)
 
+[Reference](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus5000/sw/configuration/guide/cli/CLIConfigurationGuide/EtherChannel.html)
+
 Enable LACP
 
 ```
