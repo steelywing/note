@@ -49,6 +49,22 @@ shell  show
 write
 ```
 
+## Reset to Factory Default
+
+[Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-2900-xl-series-switches/24328-156.html)
+
+Erase startup config
+
+```
+write erase
+```
+
+Delete VLAN config
+
+```
+delete flash:/vlan.dat
+```
+
 ## Reset err-disable port
 
 ```
