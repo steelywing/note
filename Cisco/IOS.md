@@ -374,7 +374,13 @@ Switch(config-if)# ip address <IP> <netmask>
 Switch(config-if)# no shutdown
 ```
 
-## Port channel (ether channel)
+## Port channel (Ether channel)
+
+Enable LACP
+
+```
+Switch(config)# feature lacp
+```
 
 Create port channel interface
 
@@ -385,7 +391,13 @@ Switch(config)# interface port-channel <port channel number>
 Assign interface to port channel group (LACP)
 
 ```
-Switch(config-if)# channel-group <port channel number> mode active
+Switch(config-if)# channel-group <port channel number> mode {active|passive}
+```
+
+Assign interface to port channel group (PAgP) (Recommend LACP)
+
+```
+Switch(config-if)# channel-group <port channel number> mode {auto|desirable}
 ```
 
 Show port channel summary
