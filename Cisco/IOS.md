@@ -65,7 +65,7 @@ Delete VLAN config
 delete flash:/vlan.dat
 ```
 
-## Reset err-disable port
+## Recovery err-disable port
 
 ```
 Switch(config-if)# shutdown
