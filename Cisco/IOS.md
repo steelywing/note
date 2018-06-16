@@ -408,6 +408,18 @@ Show port channel summary
 Switch# show etherchannel summary
 ```
 
+Show LACP counter
+
+```
+Switch# show lacp counters
+```
+
+Show LACP neighbor
+
+```
+Switch# show lacp neighbor
+```
+
 ## Interface
 
 Show interface status
