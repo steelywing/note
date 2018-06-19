@@ -115,3 +115,9 @@ reg add "HKCU\Control Panel\Input Method" /v "EnableHexNumpad" /t REG_SZ /d 1 /f
 ```
 net user administrator /active:(yes|no)
 ```
+
+## Get OS Architecture (32-bit / 64-bit)
+[Reference](https://www.lisenet.com/2014/get-windows-system-information-via-wmi-command-line-wmic/)
+```
+wmic OS get OSArchitecture
+```

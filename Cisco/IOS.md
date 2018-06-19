@@ -49,7 +49,23 @@ shell  show
 write
 ```
 
-## Reset err-disable port
+## Reset to Factory Default
+
+[Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-2900-xl-series-switches/24328-156.html)
+
+Erase startup config
+
+```
+write erase
+```
+
+Delete VLAN config
+
+```
+delete flash:/vlan.dat
+```
+
+## Recovery err-disable port
 
 ```
 Switch(config-if)# shutdown
@@ -380,7 +396,15 @@ Switch(config-if)# ip address <IP> <netmask>
 Switch(config-if)# no shutdown
 ```
 
-## Port channel (ether channel)
+## Port channel (Ether channel)
+
+[Reference](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus5000/sw/configuration/guide/cli/CLIConfigurationGuide/EtherChannel.html)
+
+Enable LACP
+
+```
+Switch(config)# feature lacp
+```
 
 Create port channel interface
 
@@ -391,13 +415,31 @@ Switch(config)# interface port-channel <port channel number>
 Assign interface to port channel group (LACP)
 
 ```
-Switch(config-if)# channel-group <port channel number> mode active
+Switch(config-if)# channel-group <port channel number> mode {active|passive}
+```
+
+Assign interface to port channel group (PAgP) (Recommend LACP)
+
+```
+Switch(config-if)# channel-group <port channel number> mode {auto|desirable}
 ```
 
 Show port channel summary
 
 ```
 Switch# show etherchannel summary
+```
+
+Show LACP counter
+
+```
+Switch# show lacp counters
+```
+
+Show LACP neighbor
+
+```
+Switch# show lacp neighbor
 ```
 
 ## Interface
