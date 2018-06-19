@@ -19,6 +19,9 @@ iptables -P <chain> <target>
 ```
 
 ## Add rule
+
+[Reference](https://www.netfilter.org/documentation/HOWTO/packet-filtering-HOWTO-7.html)
+
 ```sh
 iptables 
     { -A <chain> | -I <chain> [rule number] }
