@@ -33,8 +33,22 @@ Alias: `select`
 
 ## Current object
 ```powershell
-$_
+$PSItem
+
+# Example
+"A","B","C" | ForEach-Object { "Current object is $PSItem" }
 ```
+Alias: `$_`
+
+## Filter object
+```powershell
+<command> | Where-Object [-FilterScript] { <Script> }
+
+# Example
+1,2,3,4,5,6 | ? { $_ % 2 -eq 0 }
+# 2 4 6
+```
+Alias: `?`
 
 ## Filter string
 ```powershell
