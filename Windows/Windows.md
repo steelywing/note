@@ -121,3 +121,17 @@ net user administrator /active:(yes|no)
 ```
 wmic OS get OSArchitecture
 ```
+
+## SLP (System Locked Pre-installation) / SLIC (System License Internal Code)
+
+Install license
+
+```cmd
+slmgr.vbs -ilc <path>
+```
+
+Install product key
+
+```cmd
+slmgr.vbs -ipk <product key>
+```
