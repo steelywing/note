@@ -6,37 +6,26 @@
 ## Credential manager
 ![Credential Manager](img/windows-credential-manager.png)
 
+List credentials
+```cmd
+cmdkey /list
+```
+
 ## Remote desktop
-- Toggle full screen `Ctrl + Alt + Break`
-- List remote desktop session `query session`
-- Attach remote desktop session to console `tscon <session ID> /dest:console`
 
-## Remote powerShell
-Enable remote PowerShell
-```
-# Change network profile to private
-
-# Enable WinRM service
-Enable-PSRemoting -Force
-
-# Add host to trusted hosts
-Set-Item WSMan:\localhost\Client\TrustedHosts (<IP|host name>[,<IP|host name>]|*)
-
-# Restart WinRM
-Restart-Service WinRM
-```
-
-Connect to remote PowerShell
-```
-Enter-PSSession -ComputerName <IP|host name> -Credential <user name>
-```
+Description | Command
+--- | ---
+Connect to remote | `mstsc [/v:<host>[:<port>]]`
+Toggle full screen | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Break</kbd>
+List remote desktop session | `query session`
+Attach remote desktop session to console | `tscon <session ID> /dest:console`
 
 ## Hibernate
 Enable / Disable hibernate (remove `hiberfil.sys` file)
 
 [Reference](https://support.microsoft.com/en-us/help/920730/how-to-disable-and-re-enable-hibernation-on-a-computer-that-is-running)
 ```
-powercfg /(hibernate|h) {on|off}
+powercfg { /hibernate | /h } { on | off }
 ```
 
 ## `.cab` file
@@ -54,12 +43,18 @@ powercfg /(hibernate|h) {on|off}
 | `c` | Change (Write) |
 | `f` | Full Control |
 
-```
-# Replace permission
+Replace permission
+```cmd
 cacls <file> /p <user>:<permission>
-# Edit permission
+```
+
+Edit permission
+```cmd
 cacls <file> /e /p <user>:<permission>
-# Change owner
+```
+
+Change owner
+```cmd
 cacls <file> /r <user>
 ```
 
@@ -91,7 +86,9 @@ Edit registry file
 Disable Cortana in Windows 10
 ```sh
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /t REG_DWORD /d 0 /f
+```
 
+```powershell
 # PowerShell
 New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Name "AllowCortana" -PropertyType DWord -Value 0 -Force
 ```
@@ -99,12 +96,14 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search
 Enable Cortana in Windows 10
 ```sh
 reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /f
+```
 
+```powershell
 # PowerShell
 Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Name "AllowCortana"
 ```
 
-## Allow input unicode with ALT + "+\<Code\>"
+## Allow input unicode with <kbd>Alt</kbd> + <kbd>+\<Code\></kbd>
 [Reference](http://www.fileformat.info/tip/microsoft/enter_unicode.htm)
 ```sh
 reg add "HKCU\Control Panel\Input Method" /v "EnableHexNumpad" /t REG_SZ /d 1 /f
@@ -113,13 +112,18 @@ reg add "HKCU\Control Panel\Input Method" /v "EnableHexNumpad" /t REG_SZ /d 1 /f
 ## Enable / Disable the Local Built-In Administrator Account
 [Reference](https://social.technet.microsoft.com/wiki/contents/articles/3040.windows-7-enable-disable-the-local-built-in-administrator-account.aspx)
 ```
-net user administrator /active:(yes|no)
+net user administrator /active:{yes|no}
 ```
 
 ## Get OS Architecture (32-bit / 64-bit)
 [Reference](https://www.lisenet.com/2014/get-windows-system-information-via-wmi-command-line-wmic/)
-```
+```cmd
 wmic OS get OSArchitecture
+```
+
+```powershell
+# PowerShell
+(Get-CimInstance Win32_OperatingSystem).OSArchitecture
 ```
 
 ## SLP (System Locked Pre-installation) / SLIC (System License Internal Code)
