@@ -2,9 +2,10 @@ import io
 import os
 import sys
 import msoffcrypto
-import time
 
 def check_password(file, passwords):
+    encrypted_file = None
+    decrypted_file = None
     try:
         encrypted_file = open(file, 'rb')
         file = msoffcrypto.OfficeFile(encrypted_file)
@@ -23,10 +24,10 @@ def check_password(file, passwords):
                 continue
             return password
     finally:
-        if encrypted_file is not None and isinstance(encrypted_file, io.IOBase):
+        if isinstance(encrypted_file, io.IOBase):
             encrypted_file.close()
 
-        if decrypted_file is not None and isinstance(decrypted_file, io.IOBase):
+        if isinstance(decrypted_file, io.IOBase):
             decrypted_file.close()
     
     return None
