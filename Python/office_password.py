@@ -19,8 +19,7 @@ def check_password(file, passwords):
             try:
                 file.load_key(password=password)
                 file.decrypt(decrypted_file)
-            except Exception as e:
-                # print(e)
+            except:
                 continue
             return password
     finally:
@@ -36,7 +35,7 @@ def check_password(file, passwords):
 if __name__ == '__main__':
     if len(sys.argv) < 3:
         print('Usage:')
-        print("\t", os.path.basename(sys.argv[0]), '<file> <password file>')
+        print("\t", os.path.basename(sys.argv[0]), '<office file> <password file>')
         exit()
 
     with open(sys.argv[2]) as passwords:
