@@ -335,3 +335,35 @@ mount -o remount <directory>
 # remount mount point in fstab with RW (read-write) option
 mount -o remount,rw <directory>
 ```
+
+## Install Development Tools
+
+CentOS
+
+```sh
+# List available groups
+yum group list
+
+# Install "Development Tools" 
+yum group install "Development Tools" 
+```
+
+Ubuntu
+
+```sh
+apt install build-essential
+```
+
+MSYS2
+
+```
+pacman -S base-devel
+```
+
+## Add EPEL repository to CentOS / RHEL
+
+[Reference](https://fedoraproject.org/wiki/EPEL)
+
+```
+yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+```
