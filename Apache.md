@@ -2,7 +2,7 @@
 
 [Reference](https://httpd.apache.org/docs/2.4/mod/mod_access_compat.html)
 
-``Order Allow, Deny``
+`Order Allow, Deny`
 
 ```javascript
 // Pseudo code
@@ -23,7 +23,7 @@ function isAllow(match_allow, match_deny) {
 }
 ```
 
-``Order Deny, Allow``
+`Order Deny, Allow`
 
 ```javascript
 // Pseudo code
@@ -48,10 +48,10 @@ function isAllow(match_allow, match_deny) {
 
 [Reference](https://httpd.apache.org/docs/2.4/sections.html#merging)
 
-- ``<Directory>``
-- ``<DirectoryMatch>`` and ``<Directory "~">``
-- ``<Files>`` and ``<FilesMatch>``
-- ``<Location>`` and ``<LocationMatch>``
-- ``<If>``
+- `<Directory>`
+- `<DirectoryMatch>` and `<Directory "~">`
+- `<Files>` and `<FilesMatch>`
+- `<Location>` and `<LocationMatch>`
+- `<If>`
 
 Sections having same priority are processed in the configuration file order.
