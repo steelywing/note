@@ -356,7 +356,7 @@ apt install build-essential
 
 MSYS2
 
-```
+```sh
 pacman -S base-devel
 ```
 
@@ -364,6 +364,17 @@ pacman -S base-devel
 
 [Reference](https://fedoraproject.org/wiki/EPEL)
 
-```
+```sh
 yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+```
+
+## Preserve file timestamp after edit
+```sh
+vi-preserve-time () {
+    for file in "$@"; do
+        local mtime=$(stat -c %y "$file")
+        vi "$file"
+        touch -d "$mtime" "$file"
+    done
+}
 ```
