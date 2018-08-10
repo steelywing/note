@@ -169,3 +169,17 @@ Unblock script that it was downloaded from the Internet
 ```powershell
 Unblock-File <path>
 ```
+
+## History
+
+```powershell
+Get-History
+```
+
+Alias: `history`
+
+Get all session history
+
+```powershell
+Get-Content (Get-PSReadlineOption).HistorySavePath
+```
