@@ -175,8 +175,8 @@ Ubuntu <= 14 (System V)
 
 | Command | Description |
 | --- | --- |
-| `update-rc.d <service> {enable\|disable}` | Enable / Disable service auto start |
-| `service <service> {start\|stop}` | Start / Stop service |
+| `update-rc.d <service> { enable | disable }` | Enable / Disable service auto start |
+| `service <service> { start | stop }` | Start / Stop service |
 | `service <service> status` | Show service status |
 
 Red Hat <= 6 (System V)
@@ -369,6 +369,7 @@ yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.r
 ```
 
 ## Preserve file timestamp after edit
+
 ```sh
 vi-preserve-time () {
     for file in "$@"; do
@@ -377,4 +378,32 @@ vi-preserve-time () {
         touch -d "$mtime" "$file"
     done
 }
+```
+
+## Nmap
+
+```sh
+# Host or prefix
+nmap <host>[/prefix]
+# Range
+nmap 10.0.0-255.0-255
+```
+
+### Port
+Default is most common 1,000 ports
+```sh
+nmap -p <port list>
+# Most common 100 ports
+nmap -F
+# Range
+nmap -p 1-100,1000-2000
+```
+
+### Host discovery
+Default is scan port after ping discovery
+```sh
+# No ping
+nmap -Pn
+# Use TCP SYN to ping
+nmap -PS <port list>
 ```
