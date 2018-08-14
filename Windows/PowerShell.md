@@ -251,5 +251,5 @@ $array.Where({
 ```powershell
 <format> -f <value>[, ...]
 
-"{0} is {1}" -f "", ""
+"{0} is {1}" -f "Life", "great"
 ```
