@@ -183,3 +183,73 @@ Get all session history
 ```powershell
 Get-Content (Get-PSReadlineOption).HistorySavePath
 ```
+
+## Hash table
+
+[Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_hash_tables)
+
+```powershell
+$hash = @{
+    <name> = <value>;
+    [<name> = <value>] ...
+}
+
+# List keys
+$hash.Keys
+
+# List values
+$hash.Values
+
+# Add
+$hash[<key>] = <value>
+$hash.Add(<key>, <value>)
+
+# Remove
+$hash.Remove(<key>)
+```
+
+## Array
+
+[Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_arrays)
+
+```powershell
+$array = <value>, <value>[, ...]
+$array = @([<value>[, ...]])
+
+# Range
+$array = <start>..<end>
+
+# Count
+$array.Count
+
+# Get element
+$array[<index>]
+
+# Set element
+$array[<index>] = <value>
+
+# Slice
+$array[<index>..<index>]
+
+# Iteration
+foreach ($element in $array) {
+    # $element
+}
+
+$array.ForEach({
+    # $_
+})
+
+# Filter
+$array.Where({
+    # $_
+})
+```
+
+## Format string
+
+```powershell
+<format> -f <value>[, ...]
+
+"{0} is {1}" -f "Life", "great"
+```
