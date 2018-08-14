@@ -18,7 +18,7 @@
 iptables -P <chain> <target>
 ```
 
-## Add rule
+## Rule
 
 [Reference](https://www.netfilter.org/documentation/HOWTO/packet-filtering-HOWTO-7.html)
 
@@ -29,9 +29,20 @@ iptables
     [!][-o <interface>]
     [!][-p {icmp|tcp|udp}]
     [!][--sport <src port>]
-    [!][--dport <dst port>]
-    [-m state [!] --state {ESTABLISHED|NEW|RELATED}]
+    [!][--dport <dest port>]
     -j <target>
+```
+
+## Extension
+
+[Reference](http://ipset.netfilter.org/iptables-extensions.man.html)
+
+```sh
+iptables 
+    [-m state [!] --state { ESTABLISHED | NEW | RELATED }]
+    [-m conntrack 
+        [--ctstate { INVALID | NEW | ESTABLISHED | RELATED | UNTRACKED | SNAT | DNAT }]
+    ]
 ```
 
 ## Redirect input to other port
