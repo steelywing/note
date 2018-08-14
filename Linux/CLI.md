@@ -175,13 +175,8 @@ Ubuntu <= 14 (System V)
 
 | Command | Description |
 | --- | --- |
-<<<<<<< HEAD
 | `update-rc.d <service> { enable \| disable }` | Enable / Disable service auto start |
 | `service <service> { start \| stop }` | Start / Stop service |
-=======
-| `update-rc.d <service> { enable | disable }` | Enable / Disable service auto start |
-| `service <service> { start | stop }` | Start / Stop service |
->>>>>>> 9af41fff76af2def8a2da12e855711fd3074b8a1
 | `service <service> status` | Show service status |
 
 Red Hat <= 6 (System V)
