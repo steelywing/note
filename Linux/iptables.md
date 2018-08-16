@@ -39,7 +39,7 @@ iptables
 
 ```sh
 iptables 
-    [-m state [!] --state { ESTABLISHED | NEW | RELATED }]
+    [-m state [!] --state { NEW | ESTABLISHED | RELATED }]
     [-m conntrack 
         [--ctstate { INVALID | NEW | ESTABLISHED | RELATED | UNTRACKED | SNAT | DNAT }]
     ]
