@@ -40,17 +40,17 @@ nmap 10.0.0-255.0-255
 ```
 
 ### Port
-Default is most common 1,000 ports
+Default: scan most common 1,000 ports
 ```sh
 nmap -p <port list>
-# Most common 100 ports
+# Scan most common 100 ports
 nmap -F
 # Range
 nmap -p 1-100,1000-2000
 ```
 
 ### Host discovery
-Default is scan port after ping discovery
+Default: scan port after ping discovery
 ```sh
 # No ping
 nmap -Pn
