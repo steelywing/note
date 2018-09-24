@@ -116,6 +116,14 @@ Interface capabilities (type, POE, ...)
 Switch# show interfaces [<interface>] capabilities
 ```
 
+Show Tech Support
+
+[Reference](https://www.cisco.com/c/en/us/td/docs/routers/crs/software/crs_r4-2/adv_system/command/reference/b_advsys_cr42crs/b_advsys_cr42crs_chapter_0100.html)
+
+```
+Switch# show tech-support
+```
+
 ## CDP (Cisco Discovery Protocol)
 
 ```
