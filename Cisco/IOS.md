@@ -72,16 +72,30 @@ Switch(config-if)# shutdown
 Switch(config-if)# no shutdown
 ```
 
-## Monitor logging in Telnet / SSH
+## Monitor log in Telnet / SSH
 
 ```
 Switch# terminal [no] monitor
 ```
 
-## Monitor logging in Console
+## Monitor log in Console
 
 ```
 Switch(config)# [no] logging console
+```
+
+## Log to syslog server
+
+[Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swlog.html)
+
+```
+Switch(config)# logging <ip>
+```
+
+Limit messages logged to the syslog server
+
+```
+Switch(config)# logging trap <level>
 ```
 
 ## Diagnostic
@@ -240,7 +254,7 @@ Switch(config-if)# spanning-tree bpdufilter { enable | disable }
 / [Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_dhcp/configuration/15-sy/dhcp-15-sy-book/dhcp-prt-bsd-aa.html#GUID-D3427E9D-D0F3-4FFE-889C-8091A84006C6)
 
 ```
-Switch(config)# ip dhcp excluded-address <First IP> <Last IP>
+Switch(config)# ip dhcp excluded-address <first IP> <last IP>
 Switch(config)# ip dhcp pool <pool name>
 Switch(dhcp-config)# network <network IP> { /<prefix length> | <network mask> }
 Switch(dhcp-config)# dns-server <DNS IP> [<DNS IP> ...]
