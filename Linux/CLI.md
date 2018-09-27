@@ -1,4 +1,31 @@
-## User
+# Table of Contents
+- [Table of Contents](#table-of-contents)
+- [User](#user)
+- [Shell](#shell)
+    - [Remove current session bash history](#remove-current-session-bash-history)
+    - [Delete all bash history](#delete-all-bash-history)
+- [GRUB](#grub)
+- [Hardware](#hardware)
+- [Kernel module](#kernel-module)
+- [Jobs](#jobs)
+- [File permission](#file-permission)
+- [Service](#service)
+- [Manual](#manual)
+- [Time](#time)
+- [DNS](#dns)
+- [Sharing desktop encryption](#sharing-desktop-encryption)
+- [Kernel info](#kernel-info)
+- [Disk usage](#disk-usage)
+- [Find](#find)
+- [Directory Stack](#directory-stack)
+- [cron / crontab](#cron--crontab)
+- [OpenJDK (Java)](#openjdk-java)
+- [Linux Distribution / Version](#linux-distribution--version)
+- [Mount](#mount)
+- [Install Development Tools](#install-development-tools)
+    - [Add EPEL repository to CentOS / RHEL](#add-epel-repository-to-centos--rhel)
+
+# User
 
 ```sh
 # Add user (Debian only)
@@ -39,7 +66,7 @@ passwd -x <day> <user>
 ```
 
 
-## Shell
+# Shell
 
 ```sh
 # Shell list
@@ -49,6 +76,18 @@ passwd -x <day> <user>
 chsh -s <shell> <user>
 # or
 usermod -s <shell> <user>
+
+# Open file manager from CLI
+xdg-open <path>
+
+# Preserve file timestamp after edit (bash)
+vi-preserve-time () {
+    for file in "$@"; do
+        local mtime=$(stat -c %y "$file")
+        vi "$file"
+        touch -d "$mtime" "$file"
+    done
+}
 ```
 
 
@@ -74,7 +113,7 @@ HISTSIZE=0
 ```
 
 
-## GRUB
+# GRUB
 
 Hold `Shift` when boot to show GRUB
 
@@ -95,7 +134,7 @@ GRUB_SAVEDEFAULT=true
 ```
 
 
-## Hardware
+# Hardware
 
 | Command | Description |
 | --- | --- |
@@ -110,7 +149,7 @@ GRUB_SAVEDEFAULT=true
 | `df -h` | Disk free space in human readable format |
 
 
-## Kernel module
+# Kernel module
 
 `module-name` is same as `module_name`
 
@@ -125,7 +164,7 @@ GRUB_SAVEDEFAULT=true
 | Add `install <module> /bin/false` to `/etc/modprobe.d/*.conf` | Blacklist module even other modules depend on it |
 
 
-## Jobs
+# Jobs
 
 [Reference](http://www.linuxnix.com/11-fc-bg-jobs-commands-know/)
 
@@ -142,7 +181,7 @@ GRUB_SAVEDEFAULT=true
 | `nohup <command>` | Don't terminate command when terminal exit (no hangup) |
 
 
-## File permission
+# File permission
 
 Only change directory permission
 
@@ -156,7 +195,7 @@ chmod <permission> $(find -type f)
 ```
 
 
-## Service
+# Service
 
 Ubuntu <= 14 (System V)
 
@@ -184,7 +223,7 @@ Ubuntu 16, Red Hat 7 (systemd)
 | `systemctl status <service>` | Show service status |
 
 
-## Manual
+# Manual
 
 ```sh
 # Show manual
@@ -195,7 +234,7 @@ apropos <keyword>
 ```
 
 
-## Time
+# Time
 
 Force sync time
 
@@ -206,16 +245,16 @@ service ntpd start
 ```
 
 
-## DNS
+# DNS
 
 ```sh
 vi /etc/resolv.conf
 ```
 
 
-## Ubuntu
+# Sharing desktop encryption
 
-Disable sharing desktop encryption 
+Disable sharing desktop encryption (Ubuntu)
 
 [Reference](https://askubuntu.com/a/487267/235264)
 
@@ -228,21 +267,14 @@ gsettings set org.gnome.Vino require-encryption false
 ```
 
 
-## Open file manager from CLI
-
-```sh
-xdg-open <path>
-```
-
-
-## Kernel info
+# Kernel info
 
 ```sh
 uname -a
 ```
 
 
-## Disk usage
+# Disk usage
 
 | Command | Description |
 | --- | --- |
@@ -256,7 +288,7 @@ du -hs <path> | sort -h -r
 ```
 
 
-## Find
+# Find
 
 Pipe `find` to `ls`
 ```sh
@@ -264,7 +296,7 @@ find [<path>] [<expression>] -exec ls -lad {} +
 ```
 
 
-## Directory Stack
+# Directory Stack
 
 [Reference](https://unix.stackexchange.com/a/270437/104608)
 
@@ -280,12 +312,12 @@ dirs [-v]
 ```
 
 
-## cron / crontab
+# cron / crontab
 
 [Reference](https://www.computerhope.com/unix/ucrontab.htm)
 
 
-## OpenJDK (Java)
+# OpenJDK (Java)
 
 ```sh
 # List installed JVM
@@ -296,7 +328,7 @@ update-java-alternatives --set <JVM name>
 ```
 
 
-## Linux Distribution / Version 
+# Linux Distribution / Version 
 
 ```sh
 cat /etc/*-release
@@ -311,7 +343,7 @@ lsb_release -a
 ```
 
 
-## Mount
+# Mount
 
 ```sh
 mount <source> <directory>
@@ -323,7 +355,7 @@ mount -o remount <directory>
 mount -o remount,rw <directory>
 ```
 
-## Install Development Tools
+# Install Development Tools
 
 CentOS
 
@@ -353,16 +385,4 @@ pacman -S base-devel
 
 ```sh
 yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-```
-
-## Preserve file timestamp after edit
-
-```sh
-vi-preserve-time () {
-    for file in "$@"; do
-        local mtime=$(stat -c %y "$file")
-        vi "$file"
-        touch -d "$mtime" "$file"
-    done
-}
 ```
