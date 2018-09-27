@@ -2,10 +2,6 @@
 
 - [Table of Contents](#table-of-contents)
 - [Basic](#basic)
-    - [Cut command before cursor](#cut-command-before-cursor)
-    - [Paste command](#paste-command)
-    - [Hint](#hint)
-    - [Device name](#device-name)
 - [EXEC / Config Mode](#exec--config-mode)
 - [Save / Reset](#save--reset)
 - [Log](#log)
@@ -13,17 +9,14 @@
 - [VLAN](#vlan)
     - [VTP (VLAN Trunk Protocol)](#vtp-vlan-trunk-protocol)
     - [Root guard](#root-guard)
-    - [Enable loop guard on all port](#enable-loop-guard-on-all-port)
     - [Port fast](#port-fast)
-    - [Enable port fast on all access port](#enable-port-fast-on-all-access-port)
     - [BPDU guard](#bpdu-guard)
-    - [Enable BPDU guard on all port fast port](#enable-bpdu-guard-on-all-port-fast-port)
     - [BPDU filter](#bpdu-filter)
 - [DHCP](#dhcp)
     - [Preassigning IP Addresses](#preassigning-ip-addresses)
 - [Routing](#routing)
     - [Gateway](#gateway)
-    - [Change switch to routing mode](#change-switch-to-routing-mode)
+    - [Change to routing mode](#change-to-routing-mode)
     - [Policy-Based Routing](#policy-based-routing)
     - [OSPF](#ospf)
 - [DNS](#dns)
@@ -32,14 +25,13 @@
 - [Authenticate](#authenticate)
 - [Port channel (Ether channel)](#port-channel-ether-channel)
 - [Interface](#interface)
-    - [Config VLAN interface](#config-vlan-interface)
-    - [Recovery err-disable port](#recovery-err-disable-port)
     - [Interface diagnostic](#interface-diagnostic)
     - [Config interface](#config-interface)
+    - [Bandwidth limit](#bandwidth-limit)
+    - [Recovery err-disable port](#recovery-err-disable-port)
     - [Disable (non Cisco) GBIC module checking](#disable-non-cisco-gbic-module-checking)
 - [Archive](#archive)
 - [Banner](#banner)
-- [Device domain](#device-domain)
 - [Show TCAM (ACL, MAC, QOS, Route) utilization](#show-tcam-acl-mac-qos-route-utilization)
 - [SDM - Switch Database Management (TCAM, ACL, Routing)](#sdm---switch-database-management-tcam-acl-routing)
 - [ACL](#acl)
@@ -59,25 +51,19 @@
 
 # Basic
 
-## Cut command before cursor
+Cut command before cursor
 
 `Ctrl` + `X`
 
-## Paste command
+Paste command
 
 `Ctrl` + `Y`
 
-## Hint
+Hint
 
 ```
 Switch# sh?
 shell  show
-```
-
-## Device name
-
-```
-Switch(config)# hostname <host name>
 ```
 
 # EXEC / Config Mode
@@ -122,16 +108,12 @@ Reset to Factory Default
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-2900-xl-series-switches/24328-156.html)
 
-Erase startup config
-
 ```
-write erase
-```
+! Erase startup config
+Switch# write erase
 
-Delete VLAN config
-
-```
-delete flash:/vlan.dat
+! Delete VLAN config
+Switch# delete flash:/vlan.dat
 ```
 
 # Log
@@ -204,7 +186,7 @@ Interface capabilities (type, POE, ...)
 Switch# show interfaces [<interface>] capabilities
 ```
 
-Show Tech Support
+Tech Support
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/routers/crs/software/crs_r4-2/adv_system/command/reference/b_advsys_cr42crs/b_advsys_cr42crs_chapter_0100.html)
 
@@ -282,7 +264,7 @@ Switch(config)# vtp password <password>
 Switch(config-if)# spanning-tree guard root
 ```
 
-## Enable loop guard on all port
+Enable loop guard on all port
 
 ```
 Switch(config)# spanning-tree loopguard default
@@ -294,7 +276,7 @@ Switch(config)# spanning-tree loopguard default
 Switch(config-if)# spanning-tree portfast [disable]
 ```
 
-## Enable port fast on all access port
+Enable port fast on all access port
 
 ```
 Switch(config)# spanning-tree portfast default
@@ -308,7 +290,7 @@ Switch(config)# spanning-tree portfast default
 Switch(config-if)# spanning-tree bpduguard { enable | disable }
 ```
 
-## Enable BPDU guard on all port fast port
+Enable BPDU guard on all port fast port
 
 ```
 Switch(config)# spanning-tree portfast bpduguard default
@@ -337,9 +319,9 @@ Switch(dhcp-config)# default-router <gateway IP>
 
 ## Preassigning IP Addresses
 
-Method 1
-
 [Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_dhcp/configuration/15-sy/dhcp-15-sy-book/dhcp-prt-bsd-aa.html#GUID-D3427E9D-D0F3-4FFE-889C-8091A84006C6)
+
+Method 1
 
 ```
 Switch(dhcp-config)# address <IP> { client-id <ID> | hardware-address <MAC address> }
@@ -393,7 +375,7 @@ For `ip routing`
 Switch(config)# ip route 0.0.0.0 0.0.0.0 <gateway>
 ```
 
-## Change switch to routing mode
+## Change to routing mode
 
 ```
 Switch(config)# ip routing
@@ -468,6 +450,18 @@ Disable domain name lookup in global mode
 
 ```
 Switch(config)# no ip domain-lookup
+```
+
+Device name
+
+```
+Switch(config)# hostname <host name>
+```
+
+Device domain
+
+```
+Switch(config)# ip domain-name <domain>
 ```
 
 # Date / Time
@@ -638,21 +632,6 @@ Switch# show lacp neighbor
 
 # Interface
 
-## Config VLAN interface
-
-```
-Switch(config)# interface vlan <VLAN ID>
-Switch(config-if)# ip address <IP> <netmask>
-Switch(config-if)# no shutdown
-```
-
-## Recovery err-disable port
-
-```
-Switch(config-if)# shutdown
-Switch(config-if)# no shutdown
-```
-
 ## Interface diagnostic
 
 Show interface status
@@ -685,6 +664,14 @@ Config a range of interface
 
 ```
 Switch(config)# interface range <interface>/<port number> - <port number>
+```
+
+Config VLAN interface
+
+```
+Switch(config)# interface vlan <VLAN ID>
+Switch(config-if)# ip address <IP> <netmask>
+Switch(config-if)# no shutdown
 ```
 
 Description
@@ -741,12 +728,19 @@ Enable protected mode (traffic will not send to other protected port)
 Switch(config-if)# switchport protected
 ```
 
-Bandwidth limit
+## Bandwidth limit
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3750-series-switches/91862-cat3750-qos-config.html)
 
 ```
 Switch(config-if)# srr-queue bandwidth limit <percentage>
+```
+
+## Recovery err-disable port
+
+```
+Switch(config-if)# shutdown
+Switch(config-if)# no shutdown
 ```
 
 ## Disable (non Cisco) GBIC module checking
@@ -781,12 +775,6 @@ Switch(config)# banner login ^
 <banner>
 ^
 Switch(config)# 
-```
-
-# Device domain
-
-```
-Switch(config)# ip domain-name <domain>
 ```
 
 # Show TCAM (ACL, MAC, QOS, Route) utilization
