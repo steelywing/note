@@ -24,23 +24,31 @@ var getAbsUrl = (function() {
 # Metric prefix
 
 ```js
-Number.prototype.prefix = function (precision = 2) {
+Number.prototype.prefix = function (precision, base) {
 
-    var units = ' K M G T P E Z Y'.split(' ');
+  var units = ' K M G T P E Z Y'.split(' ');
 
-    if (this < 0) {
-        return '-' + Math.abs(this).prefix(precision);
-    }
+  if (typeof precision === 'undefined') {
+    precision = 2;
+  }
 
-    if (this < 1024 || !Number.isFinite(this)) {
-        return this + units[0];
-    }
+  if (typeof base === 'undefined') {
+    base = 1024;
+  }
 
-    var power = Math.min(
-        Math.floor(Math.log(this) / Math.log(1024)),
-        units.length - 1
-    );
+  if (this < 0) {
+    return '-' + Math.abs(this).prefix(precision);
+  }
 
-    return (this / Math.pow(1024, power)).toFixed(precision) + units[power];
+  if (this < base || !Number.isFinite(this)) {
+    return this + units[0];
+  }
+
+  var power = Math.min(
+    Math.floor(Math.log(this) / Math.log(base)),
+    units.length - 1
+  );
+
+  return (this / Math.pow(base, power)).toFixed(precision) + units[power];
 }
 ```
