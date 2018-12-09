@@ -2,8 +2,8 @@
 - [Table of Contents](#table-of-contents)
 - [User](#user)
 - [Shell](#shell)
-    - [Remove current session bash history](#remove-current-session-bash-history)
-    - [Delete all bash history](#delete-all-bash-history)
+  - [Remove current session bash history](#remove-current-session-bash-history)
+  - [Delete all bash history](#delete-all-bash-history)
 - [GRUB](#grub)
 - [Hardware](#hardware)
 - [Kernel module](#kernel-module)
@@ -23,7 +23,7 @@
 - [Linux Distribution / Version](#linux-distribution--version)
 - [Mount](#mount)
 - [Install Development Tools](#install-development-tools)
-    - [Add EPEL repository to CentOS / RHEL](#add-epel-repository-to-centos--rhel)
+  - [Add EPEL repository to CentOS / RHEL](#add-epel-repository-to-centos--rhel)
 
 # User
 
@@ -194,6 +194,10 @@ Only change file permission
 chmod <permission> $(find -type f)
 ```
 
+Change file permission to 644, directory to 755
+```sh
+chmod a+r-x+X,u+w,go-w -R <path>
+```
 
 # Service
 
