@@ -194,9 +194,11 @@ Only change file permission
 chmod <permission> $(find -type f)
 ```
 
-Change file permission to 644, directory to 755
+Recursive change file permission to `644`, directory to `755`
 ```sh
-chmod a+r-x+X,u+w,go-w -R <path>
+chmod -R u=rw,go=r,a+X <path>
+# or
+chmod -R a=r+X,u+w <path>
 ```
 
 # Service
