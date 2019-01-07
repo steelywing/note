@@ -1,3 +1,22 @@
+# Remove URL query
+
+[Reference](https://developer.mozilla.org/en-US/docs/Web/API/Window/location#Example_5_Send_a_string_of_data_to_the_server_by_modifying_the_search_property)
+
+```js
+location.search = '';
+```
+
+Using relative URL 
+([Reference RFC1808](https://tools.ietf.org/html/rfc1808))
+
+```html
+<a href="?">
+```
+
+```js
+location = '?';
+```
+
 # URL for browser
 
 https://github.com/medialize/URI.js
