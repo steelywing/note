@@ -1,4 +1,5 @@
-Table of Content
+# Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Version](#version)
 - [RSA key](#rsa-key)
   - [Generating RSA key](#generating-rsa-key)
