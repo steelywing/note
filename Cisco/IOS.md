@@ -492,8 +492,11 @@ Enable AAA authentication / authorization
 
 ```
 Switch(config)# aaa new-model
+! Use local user authentication
 Switch(config)# aaa authentication login default local
 Switch(config)# aaa authorization exec default local
+! Enable console authorization
+Switch(config)# aaa authorization console
 ```
 
 Create user
