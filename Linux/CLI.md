@@ -1,67 +1,116 @@
 # Table of Contents
 - [Table of Contents](#table-of-contents)
 - [User](#user)
+  - [Add user](#add-user)
+  - [Delete user](#delete-user)
+  - [Change password](#change-password)
+  - [Delete password](#delete-password)
+  - [Lock user](#lock-user)
+  - [Unlock user](#unlock-user)
+  - [Expire user password (force user to change password)](#expire-user-password-force-user-to-change-password)
+  - [Set password expire day](#set-password-expire-day)
+  - [User database file](#user-database-file)
+  - [Password file](#password-file)
 - [Shell](#shell)
   - [Remove current session bash history](#remove-current-session-bash-history)
   - [Delete all bash history](#delete-all-bash-history)
+- [Preserve file timestamp after edit (bash)](#preserve-file-timestamp-after-edit-bash)
 - [GRUB](#grub)
+  - [Show GRUB when boot](#show-grub-when-boot)
+  - [Find all OS, update GRUB config, install GRUB to MBR / UEFI](#find-all-os-update-grub-config-install-grub-to-mbr--uefi)
+  - [GRUB auto-generate config path](#grub-auto-generate-config-path)
+  - [GRUB option](#grub-option)
+  - [Set default to last selected option](#set-default-to-last-selected-option)
 - [Hardware](#hardware)
 - [Kernel module](#kernel-module)
 - [Jobs](#jobs)
 - [File permission](#file-permission)
+  - [Only change directory permission](#only-change-directory-permission)
+  - [Only change file permission](#only-change-file-permission)
+  - [Recursive change file permission to `644`, directory to `755`](#recursive-change-file-permission-to-644-directory-to-755)
 - [Service](#service)
-- [Manual](#manual)
+- [Manual / Help](#manual--help)
 - [Time](#time)
 - [DNS](#dns)
-- [Sharing desktop encryption](#sharing-desktop-encryption)
+- [Sharing desktop](#sharing-desktop)
+  - [Disable sharing desktop encryption (Ubuntu)](#disable-sharing-desktop-encryption-ubuntu)
 - [Kernel info](#kernel-info)
 - [Disk usage](#disk-usage)
 - [Find](#find)
 - [Directory Stack](#directory-stack)
+  - [Push directory](#push-directory)
+  - [Pop and change to the directory](#pop-and-change-to-the-directory)
+  - [List directory stack](#list-directory-stack)
 - [cron / crontab](#cron--crontab)
 - [OpenJDK (Java)](#openjdk-java)
+  - [List installed JVM](#list-installed-jvm)
+  - [Switch JVM](#switch-jvm)
 - [Linux Distribution / Version](#linux-distribution--version)
 - [Mount](#mount)
+  - [Remount mount point in fstab](#remount-mount-point-in-fstab)
+  - [Remount mount point in fstab with RW (read-write) option](#remount-mount-point-in-fstab-with-rw-read-write-option)
 - [Install Development Tools](#install-development-tools)
   - [Add EPEL repository to CentOS / RHEL](#add-epel-repository-to-centos--rhel)
+- [Last login](#last-login)
+  - [Suppress `Last Login` message](#suppress-last-login-message)
+  - [Clear last login log](#clear-last-login-log)
+  - [Disable logging last login](#disable-logging-last-login)
 
 # User
 
+## Add user
 ```sh
-# Add user (Debian only)
-adduser <user>
-
-# Delete user (Debian only)
-deluser <user>
-
-# Add user
 useradd <user>
 
-# Delete user
+# Debian only
+adduser <user>
+```
+
+## Delete user
+```sh
 userdel <user>
 
-# Change password
+# Debian only
+deluser <user>
+```
+
+## Change password
+```sh
 passwd [<user>]
+```
 
-# Delete password
+## Delete password
+```sh
 passwd -d <user>
+```
 
-# Lock user
+## Lock user
+```sh
 passwd -l <user>
+```
 
-# Unlock user
+## Unlock user
+```sh
 passwd -u <user>
+```
 
-# Expire user password (force user to change password)
+## Expire user password (force user to change password)
+```sh
 passwd -e <user>
+```
 
-# Set password expire day
+## Set password expire day
+```sh
 passwd -x <day> <user>
+```
 
-# User database file
+## User database file
+```sh
 /etc/passwd
+```
 
-# Password file
+## Password file
+```sh
 /etc/shadow
 ```
 
@@ -79,8 +128,41 @@ usermod -s <shell> <user>
 
 # Open file manager from CLI
 xdg-open <path>
+```
+
+## Remove current session bash history
+
+Clear current history buffer
+```sh
+history -c
+```
+
+Remove history file path
+```sh
+unset HISTFILE
+```
+
+Kill bash
+```sh
+kill -9 $$
+# $$ == Current shell PID
+```
+
+## Delete all bash history
+
+Empty history file
+```sh
+echo > $HISTFILE
+```
+
+Set history size to 0
+```
+HISTSIZE=0
+```
+
 
 # Preserve file timestamp after edit (bash)
+```sh
 vi-preserve-time () {
     for file in "$@"; do
         local mtime=$(stat -c %y "$file")
@@ -91,44 +173,30 @@ vi-preserve-time () {
 ```
 
 
-## Remove current session bash history
-
-```sh
-unset HISTFILE
-# or
-kill -9 $$
-# $$ == Current shell PID
-```
-
-
-## Delete all bash history
-
-```sh
-# For Bash
-history -c
-# or
-echo > $HISTFILE
-# or
-HISTSIZE=0
-```
-
-
 # GRUB
 
-Hold `Shift` when boot to show GRUB
+## Show GRUB when boot
 
+Hold `Shift` when boot
+
+## Find all OS, update GRUB config, install GRUB to MBR / UEFI
 ```sh
-# Find all OS, update GRUB config, install GRUB to MBR / UEFI
 update-grub
+```
 
-# GRUB auto-generate config path
-vi /boot/grub/grub.cfg
+## GRUB auto-generate config path
+```sh
+/boot/grub/grub.cfg
+```
 
-# GRUB option
+## GRUB option
+```sh
 vi /etc/default/grub
+```
 
-# Set default to last selected option
-# Add the following lines to /etc/default/grub
+## Set default to last selected option
+File `/etc/default/grub`
+```sh
 GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
 ```
@@ -183,18 +251,18 @@ GRUB_SAVEDEFAULT=true
 
 # File permission
 
-Only change directory permission
+## Only change directory permission
 
 ```sh
 chmod <permission> $(find -type d)
 ```
 
-Only change file permission
+## Only change file permission
 ```sh
 chmod <permission> $(find -type f)
 ```
 
-Recursive change file permission to `644`, directory to `755`
+## Recursive change file permission to `644`, directory to `755`
 ```sh
 chmod -R u=rw,go=r,a+X <path>
 # or
@@ -229,7 +297,7 @@ Ubuntu 16, Red Hat 7 (systemd)
 | `systemctl status <service>` | Show service status |
 
 
-# Manual
+# Manual / Help
 
 ```sh
 # Show manual
@@ -258,9 +326,9 @@ vi /etc/resolv.conf
 ```
 
 
-# Sharing desktop encryption
+# Sharing desktop
 
-Disable sharing desktop encryption (Ubuntu)
+## Disable sharing desktop encryption (Ubuntu)
 
 [Reference](https://askubuntu.com/a/487267/235264)
 
@@ -306,14 +374,18 @@ find [<path>] [<expression>] -exec ls -lad {} +
 
 [Reference](https://unix.stackexchange.com/a/270437/104608)
 
+## Push directory
 ```sh
-# Push directory
 pushd <directory>
+```
 
-# Pop and change to the directory
+## Pop and change to the directory
+```sh
 popd
+```
 
-# List directory stack
+## List directory stack
+```sh
 dirs [-v]
 ```
 
@@ -325,11 +397,13 @@ dirs [-v]
 
 # OpenJDK (Java)
 
+## List installed JVM
 ```sh
-# List installed JVM
 update-java-alternatives --list
+```
 
-# Switch JVM
+## Switch JVM
+```sh
 update-java-alternatives --set <JVM name>
 ```
 
@@ -353,11 +427,15 @@ lsb_release -a
 
 ```sh
 mount <source> <directory>
+```
 
-# remount mount point in fstab
+## Remount mount point in fstab
+```sh
 mount -o remount <directory>
+```
 
-# remount mount point in fstab with RW (read-write) option
+## Remount mount point in fstab with RW (read-write) option
+```sh
 mount -o remount,rw <directory>
 ```
 
@@ -391,4 +469,23 @@ pacman -S base-devel
 
 ```sh
 yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+```
+
+# Last login
+
+[Reference](https://linuxconfig.org/how-to-disable-last-login-message-on-rhel-linux)
+
+## Suppress `Last Login` message
+```sh
+touch ~/.hushlogin
+```
+
+## Clear last login log
+```sh
+> /var/log/lastlog
+```
+
+## Disable logging last login
+```sh
+chattr +i /var/log/lastlog
 ```
