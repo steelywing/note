@@ -9,6 +9,8 @@
 - [Registry](#registry)
 - [Cortana](#cortana)
 - [Allow input unicode with <kbd>Alt</kbd> + <kbd>+\<Code\></kbd>](#allow-input-unicode-with-kbdaltkbd--kbdcodekbd)
+- [Create user](#create-user)
+- [Delete user](#delete-user)
 - [Enable / Disable the Local Built-In Administrator Account](#enable--disable-the-local-built-in-administrator-account)
 - [Get OS Architecture (32-bit / 64-bit)](#get-os-architecture-32-bit--64-bit)
 - [SLP (System Locked Pre-installation) / SLIC (System License Internal Code)](#slp-system-locked-pre-installation--slic-system-license-internal-code)
@@ -21,6 +23,18 @@
 
 # Credential manager
 ![Credential Manager](img/windows-credential-manager.png)
+
+[Reference](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/cmdkey)
+
+Add credential
+```cmd
+cmdkey /add:<target name> /user:<user name> /pass:<password>
+```
+
+Delete credential
+```cmd
+cmdkey /delete:<target name>
+```
 
 List credentials
 ```cmd
@@ -50,8 +64,16 @@ powercfg { /hibernate | /h } /type { reduced | full }
 ```
 
 # `.cab` file
-- Extract `.cab`: `expand <file.cab>`
-- Create `.cab`: `makecab <file> <file.cab>`
+
+Extract `.cab`
+```cmd
+expand <file.cab>
+```
+
+Create `.cab`
+```cmd
+makecab <file> <file.cab>
+```
 
 # File Permission (ACL)
 [Reference](http://technet.microsoft.com/en-us/library/bb490872.aspx)
@@ -105,7 +127,7 @@ Edit registry file
 
 # Cortana
 Disable Cortana in Windows 10
-```sh
+```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /t REG_DWORD /d 0 /f
 ```
 
@@ -115,7 +137,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search
 ```
 
 Enable Cortana in Windows 10
-```sh
+```cmd
 reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /f
 ```
 
@@ -126,8 +148,30 @@ Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Sea
 
 # Allow input unicode with <kbd>Alt</kbd> + <kbd>+\<Code\></kbd>
 [Reference](http://www.fileformat.info/tip/microsoft/enter_unicode.htm)
-```sh
+```cmd
 reg add "HKCU\Control Panel\Input Method" /v "EnableHexNumpad" /t REG_SZ /d 1 /f
+```
+
+# Create user
+
+```cmd
+net user <user name> [<password>] /add
+```
+
+```powershell
+# PowerShell
+New-LocalUser <user name> [-Password (Read-Host -AsSecureString) | -NoPassword]
+```
+
+# Delete user
+
+```cmd
+net user <user name> /delete
+```
+
+```powershell
+# PowerShell
+Remove-LocalUser <user name>
 ```
 
 # Enable / Disable the Local Built-In Administrator Account
