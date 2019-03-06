@@ -1,5 +1,8 @@
 # Table of Contents
 - [Table of Contents](#table-of-contents)
+- [User Account](#user-account)
+  - [Password Expire](#password-expire)
+- [Group Policy](#group-policy)
 - [Windows firewall change default to block](#windows-firewall-change-default-to-block)
 - [Credential manager](#credential-manager)
 - [Remote desktop](#remote-desktop)
@@ -15,6 +18,32 @@
 - [Get OS Architecture (32-bit / 64-bit)](#get-os-architecture-32-bit--64-bit)
 - [SLP (System Locked Pre-installation) / SLIC (System License Internal Code)](#slp-system-locked-pre-installation--slic-system-license-internal-code)
 
+
+# User Account
+
+```cmd
+netplwiz.exe
+```
+
+Computer Management / Local User
+```cmd
+lusrmgr.msc
+```
+
+## Password Expire
+
+```cmd
+wmic UserAccount [where Name=<user name>] set PasswordExpires={True|False}
+```
+
+Using group policy
+
+`Computer Configuration` > `Windows Settings` > `Security Settings` > `Password Policy` > `Maximum password age`
+
+# Group Policy
+```cmd
+gpedit.msc
+```
 
 # Windows firewall change default to block
 [Reference](https://www.howtogeek.com/112564/how-to-create-advanced-firewall-rules-in-the-windows-firewall/)
