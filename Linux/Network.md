@@ -1,4 +1,12 @@
-## IP forward
+# Table of Contents
+- [Table of Contents](#table-of-contents)
+- [IP forward](#ip-forward)
+- [Ping](#ping)
+- [Nmap](#nmap)
+  - [Port](#port)
+  - [Host discovery](#host-discovery)
+
+# IP forward
 
 [Reference](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Security_Guide/s1-firewall-ipt-fwd.html)
 
@@ -17,7 +25,7 @@ Set IP forward on boot
 net.ipv4.ip_forward = {0|1}
 ```
 
-## Ping
+# Ping
 
 ```sh
 # Display timeout
@@ -30,7 +38,7 @@ done
 ```
 
 
-## Nmap
+# Nmap
 
 ```sh
 # Host or prefix
@@ -39,7 +47,7 @@ nmap <host>[/prefix]
 nmap 10.0.0-255.0-255
 ```
 
-### Port
+## Port
 Default: scan most common 1,000 ports
 ```sh
 nmap -p <port list>
@@ -49,7 +57,7 @@ nmap -F
 nmap -p 1-100,1000-2000
 ```
 
-### Host discovery
+## Host discovery
 Default: scan port after ping discovery
 ```sh
 # No ping
