@@ -28,6 +28,9 @@
   - [Only change directory permission](#only-change-directory-permission)
   - [Only change file permission](#only-change-file-permission)
   - [Recursive change file permission to `644`, directory to `755`](#recursive-change-file-permission-to-644-directory-to-755)
+- [File attribute](#file-attribute)
+  - [List attribute](#list-attribute)
+  - [Change attribute](#change-attribute)
 - [Service](#service)
 - [Manual / Help](#manual--help)
 - [Time](#time)
@@ -267,6 +270,30 @@ chmod <permission> $(find -type f)
 chmod -R u=rw,go=r,a+X <path>
 # or
 chmod -R a=r+X,u+w <path>
+```
+
+# File attribute
+
+[Reference](http://man7.org/linux/man-pages/man1/chattr.1.html)
+
+| Attribute | Description |
+| --- | --- |
+| a | append only |
+| A | no atime updates |
+| c | compressed |
+| i | immutable |
+| s | secure deletion |
+| S | synchronous updates |
+| u | undeletable |
+
+## List attribute
+```sh
+lsattr
+```
+
+## Change attribute
+```sh
+chattr {+|-}<attribute> <file>
 ```
 
 # Service
