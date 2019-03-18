@@ -1,4 +1,50 @@
-## Help
+# Table of Contents
+- [Table of Contents](#table-of-contents)
+- [Help](#help)
+- [Powershell version](#powershell-version)
+- [List](#list)
+- [Alias](#alias)
+- [Get command info](#get-command-info)
+- [Property](#property)
+  - [Get the properties and methods of objects](#get-the-properties-and-methods-of-objects)
+  - [Select property](#select-property)
+  - [Expand property](#expand-property)
+  - [Create property](#create-property)
+- [Current object](#current-object)
+- [Filter object](#filter-object)
+- [Network profile](#network-profile)
+- [Powershell remoting](#powershell-remoting)
+- [Trusted host](#trusted-host)
+  - [Get trusted host](#get-trusted-host)
+  - [Set trusted host](#set-trusted-host)
+- [Get credential from user input](#get-credential-from-user-input)
+- [PowerShell session](#powershell-session)
+  - [Create PowerShell session](#create-powershell-session)
+  - [Connect to remote PowerShell](#connect-to-remote-powershell)
+- [Get drive](#get-drive)
+- [Run command](#run-command)
+- [Execution policies](#execution-policies)
+- [Unblock script that it was downloaded from the Internet](#unblock-script-that-it-was-downloaded-from-the-internet)
+- [History](#history)
+  - [Get all session history](#get-all-session-history)
+- [Hash table](#hash-table)
+  - [List keys](#list-keys)
+  - [List values](#list-values)
+  - [Add](#add)
+  - [Remove](#remove)
+- [Array](#array)
+  - [Range](#range)
+  - [Count](#count)
+  - [Get element](#get-element)
+  - [Set element](#set-element)
+  - [Slice](#slice)
+  - [Iteration](#iteration)
+  - [Filter](#filter)
+- [String](#string)
+  - [Format string](#format-string)
+  - [Filter string](#filter-string)
+
+# Help
 
 ```powershell
 Get-Help [<cmdlet>] [-ShowWindow] [ -Detailed | -Full | -Examples ]
@@ -6,29 +52,31 @@ Get-Help [<cmdlet>] [-ShowWindow] [ -Detailed | -Full | -Examples ]
 
  `help` equal `Get-Help | more`
 
-## Powershell version
+# Powershell version
 
 ```powershell
 $PSVersionTable
 ```
 
-## List
+# List
 
 ```powershell
 <expression>[, <expession>[, ...]]
 ```
 
-## Alias
+# Alias
 
 ```powershell
 Get-Alias [[-Name] <alias> | -Definition <cmdlet>]
 ```
 
-## Get command info
+# Get command info
 
 ```powershell
 Get-Command <command>
 ```
+
+# Property
 
 ## Get the properties and methods of objects
 
@@ -60,7 +108,7 @@ Alias: `select`
 <command> | Select-Object @{N[ame]="<property name>"; E[xpression]={<expression>}}
 ```
 
-## Current object
+# Current object
 
 ```powershell
 $PSItem
@@ -71,7 +119,7 @@ $PSItem
 
 Alias: `$_`
 
-## Filter object
+# Filter object
 
 ```powershell
 <command> | Where-Object [-FilterScript] { <Script> }
@@ -82,20 +130,14 @@ Alias: `$_`
 ```
 Alias: `?`
 
-## Filter string
-
-```powershell
-<command> | Select-String "<pattern>"
-```
-
-## Network profile
+# Network profile
 
 ```powershell
 Get-NetConnectionProfile
 Set-NetConnectionProfile { -InterfaceIndex <ID> | -Name <name> } -NetworkCategory { Private | Public }
 ```
 
-## Powershell remoting
+# Powershell remoting
 
 Enable PowerShell remoting
 
@@ -103,7 +145,9 @@ Enable PowerShell remoting
 Enable-PSRemoting [-SkipNetworkProfileCheck] [-Force]
 ```
 
-Get trusted hosts
+# Trusted host
+
+## Get trusted host
 
 ```powershell
 winrm get winrm/config/client
@@ -111,7 +155,7 @@ winrm get winrm/config/client
 Get-Item WSMan:\localhost\Client\TrustedHosts
 ```
 
-Set trusted hosts
+## Set trusted host
 
 ```powershell
 winrm set winrm/config/client @{TrustedHosts="<host>[,<host>]"}
@@ -121,31 +165,33 @@ Set-Item WSMan:\localhost\Client\TrustedHosts -Value "<host>[,<host>]" [-Force]
 # <host> = <IP> | <hostname> | *
 ```
 
-Get credential from user input
+# Get credential from user input
 
 ```powershell
 Get-Credential [[-UserName] <username>]
 ```
 
-Create PowerShell session
+# PowerShell session
+
+## Create PowerShell session
 
 ```powershell
 $<variable> = New-PSSession [[-ComputerName] <host[]>] [-Credential { <user> | <credential> }]
 ```
 
-Connect to remote PowerShell
+## Connect to remote PowerShell
 
 ```powershell
 Enter-PSSession [-ComputerName] <host> [-Credential { <user> | <credential> }]
 ```
 
-## Get drive
+# Get drive
 
 ```powershell
 Get-PSDrive
 ```
 
-## Run command
+# Run command
 
 [Referense](https://social.technet.microsoft.com/wiki/contents/articles/7703.powershell-running-executables.aspx#The_Call_Operator_amp)
 
@@ -155,7 +201,7 @@ Invoke-Command [[-ComputerName] <host[]>] [-ScriptBlock] <ScriptBlock> [-Credent
 & <ScriptBlock> [<argument[]>]
 ```
 
-## Execution policies
+# Execution policies
 
 [Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)
 
@@ -164,13 +210,13 @@ Get-ExecutionPolicy
 Set-ExecutionPolicy <policy>
 ```
 
-Unblock script that it was downloaded from the Internet
+# Unblock script that it was downloaded from the Internet
 
 ```powershell
 Unblock-File <path>
 ```
 
-## History
+# History
 
 ```powershell
 Get-History
@@ -178,13 +224,13 @@ Get-History
 
 Alias: `history`
 
-Get all session history
+## Get all session history
 
 ```powershell
 Get-Content (Get-PSReadlineOption).HistorySavePath
 ```
 
-## Hash table
+# Hash table
 
 [Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_hash_tables)
 
@@ -193,45 +239,65 @@ $hash = @{
     <name> = <value>;
     [<name> = <value>] ...
 }
+```
 
-# List keys
+## List keys
+```powershell
 $hash.Keys
+```
 
-# List values
+## List values
+```powershell
 $hash.Values
+```
 
-# Add
+## Add
+```powershell
 $hash[<key>] = <value>
 $hash.Add(<key>, <value>)
+```
 
-# Remove
+## Remove
+```powershell
 $hash.Remove(<key>)
 ```
 
-## Array
+# Array
 
 [Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_arrays)
 
 ```powershell
 $array = <value>, <value>[, ...]
 $array = @([<value>[, ...]])
+```
 
-# Range
+## Range
+```powershell
 $array = <start>..<end>
+```
 
-# Count
+## Count
+```powershell
 $array.Count
+```
 
-# Get element
+## Get element
+```powershell
 $array[<index>]
+```
 
-# Set element
+## Set element
+```powershell
 $array[<index>] = <value>
+```
 
-# Slice
+## Slice
+```powershell
 $array[<index>..<index>]
+```
 
-# Iteration
+## Iteration
+```powershell
 foreach ($element in $array) {
     # $element
 }
@@ -239,12 +305,16 @@ foreach ($element in $array) {
 $array.ForEach({
     # $_
 })
+```
 
-# Filter
+## Filter
+```powershell
 $array.Where({
     # $_
 })
 ```
+
+# String
 
 ## Format string
 
@@ -252,4 +322,10 @@ $array.Where({
 <format> -f <value>[, ...]
 
 "{0} is {1}" -f "Life", "great"
+```
+
+## Filter string
+
+```powershell
+<command> | Select-String "<pattern>"
 ```
