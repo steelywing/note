@@ -12,6 +12,7 @@
   - [User database file](#user-database-file)
   - [Password file](#password-file)
 - [Shell](#shell)
+  - [Indicate command type](#indicate-command-type)
   - [Remove current session bash history](#remove-current-session-bash-history)
   - [Delete all bash history](#delete-all-bash-history)
 - [Preserve file timestamp after edit (bash)](#preserve-file-timestamp-after-edit-bash)
@@ -125,12 +126,20 @@ passwd -x <day> <user>
 /etc/shells
 
 # Chanage shell
-chsh -s <shell> <user>
+chsh -s <shell> [<user>]
 # or
 usermod -s <shell> <user>
 
 # Open file manager from CLI
 xdg-open <path>
+```
+
+## Indicate command type
+
+Type: function, builtin, or file
+
+```sh
+type [-a] <command>
 ```
 
 ## Remove current session bash history
