@@ -1,33 +1,64 @@
 # Table of Contents
 - [Table of Contents](#table-of-contents)
-- [User Account](#user-account)
+- [Network Profile](#network-profile)
+- [User](#user)
+  - [User Account Management / Auto Login](#user-account-management--auto-login)
+  - [Computer Management / Local User](#computer-management--local-user)
+  - [Create User](#create-user)
+  - [Delete User](#delete-user)
   - [Password Expire](#password-expire)
 - [Group Policy](#group-policy)
 - [Windows firewall change default to block](#windows-firewall-change-default-to-block)
-- [Credential manager](#credential-manager)
-- [Remote desktop](#remote-desktop)
+- [Credential Manager](#credential-manager)
+- [Remote Desktop](#remote-desktop)
 - [Hibernate](#hibernate)
 - [`.cab` file](#cab-file)
 - [File Permission (ACL)](#file-permission-acl)
 - [Registry](#registry)
 - [Cortana](#cortana)
 - [Allow input unicode with <kbd>Alt</kbd> + <kbd>+\<Code\></kbd>](#allow-input-unicode-with-kbdaltkbd--kbdcodekbd)
-- [Create user](#create-user)
-- [Delete user](#delete-user)
 - [Enable / Disable the Local Built-In Administrator Account](#enable--disable-the-local-built-in-administrator-account)
 - [Get OS Architecture (32-bit / 64-bit)](#get-os-architecture-32-bit--64-bit)
 - [SLP (System Locked Pre-installation) / SLIC (System License Internal Code)](#slp-system-locked-pre-installation--slic-system-license-internal-code)
 
 
-# User Account
+# Network Profile
+
+[PowerShell](PowerShell.md#network-profile)
+
+# User
+
+## User Account Management / Auto Login
 
 ```cmd
 netplwiz.exe
 ```
 
-Computer Management / Local User
+## Computer Management / Local User
 ```cmd
 lusrmgr.msc
+```
+
+## Create User
+
+```cmd
+net user <user name> [<password>] /add
+```
+
+```powershell
+# PowerShell
+New-LocalUser <user name> [-Password (Read-Host -AsSecureString) | -NoPassword]
+```
+
+## Delete User
+
+```cmd
+net user <user name> /delete
+```
+
+```powershell
+# PowerShell
+Remove-LocalUser <user name>
 ```
 
 ## Password Expire
@@ -50,7 +81,7 @@ gpedit.msc
 
 ![Windows Firewall](img/windows-firewall.png)
 
-# Credential manager
+# Credential Manager
 ![Credential Manager](img/windows-credential-manager.png)
 
 [Reference](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/cmdkey)
@@ -70,7 +101,7 @@ List credentials
 cmdkey /list
 ```
 
-# Remote desktop
+# Remote Desktop
 
 Description | Command
 --- | ---
@@ -179,28 +210,6 @@ Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Sea
 [Reference](http://www.fileformat.info/tip/microsoft/enter_unicode.htm)
 ```cmd
 reg add "HKCU\Control Panel\Input Method" /v "EnableHexNumpad" /t REG_SZ /d 1 /f
-```
-
-# Create user
-
-```cmd
-net user <user name> [<password>] /add
-```
-
-```powershell
-# PowerShell
-New-LocalUser <user name> [-Password (Read-Host -AsSecureString) | -NoPassword]
-```
-
-# Delete user
-
-```cmd
-net user <user name> /delete
-```
-
-```powershell
-# PowerShell
-Remove-LocalUser <user name>
 ```
 
 # Enable / Disable the Local Built-In Administrator Account
