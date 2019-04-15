@@ -32,6 +32,9 @@
 - [File attribute](#file-attribute)
   - [List attribute](#list-attribute)
   - [Change attribute](#change-attribute)
+- [SELinux](#selinux)
+  - [Get SELinux status](#get-selinux-status)
+  - [Set SELinux status](#set-selinux-status)
 - [Service](#service)
 - [Manual / Help](#manual--help)
 - [Time](#time)
@@ -303,6 +306,19 @@ lsattr
 ## Change attribute
 ```sh
 chattr {+|-}<attribute> <file>
+```
+
+
+# SELinux
+
+## Get SELinux status
+```sh
+sestatus [-v]
+```
+
+## Set SELinux status
+```sh
+setenforce { Enforcing | Permissive | 1 | 0 }
 ```
 
 # Service
