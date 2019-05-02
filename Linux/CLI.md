@@ -15,15 +15,17 @@
   - [Indicate command type](#indicate-command-type)
   - [Remove current session bash history](#remove-current-session-bash-history)
   - [Delete all bash history](#delete-all-bash-history)
-- [Preserve file timestamp after edit (bash)](#preserve-file-timestamp-after-edit-bash)
+- [Preserve file timestamp after edit (`bash`)](#preserve-file-timestamp-after-edit-bash)
 - [GRUB](#grub)
   - [Show GRUB when boot](#show-grub-when-boot)
-  - [Find all OS, update GRUB config, install GRUB to MBR / UEFI](#find-all-os-update-grub-config-install-grub-to-mbr--uefi)
+  - [Update GRUB config](#update-grub-config)
   - [GRUB auto-generate config path](#grub-auto-generate-config-path)
   - [GRUB option](#grub-option)
   - [Set default to last selected option](#set-default-to-last-selected-option)
 - [Hardware](#hardware)
-- [Kernel module](#kernel-module)
+- [Kernel](#kernel)
+  - [Kernel info](#kernel-info)
+  - [Kernel module](#kernel-module)
 - [Jobs](#jobs)
 - [File permission](#file-permission)
   - [Only change directory permission](#only-change-directory-permission)
@@ -41,7 +43,6 @@
 - [DNS](#dns)
 - [Sharing desktop](#sharing-desktop)
   - [Disable sharing desktop encryption (Ubuntu)](#disable-sharing-desktop-encryption-ubuntu)
-- [Kernel info](#kernel-info)
 - [Disk usage](#disk-usage)
 - [Find](#find)
 - [Directory Stack](#directory-stack)
@@ -55,9 +56,13 @@
 - [Linux Distribution / Version](#linux-distribution--version)
 - [Mount](#mount)
   - [Remount mount point in fstab](#remount-mount-point-in-fstab)
-  - [Remount mount point in fstab with RW (read-write) option](#remount-mount-point-in-fstab-with-rw-read-write-option)
-- [Install Development Tools](#install-development-tools)
+  - [Lists all mounted filesystems](#lists-all-mounted-filesystems)
+  - [Mount CIFS / SMB / Windows Shared Folder](#mount-cifs--smb--windows-shared-folder)
+- [Package management](#package-management)
+  - [Install Development Tools](#install-development-tools)
   - [Add EPEL repository to CentOS / RHEL](#add-epel-repository-to-centos--rhel)
+  - [Download package with dependence](#download-package-with-dependence)
+  - [List installed package](#list-installed-package)
 - [Last login](#last-login)
   - [Suppress `Last Login` message](#suppress-last-login-message)
   - [Clear last login log](#clear-last-login-log)
@@ -176,7 +181,7 @@ HISTSIZE=0
 ```
 
 
-# Preserve file timestamp after edit (bash)
+# Preserve file timestamp after edit (`bash`)
 ```sh
 vi-preserve-time () {
     for file in "$@"; do
@@ -194,7 +199,8 @@ vi-preserve-time () {
 
 Hold `Shift` when boot
 
-## Find all OS, update GRUB config, install GRUB to MBR / UEFI
+## Update GRUB config
+Find all OS, update GRUB config, install GRUB to MBR / UEFI
 ```sh
 update-grub
 ```
@@ -232,7 +238,14 @@ GRUB_SAVEDEFAULT=true
 | `df -h` | Disk free space in human readable format |
 
 
-# Kernel module
+# Kernel
+
+## Kernel info
+```sh
+uname -a
+```
+
+## Kernel module
 
 `module-name` is same as `module_name`
 
@@ -393,13 +406,6 @@ gsettings set org.gnome.Vino require-encryption false
 ```
 
 
-# Kernel info
-
-```sh
-uname -a
-```
-
-
 # Disk usage
 
 | Command | Description |
@@ -478,20 +484,42 @@ lsb_release -a
 # Mount
 
 ```sh
-mount <source> <directory>
+mount [-t <type>] <source> <directory>
 ```
 
 ## Remount mount point in fstab
 ```sh
-mount -o remount <directory>
+# rw: read-write
+mount -o remount[,rw] <directory>
 ```
 
-## Remount mount point in fstab with RW (read-write) option
+## Lists all mounted filesystems
 ```sh
-mount -o remount,rw <directory>
+# -l: lable
+mount [-l] [-t type]
 ```
 
-# Install Development Tools
+## Mount CIFS / SMB / Windows Shared Folder
+
+| Option | Description |
+| --- | --- |
+| `username=<username>` | Username |
+| `password=<password>` | Password |
+| `domain=<domain>` | Domain |
+| `vers=1.0` | SMBv1 (Default) |
+| `vers=2.0` | SMBv2.002 for Windows Vista SP1 and 2008 |
+| `vers=2.1` | SMBv2.1 for Windows 7 and 2008R2 |
+| `vers=3.0` | SMBv3.0 for Windows 8 and 2012 |
+| `noperm` | Client bypass permission checks |
+
+```sh
+# mount.cifs = mount -t cifs
+mount.cifs -o <option>[,<option>...]] //<host>/<share name> <directory>
+```
+
+# Package management
+
+## Install Development Tools
 
 CentOS
 
@@ -520,7 +548,33 @@ pacman -S base-devel
 [Reference](https://fedoraproject.org/wiki/EPEL)
 
 ```sh
-yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+```
+
+## Download package with dependence
+
+Debian
+
+[Reference](https://stackoverflow.com/a/41428445/1877620)
+
+```sh
+# -i = --important : Show only Depends and Pre-Depends
+sudo apt-get download $(apt-cache depends --recurse -i <package> | grep -v "^[ <]")
+
+# Install
+# -m = --fix-missing : Ignore missing packages
+sudo apt-get install -m --no-download ./*
+```
+
+## List installed package
+
+Debian
+
+```sh
+apt list --installed [<package name pattern>]
+
+# -l = --list
+dpkg -l [<package name pattern>]
 ```
 
 # Last login
