@@ -6,6 +6,8 @@
 - [Save / Reset](#save--reset)
 - [Log](#log)
 - [Diagnostic](#diagnostic)
+  - [CDP (Cisco Discovery Protocol)](#cdp-cisco-discovery-protocol)
+  - [SPAN (Switched Port Analyzer)](#span-switched-port-analyzer)
 - [VLAN](#vlan)
   - [VTP (VLAN Trunk Protocol)](#vtp-vlan-trunk-protocol)
   - [Root guard](#root-guard)
@@ -194,13 +196,13 @@ Tech Support
 Switch# show tech-support
 ```
 
-CDP (Cisco Discovery Protocol)
+## CDP (Cisco Discovery Protocol)
 
 ```
 Switch# show cdp neighbors [<interface>] [detail]
 ```
 
-SPAN (Switched Port Analyzer)
+## SPAN (Switched Port Analyzer)
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-1_19_ea1/configuration/guide/3750scg/swspan.html)
 
@@ -228,25 +230,35 @@ Switch(config)# no monitor session <session number>
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/lan-switching/vlan/10023-3.html)
 
+
+Create VLAN
+
 ```
-! Create VLAN
 Switch(config)# vlan <VLAN ID>[-<VLAN ID>]
 Switch(config-vlan)#
 
-! If above not working
+! Older IOS version
 Switch# vlan database
 Switch(vlan)# vlan <VLAN ID>[-<VLAN ID>]
+```
 
-! Remove VLAN
+Remove VLAN
+```
 Switch(config)# no vlan <VLAN ID>[-<VLAN ID>]
+```
 
-! VLAN name
+VLAN name
+```
 Switch(config-vlan)# name <name>
+```
 
-! List VLAN
+List VLAN
+```
 Switch# show vlan
+```
 
-! Show trunk port information
+Show trunk port information
+```
 Switch# show interfaces trunk
 ```
 
@@ -284,7 +296,7 @@ Switch(config)# spanning-tree portfast default
 
 ## BPDU guard
 
-`err-disable` port if detect BPDU
+Port will be `err-disable` if BPDU is detected
 
 ```
 Switch(config-if)# spanning-tree bpduguard { enable | disable }
@@ -407,14 +419,20 @@ Switch(config)# router ospf <process ID>
 Switch(config-router)# network <IP> <netmask> area <area ID>
 ! or
 Switch(config-if)# ip ospf <process ID> area <area ID>
+```
 
-! List LSAs (Link State Advertisements)
+List LSAs (Link State Advertisements)
+```
 Switch# show ip ospf database
+```
 
-! List OSPF neighbor
+List OSPF neighbor
+```
 Switch# show ip ospf neighbor
+```
 
-! List OSPF routes
+List OSPF routes
+```
 Switch# show ip route ospf
 ```
 
@@ -489,13 +507,18 @@ Switch(config)# snmp-server community <community string> ro
 # Authenticate
 
 Enable AAA authentication / authorization
-
 ```
 Switch(config)# aaa new-model
-! Use local user authentication
+```
+
+Use local user authentication
+```
 Switch(config)# aaa authentication login default local
 Switch(config)# aaa authorization exec default local
-! Enable console authorization
+```
+
+Enable console authorization
+```
 Switch(config)# aaa authorization console
 ```
 
@@ -813,7 +836,7 @@ Switch(config)# sdm prefer ?
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst6500/ios/15-0SY/configuration/guide/15_0_sy_swcg/vlan_acls.html)
 
-VACL default (no match) is `drop`
+VACL default (if no match) is `drop`
 
 ```
 Switch(config)# vlan access-map <access-map name> <sequence number>
@@ -850,20 +873,26 @@ Switch(config)# vlan filter <access-map name> vlan-list <VLAN list>
 [Reference](https://www.cisco.com/c/en/us/support/docs/security/ios-firewall/23602-confaccesslists.html)
 / [Resequencing Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_data_acl/configuration/xe-3s/sec-data-acl-xe-3s-book/sec-acl-seq-num.html)
 
-ACL default (no match) is `drop`, match = `(packet_ip & ~inverse_mask) == acl_ip`
+ACL default (if no match) is `drop`, match if `(packet_ip & ~inverse_mask) == acl_ip`
 
+Standard ACL
 ```
-! <address> = {any|<IP> <inverse mask>|host <IP>}
+! <address> = { any | <IP> <inverse mask> | host <IP> }
 
-! Standard ACL
 Switch(config)# ip access-list standard { <ACL name> | <1-99> | <1300-1999> }
 Switch(config-std-nacl)# [<sequence number>] { permit | deny } <source address>
+```
 
-! Extended ACL
+Extended ACL
+```
+! <port> = { eq | neq | lt | gt } <port> | range <first port> <last port>
+
 Switch(config)# ip access-list extended { <ACL name> | <100-199> | <2000-2699> }
-Switch(config-ext-nacl)# [<sequence number>] { permit | deny } { ip | udp | tcp } <source address> [{ eq | neq | lt | gt } <source port>] <destination address> [{ eq | neq | lt | gt } <destination port>]
+Switch(config-ext-nacl)# [<sequence number>] { permit | deny } { ip | udp | tcp } <source address> [<source port>] <destination address> [<destination port>]
+```
 
-! Resequencing access-list entries
+Resequencing access-list entries
+```
 Switch(config)# ip access-list resequence <ACL ID> <starting sequence number> <increment>
 ```
 
@@ -879,8 +908,8 @@ ACL default (no match) is `drop`
 
 ```
 Switch(config)# mac access-list extended <name>
-! <MAC address> = {any|host <MAC address>|<MAC address> <MAC address mask>}
-Switch(config-ext-macl)# {permit|deny} <source MAC address> <destination MAC address>
+! <MAC address> = { any | host <MAC address> | <MAC address> <MAC address mask> }
+Switch(config-ext-macl)# { permit | deny } <source MAC address> <destination MAC address>
 ```
 
 # ARP
@@ -908,15 +937,19 @@ Switch(config)# errdisable recovery cause arp-inspection
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3550-series-switches/24800-153.html)
 
+Enable QoS
 ```
-! Enable QoS
 Switch(config)# mls qos
+```
 
-! Class map
+Class map
+```
 Switch(config)# class-map match-all <class name>
 Switch(config-cmap)# match access-group <ACL>
+```
 
-! Policy map
+Policy map
+```
 Switch(config)# policy-map <policy name>
 Switch(config-pmap)# class { <class name> | class-default }
 ! Min Burst = BPS / 8,000
