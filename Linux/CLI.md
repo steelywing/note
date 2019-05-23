@@ -9,6 +9,9 @@
   - [Unlock user](#unlock-user)
   - [Expire user password (force user to change password)](#expire-user-password-force-user-to-change-password)
   - [Set password expire day](#set-password-expire-day)
+  - [Change / Override user's primary group](#change--override-users-primary-group)
+  - [Change / Override user's supplementary groups](#change--override-users-supplementary-groups)
+  - [Add user's supplementary groups](#add-users-supplementary-groups)
   - [User database file](#user-database-file)
   - [Password file](#password-file)
 - [Shell](#shell)
@@ -72,7 +75,7 @@
 
 ## Add user
 ```sh
-useradd <user>
+useradd <user> [-d <home directory>] [-g <group>] [-G <supplementary group>[,<supplementary group>...]] [-s <shell>]
 
 # Debian only
 adduser <user>
@@ -116,6 +119,21 @@ passwd -e <user>
 passwd -x <day> <user>
 ```
 
+## Change / Override user's primary group
+```sh
+usermod -g <group> <user>
+```
+
+## Change / Override user's supplementary groups
+```sh
+usermod -G <group>[,<group>...] <user>
+```
+
+## Add user's supplementary groups
+```sh
+usermod -aG <group>[,<group>...] <user>
+```
+
 ## User database file
 ```sh
 /etc/passwd
@@ -131,7 +149,7 @@ passwd -x <day> <user>
 
 ```sh
 # Shell list
-/etc/shells
+cat /etc/shells
 
 # Chanage shell
 chsh -s <shell> [<user>]
