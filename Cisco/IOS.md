@@ -9,17 +9,19 @@
   - [CDP (Cisco Discovery Protocol)](#cdp-cisco-discovery-protocol)
   - [SPAN (Switched Port Analyzer)](#span-switched-port-analyzer)
 - [VLAN](#vlan)
-  - [VTP (VLAN Trunk Protocol)](#vtp-vlan-trunk-protocol)
+  - [VTP (VLAN Trunking Protocol)](#vtp-vlan-trunking-protocol)
   - [Root guard](#root-guard)
+  - [Loop guard](#loop-guard)
   - [Port fast](#port-fast)
   - [BPDU guard](#bpdu-guard)
   - [BPDU filter](#bpdu-filter)
 - [DHCP](#dhcp)
   - [Preassigning IP Addresses](#preassigning-ip-addresses)
+  - [DHCP snooping](#dhcp-snooping)
 - [Routing](#routing)
   - [Gateway](#gateway)
   - [Change to routing mode](#change-to-routing-mode)
-  - [Policy-Based Routing](#policy-based-routing)
+  - [Policy-based routing](#policy-based-routing)
   - [OSPF](#ospf)
 - [DNS](#dns)
 - [Date / Time](#date--time)
@@ -29,10 +31,22 @@
 - [Interface](#interface)
   - [Interface diagnostic](#interface-diagnostic)
   - [Config interface](#config-interface)
+    - [Config a range of interface](#config-a-range-of-interface)
+    - [Config VLAN interface](#config-vlan-interface)
+    - [Interface description](#interface-description)
+    - [Layer 3 mode](#layer-3-mode)
+    - [Layer 2 mode](#layer-2-mode)
+    - [Set trunk encapsulation to 802.1Q](#set-trunk-encapsulation-to-8021q)
+    - [Interface access / trunk mode](#interface-access--trunk-mode)
+    - [Allow specified VLAN on trunk](#allow-specified-vlan-on-trunk)
+    - [Specify access port VLAN](#specify-access-port-vlan)
+    - [Protected mode](#protected-mode)
   - [Bandwidth limit](#bandwidth-limit)
-  - [Recovery err-disable port](#recovery-err-disable-port)
+  - [Recovery `err-disable` port](#recovery-err-disable-port)
   - [Disable (non Cisco) GBIC module checking](#disable-non-cisco-gbic-module-checking)
-- [Archive](#archive)
+- [Archive configuration](#archive-configuration)
+  - [Archive to FTP](#archive-to-ftp)
+  - [Archive to SCP](#archive-to-scp)
 - [Banner](#banner)
 - [Show TCAM (ACL, MAC, QOS, Route) utilization](#show-tcam-acl-mac-qos-route-utilization)
 - [SDM - Switch Database Management (TCAM, ACL, Routing)](#sdm---switch-database-management-tcam-acl-routing)
@@ -43,6 +57,8 @@
 - [ARP](#arp)
   - [Static ARP](#static-arp)
   - [ARP inspection](#arp-inspection)
+- [Q-in-Q / IEEE 802.1Q tunnel](#q-in-q--ieee-8021q-tunnel)
+  - [Show IEEE 802.1Q tunnel port](#show-ieee-8021q-tunnel-port)
 - [QoS](#qos)
 - [Multicast](#multicast)
   - [PIM (Protocol Independent Multicast)](#pim-protocol-independent-multicast)
@@ -50,6 +66,9 @@
   - [IGMP](#igmp)
   - [Multicast Debug](#multicast-debug)
 - [Broadcast](#broadcast)
+  - [Allow broadcast](#allow-broadcast)
+  - [Forward broadcast packet to other IP](#forward-broadcast-packet-to-other-ip)
+  - [Allow specified UDP port forward broadcast](#allow-specified-udp-port-forward-broadcast)
 
 # Basic
 
@@ -132,7 +151,7 @@ Monitor log in Console
 Switch(config)# [no] logging console
 ```
 
-Display timestamp
+Display timestamp in log / debug
 ```
 Switch(config)# service timestamps { log | debug } datetime localtime
 ```
@@ -262,18 +281,32 @@ Show trunk port information
 Switch# show interfaces trunk
 ```
 
-## VTP (VLAN Trunk Protocol)
+## VTP (VLAN Trunking Protocol)
+
+[Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3560/software/release/12-2_52_se/configuration/guide/3560scg/swvtp.html)
 
 ```
-Switch(config)# vtp mode <mode>
+Switch(config)# vtp mode { off | transparent | server | client }
 Switch(config)# vtp domain <name>
 Switch(config)# vtp password <password>
 ```
 
 ## Root guard
 
+If a root guard enabled port receives superior STP BPDU, root guard moves this port to a root-inconsistent (listening) state.
+
 ```
 Switch(config-if)# spanning-tree guard root
+```
+
+## Loop guard
+
+[Reference](https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/10596-84.html)
+
+If a non-designated port no longer receive STP BPDU, the port transitions into loop-inconsistent (blocking) state.
+
+```
+Switch(config-if)# spanning-tree guard loop
 ```
 
 Enable loop guard on all port
@@ -296,7 +329,7 @@ Switch(config)# spanning-tree portfast default
 
 ## BPDU guard
 
-Port will be `err-disable` if BPDU is detected
+If BPDU is detected on the port, the port will be `err-disable`.
 
 ```
 Switch(config-if)# spanning-tree bpduguard { enable | disable }
@@ -348,14 +381,16 @@ Switch(dhcp-config)# client-identifier <ID>
 Switch(dhcp-config)# hardware-address <MAC address>
 ```
 
-Debug
+Verify
 
 ```
 Switch# show ip dhcp binding
 Switch# show ip dhcp conflict 
 ```
 
-DHCP snooping (Drop DHCP on untrust interface)
+## DHCP snooping
+
+Drop DHCP on untrust interface
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-2_52_se/configuration/guide/3750scg/swdhcp82.html)
 
@@ -365,7 +400,7 @@ Switch(config)# ip dhcp snooping vlan <VLAN list>
 Switch(config)# no ip dhcp snooping information option
 ```
 
-Trust DHCP from this port (For DHCP snooping)
+Trust DHCP from this port
 
 ```
 Switch(config-if)# ip dhcp snooping trust
@@ -393,7 +428,7 @@ Switch(config)# ip route 0.0.0.0 0.0.0.0 <gateway>
 Switch(config)# ip routing
 ```
 
-## Policy-Based Routing
+## Policy-based routing
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/ios/12_2/qos/configuration/guide/fqos_c/qcfpbr.html)
 
@@ -525,7 +560,7 @@ Switch(config)# aaa authorization console
 Create user
 
 ```
-Switch(config)# username <username> privilege 15 password <password>
+Switch(config)# username <username> privilege <privilege level> password <password>
 ```
 
 Set enable password
@@ -536,14 +571,14 @@ Unnecessary for `privilege 15` user
 Switch(config)# enable secret <password>
 ```
 
-Config console
+Console
 
 ```
 Switch(config)# line console 0
 Switch(config-line)# 
 ```
 
-Config Telnet / SSH
+Telnet / SSH
 
 ```
 Switch(config)# line vty 0 15
@@ -556,7 +591,7 @@ Generate RSA key (for SSH)
 Switch(config)# crypto key generate rsa
 ```
 
-Config SSH public key
+Add SSH public key
 
 ```
 Switch(config)# ip ssh pubkey-chain
@@ -598,7 +633,7 @@ Encrypt password
 Switch(config)# service password-encryption
 ```
 
-Enable Telnet or SSH
+Enable Telnet / SSH
 
 ```
 Switch(config-line)# transport input { all | telnet | ssh | none }
@@ -686,13 +721,13 @@ Switch(config)# interface <interface>/<port number>
 Switch(config-if)# 
 ```
 
-Config a range of interface
+### Config a range of interface
 
 ```
 Switch(config)# interface range <interface>/<port number> - <port number>
 ```
 
-Config VLAN interface
+### Config VLAN interface
 
 ```
 Switch(config)# interface vlan <VLAN ID>
@@ -700,56 +735,53 @@ Switch(config-if)# ip address <IP> <netmask>
 Switch(config-if)# no shutdown
 ```
 
-Description
+### Interface description
 
 ```
 Switch(config-if)# description <description>
 ```
 
-Layer 3 mode
+### Layer 3 mode
 
 ```
 Switch(config-if)# no switchport
 ```
 
-Layer 2 mode
+### Layer 2 mode
 
 ```
 Switch(config-if)# switchport
 ```
 
-Set trunk encapsulation to 802.1Q
+### Set trunk encapsulation to 802.1Q
 
 ```
 Switch(config-if)# switchport trunk encapsulation dot1q
 ```
 
-Trunk mode
+### Interface access / trunk mode
 
 ```
-Switch(config-if)# switchport mode trunk
+Switch(config-if)# switchport mode { access | trunk }
 ```
 
-Access mode
+### Allow specified VLAN on trunk
 
-```
-Switch(config-if)# switchport mode access
-```
-
-Allow specified VLAN on trunk (default allow all)
+Default allow all
 
 ```
 Switch(config-if)# switchport trunk allowed vlan <VLAN ID list>
 ```
 
-Specify port VLAN
+### Specify access port VLAN
 
 ```
 Switch(config-if)# switchport access vlan <VLAN ID>
 ```
 
-Enable protected mode (traffic will not send to other protected port)
+### Protected mode
 
+Do not forward traffic to other protected port
 ```
 Switch(config-if)# switchport protected
 ```
@@ -762,7 +794,7 @@ Switch(config-if)# switchport protected
 Switch(config-if)# srr-queue bandwidth limit <percentage>
 ```
 
-## Recovery err-disable port
+## Recovery `err-disable` port
 
 ```
 Switch(config-if)# shutdown
@@ -778,23 +810,34 @@ Switch(config)# no errdisable detect cause gbic-invalid
 Switch(config)# service unsupported-transceiver
 ```
 
-# Archive
+# Archive configuration
 
-`$h` = hostname, `$t` = time
+| Variable | Value |
+| --- | --- |
+| `$h` | Hostname |
+| `$t` | Time |
+
+## Archive to FTP
 
 ```
-! Archive FTP login
 Switch(config)# ip ftp username <username>
 Switch(config)# ip ftp password <password>
 
 Switch(config)# archive
-Switch(config-archive)# path ftp://<IP>/$h/$h-$t
-Switch(config-archive)# path scp://<username>:<password>@<ip>/$h/$h-$t
+Switch(config-archive)# path ftp://<IP>/<path>
+```
+
+## Archive to SCP
+```
+Switch(config)# archive
+Switch(config-archive)# path scp://<username>:<password>@<IP>/<path>
 ```
 
 # Banner
 
-`$(hostname)` = hostname
+| Variable | Value |
+| --- | --- |
+| $(hostname) | Hostname |
 
 ```
 Switch(config)# banner login ^
@@ -933,9 +976,31 @@ Switch(config)# ip arp inspection vlan <VLAN list>
 Switch(config)# errdisable recovery cause arp-inspection
 ```
 
+# Q-in-Q / IEEE 802.1Q tunnel
+
+[Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750x_3560x/software/release/12-2_55_se/configuration/guide/3750xscg/swtunnel.html)
+
+```
+Switch(config-if)# switchport access vlan <VLAN ID>
+Switch(config-if)# switchport mode dot1q-tunnel
+Switch(config)# vlan dot1q tag native
+```
+
+## Show IEEE 802.1Q tunnel port
+
+```
+Switch# show dot1q-tunnel
+```
+
 # QoS
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3550-series-switches/24800-153.html)
+
+[Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3750-series-switches/91862-cat3750-qos-config.html)
+
+[QoS Threshold](https://community.cisco.com/t5/telepresence-and-video/help-understanding-qos-threshold/td-p/1374101)
+
+[Egress QoS](https://community.cisco.com/t5/networking-documents/egress-qos/ta-p/3122802)
 
 Enable QoS
 ```
@@ -954,6 +1019,11 @@ Switch(config)# policy-map <policy name>
 Switch(config-pmap)# class { <class name> | class-default }
 ! Min Burst = BPS / 8,000
 Switch(config-pmap-c)# police <BPS> <burst normal> <burst max> exceed-action drop
+```
+
+Apply policy map
+```
+Switch(config-if)# service-policy { input | output } <policy name>
 ```
 
 # Multicast
@@ -985,8 +1055,9 @@ Switch(config)# ip igmp snooping querier [address <source IP>]
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960x/software/15-0_2_EX/igmp_snoop/configuration_guide/b_mc_152ex_2960-x_cg/b_mc_152ex_2960-x_cg_chapter_010.html)
 
+Default enabled
+
 ```
-! Default enabled
 Switch(config)# ip igmp snooping [vlan <VLAN ID>]
 ```
 
@@ -1004,13 +1075,22 @@ Switch# show ip mroute [<IP>] [count]
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipapp/command/iap-cr-book/iap-i1.html)
 
+## Allow broadcast
+
 ```
-! Allow broadcast
 Switch(config-if)# ip directed-broadcast [<ACL ID>]
+```
 
-! Forward broadcast packet to other IP
+## Forward broadcast packet to other IP
+
+```
 Switch(config-if)# ip helper-address <IP>
+```
 
-! Allow specified port forward broadcast (Default is all)
+## Allow specified UDP port forward broadcast
+
+Default is all
+
+```
 Switch(config)# ip forward-protocol udp [<port number>]
 ```
