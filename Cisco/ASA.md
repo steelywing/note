@@ -65,10 +65,3 @@ Require configured with `event none`
 ```
 ASA# event manager run <applet>
 ```
-
-# SFR (SourceFire / FirePower)
-
-## Connect to SFR
-```
-ASA# session sfr [console]
-```
