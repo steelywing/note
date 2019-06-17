@@ -20,6 +20,7 @@
 - [Enable / Disable the Local Built-In Administrator Account](#enable--disable-the-local-built-in-administrator-account)
 - [Get OS Architecture (32-bit / 64-bit)](#get-os-architecture-32-bit--64-bit)
 - [SLP (System Locked Pre-installation) / SLIC (System License Internal Code)](#slp-system-locked-pre-installation--slic-system-license-internal-code)
+- [Code page](#code-page)
 
 
 # Network Profile
@@ -241,4 +242,23 @@ Install product key
 
 ```cmd
 slmgr.vbs -ipk <product key>
+```
+
+BSOD (Blue Screen of Death) dump
+
+[BlueScreenView](https://www.nirsoft.net/utils/blue_screen_view.html)
+
+![BSOD Dump](img/bsod-dump.png)
+
+# Code page
+
+[Reference](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/chcp)
+
+```cmd
+chcp <code page>
+```
+
+Change active code page to UTF-8
+```cmd
+chcp 65001
 ```
