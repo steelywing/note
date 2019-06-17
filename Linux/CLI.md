@@ -14,6 +14,11 @@
   - [Add user's supplementary groups](#add-users-supplementary-groups)
   - [User database file](#user-database-file)
   - [Password file](#password-file)
+- [Date](#date)
+  - [Set date](#set-date)
+  - [RTC in the local time](#rtc-in-the-local-time)
+  - [RTC in the UTC](#rtc-in-the-utc)
+  - [Convert timestamp to date time](#convert-timestamp-to-date-time)
 - [Shell](#shell)
   - [Indicate command type](#indicate-command-type)
   - [Remove current session bash history](#remove-current-session-bash-history)
@@ -142,6 +147,32 @@ usermod -aG <group>[,<group>...] <user>
 ## Password file
 ```sh
 /etc/shadow
+```
+
+# Date
+
+## Set date
+
+```sh
+timedatectl set-time [<YYYY>-<MM>-<DD>] [<HH>:<MM>:<SS>]
+```
+
+## RTC in the local time
+
+```sh
+timedatectl set-local-rtc { true | t | yes | y | 1 }
+```
+
+## RTC in the UTC
+
+```sh
+timedatectl set-local-rtc { false | f | no | n | 0 }
+```
+
+## Convert timestamp to date time
+
+```sh
+date -d @<timestamp>
 ```
 
 
@@ -440,10 +471,34 @@ du -hs <path> | sort -h -r
 
 # Find
 
-Pipe `find` to `ls`
+Run command in `find` result, `{}` is result path
+
 ```sh
-find [<path>] [<expression>] -exec ls -lad {} +
+find [<path>] [<expression>] -exec <command> {} +
 ```
+
+`<command> {} +` will expand like `<command> <path> <path> ...`
+
+```sh
+find [<path>] [ [!] <expression> ] -exec <command> {} \;
+```
+
+`<command> {} \;` will expand like `<command> <path>; <command> <path>; ...`
+
+| Expression | Description |
+| - | - |
+| `-name <pattern>` | Match file name |
+| `-iname <pattern>` | Match file name with case insensitive |
+| `-mtime [+|-]<days>` | Last modified time |
+| `-atime [+|-]<days>` | Last accessed time |
+| `-size [+|-]<size>[k|M|G]` | File size |
+
+| Time Expression | Description |
+| - | - |
+| | `diff = int(day(current_time - file_time))` |
+| `+<days>` | `diff > <days>` |
+| `-<days>` | `diff < <days>` |
+| `<days>` | `diff == <days>` |
 
 
 # Directory Stack
@@ -484,7 +539,7 @@ update-java-alternatives --set <JVM name>
 ```
 
 
-# Linux Distribution / Version 
+# Linux Distribution / Version
 
 ```sh
 cat /etc/*-release
@@ -545,8 +600,8 @@ CentOS
 # List available groups
 yum group list
 
-# Install "Development Tools" 
-yum group install "Development Tools" 
+# Install "Development Tools"
+yum group install "Development Tools"
 ```
 
 Ubuntu
