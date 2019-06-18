@@ -1,74 +1,76 @@
 # Table of Contents
 
-- [Table of Contents](#table-of-contents)
-- [Basic](#basic)
-- [EXEC / Config Mode](#exec--config-mode)
-- [Save / Reset](#save--reset)
-- [Log](#log)
-- [Diagnostic](#diagnostic)
-  - [CDP (Cisco Discovery Protocol)](#cdp-cisco-discovery-protocol)
-  - [SPAN (Switched Port Analyzer)](#span-switched-port-analyzer)
-- [VLAN](#vlan)
-  - [VTP (VLAN Trunking Protocol)](#vtp-vlan-trunking-protocol)
-  - [Root guard](#root-guard)
-  - [Loop guard](#loop-guard)
-  - [Port fast](#port-fast)
-  - [BPDU guard](#bpdu-guard)
-  - [BPDU filter](#bpdu-filter)
-- [DHCP](#dhcp)
-  - [Preassigning IP Addresses](#preassigning-ip-addresses)
-  - [DHCP snooping](#dhcp-snooping)
-- [Routing](#routing)
-  - [Gateway](#gateway)
-  - [Change to routing mode](#change-to-routing-mode)
-  - [Policy-based routing](#policy-based-routing)
-  - [OSPF](#ospf)
-- [DNS](#dns)
-- [Date / Time](#date--time)
-- [SNMP](#snmp)
-- [Authenticate](#authenticate)
-- [Port channel (Ether channel)](#port-channel-ether-channel)
-- [Interface](#interface)
-  - [Interface diagnostic](#interface-diagnostic)
-  - [Config interface](#config-interface)
-    - [Config a range of interface](#config-a-range-of-interface)
-    - [Config VLAN interface](#config-vlan-interface)
-    - [Interface description](#interface-description)
-    - [Layer 3 mode](#layer-3-mode)
-    - [Layer 2 mode](#layer-2-mode)
-    - [Set trunk encapsulation to 802.1Q](#set-trunk-encapsulation-to-8021q)
-    - [Interface access / trunk mode](#interface-access--trunk-mode)
-    - [Allow specified VLAN on trunk](#allow-specified-vlan-on-trunk)
-    - [Specify access port VLAN](#specify-access-port-vlan)
-    - [Protected mode](#protected-mode)
-  - [Bandwidth limit](#bandwidth-limit)
-  - [Recovery `err-disable` port](#recovery-err-disable-port)
-  - [Disable (non Cisco) GBIC module checking](#disable-non-cisco-gbic-module-checking)
-- [Archive configuration](#archive-configuration)
-  - [Archive to FTP](#archive-to-ftp)
-  - [Archive to SCP](#archive-to-scp)
-- [Banner](#banner)
-- [Show TCAM (ACL, MAC, QOS, Route) utilization](#show-tcam-acl-mac-qos-route-utilization)
-- [SDM - Switch Database Management (TCAM, ACL, Routing)](#sdm---switch-database-management-tcam-acl-routing)
-- [ACL](#acl)
-  - [VACL (VLAN ACL)](#vacl-vlan-acl)
-  - [IP ACL](#ip-acl)
-  - [MAC ACL](#mac-acl)
-- [ARP](#arp)
-  - [Static ARP](#static-arp)
-  - [ARP inspection](#arp-inspection)
-- [Q-in-Q / IEEE 802.1Q tunnel](#q-in-q--ieee-8021q-tunnel)
-  - [Show IEEE 802.1Q tunnel port](#show-ieee-8021q-tunnel-port)
-- [QoS](#qos)
-- [Multicast](#multicast)
-  - [PIM (Protocol Independent Multicast)](#pim-protocol-independent-multicast)
-  - [IP Querier](#ip-querier)
-  - [IGMP](#igmp)
-  - [Multicast Debug](#multicast-debug)
-- [Broadcast](#broadcast)
-  - [Allow broadcast](#allow-broadcast)
-  - [Forward broadcast packet to other IP](#forward-broadcast-packet-to-other-ip)
-  - [Allow specified UDP port forward broadcast](#allow-specified-udp-port-forward-broadcast)
+- [Table of Contents](#Table-of-Contents)
+- [Basic](#Basic)
+- [EXEC / Config Mode](#EXEC--Config-Mode)
+- [Save / Reset](#Save--Reset)
+- [Log](#Log)
+- [Diagnostic](#Diagnostic)
+  - [CDP (Cisco Discovery Protocol)](#CDP-Cisco-Discovery-Protocol)
+  - [LLDP](#LLDP)
+  - [SPAN (Switched Port Analyzer)](#SPAN-Switched-Port-Analyzer)
+- [VLAN](#VLAN)
+  - [VTP (VLAN Trunking Protocol)](#VTP-VLAN-Trunking-Protocol)
+  - [Root guard](#Root-guard)
+  - [Loop guard](#Loop-guard)
+  - [Port fast](#Port-fast)
+  - [BPDU guard](#BPDU-guard)
+  - [BPDU filter](#BPDU-filter)
+- [DHCP](#DHCP)
+  - [Preassigning IP Addresses](#Preassigning-IP-Addresses)
+  - [DHCP snooping](#DHCP-snooping)
+- [Routing](#Routing)
+  - [Gateway](#Gateway)
+  - [Change to routing mode](#Change-to-routing-mode)
+  - [Policy-based routing](#Policy-based-routing)
+  - [OSPF](#OSPF)
+- [DNS](#DNS)
+- [Date / Time](#Date--Time)
+- [SNMP](#SNMP)
+- [Authenticate](#Authenticate)
+- [Port channel (Ether channel)](#Port-channel-Ether-channel)
+- [Interface](#Interface)
+  - [Interface diagnostic](#Interface-diagnostic)
+  - [Config interface](#Config-interface)
+    - [Config a range of interface](#Config-a-range-of-interface)
+    - [Config VLAN interface](#Config-VLAN-interface)
+    - [Interface description](#Interface-description)
+    - [Auto MDI-X (Medium-Dependent Interface Crossover)](#Auto-MDI-X-Medium-Dependent-Interface-Crossover)
+    - [Layer 3 mode](#Layer-3-mode)
+    - [Layer 2 mode](#Layer-2-mode)
+    - [Set trunk encapsulation to 802.1Q](#Set-trunk-encapsulation-to-8021Q)
+    - [Interface access / trunk mode](#Interface-access--trunk-mode)
+    - [Allow specified VLAN on trunk](#Allow-specified-VLAN-on-trunk)
+    - [Specify access port VLAN](#Specify-access-port-VLAN)
+    - [Protected mode](#Protected-mode)
+  - [Bandwidth limit](#Bandwidth-limit)
+  - [Recovery `err-disable` port](#Recovery-err-disable-port)
+  - [Disable (non Cisco) GBIC module checking](#Disable-non-Cisco-GBIC-module-checking)
+- [Archive configuration](#Archive-configuration)
+  - [Archive to FTP](#Archive-to-FTP)
+  - [Archive to SCP](#Archive-to-SCP)
+- [Banner](#Banner)
+- [Show TCAM (ACL, MAC, QOS, Route) utilization](#Show-TCAM-ACL-MAC-QOS-Route-utilization)
+- [SDM - Switch Database Management (TCAM, ACL, Routing)](#SDM---Switch-Database-Management-TCAM-ACL-Routing)
+- [ACL](#ACL)
+  - [VACL (VLAN ACL)](#VACL-VLAN-ACL)
+  - [IP ACL](#IP-ACL)
+  - [MAC ACL](#MAC-ACL)
+- [ARP](#ARP)
+  - [Static ARP](#Static-ARP)
+  - [ARP inspection](#ARP-inspection)
+- [Q-in-Q / IEEE 802.1Q tunnel](#Q-in-Q--IEEE-8021Q-tunnel)
+  - [Show IEEE 802.1Q tunnel port](#Show-IEEE-8021Q-tunnel-port)
+- [QoS](#QoS)
+- [Multicast](#Multicast)
+  - [PIM (Protocol Independent Multicast)](#PIM-Protocol-Independent-Multicast)
+  - [IP Querier](#IP-Querier)
+  - [IGMP](#IGMP)
+  - [Multicast Debug](#Multicast-Debug)
+- [Broadcast](#Broadcast)
+  - [Allow broadcast](#Allow-broadcast)
+  - [Forward broadcast packet to other IP](#Forward-broadcast-packet-to-other-IP)
+  - [Allow specified UDP port forward broadcast](#Allow-specified-UDP-port-forward-broadcast)
 
 # Basic
 
@@ -129,11 +131,13 @@ Reset to Factory Default
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-2900-xl-series-switches/24328-156.html)
 
+Erase startup config
 ```
-! Erase startup config
 Switch# write erase
+```
 
-! Delete VLAN config
+Delete VLAN config
+```
 Switch# delete flash:/vlan.dat
 ```
 
@@ -219,6 +223,31 @@ Switch# show tech-support
 
 ```
 Switch# show cdp neighbors [<interface>] [detail]
+```
+
+## LLDP
+
+[Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst4500/12-2/46sg/configuration/guide/Wrapper-46SG/swlldp.html)
+
+
+Enable / Disable LLDP
+```
+Switch(config)# [no] lldp run
+```
+
+Enable / Disable LLDP transmit
+```
+Switch(config)# [no] lldp transmit
+```
+
+Enable / Disable LLDP receive
+```
+Switch(config)# [no] lldp receive
+```
+
+Show LLDP neighbor
+```
+Switch# show lldp neighbors
 ```
 
 ## SPAN (Switched Port Analyzer)
@@ -741,6 +770,12 @@ Switch(config-if)# no shutdown
 Switch(config-if)# description <description>
 ```
 
+### Auto MDI-X (Medium-Dependent Interface Crossover)
+[Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960x/software/15-0_2_EX/int_hw_components/configuration_guide/b_int_152ex_2960-x_cg/b_int_152ex_2960-x_cg_chapter_011.html)
+```
+Switch(config-if)# [no] mdix auto
+```
+
 ### Layer 3 mode
 
 ```
@@ -914,7 +949,6 @@ Switch(config)# vlan filter <access-map name> vlan-list <VLAN list>
 ## IP ACL
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/security/ios-firewall/23602-confaccesslists.html)
-/ [Resequencing Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_data_acl/configuration/xe-3s/sec-data-acl-xe-3s-book/sec-acl-seq-num.html)
 
 ACL default (if no match) is `drop`, match if `(packet_ip & ~inverse_mask) == acl_ip`
 
@@ -935,6 +969,9 @@ Switch(config-ext-nacl)# [<sequence number>] { permit | deny } { ip | udp | tcp 
 ```
 
 Resequencing access-list entries
+
+[Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_data_acl/configuration/xe-3s/sec-data-acl-xe-3s-book/sec-acl-seq-num.html)
+
 ```
 Switch(config)# ip access-list resequence <ACL ID> <starting sequence number> <increment>
 ```
