@@ -620,14 +620,15 @@ Generate RSA key (for SSH)
 Switch(config)# crypto key generate rsa
 ```
 
-Add SSH public key
+Add SSH RSA public key
 
 ```
 Switch(config)# ip ssh pubkey-chain
-Switch(config)# username <username>
-Switch(config)# key-string
-<public key>
-Switch(config)# 
+Switch(conf-ssh-pubkey)# username <username>
+Switch(conf-ssh-pubkey-user)# key-string
+! Less than ~80 char/line
+Switch(conf-ssh-pubkey-data)# <public key>
+Switch(conf-ssh-pubkey-data)# exit
 ```
 
 Login password
