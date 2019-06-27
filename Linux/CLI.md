@@ -1,80 +1,84 @@
 # Table of Contents
-- [Table of Contents](#table-of-contents)
-- [User](#user)
-  - [Add user](#add-user)
-  - [Delete user](#delete-user)
-  - [Change password](#change-password)
-  - [Delete password](#delete-password)
-  - [Lock user](#lock-user)
-  - [Unlock user](#unlock-user)
-  - [Expire user password (force user to change password)](#expire-user-password-force-user-to-change-password)
-  - [Set password expire day](#set-password-expire-day)
-  - [Change / Override user's primary group](#change--override-users-primary-group)
-  - [Change / Override user's supplementary groups](#change--override-users-supplementary-groups)
-  - [Add user's supplementary groups](#add-users-supplementary-groups)
-  - [User database file](#user-database-file)
-  - [Password file](#password-file)
-- [Date](#date)
-  - [Set date](#set-date)
-  - [RTC in the local time](#rtc-in-the-local-time)
-  - [RTC in the UTC](#rtc-in-the-utc)
-  - [Convert timestamp to date time](#convert-timestamp-to-date-time)
-- [Shell](#shell)
-  - [Indicate command type](#indicate-command-type)
-  - [Remove current session bash history](#remove-current-session-bash-history)
-  - [Delete all bash history](#delete-all-bash-history)
-- [Preserve file timestamp after edit (`bash`)](#preserve-file-timestamp-after-edit-bash)
-- [GRUB](#grub)
-  - [Show GRUB when boot](#show-grub-when-boot)
-  - [Update GRUB config](#update-grub-config)
-  - [GRUB auto-generate config path](#grub-auto-generate-config-path)
-  - [GRUB option](#grub-option)
-  - [Set default to last selected option](#set-default-to-last-selected-option)
-- [Hardware](#hardware)
-- [Kernel](#kernel)
-  - [Kernel info](#kernel-info)
-  - [Kernel module](#kernel-module)
-- [Jobs](#jobs)
-- [File permission](#file-permission)
-  - [Only change directory permission](#only-change-directory-permission)
-  - [Only change file permission](#only-change-file-permission)
-  - [Recursive change file permission to `644`, directory to `755`](#recursive-change-file-permission-to-644-directory-to-755)
-- [File attribute](#file-attribute)
-  - [List attribute](#list-attribute)
-  - [Change attribute](#change-attribute)
-- [SELinux](#selinux)
-  - [Get SELinux status](#get-selinux-status)
-  - [Set SELinux status](#set-selinux-status)
-- [Service](#service)
-- [Manual / Help](#manual--help)
-- [Time](#time)
-- [DNS](#dns)
-- [Sharing desktop](#sharing-desktop)
-  - [Disable sharing desktop encryption (Ubuntu)](#disable-sharing-desktop-encryption-ubuntu)
-- [Disk usage](#disk-usage)
-- [Find](#find)
-- [Directory Stack](#directory-stack)
-  - [Push directory](#push-directory)
-  - [Pop and change to the directory](#pop-and-change-to-the-directory)
-  - [List directory stack](#list-directory-stack)
+- [Table of Contents](#Table-of-Contents)
+- [User](#User)
+  - [Add user](#Add-user)
+  - [Delete user](#Delete-user)
+  - [Change password](#Change-password)
+  - [Delete password](#Delete-password)
+  - [Lock user](#Lock-user)
+  - [Unlock user](#Unlock-user)
+  - [Expire user password (force user to change password)](#Expire-user-password-force-user-to-change-password)
+  - [Set password expire day](#Set-password-expire-day)
+  - [Change / Override user's primary group](#Change--Override-users-primary-group)
+  - [Change / Override user's supplementary groups](#Change--Override-users-supplementary-groups)
+  - [Add user's supplementary groups](#Add-users-supplementary-groups)
+  - [User database file](#User-database-file)
+  - [Password file](#Password-file)
+- [Date](#Date)
+  - [Set date](#Set-date)
+  - [RTC in the local time](#RTC-in-the-local-time)
+  - [RTC in the UTC](#RTC-in-the-UTC)
+  - [Convert timestamp to date time](#Convert-timestamp-to-date-time)
+- [Shell](#Shell)
+  - [Indicate command type](#Indicate-command-type)
+  - [Remove current session bash history](#Remove-current-session-bash-history)
+  - [Delete all bash history](#Delete-all-bash-history)
+- [Preserve file timestamp after edit (`bash`)](#Preserve-file-timestamp-after-edit-bash)
+- [GRUB](#GRUB)
+  - [Show GRUB when boot](#Show-GRUB-when-boot)
+  - [Update GRUB config](#Update-GRUB-config)
+  - [GRUB auto-generate config path](#GRUB-auto-generate-config-path)
+  - [GRUB option](#GRUB-option)
+  - [Set default to last selected option](#Set-default-to-last-selected-option)
+- [Hardware](#Hardware)
+- [Kernel](#Kernel)
+  - [Kernel info](#Kernel-info)
+  - [Kernel module](#Kernel-module)
+- [Jobs](#Jobs)
+- [File permission](#File-permission)
+  - [~~Only change directory permission~~](#Only-change-directory-permission)
+  - [~~Only change file permission~~](#Only-change-file-permission)
+  - [Recursive change file permission to `644`, directory to `755`](#Recursive-change-file-permission-to-644-directory-to-755)
+- [File attribute](#File-attribute)
+  - [List attribute](#List-attribute)
+  - [Change attribute](#Change-attribute)
+- [SELinux](#SELinux)
+  - [Get SELinux status](#Get-SELinux-status)
+  - [Set SELinux status](#Set-SELinux-status)
+- [Service](#Service)
+  - [Add / Delete service](#Add--Delete-service)
+  - [Enable / Disable service auto start](#Enable--Disable-service-auto-start)
+  - [Start / Stop service](#Start--Stop-service)
+  - [Show service status](#Show-service-status)
+- [Manual / Help](#Manual--Help)
+- [Time](#Time)
+- [DNS](#DNS)
+- [Sharing desktop](#Sharing-desktop)
+  - [Disable sharing desktop encryption (Ubuntu)](#Disable-sharing-desktop-encryption-Ubuntu)
+- [Disk usage](#Disk-usage)
+- [Find](#Find)
+- [Directory Stack](#Directory-Stack)
+  - [Push directory](#Push-directory)
+  - [Pop and change to the directory](#Pop-and-change-to-the-directory)
+  - [List directory stack](#List-directory-stack)
 - [cron / crontab](#cron--crontab)
-- [OpenJDK (Java)](#openjdk-java)
-  - [List installed JVM](#list-installed-jvm)
-  - [Switch JVM](#switch-jvm)
-- [Linux Distribution / Version](#linux-distribution--version)
-- [Mount](#mount)
-  - [Remount mount point in fstab](#remount-mount-point-in-fstab)
-  - [Lists all mounted filesystems](#lists-all-mounted-filesystems)
-  - [Mount CIFS / SMB / Windows Shared Folder](#mount-cifs--smb--windows-shared-folder)
-- [Package management](#package-management)
-  - [Install Development Tools](#install-development-tools)
-  - [Add EPEL repository to CentOS / RHEL](#add-epel-repository-to-centos--rhel)
-  - [Download package with dependence](#download-package-with-dependence)
-  - [List installed package](#list-installed-package)
-- [Last login](#last-login)
-  - [Suppress `Last Login` message](#suppress-last-login-message)
-  - [Clear last login log](#clear-last-login-log)
-  - [Disable logging last login](#disable-logging-last-login)
+- [OpenJDK (Java)](#OpenJDK-Java)
+  - [List installed JVM](#List-installed-JVM)
+  - [Switch JVM](#Switch-JVM)
+- [Linux Distribution / Version](#Linux-Distribution--Version)
+- [Mount](#Mount)
+  - [Remount mount point in fstab](#Remount-mount-point-in-fstab)
+  - [Lists all mounted filesystems](#Lists-all-mounted-filesystems)
+  - [Mount CIFS / SMB / Windows Shared Folder](#Mount-CIFS--SMB--Windows-Shared-Folder)
+- [Package management](#Package-management)
+  - [Install Development Tools](#Install-Development-Tools)
+  - [Add EPEL repository to CentOS / RHEL](#Add-EPEL-repository-to-CentOS--RHEL)
+  - [Download package with dependence](#Download-package-with-dependence)
+  - [List installed package](#List-installed-package)
+- [Last login](#Last-login)
+  - [Suppress `Last Login` message](#Suppress-Last-Login-message)
+  - [Clear last login log](#Clear-last-login-log)
+  - [Disable logging last login](#Disable-logging-last-login)
 
 # User
 
@@ -328,13 +332,13 @@ uname -a
 
 # File permission
 
-## Only change directory permission
+## ~~Only change directory permission~~
 
 ```sh
 chmod <permission> $(find -type d)
 ```
 
-## Only change file permission
+## ~~Only change file permission~~
 ```sh
 chmod <permission> $(find -type f)
 ```
@@ -385,31 +389,44 @@ setenforce { Enforcing | Permissive | 1 | 0 }
 
 # Service
 
-Ubuntu <= 14 (System V)
+## Add / Delete service
+```sh
+# System V (Red Hat <= 6)
+chkconfig { --add | --del } <service>
+```
 
-| Command | Description |
-| --- | --- |
-| `update-rc.d <service> { enable \| disable }` | Enable / Disable service auto start |
-| `service <service> { start \| stop }` | Start / Stop service |
-| `service <service> status` | Show service status |
+## Enable / Disable service auto start
 
-Red Hat <= 6 (System V)
+```sh
+# System V (Ubuntu <= 14)
+update-rc.d <service> { enable | disable }
 
-| Command | Description |
-| --- | --- |
-| `chkconfig { --add \| --del } <service>` | Add / Delete service |
-| `chkconfig <service> { on \| off }` | Enable / Disable service auto start |
-| `service <service> { start \| stop }` | Start / Stop service |
-| `service <service> status` | Show service status |
+# System V (Red Hat <= 6)
+chkconfig <service> { on | off }
 
-Ubuntu 16, Red Hat 7 (systemd)
+# systemd (Ubuntu 16, Red Hat 7)
+systemctl { enable | disable } <service>
+```
 
-| Command | Description |
-| --- | --- |
-| `systemctl { enable \| disable } <service>` | Enable / Disable service auto start |
-| `systemctl { start \| stop } <service>` | Start / Stop service |
-| `systemctl status <service>` | Show service status |
+## Start / Stop service
 
+```sh
+# System V (Ubuntu <= 14 and Red Hat <= 6)
+service <service> { start | stop }
+
+# systemd (Ubuntu 16, Red Hat 7)
+systemctl { start | stop } <service>
+```
+
+## Show service status
+
+```sh
+# System V (Ubuntu <= 14 and Red Hat <= 6)
+service <service> status
+
+# systemd (Ubuntu 16, Red Hat 7)
+systemctl status <service>
+```
 
 # Manual / Help
 
