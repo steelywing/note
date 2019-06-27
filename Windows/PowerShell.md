@@ -1,48 +1,54 @@
 # Table of Contents
-- [Table of Contents](#table-of-contents)
-- [Help](#help)
-- [Powershell version](#powershell-version)
-- [List](#list)
-- [Alias](#alias)
-- [Get command info](#get-command-info)
-- [Property](#property)
-  - [Get the properties and methods of objects](#get-the-properties-and-methods-of-objects)
-  - [Select property](#select-property)
-  - [Expand property](#expand-property)
-  - [Create property](#create-property)
-- [Current object](#current-object)
-- [Filter object](#filter-object)
-- [Network profile](#network-profile)
-- [Powershell remoting](#powershell-remoting)
-- [Trusted host](#trusted-host)
-  - [Get trusted host](#get-trusted-host)
-  - [Set trusted host](#set-trusted-host)
-- [Get credential from user input](#get-credential-from-user-input)
-- [PowerShell session](#powershell-session)
-  - [Create PowerShell session](#create-powershell-session)
-  - [Connect to remote PowerShell](#connect-to-remote-powershell)
-- [Get drive](#get-drive)
-- [Run command](#run-command)
-- [Execution policies](#execution-policies)
-- [Unblock script that it was downloaded from the Internet](#unblock-script-that-it-was-downloaded-from-the-internet)
-- [History](#history)
-  - [Get all session history](#get-all-session-history)
-- [Hash table](#hash-table)
-  - [List keys](#list-keys)
-  - [List values](#list-values)
-  - [Add](#add)
-  - [Remove](#remove)
-- [Array](#array)
-  - [Range](#range)
-  - [Count](#count)
-  - [Get element](#get-element)
-  - [Set element](#set-element)
-  - [Slice](#slice)
-  - [Iteration](#iteration)
-  - [Filter](#filter)
-- [String](#string)
-  - [Format string](#format-string)
-  - [Filter string](#filter-string)
+- [Table of Contents](#Table-of-Contents)
+- [Help](#Help)
+  - [Get command info](#Get-command-info)
+- [PowerShell version](#PowerShell-version)
+- [List](#List)
+- [Alias](#Alias)
+- [Property](#Property)
+  - [Get the properties and methods of objects](#Get-the-properties-and-methods-of-objects)
+  - [Select property](#Select-property)
+  - [Expand property](#Expand-property)
+  - [Create property](#Create-property)
+- [Current object](#Current-object)
+- [Filter object](#Filter-object)
+- [Network profile](#Network-profile)
+- [PowerShell remoting](#PowerShell-remoting)
+- [Trusted host](#Trusted-host)
+  - [Get trusted host](#Get-trusted-host)
+  - [Set trusted host](#Set-trusted-host)
+- [Get credential from user input](#Get-credential-from-user-input)
+- [PowerShell session](#PowerShell-session)
+  - [Create PowerShell session](#Create-PowerShell-session)
+  - [Connect to remote PowerShell](#Connect-to-remote-PowerShell)
+- [Get drive](#Get-drive)
+- [Run command](#Run-command)
+- [Execution policies](#Execution-policies)
+- [Unblock script that it was downloaded from the Internet](#Unblock-script-that-it-was-downloaded-from-the-Internet)
+- [History](#History)
+  - [Get all session history](#Get-all-session-history)
+- [Hash table](#Hash-table)
+  - [List keys](#List-keys)
+  - [List values](#List-values)
+  - [Add](#Add)
+  - [Remove](#Remove)
+- [Array](#Array)
+  - [Range](#Range)
+  - [Count](#Count)
+  - [Get element](#Get-element)
+  - [Set element](#Set-element)
+  - [Slice](#Slice)
+  - [Iteration](#Iteration)
+  - [Filter](#Filter)
+- [String](#String)
+  - [Format string](#Format-string)
+  - [Filter string](#Filter-string)
+  - [Concatenate string](#Concatenate-string)
+- [Path](#Path)
+  - [Get script path](#Get-script-path)
+  - [Get file name of path](#Get-file-name-of-path)
+  - [Get folder of path](#Get-folder-of-path)
+  - [Join path](#Join-path)
 
 # Help
 
@@ -52,7 +58,13 @@ Get-Help [<cmdlet>] [-ShowWindow] [ -Detailed | -Full | -Examples ]
 
  `help` equal `Get-Help | more`
 
-# Powershell version
+## Get command info
+
+```powershell
+Get-Command <command>
+```
+
+# PowerShell version
 
 ```powershell
 $PSVersionTable
@@ -68,12 +80,6 @@ $PSVersionTable
 
 ```powershell
 Get-Alias [[-Name] <alias> | -Definition <cmdlet>]
-```
-
-# Get command info
-
-```powershell
-Get-Command <command>
 ```
 
 # Property
@@ -137,7 +143,7 @@ Get-NetConnectionProfile
 Set-NetConnectionProfile { -InterfaceIndex <ID> | -Name <name> } -NetworkCategory { Private | Public }
 ```
 
-# Powershell remoting
+# PowerShell remoting
 
 Enable PowerShell remoting
 
@@ -328,4 +334,31 @@ $array.Where({
 
 ```powershell
 <command> | Select-String "<pattern>"
+```
+
+## Concatenate string
+```powershell
+"$A $B"
+```
+
+# Path
+
+## Get script path
+```powershell
+$Script:MyInvocation.MyCommand.Path
+```
+
+## Get file name of path
+```powershell
+Split-Path -Leaf <path>
+```
+
+## Get folder of path
+```powershell
+Split-Path <path>
+```
+
+## Join path
+```powershell
+Join-Path <path> <path> ...
 ```
