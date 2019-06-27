@@ -65,3 +65,49 @@ Require configured with `event none`
 ```
 ASA# event manager run <applet>
 ```
+
+## SSH public key
+```
+ASA(config)# username <user name> attributes
+ASA(config-username)# ssh authentication publickey <public key>
+```
+
+## Auto authorization (enable) when login console (Telnet / SSH)
+```
+ASA(config)# aaa authorization exec LOCAL auto-enable
+```
+
+# Threat detection
+
+[Reference](https://www.cisco.com/c/en/us/support/docs/security/asa-5500-x-series-next-generation-firewalls/113685-asa-threat-detection.html)
+
+```
+ASA# show threat-detection { scanning-threat | rate | statistics [top] }
+```
+
+## Show thread detection config
+
+```
+ASA# show running-config all threat-detection
+```
+
+## Basic threat detection
+
+```
+ASA(config)# [no] threat-detection basic-threat
+```
+
+## Statistics of host
+```
+ASA(config)# threat-detection statistics host [number-of-rate <number of rate>]
+```
+
+## Capture ASP drop packet
+```
+ASA# capture <capture ID> type asp-drop [real-time]
+```
+
+## Show capture
+```
+ASA# show capture <capture ID>
+```
