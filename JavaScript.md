@@ -24,7 +24,7 @@ https://github.com/medialize/URI.js
 
 # Absolute URL for browser
 
-https://davidwalsh.name/get-absolute-url
+[Reference](https://davidwalsh.name/get-absolute-url)
 
 ```js
 var getAbsUrl = (function() {
@@ -69,5 +69,14 @@ Number.prototype.prefix = function (precision, base) {
   );
 
   return (this / Math.pow(base, power)).toFixed(precision) + units[power];
+}
+```
+
+# Performance / Benchmark
+```js
+function benchmark(run) {
+  var start = performance.now();
+  run();
+  return performance.now() - start;
 }
 ```
