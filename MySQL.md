@@ -1,26 +1,34 @@
 # Table of Contents
-- [Table of Contents](#table-of-contents)
-- [Export / Dump](#export--dump)
-- [Import](#import)
-- [Show tables size](#show-tables-size)
-- [Calculate age](#calculate-age)
-- [Find in set](#find-in-set)
-- [Insert large number of row](#insert-large-number-of-row)
-- [Recovery](#recovery)
-  - [Check tables](#check-tables)
-  - [Repair tables](#repair-tables)
-  - [Rebuild / Reorganize index](#rebuild--reorganize-index)
+- [Table of Contents](#Table-of-Contents)
+- [Export / Dump](#Export--Dump)
+- [Import](#Import)
+- [Show tables size](#Show-tables-size)
+- [Calculate age](#Calculate-age)
+- [Find in set](#Find-in-set)
+- [Insert large number of row](#Insert-large-number-of-row)
+- [Recovery](#Recovery)
+  - [Check tables](#Check-tables)
+  - [Repair tables](#Repair-tables)
+  - [Rebuild / Reorganize index](#Rebuild--Reorganize-index)
 
 # Export / Dump
 [Reference](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)
+
+Output redirect (`mysqldump > file.sql`) will use UTF-16 on PowerShell, MySQL cannot import UTF-16
+
 ```sh
-mysqldump [-u <user>] [-p] <database> [<table> [...]] > <file name>
+mysqldump [-u <user>] [-p] { --all-databases | <database> [<table> [...]] } --result-file=<file.sql>
+```
+
+Export with `gzip`
+```sh
+mysqldump <database> | gzip [-9] > <file.sql.gz>
 ```
 
 # Import
 [Reference](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)
 ```sh
-mysql [-u <user>] [-p] <database> < <file name>
+mysql [-u <user>] [-p] <database> < <file.sql>
 ```
 
 or
