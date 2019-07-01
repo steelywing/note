@@ -494,18 +494,19 @@ Run command in `find` result, `{}` is result path
 find [<path>] [<expression>] -exec <command> {} +
 ```
 
-`<command> {} +` will expand like `<command> <path> <path> ...`
+`<command> {} +` will expand to `<command> <path> <path> ...`
 
 ```sh
 find [<path>] [ [!] <expression> ] -exec <command> {} \;
 ```
 
-`<command> {} \;` will expand like `<command> <path>; <command> <path>; ...`
+`<command> {} \;` will expand to `<command> <path>; <command> <path>; ...`
 
 | Expression | Description |
 | - | - |
-| `-name <pattern>` | Match file name |
-| `-iname <pattern>` | Match file name with case insensitive |
+| `-name "<glob pattern>"` | Match file name |
+| `-iname "<glob pattern>"` | Match file name with case insensitive |
+| `-type { f | d }` | File / Directory |
 | `-mtime [+|-]<days>` | Last modified time |
 | `-atime [+|-]<days>` | Last accessed time |
 | `-size [+|-]<size>[k|M|G]` | File size |
