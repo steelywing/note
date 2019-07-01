@@ -1,10 +1,12 @@
 # Table of Contents
-- [Table of Contents](#table-of-contents)
-- [IP forward](#ip-forward)
-- [Ping](#ping)
-- [Nmap](#nmap)
-  - [Port](#port)
-  - [Host discovery](#host-discovery)
+- [Table of Contents](#Table-of-Contents)
+- [IP forward](#IP-forward)
+- [Ping](#Ping)
+- [Nmap](#Nmap)
+  - [Host](#Host)
+  - [Host discovery](#Host-discovery)
+  - [Scan](#Scan)
+- [TCP Dump](#TCP-Dump)
 
 # IP forward
 
@@ -40,28 +42,80 @@ done
 
 # Nmap
 
+[Reference](https://nmap.org/book/man.html)
+
 ```sh
-# Host or prefix
-nmap <host>[/prefix]
-# Range
-nmap 10.0.0-255.0-255
+nmap <option>
 ```
 
-## Port
-Default: scan most common 1,000 ports
-```sh
-nmap -p <port list>
-# Scan most common 100 ports
-nmap -F
-# Range
-nmap -p 1-100,1000-2000
-```
+## Host
+
+| Option | Description |
+| - | - |
+| `<host>[/prefix]` | Host or CIDR |
+| `10.0.0-255.0-255` | Range |
 
 ## Host discovery
-Default: scan port after ping discovery
+
+| Option | Description |
+| - | - |
+| `-Pn` | No ping (Skip host discovery) |
+| `-PS <port list>` | TCP SYN ping |
+| `-PA <port list>` | TCP ACK ping |
+| `-PU <port list>` | UDP ping |
+| `-PE` | ICMP ping |
+| `-PR` | ARP ping<br>Default: use on local ethernet |
+
+## Scan
+
+Default: scan most common 1,000 ports
+
+| Option | Description |
+| - | - |
+| `-p <port list>` | Port scan<br><br>Ex:<br>`-p 1-1000`<br>`-p U:1-10,20,T:100-200,S:300` |
+| `-F` | Scan most common 100 ports |
+| `--top-ports <n>` | Scan `<n>` most common ports |
+| `-sn` | Disable port scan |
+| `-sS` | TCP SYN scan (Default) |
+| `-sT` | TCP connect scan |
+| `-sU` | UDP scan |
+| `-T<0-5>` | Timing template<br><br>paranoid (0), sneaky (1), polite (2), normal (3), aggressive (4), and insane (5) |
+
+# TCP Dump
+
+List interface
+
 ```sh
-# No ping
-nmap -Pn
-# Use TCP SYN to ping
-nmap -PS <port list>
+tcpdump { -D | --list-interfaces }
+```
+
+Dump traffic
+
+| Option | Description |
+| - | - |
+| `-i {<interface>|any}` | Listen on interface<br>Default: lowest numbered of interface list |
+| `-n` | Not resolve hostname |
+| `-nn` | Not resolve hostname or port |
+| `-w <file.pcap>` | Write to file |
+
+Expression
+
+[Reference](https://www.tcpdump.org/manpages/pcap-filter.7.html)
+
+| Expression | Description |
+| - | - |
+| `[src|dst] {host|ip} [not] <host>` | Match `<host>` |
+| `{host|ip} <host> and <host>` | Match traffic between `<host>` and `<host>` |
+| `[src|dst] net <IP>` | Match `<IP>` |
+| `<IP>` | `<#>[.<#>[.<#>[.<#>]]]` |
+| `[src|dst] port <port>` | Port |
+| `[src|dst] portrange <port>-<port>` | Port range |
+| `{tcp|udp|icmp}` | TCP / UDP / ICMP |
+| `vlan [VLAN ID]` | VLAN<br>Default: all IEEE 802.1Q packet |
+| `{not|!} <expression>` | not |
+| `<expression> {and|&&} <expression>` | and |
+| `<expression> { or | || } <expression>` | or |
+
+```sh
+tcpdump [<option>] [<expression>]
 ```
