@@ -1,31 +1,38 @@
 # Table of Contents
-- [Table of Contents](#table-of-contents)
-- [Network Profile](#network-profile)
-- [User](#user)
-  - [User Account Management / Auto Login](#user-account-management--auto-login)
-  - [Computer Management / Local User](#computer-management--local-user)
-  - [Create User](#create-user)
-  - [Delete User](#delete-user)
-  - [Password Expire](#password-expire)
-- [Group Policy](#group-policy)
-- [Windows firewall change default to block](#windows-firewall-change-default-to-block)
-- [Credential Manager](#credential-manager)
-- [Remote Desktop](#remote-desktop)
-- [Hibernate](#hibernate)
+- [Table of Contents](#Table-of-Contents)
+- [Network](#Network)
+  - [Network Profile](#Network-Profile)
+  - [IP address conflict](#IP-address-conflict)
+- [User](#User)
+  - [User Account Management / Auto Login](#User-Account-Management--Auto-Login)
+  - [Computer Management / Local User](#Computer-Management--Local-User)
+  - [Create User](#Create-User)
+  - [Delete User](#Delete-User)
+  - [Password Expire](#Password-Expire)
+- [Group Policy](#Group-Policy)
+- [Windows firewall change default to block](#Windows-firewall-change-default-to-block)
+- [Credential Manager](#Credential-Manager)
+- [Remote Desktop](#Remote-Desktop)
+- [Hibernate](#Hibernate)
 - [`.cab` file](#cab-file)
-- [File Permission (ACL)](#file-permission-acl)
-- [Registry](#registry)
-- [Cortana](#cortana)
-- [Allow input unicode with <kbd>Alt</kbd> + <kbd>+\<Code\></kbd>](#allow-input-unicode-with-kbdaltkbd--kbdcodekbd)
-- [Enable / Disable the Local Built-In Administrator Account](#enable--disable-the-local-built-in-administrator-account)
-- [Get OS Architecture (32-bit / 64-bit)](#get-os-architecture-32-bit--64-bit)
-- [SLP (System Locked Pre-installation) / SLIC (System License Internal Code)](#slp-system-locked-pre-installation--slic-system-license-internal-code)
-- [Code page](#code-page)
+- [File Permission (ACL)](#File-Permission-ACL)
+- [Registry](#Registry)
+- [Cortana](#Cortana)
+- [Allow input unicode with <kbd>Alt</kbd> + <kbd>+\<Code\></kbd>](#Allow-input-unicode-with-kbdAltkbd--kbdCodekbd)
+- [Enable / Disable the Local Built-In Administrator Account](#Enable--Disable-the-Local-Built-In-Administrator-Account)
+- [Get OS Architecture (32-bit / 64-bit)](#Get-OS-Architecture-32-bit--64-bit)
+- [SLP (System Locked Pre-installation) / SLIC (System License Internal Code)](#SLP-System-Locked-Pre-installation--SLIC-System-License-Internal-Code)
+- [Code page](#Code-page)
 
+# Network
 
-# Network Profile
+## Network Profile
 
 [PowerShell](PowerShell.md#network-profile)
+
+## IP address conflict
+
+Windows will use IP `169.254.0.0/16` if IP address conflict
 
 # User
 
