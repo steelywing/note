@@ -3,6 +3,29 @@
 ASA(config)# crypto key generate rsa [noconfirm]
 ```
 
+# SLA (Service Level Agreement) monitor
+
+[Reference](https://www.cisco.com/c/en/us/support/docs/security/asa-5500-x-series-next-generation-firewalls/118962-configure-asa-00.html)
+
+```
+ASA(config)# sla monitor <SLA ID>
+ASA(config-sla-monitor)# type echo protocol ipIcmpEcho <IP> interface <interface>
+ASA(config-sla-monitor-echo)# num-packets <number of packets>
+ASA(config-sla-monitor-echo)# timeout <ms>
+ASA(config-sla-monitor-echo)# threshold <ms>
+ASA(config-sla-monitor-echo)# frequency <seconds>
+ASA(config-sla-monitor-echo)# exit
+
+ASA(config)# sla monitor schedule <SLA ID> life { forever | <seconds> } start-time now
+```
+
+## Track route with SLA
+
+```
+ASA(config)# track <track ID> rtr <SLA ID> reachability
+ASA(config)# route <interface> <IP> <netmask> <gateway> [<metric>] track <track ID>
+```
+
 # Packet capture
 [Reference](https://www.cisco.com/c/en/us/support/docs/security/asa-5500-x-series-next-generation-firewalls/118097-configure-asa-00.html)
 
