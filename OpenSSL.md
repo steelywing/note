@@ -1,13 +1,14 @@
 # Table of Contents
-- [Table of Contents](#table-of-contents)
-- [Version](#version)
-- [RSA key](#rsa-key)
-  - [Generating RSA key](#generating-rsa-key)
-  - [View RSA key file](#view-rsa-key-file)
-  - [Extracting RSA public key](#extracting-rsa-public-key)
-- [CSR (Certificate Signing Request)](#csr-certificate-signing-request)
-  - [Creating CSR](#creating-csr)
-  - [CSR config](#csr-config)
+- [Table of Contents](#Table-of-Contents)
+- [Version](#Version)
+- [RSA key](#RSA-key)
+  - [Generating RSA key](#Generating-RSA-key)
+  - [View RSA key file](#View-RSA-key-file)
+  - [Extracting RSA public key](#Extracting-RSA-public-key)
+- [CSR (Certificate Signing Request)](#CSR-Certificate-Signing-Request)
+  - [Creating CSR](#Creating-CSR)
+  - [CSR config](#CSR-config)
+  - [Verify CSR](#Verify-CSR)
 
 # Version
 ```sh
@@ -20,19 +21,19 @@ openssl version
 
 ```sh
 # Default key lenght = 2048
-openssl genrsa [-out <file>] [<key length>]
+openssl genrsa [-out <file.key>] [<key length>]
 ```
 
 ## View RSA key file
 
 ```sh
-openssl rsa -text -in <key file> [-noout]
+openssl rsa -text -in <file.key> [-noout]
 ```
 
 ## Extracting RSA public key
 
 ```sh
-openssl rsa -in <key file> -pubout -out <public key file>
+openssl rsa -in <file.key> -pubout -out <public.key>
 ```
 
 # CSR (Certificate Signing Request)
@@ -45,7 +46,7 @@ openssl rsa -in <key file> -pubout -out <public key file>
 
 ```sh
 # <subject> = "/C=<country>/ST=<state>/L=<locality>/O=<organization>/OU=<organizational unit>/CN=<common name>/emailAddress=<email>"
-openssl req -new -key <key file> -out <CSR file> [-subj <subject>] [-config <config file>]
+openssl req -new -key <file.key> -out <file.csr> [-subj <subject>] [-config <config.ini>]
 ```
 
 ## CSR config
@@ -53,30 +54,30 @@ openssl req -new -key <key file> -out <CSR file> [-subj <subject>] [-config <con
 ```ini
 [ req ]
 # <key length> = 2048 / 4096 / ...
-default_bits            = <key length>
-default_keyfile         = <key file>
-distinguished_name      = req_distinguished_name
-prompt                  = no
-encrypt_key             = no
-req_extensions          = req_ext
+default_bits = <key length>
+default_keyfile = <key file>
+distinguished_name = req_distinguished_name
+prompt = no
+encrypt_key = no
+req_extensions = req_ext
 
 [ req_distinguished_name ]
 # C=
 # <country> = US / HK / MO / ...
-countryName             = <country>
+countryName = <country>
 # ST=
-stateOrProvinceName     = <state>
+stateOrProvinceName = <state>
 # L=
-localityName            = <city>
+localityName = <city>
 # O=
-organizationName        = <company>
+organizationName = <company>
 # OU=
-organizationalUnitName  = <departement>
+organizationalUnitName = <departement>
 # CN=
 # For wildcard: *.domain.com
-commonName              = <domain>
+commonName = <domain>
 
-emailAddress            = <email>
+emailAddress = <email>
 
 [ req_ext ]
 # Reference: https://www.openssl.org/docs/manmaster/man5/x509v3_config.html#Subject-Alternative-Name
@@ -87,4 +88,10 @@ subjectAltName = @alt_section
 DNS.1 = <domain>
 DNS.2 = <domain>
 # ...
+```
+
+## Verify CSR
+
+```sh
+openssl req -text -in <file.csr> -noout -verify
 ```
