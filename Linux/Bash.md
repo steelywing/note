@@ -8,7 +8,7 @@
 | `!<string>` | Most recent command starting with `<string>` |
 
 
-## Parameter
+# Parameter
 
 | Parameter | Description |
 | --- | --- |
@@ -20,6 +20,8 @@
 | `"$*"` | `"$1$IFS$2$IFS$3..."` |
 | `"$@"` | `"$1" "$2" "$3"...` |
 
+
+# For
 
 ## For each file
 
@@ -37,4 +39,31 @@ done
 find [<expression>] -print0 | while IFS= read -r -d $'\0' <file variable name>; do
   <...>
 done
+```
+
+# Command substitution
+
+```sh
+$(<command>)
+`<command>`
+```
+
+## cat file
+
+```sh
+$(< <file>)
+$(cat <file>)
+```
+
+# Variable
+
+## Set variable
+```sh
+<name>=<value>
+```
+
+## Get variable
+```sh
+$<name>
+${<name>}
 ```
