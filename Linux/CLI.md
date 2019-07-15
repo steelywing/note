@@ -55,7 +55,11 @@
 - [DNS](#DNS)
 - [Sharing desktop](#Sharing-desktop)
   - [Disable sharing desktop encryption (Ubuntu)](#Disable-sharing-desktop-encryption-Ubuntu)
-- [Disk usage](#Disk-usage)
+- [Disk](#Disk)
+  - [Disk usage](#Disk-usage)
+  - [Disk benchmark](#Disk-benchmark)
+    - [Write speed](#Write-speed)
+    - [Read speed](#Read-speed)
 - [Find](#Find)
 - [Directory Stack](#Directory-Stack)
   - [Push directory](#Push-directory)
@@ -471,8 +475,9 @@ dconf-editor
 gsettings set org.gnome.Vino require-encryption false
 ```
 
+# Disk
 
-# Disk usage
+## Disk usage
 
 | Command | Description |
 | --- | --- |
@@ -485,6 +490,50 @@ Sort human readable disk usage
 du -hs <path> | sort -h -r
 ```
 
+## Disk benchmark
+
+### Write speed
+
+```sh
+dd if=/dev/zero of=<file> bs=<size>[K|M|G] count=<count>[K|M|G] { conv=fsync | oflag={sync|dsync|direct} }
+```
+
+| Option | Description |
+| - | - |
+| `conv=fsync` | Synchronize before finishing |
+| `dsync` | Synchronized I/O for data |
+| `sync` | Synchronized I/O for data and meta data |
+| `direct` | Direct I/O |
+
+### Read speed
+
+```sh
+dd if=<file> of=/dev/null bs=<size>[K|M|G] [count=<count>[K|M|G]] iflag=direct
+```
+
+[drop_caches reference](https://www.kernel.org/doc/Documentation/sysctl/vm.txt)
+
+```sh
+# Synchronize cached writes to persistent storage
+sync
+
+# Free cache
+echo 3 > /proc/sys/vm/drop_caches
+
+dd if=<file> of=/dev/null bs=<size>[K|M|G] [count=<count>[K|M|G]]
+```
+
+Read speed without prior cache
+
+```sh
+hdparm -t /dev/<device>
+```
+
+Read speed with buffer
+
+```sh
+hdparm -T /dev/<device>
+```
 
 # Find
 
