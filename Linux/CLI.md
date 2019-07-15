@@ -88,7 +88,7 @@
 
 ## Add user
 ```sh
-useradd <user> [-d <home directory>] [-g <group>] [-G <supplementary group>[,<supplementary group>...]] [-s <shell>]
+useradd <user> [-d <home directory>] [-g <group>] [-G <supplementary group>[,...]] [-s <shell>]
 
 # Debian only
 adduser <user>
@@ -139,12 +139,12 @@ usermod -g <group> <user>
 
 ## Change / Override user's supplementary groups
 ```sh
-usermod -G <group>[,<group>...] <user>
+usermod -G <group>[,...] <user>
 ```
 
 ## Add user's supplementary groups
 ```sh
-usermod -aG <group>[,<group>...] <user>
+usermod -aG <group>[,...] <user>
 ```
 
 ## User database file
@@ -654,7 +654,7 @@ mount [-l] [-t type]
 
 ```sh
 # mount.cifs = mount -t cifs
-mount.cifs -o <option>[,<option>...]] //<host>/<share name> <directory>
+mount.cifs -o <option>[,...]] //<host>/<share name> <directory>
 ```
 
 # Package management
