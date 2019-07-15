@@ -7,6 +7,12 @@
   - [Host discovery](#Host-discovery)
   - [Scan](#Scan)
 - [TCP Dump](#TCP-Dump)
+- [IP](#IP)
+  - [Interface](#Interface)
+  - [IP address](#IP-address)
+  - [ARP / IPv6 neighbour](#ARP--IPv6-neighbour)
+  - [Route](#Route)
+- [Socket](#Socket)
 
 # IP forward
 
@@ -31,10 +37,10 @@ net.ipv4.ip_forward = {0|1}
 
 ```sh
 # Display timeout
-ping -O <ip>
+ping -O <IP address>
 
 # Display time
-ping <ip> | while read log; do
+ping <IP address> | while read log; do
   echo "$(date): $log";
 done
 ```
@@ -106,8 +112,8 @@ Expression
 | - | - |
 | `[src|dst] {host|ip} [not] <host>` | Match `<host>` |
 | `{host|ip} <host> and <host>` | Match traffic between `<host>` and `<host>` |
-| `[src|dst] net <IP>` | Match `<IP>` |
-| `<IP>` | `<#>[.<#>[.<#>[.<#>]]]` |
+| `[src|dst] net <IP address>[/<prefix length>]` | Match IP |
+| `<IP address>` | `<#>[.<#>[.<#>[.<#>]]]` |
 | `[src|dst] port <port>` | Port |
 | `[src|dst] portrange <port>-<port>` | Port range |
 | `{tcp|udp|icmp}` | TCP / UDP / ICMP |
@@ -118,4 +124,192 @@ Expression
 
 ```sh
 tcpdump [<option>] [<expression>]
+```
+
+# IP
+
+Reference: `ip help`
+
+| Option | Description |
+| - | - |
+| `-4` | IPv4 |
+| `-6` | IPv6 |
+| `-c` | Color output |
+
+```sh
+ip [<option>] { link | address | route | neigh | tunnel | tuntap | maddress | mroute | monitor | l2tp | ... } { <command> | help }
+```
+
+## Interface
+
+Reference: `ip link help`
+
+```sh
+ip l [show [<dev>] [up]]
+```
+
+Interface up / down
+
+```sh
+ip l set [dev] <device> { up | down }
+```
+
+```sh
+# Deprecated
+ifconfig <interface> { up | down }
+```
+
+## IP address
+
+Reference: `ip address help`
+
+```sh
+ip a [show [<device>] [up]]
+```
+
+```sh
+# Deprecated
+ifconfig
+```
+
+Add IP address
+
+```sh
+ip a add <IP address>/<prefix length> dev <device>
+```
+
+```sh
+# Deprecated
+ifconfig <interface> add <IP address>/<prefix length>
+```
+
+Delete IP address
+
+```sh
+ip a del <IP address>/<prefix length> dev <device>
+```
+
+```sh
+# Deprecated
+ifconfig <interface> del <IP address>/<prefix length>
+```
+
+Flush (Delete all) IP address
+
+```sh
+ip a flush [dev <device>] [up]
+```
+
+## ARP / IPv6 neighbour
+
+Reference: `ip neighbour help`
+
+```sh
+ip n [show]
+```
+
+```sh
+# Deprecated
+arp
+```
+
+Clear ARP / neighbour
+
+```sh
+ip n flush [dev <device>]
+```
+
+## Route
+
+Reference: `ip route help`
+
+| Option | Description |
+| - | - |
+| No `match` or `root` | Exact `<IP address>[/<prefix length>` |
+| `match` | Prefix not longer than `<prefix length>` |
+| `root` | Prefix not shorter than `<prefix length>` |
+
+```sh
+ip r [list] [match|root] [<IP address>[/<prefix length>]]
+```
+
+```sh
+# Deprecated
+route [-n]
+```
+
+```sh
+# Deprecated
+netstat -[n]r
+```
+
+Get route to destination address
+
+```sh
+ip r get <IP address>
+```
+
+Add route
+
+```sh
+# default = 0/0 or ::/0
+ip r add { default | <IP-address>/<prefix length> } via <next hop IP address> [dev <device>] [metric <metric>]
+```
+
+```sh
+# Deprecated
+route add -net <IP address>/<prefix length> gw <next hop IP address> [dev <device>] [metric <metric>]
+```
+
+Delete route
+
+```sh
+# default = 0/0 or ::/0
+ip r delete { default | <IP address>/<prefix length> } [via <next hop IP address>] [dev <device>]
+```
+
+```sh
+# Deprecated
+route del default
+route del -net <IP address>/<prefix length> [gw <next hop IP address>] [dev <device>] [metric <metric>]
+```
+
+# Socket
+
+```sh
+ss
+```
+
+| Option | Description |
+| - | - |
+| `-n` | Numeric |
+| `-a` | All listening and non-listening sockets |
+| `-l` | Listening sockets |
+| `-p` | Process |
+| `-4` | IPv4 |
+| `-6` | IPv6 |
+| `-t` | TCP |
+| `-u` | UDP |
+| `state <state>` | State: `{ all | connected | synchronized }`, TCP State: `{ established | syn-sent | syn-recv | fin-wait-1 | fin-wait-2 | time-wait | closed | close-wait | last-ack | listen | closing }` |
+| `<expression>` |  |
+
+```sh
+# Deprecated
+netstat
+```
+
+| Option | Description |
+| - | - |
+| `-n` | Numeric |
+| `-a` | All listening and non-listening sockets |
+| `-l` | Listening sockets |
+| `-p` | Program |
+| `-4` | IPv4 |
+| `-6` | IPv6 |
+| `-t` | TCP |
+| `-u` | UDP |
+
+```sh
+cat /proc/net/udp
+cat /proc/net/tcp
 ```
