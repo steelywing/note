@@ -3,8 +3,8 @@
 - [LF (Low Frequency)](#LF-Low-Frequency)
   - [EM4100](#EM4100)
 - [HF (High Frequency)](#HF-High-Frequency)
-  - [MIFARE](#MIFARE)
-    - [MIFARE Classic 1K](#MIFARE-Classic-1K)
+  - [MiFare](#MiFare)
+    - [MiFare Classic](#MiFare-Classic)
       - [PICC status](#PICC-status)
       - [Memory Organization](#Memory-Organization)
   - [NFC](#NFC)
@@ -25,17 +25,21 @@ ISO 18000-3
 
 Reader: MFRC522 (SPI port), PN532 (UART port)
 
-## MIFARE
+## MiFare
 
-### MIFARE Classic 1K
+### MiFare Classic
 
-[Reference](https://www.nxp.com/docs/en/data-sheet/MF1S70YYX_V1.pdf)
+[MiFare Classic 1K Reference](https://www.nxp.com/docs/en/data-sheet/MF1S50YYX_V1.pdf)
+
+[MiFare Classic 4K Reference](https://www.nxp.com/docs/en/data-sheet/MF1S70YYX_V1.pdf)
 
 ISO/IEC 14443 Type A
 
 Alias: IC card
 
-Tools: [MFCUK](https://github.com/nfc-tools/mfcuk)
+[MiFare Classic Offline Cracker](https://github.com/nfc-tools/mfoc)
+
+[MiFare Classic Universal toolKit](https://github.com/nfc-tools/mfcuk)
 
 | Name | Description |
 | - | - |
@@ -62,14 +66,18 @@ READY
 #### Memory Organization
 
 ```
-MIFARE Classic 1K = 40 ✖ Sector
-```
-
-```
+MiFare Classic 1K = 40 ✖ Sector = 64 ✖ Block
 Sector = 3 ✖ Data Block + Sector Trailer
 
+MiFare Classic 4K = 
+  32 ✖ Sector ( 3 ✖ Block + Sector Trailer) + 
+   8 ✖ Sector (15 ✖ Block + Sector Trailer)
+    = 256 ✖ Block
+```
+
+```
 Sector[0] Read Only
-Sector[0] Block[0] = UID
+Sector[0] Block[0] = 4 ✖ UID + Manufacturer Data
 ```
 
 ```
