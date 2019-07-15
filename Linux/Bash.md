@@ -67,3 +67,33 @@ $(cat <file>)
 $<name>
 ${<name>}
 ```
+
+## Remove current session bash history
+
+Clear current history buffer
+```sh
+history -c
+```
+
+Don't save the history when session close
+```sh
+unset HISTFILE
+```
+
+Kill bash
+```sh
+kill -9 $$
+# $$ == Current shell PID
+```
+
+## Delete all bash history
+
+Empty history file
+```sh
+echo > $HISTFILE
+```
+
+Set history size to 0
+```
+HISTSIZE=0
+```

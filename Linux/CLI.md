@@ -21,8 +21,6 @@
   - [Convert timestamp to date time](#Convert-timestamp-to-date-time)
 - [Shell](#Shell)
   - [Indicate command type](#Indicate-command-type)
-  - [Remove current session bash history](#Remove-current-session-bash-history)
-  - [Delete all bash history](#Delete-all-bash-history)
 - [Preserve file timestamp after edit (`bash`)](#Preserve-file-timestamp-after-edit-bash)
 - [GRUB](#GRUB)
   - [Show GRUB when boot](#Show-GRUB-when-boot)
@@ -206,37 +204,6 @@ Type: function, builtin, or file
 ```sh
 type [-a] <command>
 ```
-
-## Remove current session bash history
-
-Clear current history buffer
-```sh
-history -c
-```
-
-Remove history file path
-```sh
-unset HISTFILE
-```
-
-Kill bash
-```sh
-kill -9 $$
-# $$ == Current shell PID
-```
-
-## Delete all bash history
-
-Empty history file
-```sh
-echo > $HISTFILE
-```
-
-Set history size to 0
-```
-HISTSIZE=0
-```
-
 
 # Preserve file timestamp after edit (`bash`)
 ```sh
