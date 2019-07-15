@@ -10,8 +10,28 @@
     - ESP-01
     - ESP-02
     - ...
+    - ESP-12
   - ESP8285 = ESP8266 + 1MiB Flash
   - ESP32 (WiFi + Bluetooth)
+
+# Development board
+
+## Arduino
+
+IDE: Arduino, PlatformIO
+
+## STM
+## Espressif
+
+ESP8266 (WiFi): ESP-01 ~ ESP-12
+
+ESP32 (WiFi + Bluetooth)
+
+IDE: Arduino, PlatformIO
+
+## Raspberry Pi
+
+System: Linux
 
 # USB to UART (RS232)
 
@@ -23,12 +43,14 @@
 
 # Interface
 
-- UART
+- UART (Universal Asynchronous Receiver Transmitter)
   - [RS-232](https://en.wikipedia.org/wiki/RS-232)
     - [DB-9](https://www.db9-pinout.com/)
       - DTE (male)
       - DCE (female)
     - DB-25
+- SPI (Serial Peripheral Interface)
+- I²C / I2C (Inter-Integrated Circuit)
 
 ## DB-9
 
@@ -44,7 +66,7 @@
 | 8 | CTS | Clear To Send | in |
 | 9 | RI | Ring Indicator | in |
 
-![DB-9 pinout](db9-pinout.gif)
+![DB-9 pinout](img/db9-pinout.gif)
 
 ## Common usage
 
