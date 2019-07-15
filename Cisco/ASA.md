@@ -26,9 +26,6 @@ ASA(config)# track <track ID> rtr <SLA ID> reachability
 ASA(config)# route <interface> <IP> <netmask> <gateway> [<metric>] track <track ID>
 ```
 
-# Packet capture
-[Reference](https://www.cisco.com/c/en/us/support/docs/security/asa-5500-x-series-next-generation-firewalls/118097-configure-asa-00.html)
-
 # Event manager
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/117883-config-eem-00.html)
@@ -125,6 +122,10 @@ ASA(config)# [no] threat-detection basic-threat
 ASA(config)# threat-detection statistics host [number-of-rate <number of rate>]
 ```
 
+# Capture
+
+[Reference](https://www.cisco.com/c/en/us/support/docs/security/asa-5500-x-series-next-generation-firewalls/118097-configure-asa-00.html)
+
 ## Capture ASP drop packet
 ```
 ASA# capture <capture ID> type asp-drop [real-time]
@@ -133,4 +134,16 @@ ASA# capture <capture ID> type asp-drop [real-time]
 ## Show capture
 ```
 ASA# show capture <capture ID>
+```
+
+## Download capture
+
+```
+https://<IP>/admin/capture/<capture ID>/pcap
+```
+
+## Copy capture
+
+```
+ASA# copy /pcap capture:<capture ID> {tftp|scp}://<IP>
 ```
