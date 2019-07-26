@@ -1,28 +1,33 @@
 # Table of Contents
-- [Table of Contents](#Table-of-Contents)
-- [Network](#Network)
-  - [Network Profile](#Network-Profile)
-  - [IP address conflict](#IP-address-conflict)
-- [User](#User)
-  - [User Account Management / Auto Login](#User-Account-Management--Auto-Login)
-  - [Computer Management / Local User](#Computer-Management--Local-User)
-  - [Create User](#Create-User)
-  - [Delete User](#Delete-User)
-  - [Password Expire](#Password-Expire)
-- [Group Policy](#Group-Policy)
-- [Windows firewall change default to block](#Windows-firewall-change-default-to-block)
-- [Credential Manager](#Credential-Manager)
-- [Remote Desktop](#Remote-Desktop)
-- [Hibernate](#Hibernate)
+- [Table of Contents](#table-of-contents)
+- [Network](#network)
+  - [Network Profile](#network-profile)
+  - [IP address conflict](#ip-address-conflict)
+  - [Network monitor](#network-monitor)
+- [User](#user)
+  - [User Account Management / Auto Login](#user-account-management--auto-login)
+  - [Computer Management / Local User](#computer-management--local-user)
+  - [Create User](#create-user)
+  - [Delete User](#delete-user)
+  - [Password Expire](#password-expire)
+- [Group Policy](#group-policy)
+- [Windows firewall change default to block](#windows-firewall-change-default-to-block)
+- [Credential Manager](#credential-manager)
+- [Remote Desktop](#remote-desktop)
+- [Hibernate](#hibernate)
 - [`.cab` file](#cab-file)
-- [File Permission (ACL)](#File-Permission-ACL)
-- [Registry](#Registry)
-- [Cortana](#Cortana)
-- [Allow input unicode with <kbd>Alt</kbd> + <kbd>+\<Code\></kbd>](#Allow-input-unicode-with-kbdAltkbd--kbdCodekbd)
-- [Enable / Disable the Local Built-In Administrator Account](#Enable--Disable-the-Local-Built-In-Administrator-Account)
-- [Get OS Architecture (32-bit / 64-bit)](#Get-OS-Architecture-32-bit--64-bit)
-- [SLP (System Locked Pre-installation) / SLIC (System License Internal Code)](#SLP-System-Locked-Pre-installation--SLIC-System-License-Internal-Code)
-- [Code page](#Code-page)
+- [File Permission (ACL)](#file-permission-acl)
+  - [`calcs`](#calcs)
+  - [`icacls`](#icacls)
+    - [Permission](#permission)
+- [Registry](#registry)
+- [Cortana](#cortana)
+- [Allow input unicode with <kbd>Alt</kbd> + <kbd>+\<Code\></kbd>](#allow-input-unicode-with-kbdaltkbd--kbdcodekbd)
+- [Enable / Disable the Local Built-In Administrator Account](#enable--disable-the-local-built-in-administrator-account)
+- [Get OS Architecture (32-bit / 64-bit)](#get-os-architecture-32-bit--64-bit)
+- [SLP (System Locked Pre-installation) / SLIC (System License Internal Code)](#slp-system-locked-pre-installation--slic-system-license-internal-code)
+- [BSOD (Blue Screen of Death) dump](#bsod-blue-screen-of-death-dump)
+- [Code page](#code-page)
 
 # Network
 
@@ -33,6 +38,12 @@
 ## IP address conflict
 
 Windows will use IP `169.254.0.0/16` if IP address conflict
+
+## Network monitor
+
+- [TCPView](https://docs.microsoft.com/en-us/sysinternals/downloads/tcpview)
+- [WireShark](https://www.wireshark.org/)
+- [WinDump](https://www.winpcap.org/windump/)
 
 # User
 
@@ -144,6 +155,9 @@ makecab <file> <file.cab>
 ```
 
 # File Permission (ACL)
+
+## `calcs`
+
 [Reference](http://technet.microsoft.com/en-us/library/bb490872.aspx)
 
 | Option | Permission |
@@ -169,20 +183,87 @@ Change owner
 cacls <file> /r <user>
 ```
 
+## `icacls`
+
+[Reference](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/icacls)
+
+```cmd
+icacls <file> <option>
+```
+
+| Option | Description |
+| - | - |
+| `/t` | Traverse subdirectories |
+| `/c` | Continue on file error |
+| `/l` | Performs on a symbolic link, not its destination |
+| `/setowner <user>` | Changes the owner |
+| `/reset` | Replaces with default inherited ACLs |
+| `/grant <user>:<permissions>` | Grants specified user access rights |
+| `/grant:r <user>:<permissions>` | Replace previously granted explicit permissions |
+| `/deny <user>:<permissions>` | Denies specified user access rights |
+| `/remove[:g|:d] <user>` | Remove specified user from DACL<br>`:g` = Grant<br>`:d` = Deny |
+
+### Permission
+
+| Inherit | Description |
+| - | - |
+| `(OI)` | Object Inherit |
+| `(CI)` | Container inherit |
+| `(IO)` | Inherit only |
+| `(NP)` | Do not propagate inherit |
+
+| Simple permission | Description |
+| - | - |
+| `F` | Full access |
+| `M` | modify access |
+| `RX` | Read and execute access|
+| `R` | Read-only access |
+| `W` | Write-only access |
+
+| Permission | Description |
+| - | - |
+| `D` | Delete |
+| `RC` | Read control |
+| `WDAC` | Write DAC |
+| `WO` | Write owner |
+| `S` | Synchronize |
+| `AS` | Access system security |
+| `MA` | Maximum allowed |
+| `GR` | Generic read |
+| `GW` | Generic write |
+| `GE` | Generic execute |
+| `GA` | Generic all |
+| `RD` | Read data/list directory |
+| `WD` | Write data/add file |
+| `AD` | Append data/add subdirectory |
+| `REA` | Read extended attributes |
+| `WEA` | Write extended attributes |
+| `X` | Execute/traverse |
+| `DC` | Delete child |
+| `RA` | Read attributes |
+| `WA` | Write attributes |
+
+Permission syntax
+
+```
+[(OI)][(CI)][(IO)][(NP)][<simple permission>[...]](<permission>[,...])
+```
+
 # Registry
+
 Registry file location
 
 [Reference](http://msdn.microsoft.com/en-us/library/ms724877%28v=vs.85%29.aspx)
 
 | Registry hive | Supporting files |
 | --- | --- |
-| HKEY_CURRENT_CONFIG | System, System.alt, System.log, System.sav |
-| HKEY_CURRENT_USER | Ntuser.dat, Ntuser.dat.log |
-| HKEY_LOCAL_MACHINE\SAM | Sam, Sam.log, Sam.sav |
-| HKEY_LOCAL_MACHINE\Security | Security, Security.log, Security.sav |
-| HKEY_LOCAL_MACHINE\Software | Software, Software.log, Software.sav |
-| HKEY_LOCAL_MACHINE\System | System, System.alt, System.log, System.sav |
-| HKEY_USERS\.DEFAULT | Default, Default.log, Default.sav |
+| `HKEY_CURRENT_CONFIG` | System, System.alt, System.log, System.sav |
+| `HKEY_CURRENT_USER` | Ntuser.dat, Ntuser.dat.log |
+| `HKEY_LOCAL_MACHINE\SAM` | Sam, Sam.log, Sam.sav |
+| `HKEY_LOCAL_MACHINE\Security` | Security, Security.log, Security.sav |
+| `HKEY_LOCAL_MACHINE\Software` | Software, Software.log, Software.sav |
+| `HKEY_LOCAL_MACHINE\System` | System, System.alt, System.log, System.sav |
+| `HKEY_USERS\.DEFAULT` | Default, Default.log, Default.sav |
 
 Edit registry file
 - Execute `regedit`
@@ -251,7 +332,7 @@ Install product key
 slmgr.vbs -ipk <product key>
 ```
 
-BSOD (Blue Screen of Death) dump
+# BSOD (Blue Screen of Death) dump
 
 [BlueScreenView](https://www.nirsoft.net/utils/blue_screen_view.html)
 
