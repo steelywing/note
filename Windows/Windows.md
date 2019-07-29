@@ -1,5 +1,9 @@
 # Table of Contents
 - [Table of Contents](#table-of-contents)
+- [Recovery](#recovery)
+  - [WinRE (Windows Recovery Environment)](#winre-windows-recovery-environment)
+  - [System image](#system-image)
+- [Control panel](#control-panel)
 - [Network](#network)
   - [Network Profile](#network-profile)
   - [IP address conflict](#ip-address-conflict)
@@ -28,6 +32,26 @@
 - [SLP (System Locked Pre-installation) / SLIC (System License Internal Code)](#slp-system-locked-pre-installation--slic-system-license-internal-code)
 - [BSOD (Blue Screen of Death) dump](#bsod-blue-screen-of-death-dump)
 - [Code page](#code-page)
+- [Cleanup](#cleanup)
+  - [Cleanup WinSxS](#cleanup-winsxs)
+  - [Cleanup hibernate](#cleanup-hibernate)
+
+# Recovery
+
+## WinRE (Windows Recovery Environment)
+
+[Reference](https://support.microsoft.com/en-us/help/12415)
+
+<kbd>Shift</kbd> + Restart
+
+## System image
+
+![System image](img/system-image.png)
+
+# Control panel
+
+- Input `control panel` in `Start` search
+- Run `start control`
 
 # Network
 
@@ -130,11 +154,12 @@ List remote desktop session | `query session`
 Attach remote desktop session to console | `tscon <session ID> /dest:console`
 
 # Hibernate
-Enable / Disable hibernate (remove `hiberfil.sys` file)
 
 [Reference](https://support.microsoft.com/en-us/help/920730/how-to-disable-and-re-enable-hibernation-on-a-computer-that-is-running)
 
 [Reference](https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/powercfg-command-line-options)
+
+Enable / Disable hibernate (remove `hiberfil.sys` file)
 
 ```
 powercfg { /hibernate | /h } [ on | off ]
@@ -350,3 +375,16 @@ Change active code page to UTF-8
 ```cmd
 chcp 65001
 ```
+
+# Cleanup
+
+## Cleanup WinSxS
+
+[Reference](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/clean-up-the-winsxs-folder)
+
+```cmd
+Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
+Dism.exe /online /Cleanup-Image /SPSuperseded
+```
+
+## [Cleanup hibernate](#hibernate)
