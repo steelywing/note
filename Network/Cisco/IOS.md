@@ -973,7 +973,7 @@ Switch(config)# sdm prefer ?
 
 ![Flow](img/VACL.svg)
 
-VACL default (if no match) is `drop`
+VACL default (if no match and at least has 1 ACL) is `drop`
 
 ```
 Switch(config)# vlan access-map <access-map name> <sequence number>
