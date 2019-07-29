@@ -1,77 +1,80 @@
 # Table of Contents
 
-- [Table of Contents](#Table-of-Contents)
-- [Basic](#Basic)
-- [EXEC / Config Mode](#EXEC--Config-Mode)
-- [Save / Reset](#Save--Reset)
-- [Log](#Log)
-- [Diagnostic](#Diagnostic)
-  - [CDP (Cisco Discovery Protocol)](#CDP-Cisco-Discovery-Protocol)
-  - [LLDP](#LLDP)
-  - [SPAN (Switched Port Analyzer)](#SPAN-Switched-Port-Analyzer)
-- [VLAN](#VLAN)
-  - [VTP (VLAN Trunking Protocol)](#VTP-VLAN-Trunking-Protocol)
-  - [Root guard](#Root-guard)
-  - [Loop guard](#Loop-guard)
-  - [Port fast](#Port-fast)
-  - [BPDU guard](#BPDU-guard)
-  - [BPDU filter](#BPDU-filter)
-- [DHCP](#DHCP)
-  - [Preassigning IP Addresses](#Preassigning-IP-Addresses)
-  - [DHCP snooping](#DHCP-snooping)
-- [Routing](#Routing)
-  - [Gateway](#Gateway)
-  - [Change to routing mode](#Change-to-routing-mode)
-  - [Policy-based routing](#Policy-based-routing)
-  - [OSPF](#OSPF)
-- [DNS](#DNS)
-- [Date / Time](#Date--Time)
-  - [NTP](#NTP)
-- [SNMP](#SNMP)
-- [Authenticate](#Authenticate)
-- [Port channel (Ether channel)](#Port-channel-Ether-channel)
-- [Interface](#Interface)
-  - [Interface diagnostic](#Interface-diagnostic)
-  - [Config interface](#Config-interface)
-    - [Config a range of interface](#Config-a-range-of-interface)
-    - [Config VLAN interface](#Config-VLAN-interface)
-    - [Interface description](#Interface-description)
-    - [Auto MDI-X (Medium-Dependent Interface Crossover)](#Auto-MDI-X-Medium-Dependent-Interface-Crossover)
-    - [Layer 3 mode](#Layer-3-mode)
-    - [Layer 2 mode](#Layer-2-mode)
-    - [Set trunk encapsulation to 802.1Q](#Set-trunk-encapsulation-to-8021Q)
-    - [Interface access / trunk mode](#Interface-access--trunk-mode)
-    - [Allow specified VLAN on trunk](#Allow-specified-VLAN-on-trunk)
-    - [Specify access port VLAN](#Specify-access-port-VLAN)
-    - [Protected mode](#Protected-mode)
-  - [Bandwidth limit](#Bandwidth-limit)
-  - [Recovery `err-disable` port](#Recovery-err-disable-port)
-  - [Disable (non Cisco) GBIC module checking](#Disable-non-Cisco-GBIC-module-checking)
-- [Archive configuration](#Archive-configuration)
-  - [Archive to FTP](#Archive-to-FTP)
-  - [Archive to SCP](#Archive-to-SCP)
-- [Banner](#Banner)
-- [Show TCAM (ACL, MAC, QOS, Route) utilization](#Show-TCAM-ACL-MAC-QOS-Route-utilization)
-- [SDM - Switch Database Management (TCAM, ACL, Routing)](#SDM---Switch-Database-Management-TCAM-ACL-Routing)
-- [ACL](#ACL)
-  - [VACL (VLAN ACL)](#VACL-VLAN-ACL)
-  - [IP ACL](#IP-ACL)
-  - [MAC ACL](#MAC-ACL)
-- [ARP](#ARP)
-  - [Static ARP](#Static-ARP)
-  - [ARP inspection](#ARP-inspection)
-- [Q-in-Q / IEEE 802.1Q tunnel](#Q-in-Q--IEEE-8021Q-tunnel)
-  - [Show IEEE 802.1Q tunnel port](#Show-IEEE-8021Q-tunnel-port)
-- [QoS](#QoS)
-- [Multicast](#Multicast)
-  - [PIM (Protocol Independent Multicast)](#PIM-Protocol-Independent-Multicast)
-  - [IP Querier](#IP-Querier)
-  - [IGMP](#IGMP)
-  - [Multicast Debug](#Multicast-Debug)
-- [Broadcast](#Broadcast)
-  - [Allow broadcast](#Allow-broadcast)
-  - [Forward broadcast packet to other IP](#Forward-broadcast-packet-to-other-IP)
-  - [Allow specified UDP port forward broadcast](#Allow-specified-UDP-port-forward-broadcast)
+- [Table of Contents](#table-of-contents)
+- [Basic](#basic)
+- [EXEC / Config Mode](#exec--config-mode)
+- [Save / Reset](#save--reset)
+- [Log](#log)
+- [Diagnostic](#diagnostic)
+  - [CDP (Cisco Discovery Protocol)](#cdp-cisco-discovery-protocol)
+  - [LLDP](#lldp)
+  - [SPAN (Switched Port Analyzer)](#span-switched-port-analyzer)
+- [VLAN](#vlan)
+  - [VTP (VLAN Trunking Protocol)](#vtp-vlan-trunking-protocol)
+- [STP (Spanning Tree Protocol)](#stp-spanning-tree-protocol)
+  - [STP mode](#stp-mode)
+  - [Root guard](#root-guard)
+  - [Loop guard](#loop-guard)
+  - [Port fast](#port-fast)
+  - [BPDU guard](#bpdu-guard)
+  - [BPDU filter](#bpdu-filter)
+- [DHCP](#dhcp)
+  - [Preassigning IP Addresses](#preassigning-ip-addresses)
+  - [DHCP snooping](#dhcp-snooping)
+- [Routing](#routing)
+  - [Gateway](#gateway)
+  - [Change to routing mode](#change-to-routing-mode)
+  - [Policy-based routing](#policy-based-routing)
+  - [OSPF](#ospf)
+- [DNS](#dns)
+- [Date / Time](#date--time)
+  - [NTP](#ntp)
+- [SNMP](#snmp)
+- [Authenticate](#authenticate)
+- [Port channel (Ether channel)](#port-channel-ether-channel)
+- [Interface](#interface)
+  - [Interface diagnostic](#interface-diagnostic)
+  - [Config interface](#config-interface)
+    - [Config a range of interface](#config-a-range-of-interface)
+    - [Config VLAN interface](#config-vlan-interface)
+    - [Interface description](#interface-description)
+    - [Auto MDI-X (Medium-Dependent Interface Crossover)](#auto-mdi-x-medium-dependent-interface-crossover)
+    - [Layer 3 mode](#layer-3-mode)
+    - [Layer 2 mode](#layer-2-mode)
+    - [Set trunk encapsulation to 802.1Q](#set-trunk-encapsulation-to-8021q)
+    - [Interface access / trunk mode](#interface-access--trunk-mode)
+    - [Trunk native VLAN](#trunk-native-vlan)
+    - [Allow specified VLAN on trunk](#allow-specified-vlan-on-trunk)
+    - [Specify access port VLAN](#specify-access-port-vlan)
+    - [Protected mode](#protected-mode)
+  - [Bandwidth limit](#bandwidth-limit)
+  - [Recovery `err-disable` port](#recovery-err-disable-port)
+  - [Disable (non Cisco) GBIC module checking](#disable-non-cisco-gbic-module-checking)
+- [Archive configuration](#archive-configuration)
+  - [Archive to FTP](#archive-to-ftp)
+  - [Archive to SCP](#archive-to-scp)
+- [Banner](#banner)
+- [Show TCAM (ACL, MAC, QOS, Route) utilization](#show-tcam-acl-mac-qos-route-utilization)
+- [SDM - Switch Database Management (TCAM, ACL, Routing)](#sdm---switch-database-management-tcam-acl-routing)
+- [ACL](#acl)
+  - [VACL (VLAN ACL)](#vacl-vlan-acl)
+  - [IP ACL](#ip-acl)
+  - [MAC ACL](#mac-acl)
+- [ARP](#arp)
+  - [Static ARP](#static-arp)
+  - [ARP inspection](#arp-inspection)
+- [Q-in-Q / IEEE 802.1Q tunnel](#q-in-q--ieee-8021q-tunnel)
+  - [Show IEEE 802.1Q tunnel port](#show-ieee-8021q-tunnel-port)
+- [QoS](#qos)
+- [Multicast](#multicast)
+  - [PIM (Protocol Independent Multicast)](#pim-protocol-independent-multicast)
+  - [IP Querier](#ip-querier)
+  - [IGMP](#igmp)
+  - [Multicast Debug](#multicast-debug)
+- [Broadcast](#broadcast)
+  - [Allow broadcast](#allow-broadcast)
+  - [Forward broadcast packet to other IP](#forward-broadcast-packet-to-other-ip)
+  - [Allow specified UDP port forward broadcast](#allow-specified-udp-port-forward-broadcast)
 
 # Basic
 
@@ -185,7 +188,7 @@ Switch# send log <message>
 Get CPU usage
 
 ```
-Switch# show processes cpu [sorted|history]
+Switch# show processes cpu [ sorted | history ]
 ```
 
 Get temperature, fan, power status
@@ -319,6 +322,33 @@ Switch# show interfaces trunk
 Switch(config)# vtp mode { off | transparent | server | client }
 Switch(config)# vtp domain <name>
 Switch(config)# vtp password <password>
+```
+
+# STP (Spanning Tree Protocol)
+
+[Wiki Reference](https://en.wikipedia.org/wiki/Spanning_Tree_Protocol) / [AlliedWare Reference](https://www.alliedtelesis.com/sites/default/files/documents/how-alliedware-plus/howto_aw-_config_pvst_interop_cisco_revb.pdf)
+
+- STP (Spanning Tree Protocol) / CST (Common Spanning Tree)
+  - IEEE 802.1D
+- RSTP (Rapid Spanning Tree Protocol)
+  - IEEE 802.1w
+  - Compatible with CST
+- MSTP (Multiple Spanning Tree Protocol)
+  - IEEE 802.1s, IEEE 802.1Q-2005
+- PVST (Per-VLAN Spanning Tree)
+  - Cisco proprietary protocol
+  - PVST = CST BPDU on native VLAN + SSTP per VLAN
+- Rapid-PVST
+  - Cisco proprietary protocol
+  - Compatible with PVST
+  - PVST = RSTP BPDU on native VLAN + SSTP per VLAN
+
+## STP mode
+
+Recommended: Rapid-PVST
+
+```
+Switch(config)# spanning-tree mode { pvst | rapid-pvst | mst }
 ```
 
 ## Root guard
@@ -742,6 +772,12 @@ Show interface status
 Switch# show interfaces status
 ```
 
+Show interface queue, drop, traffic rate
+
+```
+Switch# show interfaces summary
+```
+
 Test cable TDR (Time-Domain Reflectometer) / pair length
 
 ```
@@ -769,6 +805,8 @@ Switch(config)# interface range <interface>/<port number> - <port number>
 ```
 
 ### Config VLAN interface
+
+[Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3560/software/release/12-2_52_se/configuration/guide/3560scg/swvlan.html)
 
 ```
 Switch(config)# interface vlan <VLAN ID>
@@ -812,6 +850,12 @@ Switch(config-if)# switchport trunk encapsulation dot1q
 Switch(config-if)# switchport mode { access | trunk }
 ```
 
+### Trunk native VLAN
+
+```
+Switch(config-if)# switchport trunk native vlan <VLAN ID>
+```
+
 ### Allow specified VLAN on trunk
 
 Default allow all
@@ -829,6 +873,7 @@ Switch(config-if)# switchport access vlan <VLAN ID>
 ### Protected mode
 
 Do not forward traffic to other protected port
+
 ```
 Switch(config-if)# switchport protected
 ```
@@ -926,11 +971,13 @@ Switch(config)# sdm prefer ?
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst6500/ios/15-0SY/configuration/guide/15_0_sy_swcg/vlan_acls.html)
 
+![Flow](img/VACL.svg)
+
 VACL default (if no match) is `drop`
 
 ```
 Switch(config)# vlan access-map <access-map name> <sequence number>
-Switch(config-access-map)# action {forward|drop}
+Switch(config-access-map)# action { forward | drop }
 Switch(config-access-map)# match ip address <IP ACL>
 Switch(config-access-map)# match mac address <MAC ACL>
 Switch(config-access-map)# exit
@@ -943,9 +990,11 @@ Block specify MAC address
 [Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3550-series-switches/64844-mac-acl-block-arp.html)
 
 ```
+! <MAC address> = { any | host <MAC address> | <MAC address> <MAC address mask> }
+
 Switch(config)# mac access-list extended blacklist
-    permit  host <MAC address> any
-exit
+Switch(config-ext-macl)# permit <source MAC address> <destination MAC address>
+Switch(config-ext-macl)# exit
 
 Switch(config)# vlan access-map <access-map name> 10
 Switch(config-access-map)# action drop
