@@ -1,86 +1,108 @@
 # Table of Contents
-- [Table of Contents](#Table-of-Contents)
-- [User](#User)
-  - [Add user](#Add-user)
-  - [Delete user](#Delete-user)
-  - [Change password](#Change-password)
-  - [Delete password](#Delete-password)
-  - [Lock user](#Lock-user)
-  - [Unlock user](#Unlock-user)
-  - [Expire user password (force user to change password)](#Expire-user-password-force-user-to-change-password)
-  - [Set password expire day](#Set-password-expire-day)
-  - [Change / Override user's primary group](#Change--Override-users-primary-group)
-  - [Change / Override user's supplementary groups](#Change--Override-users-supplementary-groups)
-  - [Add user's supplementary groups](#Add-users-supplementary-groups)
-  - [User database file](#User-database-file)
-  - [Password file](#Password-file)
-- [Date](#Date)
-  - [Set date](#Set-date)
-  - [RTC in the local time](#RTC-in-the-local-time)
-  - [RTC in the UTC](#RTC-in-the-UTC)
-  - [Convert timestamp to date time](#Convert-timestamp-to-date-time)
-- [Shell](#Shell)
-  - [Indicate command type](#Indicate-command-type)
-- [Preserve file timestamp after edit (`bash`)](#Preserve-file-timestamp-after-edit-bash)
-- [GRUB](#GRUB)
-  - [Show GRUB when boot](#Show-GRUB-when-boot)
-  - [Update GRUB config](#Update-GRUB-config)
-  - [GRUB auto-generate config path](#GRUB-auto-generate-config-path)
-  - [GRUB option](#GRUB-option)
-  - [Set default to last selected option](#Set-default-to-last-selected-option)
-- [Hardware](#Hardware)
-- [Kernel](#Kernel)
-  - [Kernel info](#Kernel-info)
-  - [Kernel module](#Kernel-module)
-- [Jobs](#Jobs)
-- [File permission](#File-permission)
-  - [~~Only change directory permission~~](#Only-change-directory-permission)
-  - [~~Only change file permission~~](#Only-change-file-permission)
-  - [Recursive change file permission to `644`, directory to `755`](#Recursive-change-file-permission-to-644-directory-to-755)
-- [File attribute](#File-attribute)
-  - [List attribute](#List-attribute)
-  - [Change attribute](#Change-attribute)
-- [SELinux](#SELinux)
-  - [Get SELinux status](#Get-SELinux-status)
-  - [Set SELinux status](#Set-SELinux-status)
-- [Service](#Service)
-  - [Add / Delete service](#Add--Delete-service)
-  - [Enable / Disable service auto start](#Enable--Disable-service-auto-start)
-  - [Start / Stop service](#Start--Stop-service)
-  - [Show service status](#Show-service-status)
-- [Manual / Help](#Manual--Help)
-- [Time](#Time)
-- [DNS](#DNS)
-- [Sharing desktop](#Sharing-desktop)
-  - [Disable sharing desktop encryption (Ubuntu)](#Disable-sharing-desktop-encryption-Ubuntu)
-- [Disk](#Disk)
-  - [Disk usage](#Disk-usage)
-  - [Disk benchmark](#Disk-benchmark)
-    - [Write speed](#Write-speed)
-    - [Read speed](#Read-speed)
-- [Find](#Find)
-- [Directory Stack](#Directory-Stack)
-  - [Push directory](#Push-directory)
-  - [Pop and change to the directory](#Pop-and-change-to-the-directory)
-  - [List directory stack](#List-directory-stack)
+- [Table of Contents](#table-of-contents)
+- [Command](#command)
+  - [sed](#sed)
+  - [awk](#awk)
+  - [iptables](#iptables)
+- [User](#user)
+  - [Add user](#add-user)
+  - [Delete user](#delete-user)
+  - [Change password](#change-password)
+  - [Delete password](#delete-password)
+  - [Lock user](#lock-user)
+  - [Unlock user](#unlock-user)
+  - [Expire user password (force user to change password)](#expire-user-password-force-user-to-change-password)
+  - [Set password expire day](#set-password-expire-day)
+  - [Change / Override user's primary group](#change--override-users-primary-group)
+  - [Change / Override user's supplementary groups](#change--override-users-supplementary-groups)
+  - [Add user's supplementary groups](#add-users-supplementary-groups)
+  - [User database file](#user-database-file)
+  - [Password file](#password-file)
+- [Date](#date)
+  - [Set date](#set-date)
+  - [RTC (Real-Time Clock) as the local time](#rtc-real-time-clock-as-the-local-time)
+  - [RTC (Real-Time Clock) as the UTC (Coordinated Universal Time)](#rtc-real-time-clock-as-the-utc-coordinated-universal-time)
+  - [Convert timestamp to date time](#convert-timestamp-to-date-time)
+- [Shell](#shell)
+  - [Shell list](#shell-list)
+  - [Chanage shell](#chanage-shell)
+  - [Open file manager from CLI](#open-file-manager-from-cli)
+  - [Indicate command type](#indicate-command-type)
+- [Preserve file timestamp after edit (`bash`)](#preserve-file-timestamp-after-edit-bash)
+- [GRUB](#grub)
+  - [Show GRUB when boot](#show-grub-when-boot)
+  - [Update GRUB config](#update-grub-config)
+  - [GRUB auto-generate config file](#grub-auto-generate-config-file)
+  - [GRUB option](#grub-option)
+  - [Set GRUB default to last selected option](#set-grub-default-to-last-selected-option)
+- [Hardware](#hardware)
+- [Kernel](#kernel)
+  - [Kernel info](#kernel-info)
+  - [Kernel module](#kernel-module)
+- [Jobs](#jobs)
+- [File system](#file-system)
+  - [`rsync`](#rsync)
+  - [ACL](#acl)
+  - [File permission](#file-permission)
+  - [File attribute](#file-attribute)
+- [SELinux](#selinux)
+  - [Get SELinux status](#get-selinux-status)
+  - [Set SELinux status](#set-selinux-status)
+- [Service](#service)
+  - [Add / Delete service](#add--delete-service)
+  - [Enable / Disable service auto start](#enable--disable-service-auto-start)
+  - [Start / Stop service](#start--stop-service)
+  - [Show service status](#show-service-status)
+- [Manual / Help](#manual--help)
+- [Time](#time)
+- [DNS](#dns)
+- [Sharing desktop](#sharing-desktop)
+  - [Disable sharing desktop encryption (Ubuntu)](#disable-sharing-desktop-encryption-ubuntu)
+- [Disk](#disk)
+  - [Disk usage](#disk-usage)
+  - [Disk free space](#disk-free-space)
+  - [List block devices / disk](#list-block-devices--disk)
+  - [Disk benchmark](#disk-benchmark)
+    - [Write speed](#write-speed)
+    - [Read speed](#read-speed)
+  - [Partition](#partition)
+    - [Partition table / Disk label](#partition-table--disk-label)
+    - [`fdisk`](#fdisk)
+    - [`parted`](#parted)
+    - [`gdisk` (GPT fdisk)](#gdisk-gpt-fdisk)
+- [LVM (Logical Volume Management)](#lvm-logical-volume-management)
+  - [Troubleshooting](#troubleshooting)
+- [Find](#find)
+- [Directory Stack](#directory-stack)
+  - [Push directory](#push-directory)
+  - [Pop and change to the directory](#pop-and-change-to-the-directory)
+  - [List directory stack](#list-directory-stack)
 - [cron / crontab](#cron--crontab)
-- [OpenJDK (Java)](#OpenJDK-Java)
-  - [List installed JVM](#List-installed-JVM)
-  - [Switch JVM](#Switch-JVM)
-- [Linux Distribution / Version](#Linux-Distribution--Version)
-- [Mount](#Mount)
-  - [Remount mount point in fstab](#Remount-mount-point-in-fstab)
-  - [Lists all mounted filesystems](#Lists-all-mounted-filesystems)
-  - [Mount CIFS / SMB / Windows Shared Folder](#Mount-CIFS--SMB--Windows-Shared-Folder)
-- [Package management](#Package-management)
-  - [Install Development Tools](#Install-Development-Tools)
-  - [Add EPEL repository to CentOS / RHEL](#Add-EPEL-repository-to-CentOS--RHEL)
-  - [Download package with dependence](#Download-package-with-dependence)
-  - [List installed package](#List-installed-package)
-- [Last login](#Last-login)
-  - [Suppress `Last Login` message](#Suppress-Last-Login-message)
-  - [Clear last login log](#Clear-last-login-log)
-  - [Disable logging last login](#Disable-logging-last-login)
+- [OpenJDK (Java)](#openjdk-java)
+  - [List installed JVM](#list-installed-jvm)
+  - [Switch JVM](#switch-jvm)
+- [Show Linux distribution / version](#show-linux-distribution--version)
+- [Mount](#mount)
+  - [Remount mount point in fstab](#remount-mount-point-in-fstab)
+  - [Lists all mounted filesystems](#lists-all-mounted-filesystems)
+  - [Mount CIFS / SMB / Windows Shared Folder](#mount-cifs--smb--windows-shared-folder)
+- [Package management](#package-management)
+  - [Install Development Tools](#install-development-tools)
+  - [Add EPEL repository to CentOS / RHEL](#add-epel-repository-to-centos--rhel)
+  - [Download package with dependence](#download-package-with-dependence)
+  - [List installed package](#list-installed-package)
+- [Last login](#last-login)
+  - [Suppress `Last Login` message](#suppress-last-login-message)
+  - [Clear last login log](#clear-last-login-log)
+  - [Disable logging last login](#disable-logging-last-login)
+
+# Command
+
+## [sed](sed.md)
+
+## [awk](awk.md)
+
+## [iptables](iptables.md)
 
 # User
 
@@ -163,13 +185,13 @@ usermod -aG <group>[,...] <user>
 timedatectl set-time [<YYYY>-<MM>-<DD>] [<HH>:<MM>:<SS>]
 ```
 
-## RTC in the local time
+## RTC (Real-Time Clock) as the local time
 
 ```sh
 timedatectl set-local-rtc { true | t | yes | y | 1 }
 ```
 
-## RTC in the UTC
+## RTC (Real-Time Clock) as the UTC (Coordinated Universal Time)
 
 ```sh
 timedatectl set-local-rtc { false | f | no | n | 0 }
@@ -184,16 +206,24 @@ date -d @<timestamp>
 
 # Shell
 
+## Shell list
+
 ```sh
-# Shell list
 cat /etc/shells
+```
 
-# Chanage shell
+## Chanage shell
+
+```sh
 chsh -s <shell> [<user>]
-# or
-usermod -s <shell> <user>
+```
 
-# Open file manager from CLI
+```sh
+usermod -s <shell> <user>
+```
+
+## Open file manager from CLI
+```sh
 xdg-open <path>
 ```
 
@@ -229,37 +259,33 @@ Find all OS, update GRUB config, install GRUB to MBR / UEFI
 update-grub
 ```
 
-## GRUB auto-generate config path
+## GRUB auto-generate config file
 ```sh
-/boot/grub/grub.cfg
+# /boot/grub/grub.cfg
 ```
 
 ## GRUB option
 ```sh
-vi /etc/default/grub
+# /etc/default/grub
 ```
 
-## Set default to last selected option
-File `/etc/default/grub`
+## Set GRUB default to last selected option
 ```sh
+# /etc/default/grub
 GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
 ```
-
 
 # Hardware
 
 | Command | Description |
 | --- | --- |
 | `lsusb` | List USB devices |
-| `lsblk` | List block devices |
 | `lspci` | List PCI devices |
 | `lspci -nn` | List PCI devices and devices code |
 | `lspci -k` | List PCI devices and kernel driver |
 | `cat /proc/cpuinfo` | Show CPU info |
 | `free` | Show memory info |
-| `df` | Disk free space |
-| `df -h` | Disk free space in human readable format |
 
 
 # Kernel
@@ -290,8 +316,8 @@ uname -a
 
 | Command | Description |
 | --- | --- |
-| `Ctrl`+`Z` | Suspend current process |
-| `Ctrl`+`C` | Terminate current process |
+| <kbd>Ctrl</kbd>+<kbd>Z</kbd> | Suspend current process |
+| <kbd>Ctrl</kbd>+<kbd>C</kbd> | Terminate current process |
 | `jobs` | List job |
 | `<command> &` | Run command in background |
 | `%[<job spec>] &` <br> `bg [%<job spec>]` | Resume job in background (default is current job) |
@@ -300,47 +326,84 @@ uname -a
 | `disown [%<job spec>]` | Don't terminate job when terminal exit (default is all jobs) |
 | `nohup <command>` | Don't terminate command when terminal exit (no hangup) |
 
+# File system
 
-# File permission
+## `rsync`
 
-## ~~Only change directory permission~~
+| Option | Description |
+| - | - |
+| `-a` | Archive mode, equals `-rlptgoD` (no `-H`, `-A`, `-X`) |
+| `-v` | Verbose |
+| `-z` | Compress during the transfer |
+| `--partial` | Keep partially transferred files |
+| `--progress` | Show progress |
+| `-P` | `--partial --progress` |
+| `-e "ssh [-p <port>]"` | Use SSH. Default use `rsync` daemon |
+
+```sh
+# <source>, <destination> = [[<user>@]<host>:]<path>
+rsync <option> <source> <destination>
+```
+
+## ACL
+
+[Reference](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/acls-setting)
+
+## File permission
+
+~~Only change directory permission~~
 
 ```sh
 chmod <permission> $(find -type d)
 ```
 
-## ~~Only change file permission~~
+~~Only change file permission~~
 ```sh
 chmod <permission> $(find -type f)
 ```
 
-## Recursive change file permission to `644`, directory to `755`
+Change file owner and group
+
 ```sh
-chmod -R u=rw,go=r,a+X <path>
-# or
-chmod -R a=r+X,u+w <path>
+chown { <owner>[:<group>] | --reference <file> } <file>
 ```
 
-# File attribute
+Change file permission to `644`, directory to `755`
+
+| Option | Description |
+| - | - |
+| `-R` | Recursive |
+
+```sh
+chmod [-R] u=rw,go=r,a+X <path>
+```
+
+```sh
+chmod [-R] a=r+X,u+w <path>
+```
+
+## File attribute
 
 [Reference](http://man7.org/linux/man-pages/man1/chattr.1.html)
 
 | Attribute | Description |
-| --- | --- |
-| a | append only |
-| A | no atime updates |
-| c | compressed |
-| i | immutable |
-| s | secure deletion |
-| S | synchronous updates |
-| u | undeletable |
+| - | - |
+| `a` | Append only |
+| `A` | No atime updates |
+| `c` | Compressed |
+| `i` | Immutable |
+| `s` | Secure deletion |
+| `S` | Synchronous updates |
+| `u` | Undeletable |
 
-## List attribute
+List attribute
+
 ```sh
 lsattr
 ```
 
-## Change attribute
+Change attribute
+
 ```sh
 chattr {+|-}<attribute> <file>
 ```
@@ -401,11 +464,15 @@ systemctl status <service>
 
 # Manual / Help
 
-```sh
-# Show manual
-man [<page>]
+Show manual
 
-# Search manual
+```sh
+man [<page>]
+```
+
+Search manual
+
+```
 apropos <keyword>
 ```
 
@@ -437,8 +504,9 @@ vi /etc/resolv.conf
 ```sh
 dconf-editor
 # org > gnome > desktop > remote-accessand > require-encryption
+```
 
-# or
+```sh
 gsettings set org.gnome.Vino require-encryption false
 ```
 
@@ -446,7 +514,11 @@ gsettings set org.gnome.Vino require-encryption false
 
 ## Disk usage
 
-| Command | Description |
+```sh
+du <option> <path>
+```
+
+| Option | Description |
 | --- | --- |
 | `-h` | Human readable |
 | `-s` | Summarize: Display only a total for each argument |
@@ -455,6 +527,22 @@ Sort human readable disk usage
 
 ```sh
 du -hs <path> | sort -h -r
+```
+
+## Disk free space
+
+| Option | Description |
+| - | - |
+| `-h` | Disk free space in human readable format |
+
+```
+df <option>
+```
+
+## List block devices / disk
+
+```
+lsblk
 ```
 
 ## Disk benchmark
@@ -490,16 +578,65 @@ echo 3 > /proc/sys/vm/drop_caches
 dd if=<file> of=/dev/null bs=<size>[K|M|G] [count=<count>[K|M|G]]
 ```
 
-Read speed without prior cache
+Read speed test without prior cache
 
 ```sh
 hdparm -t /dev/<device>
 ```
 
-Read speed with buffer
+Read speed test with buffer
 
 ```sh
 hdparm -T /dev/<device>
+```
+
+## Partition
+
+### Partition table / Disk label
+
+- MBR (Master Boot Record) / DOS
+  - Max size 2 TiB
+  - Max 4 primary partition
+- GPT (GUID Partition Table)
+  - Max size 8 ZiB
+  - Unlimited partition (Windows support 128 partitions)
+
+### `fdisk` 
+
+[Reference](https://wiki.archlinux.org/index.php/Fdisk)
+
+- Common
+- Not support GPT before `util-linux` 2.23
+
+### `parted`
+
+- Support GPT
+
+### `gdisk` (GPT fdisk)
+
+# LVM (Logical Volume Management)
+
+[Reference](https://www.digitalocean.com/community/tutorials/an-introduction-to-lvm-concepts-terminology-and-operations) / [Reference](https://www.digitalocean.com/community/tutorials/how-to-use-lvm-to-manage-storage-devices-on-ubuntu-16-04)
+
+Config file
+
+```sh
+# /etc/lvm/lvm.conf
+```
+
+## Troubleshooting
+
+`Device <device> excluded by a filter.`
+
+```sh
+pvcreate -vvv <device> |& grep <device>
+```
+
+`Skipping: Partition table signature found`
+
+```sh
+# Wipe all magic strings (BE CAREFUL!)
+wipefs --all <device>
 ```
 
 # Find
@@ -507,13 +644,13 @@ hdparm -T /dev/<device>
 Run command in `find` result, `{}` is result path
 
 ```sh
-find [<path>] [<expression>] -exec <command> {} +
+find [<path>] [[!] <expression>] -exec <command> {} +
 ```
 
 `<command> {} +` will expand to `<command> <path> <path> ...`
 
 ```sh
-find [<path>] [ [!] <expression> ] -exec <command> {} \;
+find [<path>] [[!] <expression>] -exec <command> {} \;
 ```
 
 `<command> {} \;` will expand to `<command> <path>; <command> <path>; ...`
@@ -573,14 +710,14 @@ update-java-alternatives --set <JVM name>
 ```
 
 
-# Linux Distribution / Version
+# Show Linux distribution / version
 
 ```sh
 cat /etc/*-release
 cat /proc/version
 uname -a
 
-# For SystemD
+# For systemd
 hostnamectl
 
 # For Debian
@@ -591,7 +728,7 @@ lsb_release -a
 # Mount
 
 ```sh
-mount [-t <type>] <source> <directory>
+mount [-t <type>] { <source> | <device> } <directory>
 ```
 
 ## Remount mount point in fstab
