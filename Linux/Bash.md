@@ -21,6 +21,47 @@
 | `"$@"` | `"$1" "$2" "$3"...` |
 
 
+# Redirect output
+
+| File descriptor | Description |
+| - | - |
+| `0` | `stdin` |
+| `1` | `stdout` |
+| `2` | `stderr` |
+
+Redirect output to file
+
+|  |  |
+| - | - |
+| Default | `stdout` |
+| `1` | `stdout` |
+| `2` | `stderr` |
+| `&` | `stdout` and `stderr` |
+
+```
+<command> [1|2|&]> <file>
+```
+
+Redirect `stderr` to `stdout`
+
+```
+<command> 2>&1
+```
+
+# Pipeline
+
+Pipe `stdout` ▶ `stdin`
+
+```
+<command> | <command>
+```
+
+Pipe `stdout` and `stderr` ▶ `stdin`
+
+```
+<command> |& <command>
+```
+
 # For
 
 ## For each file
