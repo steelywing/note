@@ -33,7 +33,7 @@
   - [Show GRUB when boot](#show-grub-when-boot)
   - [Update GRUB config](#update-grub-config)
   - [GRUB auto-generate config file](#grub-auto-generate-config-file)
-  - [GRUB option](#grub-option)
+  - [GRUB option file](#grub-option-file)
   - [Set GRUB default to last selected option](#set-grub-default-to-last-selected-option)
 - [Hardware](#hardware)
 - [Kernel](#kernel)
@@ -256,22 +256,27 @@ vi-preserve-time () {
 Hold `Shift` when boot
 
 ## Update GRUB config
+
 Find all OS, update GRUB config, install GRUB to MBR / UEFI
+
 ```sh
 update-grub
 ```
 
 ## GRUB auto-generate config file
-```sh
-# /boot/grub/grub.cfg
+
+```
+/boot/grub/grub.cfg
 ```
 
-## GRUB option
-```sh
-# /etc/default/grub
+## GRUB option file
+
+```
+/etc/default/grub
 ```
 
 ## Set GRUB default to last selected option
+
 ```sh
 # /etc/default/grub
 GRUB_DEFAULT=saved
@@ -334,17 +339,28 @@ uname -a
 
 | Option | Description |
 | - | - |
-| `-a` | Archive mode, equals `-rlptgoD` (no `-H`, `-A`, `-X`) |
-| `-v` | Verbose |
-| `-z` | Compress during the transfer |
-| `--partial` | Keep partially transferred files |
-| `--progress` | Show progress |
+| `-a`, `--archive` | archive mode, equals `-rlptgoD` (no `-H`, `-A`, `-X`) |
+| `-H`, `--hard-links` | preserve hard links |
+| `-A`, `--acls` | preserve ACLs (implies `-p`) |
+| `-X`, `--xattrs` | preserve extended attributes |
+| `-v`, `--verbose` | verbose |
+| `-z`, `--compress` | compress during the transfer |
+| `--partial` | keep partially transferred files |
+| `--progress` | show progress |
 | `-P` | `--partial --progress` |
-| `-e "ssh [-p <port>]"` | Use SSH. Default use `rsync` daemon |
+| `-e "ssh [-p <port>]"` | use SSH, default use `rsync` daemon |
 
 ```sh
 # <source>, <destination> = [[<user>@]<host>:]<path>
 rsync <option> <source> <destination>
+```
+
+Trailing slash on `<source>`
+
+```sh
+rsync -av /src /dest
+# same as
+rsync -av /src/ /dest/src
 ```
 
 ## ACL
@@ -390,13 +406,13 @@ chmod [-R] a=r+X,u+w <path>
 
 | Attribute | Description |
 | - | - |
-| `a` | Append only |
-| `A` | No atime updates |
-| `c` | Compressed |
-| `i` | Immutable |
-| `s` | Secure deletion |
-| `S` | Synchronous updates |
-| `u` | Undeletable |
+| `a` | append only |
+| `A` | no atime updates |
+| `c` | compressed |
+| `i` | immutable |
+| `s` | secure deletion |
+| `S` | synchronous updates |
+| `u` | undeletable |
 
 List attribute
 
@@ -672,7 +688,7 @@ hdparm -T /dev/<device>
 Config file
 
 ```sh
-# /etc/lvm/lvm.conf
+/etc/lvm/lvm.conf
 ```
 
 ## Troubleshooting
@@ -747,6 +763,20 @@ dirs [-v]
 
 [Reference](https://www.computerhope.com/unix/ucrontab.htm)
 
+User `crontab` file
+
+```
+/var/spool/cron/crontabs/<user>
+```
+
+`crontab` file
+
+```sh
+/etc/crontab
+
+# Debian only
+/etc/cron.d/
+```
 
 # OpenJDK (Java)
 
