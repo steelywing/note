@@ -62,6 +62,8 @@
   - [Disk usage](#disk-usage)
   - [Disk free space](#disk-free-space)
   - [List block devices / disk](#list-block-devices--disk)
+  - [I/O priority](#io-priority)
+    - [`ionice` (I/O nice)](#ionice-io-nice)
   - [Disk benchmark](#disk-benchmark)
     - [Write speed](#write-speed)
     - [Read speed](#read-speed)
@@ -545,6 +547,33 @@ df <option>
 lsblk
 ```
 
+## I/O priority
+
+### `ionice` (I/O nice)
+
+Get I/O priority
+
+```sh
+ionice [-p <PID>]
+```
+
+Set I/O priority
+
+| Class | Description |
+| - | - |
+| 0 | None |
+| 1 | Realtime |
+| 2 | Best-effort |
+| 3 | Idle |
+
+```sh
+# <level> = 0 to 7, only for best-effort and realtime
+ionice 
+    { -c | --class } <class>
+    [{ -n | --classdata } <level>] 
+    { <command> | -p <PID> }
+```
+
 ## Disk benchmark
 
 ### Write speed
@@ -562,8 +591,30 @@ dd if=/dev/zero of=<file> bs=<size>[K|M|G] count=<count>[K|M|G] { conv=fsync | o
 
 ### Read speed
 
+| Unit | Description |
+| - | - |
+| `c` | 1 |
+| `w` | 2 |
+| `b` | 512 |
+| `kB` | $1000$ |
+| `K` | $1024$ |
+| `MB` | $1000^2$ |
+| `M` | $1024^2$ |
+| `GB` | $1000^3$ |
+| `G` | $1024^3$ |
+| `T` | $1024^4$ |
+| `P` | $1024^5$ |
+| `E` | $1024^6$ |
+| `Z` | $1024^7$ |
+| `Y` | $1024^8$ |
+
 ```sh
-dd if=<file> of=/dev/null bs=<size>[K|M|G] [count=<count>[K|M|G]] iflag=direct
+dd
+    if=<file>
+    of=/dev/null
+    bs=<size>[<unit>]
+    [count=<count>[<unit>]]
+    iflag=direct
 ```
 
 [drop_caches reference](https://www.kernel.org/doc/Documentation/sysctl/vm.txt)
