@@ -8,7 +8,7 @@
 - [Diagnostic](#diagnostic)
   - [CDP (Cisco Discovery Protocol)](#cdp-cisco-discovery-protocol)
   - [LLDP](#lldp)
-  - [SPAN (Switched Port Analyzer)](#span-switched-port-analyzer)
+  - [SPAN (Switched Port Analyzer) / Port mirror](#span-switched-port-analyzer--port-mirror)
 - [VLAN](#vlan)
   - [VTP (VLAN Trunking Protocol)](#vtp-vlan-trunking-protocol)
 - [STP (Spanning Tree Protocol)](#stp-spanning-tree-protocol)
@@ -20,6 +20,7 @@
   - [BPDU filter](#bpdu-filter)
 - [DHCP](#dhcp)
   - [Preassigning IP Addresses](#preassigning-ip-addresses)
+  - [Verify DHCP](#verify-dhcp)
   - [DHCP snooping](#dhcp-snooping)
 - [Routing](#routing)
   - [Gateway](#gateway)
@@ -35,8 +36,6 @@
 - [Interface](#interface)
   - [Interface diagnostic](#interface-diagnostic)
   - [Config interface](#config-interface)
-    - [Config a range of interface](#config-a-range-of-interface)
-    - [Config VLAN interface](#config-vlan-interface)
     - [Interface description](#interface-description)
     - [Auto MDI-X (Medium-Dependent Interface Crossover)](#auto-mdi-x-medium-dependent-interface-crossover)
     - [Layer 3 mode](#layer-3-mode)
@@ -72,9 +71,6 @@
   - [IGMP](#igmp)
   - [Multicast Debug](#multicast-debug)
 - [Broadcast](#broadcast)
-  - [Allow broadcast](#allow-broadcast)
-  - [Forward broadcast packet to other IP](#forward-broadcast-packet-to-other-ip)
-  - [Allow specified UDP port forward broadcast](#allow-specified-udp-port-forward-broadcast)
 
 # Basic
 
@@ -135,12 +131,12 @@ Reset to Factory Default
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-2900-xl-series-switches/24328-156.html)
 
-Erase startup config
+- Erase startup config
 ```
 Switch# write erase
 ```
 
-Delete VLAN config
+- Delete VLAN config
 ```
 Switch# delete flash:/vlan.dat
 ```
@@ -254,34 +250,47 @@ Show LLDP neighbor
 Switch# show lldp neighbors
 ```
 
-## SPAN (Switched Port Analyzer)
+## SPAN (Switched Port Analyzer) / Port mirror
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-1_19_ea1/configuration/guide/3750scg/swspan.html)
 
-Port mirror
+Monitor interface
+
 ```
-! <VLAN list> = <VLAN ID> [{,|-} <VLAN ID>]...
+Switch(config)# monitor session <session number> 
+    source interface <interface> 
+    [ both | rx | tx ]
+```
 
-! Monitor interface
-Switch(config)# monitor session <session number> source interface <interface> [ both | rx | tx ]
+Monitor all ports of specify VLAN
 
-! Monitor all ports of specify VLAN
-Switch(config)# monitor session <session number> source vlan <VLAN list> [ both | rx | tx ]
+```
+Switch(config)# monitor session <session number> 
+    source vlan <VLAN list> 
+    [ both | rx | tx ]
+```
 
-! Mirror to specify interface
-Switch(config)# monitor session <session number> destination interface <interface>
+- Mirror to specify interface
+```
+Switch(config)# monitor session <session number> 
+    destination interface <interface>
+```
 
-! Filter VLAN
-Switch(config)# monitor session <session number> filter <VLAN list>
+- Monitor specific VLAN
+```
+! <VLAN list> = <VLAN ID>[{,|-}...]
+Switch(config)# monitor session <session number> 
+    filter <VLAN list>
+```
 
-! Remove monitor session
+- Remove monitor session
+```
 Switch(config)# no monitor session <session number>
 ```
 
 # VLAN
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/lan-switching/vlan/10023-3.html)
-
 
 Create VLAN
 
@@ -426,13 +435,13 @@ Switch(dhcp-config)# default-router <gateway IP>
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_dhcp/configuration/15-sy/dhcp-15-sy-book/dhcp-prt-bsd-aa.html#GUID-D3427E9D-D0F3-4FFE-889C-8091A84006C6)
 
-Method 1
+- Method 1
 
 ```
 Switch(dhcp-config)# address <IP> { client-id <ID> | hardware-address <MAC address> }
 ```
 
-Method 2
+- Method 2
 
 ```
 Switch(config)# ip dhcp pool <pool name>
@@ -441,7 +450,7 @@ Switch(dhcp-config)# client-identifier <ID>
 Switch(dhcp-config)# hardware-address <MAC address>
 ```
 
-Verify
+## Verify DHCP
 
 ```
 Switch# show ip dhcp binding
@@ -492,15 +501,22 @@ Switch(config)# ip routing
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/ios/12_2/qos/configuration/guide/fqos_c/qcfpbr.html)
 
-```
-! ACL permit: route-map is applied, the next route-map clause is not evaluated
-! ACL deny: route-map is not applied, the next route-map clause is evaluated
+| ACL | Description |
+| - | - |
+| `permit` | `route-map` is applied, the next `route-map` clause is not evaluated |
+| `deny` | `route-map` is not applied, the next `route-map` clause is evaluated |
 
-! route-map permit: route is redistributed
-! route-map deny: route is not redistributed
-! route-map default is permit
+| `route-map` | Description |
+| - | - |
+| `permit` | route is redistributed |
+| `deny` | route is not redistributed |
+
+- `route-map` default is permit
+
+```
 Switch(config)# route-map <route-map name> [permit|deny] [<sequence number>]
-! Default is all
+
+! Default (no configured match) match all
 Switch(config-route-map)# match ip address <ACL>
 Switch(config-route-map)# set ip next-hop <IP>
 
@@ -512,7 +528,9 @@ Switch(config-if)# ip policy route-map <route-map name>
 ```
 Switch(config)# router ospf <process ID>
 Switch(config-router)# network <IP> <netmask> area <area ID>
-! or
+```
+
+```
 Switch(config-if)# ip ospf <process ID> area <area ID>
 ```
 
@@ -630,7 +648,9 @@ Switch(config)# aaa authorization console
 Create user
 
 ```
-Switch(config)# username <username> privilege <privilege level> password <password>
+Switch(config)# username <username> 
+    privilege <privilege level> 
+    password <password>
 ```
 
 Set enable password
@@ -667,14 +687,14 @@ Add SSH RSA public key
 Switch(config)# ip ssh pubkey-chain
 Switch(conf-ssh-pubkey)# username <username>
 Switch(conf-ssh-pubkey-user)# key-string
-! Less than ~80 char/line
+! Must less than ~80 chars/line
 Switch(conf-ssh-pubkey-data)# <public key>
 Switch(conf-ssh-pubkey-data)# exit
 ```
 
 Login password
 
-Unnecessary if using `login local`
+- Unnecessary if using `login local`
 
 ```
 Switch(config-line)# password <password>
@@ -735,13 +755,15 @@ Switch(config)# interface port-channel <port channel number>
 Assign interface to port channel group (LACP) (Recommend)
 
 ```
-Switch(config-if)# channel-group <port channel number> mode {active|passive}
+Switch(config-if)# channel-group <port channel number> 
+    mode {active|passive}
 ```
 
 Assign interface to port channel group (PAgP) (Not recommend)
 
 ```
-Switch(config-if)# channel-group <port channel number> mode {auto|desirable}
+Switch(config-if)# channel-group <port channel number> 
+    mode {auto|desirable}
 ```
 
 Show port channel summary
@@ -798,13 +820,13 @@ Switch(config)# interface <interface>/<port number>
 Switch(config-if)# 
 ```
 
-### Config a range of interface
+Config a range of interface
 
 ```
 Switch(config)# interface range <interface>/<port number> - <port number>
 ```
 
-### Config VLAN interface
+Config VLAN interface
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3560/software/release/12-2_52_se/configuration/guide/3560scg/swvlan.html)
 
@@ -929,7 +951,7 @@ Switch(config-archive)# path scp://<username>:<password>@<IP>/<path>
 
 | Variable | Value |
 | --- | --- |
-| $(hostname) | Hostname |
+| `$(hostname)` | Hostname |
 
 ```
 Switch(config)# banner login ^
@@ -954,14 +976,18 @@ Switch# show platform tcam utilization asic all
 
 Configure system resources
 
+- If switch stacked, check SDM is match
 ```
-! If switch stacked, check SDM is match
 Switch# show switch
+```
 
-! Show current SDM prefer
+- Show current SDM prefer
+```
 Switch# show sdm prefer
+```
 
-! Config SDM prefer
+- Config SDM prefer
+```
 Switch(config)# sdm prefer ?
 ```
 
@@ -982,7 +1008,8 @@ Switch(config-access-map)# match ip address <IP ACL>
 Switch(config-access-map)# match mac address <MAC ACL>
 Switch(config-access-map)# exit
 
-Switch(config)# vlan filter <access-map name> vlan-list <VLAN list>
+Switch(config)# vlan filter <access-map name>
+    vlan-list <VLAN list>
 ```
 
 Block specify MAC address
@@ -1004,7 +1031,8 @@ Switch(config)# vlan access-map <access-map name> 20
 Switch(config-access-map)# action forward
 Switch(config-access-map)# exit
 
-Switch(config)# vlan filter <access-map name> vlan-list <VLAN list>
+Switch(config)# vlan filter <access-map name>
+    vlan-list <VLAN list>
 ```
 
 ## IP ACL
@@ -1017,16 +1045,26 @@ Standard ACL
 ```
 ! <address> = { any | <IP> <inverse mask> | host <IP> }
 
-Switch(config)# ip access-list standard { <ACL name> | <1-99> | <1300-1999> }
-Switch(config-std-nacl)# [<sequence number>] { permit | deny } <source address>
+Switch(config)# ip access-list standard 
+    { <ACL name> | <1-99> | <1300-1999> }
+
+Switch(config-std-nacl)# [<sequence number>] 
+    { permit | deny } 
+    <source address>
 ```
 
 Extended ACL
 ```
 ! <port> = { eq | neq | lt | gt } <port> | range <first port> <last port>
 
-Switch(config)# ip access-list extended { <ACL name> | <100-199> | <2000-2699> }
-Switch(config-ext-nacl)# [<sequence number>] { permit | deny } { ip | udp | tcp } <source address> [<source port>] <destination address> [<destination port>]
+Switch(config)# ip access-list extended 
+    { <ACL name> | <100-199> | <2000-2699> }
+
+Switch(config-ext-nacl)# [<sequence number>] 
+    { permit | deny } 
+    { ip | udp | tcp } 
+    <source address> [<source port>] 
+    <destination address> [<destination port>]
 ```
 
 Resequencing access-list entries
@@ -1049,8 +1087,11 @@ ACL default (no match) is `drop`
 
 ```
 Switch(config)# mac access-list extended <name>
+
 ! <MAC address> = { any | host <MAC address> | <MAC address> <MAC address mask> }
-Switch(config-ext-macl)# { permit | deny } <source MAC address> <destination MAC address>
+Switch(config-ext-macl)# { permit | deny } 
+    <source MAC address> 
+    <destination MAC address>
 ```
 
 # ARP
@@ -1067,10 +1108,14 @@ Switch(config)# arp <IP address> <MAC address> arpa
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750x_3560x/software/release/12-2_55_se/configuration/guide/3750xscg/swdynarp.html)
 
+If ARP over 15 packets per second, place the port in `error-disabled` state
+
 ```
-! If ARP over 15 packets per second, place the port in error-disabled state
 Switch(config)# ip arp inspection vlan <VLAN list>
-! Auto recovery
+```
+
+Auto recovery
+```
 Switch(config)# errdisable recovery cause arp-inspection
 ```
 
@@ -1115,8 +1160,13 @@ Policy map
 ```
 Switch(config)# policy-map <policy name>
 Switch(config-pmap)# class { <class name> | class-default }
+
 ! Min Burst = BPS / 8,000
-Switch(config-pmap-c)# police <BPS> <burst normal> <burst max> exceed-action drop
+Switch(config-pmap-c)# police
+    <BPS> 
+    <burst normal> 
+    <burst max> 
+    exceed-action drop
 ```
 
 Apply policy map
@@ -1173,21 +1223,21 @@ Switch# show ip mroute [<IP>] [count]
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipapp/command/iap-cr-book/iap-i1.html)
 
-## Allow broadcast
+Allow broadcast
 
 ```
 Switch(config-if)# ip directed-broadcast [<ACL ID>]
 ```
 
-## Forward broadcast packet to other IP
+Forward broadcast packet to other IP
 
 ```
 Switch(config-if)# ip helper-address <IP>
 ```
 
-## Allow specified UDP port forward broadcast
+Allow specified UDP port forward broadcast
 
-Default is all
+- Default is all
 
 ```
 Switch(config)# ip forward-protocol udp [<port number>]

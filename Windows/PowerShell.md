@@ -1,70 +1,42 @@
 # Table of Contents
-- [Table of Contents](#Table-of-Contents)
-- [Help](#Help)
-  - [Get command info](#Get-command-info)
-- [PowerShell version](#PowerShell-version)
-- [List](#List)
-- [Alias](#Alias)
-- [Property](#Property)
-  - [Get the properties and methods of objects](#Get-the-properties-and-methods-of-objects)
-  - [Select property](#Select-property)
-  - [Expand property](#Expand-property)
-  - [Create property](#Create-property)
-- [Current object](#Current-object)
-- [Filter object](#Filter-object)
-- [Network profile](#Network-profile)
-- [PowerShell remoting](#PowerShell-remoting)
-- [Trusted host](#Trusted-host)
-  - [Get trusted host](#Get-trusted-host)
-  - [Set trusted host](#Set-trusted-host)
-- [Get credential from user input](#Get-credential-from-user-input)
-- [PowerShell session](#PowerShell-session)
-  - [Create PowerShell session](#Create-PowerShell-session)
-  - [Connect to remote PowerShell](#Connect-to-remote-PowerShell)
-- [Get drive](#Get-drive)
-- [Run command](#Run-command)
-- [Execution policies](#Execution-policies)
-- [Unblock script that it was downloaded from the Internet](#Unblock-script-that-it-was-downloaded-from-the-Internet)
-- [History](#History)
-  - [Get all session history](#Get-all-session-history)
-- [Hash table](#Hash-table)
-  - [List keys](#List-keys)
-  - [List values](#List-values)
-  - [Add](#Add)
-  - [Remove](#Remove)
-- [Array](#Array)
-  - [Range](#Range)
-  - [Count](#Count)
-  - [Get element](#Get-element)
-  - [Set element](#Set-element)
-  - [Slice](#Slice)
-  - [Iteration](#Iteration)
-  - [Filter](#Filter)
-- [String](#String)
-  - [Format string](#Format-string)
-  - [Filter string](#Filter-string)
-  - [Concatenate string](#Concatenate-string)
-- [Path](#Path)
-  - [Get script path](#Get-script-path)
-  - [Get file name of path](#Get-file-name-of-path)
-  - [Get folder of path](#Get-folder-of-path)
-  - [Join path](#Join-path)
+- [Table of Contents](#table-of-contents)
+- [Help](#help)
+- [List](#list)
+- [Alias](#alias)
+- [Property](#property)
+- [Filter object](#filter-object)
+- [Network profile](#network-profile)
+- [PowerShell remoting](#powershell-remoting)
+- [Trusted host](#trusted-host)
+- [Get credential from user input](#get-credential-from-user-input)
+- [PowerShell session](#powershell-session)
+- [Get drive](#get-drive)
+- [Run command](#run-command)
+- [Execution policies](#execution-policies)
+- [Unblock script that it was downloaded from the Internet](#unblock-script-that-it-was-downloaded-from-the-internet)
+- [History](#history)
+- [Hash table](#hash-table)
+- [Array](#array)
+- [String](#string)
+- [Path](#path)
 
 # Help
 
-```powershell
-Get-Help [<cmdlet>] [-ShowWindow] [ -Detailed | -Full | -Examples ]
-```
-
  `help` equal `Get-Help | more`
 
-## Get command info
+```powershell
+Get-Help [<cmdlet>]
+    [ -ShowWindow ]
+    [ -Detailed | -Full | -Examples ]
+```
+
+Get command info
 
 ```powershell
 Get-Command <command>
 ```
 
-# PowerShell version
+PowerShell version
 
 ```powershell
 $PSVersionTable
@@ -73,7 +45,7 @@ $PSVersionTable
 # List
 
 ```powershell
-<expression>[, <expession>[, ...]]
+<expression>[, ...]
 ```
 
 # Alias
@@ -84,46 +56,37 @@ Get-Alias [[-Name] <alias> | -Definition <cmdlet>]
 
 # Property
 
-## Get the properties and methods of objects
+Get the properties and methods of objects
+
+Alias: `gm`
 
 ```powershell
 <cmdlet> | Get-Member
 ```
 
-Alias: `gm`
+Select property
 
-## Select property
+Alias: `select`
 
 ```powershell
 <command> | Select-Object [[-Property] <property[]>]
 ```
 
-Alias: `select`
-
-## Expand property
+Expand property
 
 ```powershell
 <command> | Select-Object -ExpandProperty <property>
-# or
+```
+
+```powershell
 (<command>).<property>
 ```
 
-## Create property
+Create property
 
 ```powershell
 <command> | Select-Object @{N[ame]="<property name>"; E[xpression]={<expression>}}
 ```
-
-# Current object
-
-```powershell
-$PSItem
-
-# Example
-"A","B","C" | ForEach-Object { "Current object is $PSItem" }
-```
-
-Alias: `$_`
 
 # Filter object
 
@@ -140,7 +103,10 @@ Alias: `?`
 
 ```powershell
 Get-NetConnectionProfile
-Set-NetConnectionProfile { -InterfaceIndex <ID> | -Name <name> } -NetworkCategory { Private | Public }
+
+Set-NetConnectionProfile 
+    { -InterfaceIndex <ID> | -Name <name> }
+    -NetworkCategory { Private | Public }
 ```
 
 # PowerShell remoting
@@ -153,22 +119,25 @@ Enable-PSRemoting [-SkipNetworkProfileCheck] [-Force]
 
 # Trusted host
 
-## Get trusted host
+Get trusted host
 
 ```powershell
 winrm get winrm/config/client
-# or
+```
+
+```powershell
 Get-Item WSMan:\localhost\Client\TrustedHosts
 ```
 
-## Set trusted host
+Set trusted host
 
 ```powershell
 winrm set winrm/config/client @{TrustedHosts="<host>[,<host>]"}
-# or
-Set-Item WSMan:\localhost\Client\TrustedHosts -Value "<host>[,<host>]" [-Force]
+```
 
+```powershell
 # <host> = <IP> | <hostname> | *
+Set-Item WSMan:\localhost\Client\TrustedHosts -Value "<host>[,<host>]" [-Force]
 ```
 
 # Get credential from user input
@@ -179,16 +148,20 @@ Get-Credential [[-UserName] <username>]
 
 # PowerShell session
 
-## Create PowerShell session
+Create PowerShell session
 
 ```powershell
-$<variable> = New-PSSession [[-ComputerName] <host[]>] [-Credential { <user> | <credential> }]
+$<variable> = New-PSSession
+    [[-ComputerName] <host[]>]
+    [-Credential { <user> | <credential> }]
 ```
 
-## Connect to remote PowerShell
+Connect to remote PowerShell
 
 ```powershell
-Enter-PSSession [-ComputerName] <host> [-Credential { <user> | <credential> }]
+Enter-PSSession
+    [-ComputerName] <host>
+    [-Credential { <user> | <credential> }]
 ```
 
 # Get drive
@@ -202,8 +175,13 @@ Get-PSDrive
 [Referense](https://social.technet.microsoft.com/wiki/contents/articles/7703.powershell-running-executables.aspx#The_Call_Operator_amp)
 
 ```powershell
-Invoke-Command [[-ComputerName] <host[]>] [-ScriptBlock] <ScriptBlock> [-Credential <PSCredential>] [-ArgumentList <argument[]>]
-# or
+Invoke-Command [[-ComputerName] <host[]>]
+    [-ScriptBlock] <ScriptBlock>
+    [-Credential <PSCredential>]
+    [-ArgumentList <argument[]>]
+```
+
+```powershell
 & <ScriptBlock> [<argument[]>]
 ```
 
@@ -224,13 +202,13 @@ Unblock-File <path>
 
 # History
 
+Alias: `history`
+
 ```powershell
 Get-History
 ```
 
-Alias: `history`
-
-## Get all session history
+Get all session history
 
 ```powershell
 Get-Content (Get-PSReadlineOption).HistorySavePath
@@ -247,23 +225,27 @@ $hash = @{
 }
 ```
 
-## List keys
+List keys
+
 ```powershell
 $hash.Keys
 ```
 
-## List values
+List values
+
 ```powershell
 $hash.Values
 ```
 
-## Add
+Add
+
 ```powershell
 $hash[<key>] = <value>
 $hash.Add(<key>, <value>)
 ```
 
-## Remove
+Remove
+
 ```powershell
 $hash.Remove(<key>)
 ```
@@ -277,52 +259,59 @@ $array = <value>, <value>[, ...]
 $array = @([<value>[, ...]])
 ```
 
-## Range
+Range
+
 ```powershell
 $array = <start>..<end>
 ```
 
-## Count
+Count
+
 ```powershell
 $array.Count
 ```
 
-## Get element
+Get element
+
 ```powershell
 $array[<index>]
 ```
 
-## Set element
+Set element
+
 ```powershell
 $array[<index>] = <value>
 ```
 
-## Slice
+Slice
+
 ```powershell
 $array[<index>..<index>]
 ```
 
-## Iteration
+Iteration
+
 ```powershell
 foreach ($element in $array) {
     # $element
 }
 
 $array.ForEach({
-    # $_
+    # $PSItem == $_ == <current element>
 })
 ```
 
-## Filter
+Filter
+
 ```powershell
 $array.Where({
-    # $_
+    # $PSItem == $_ == <current element>
 })
 ```
 
 # String
 
-## Format string
+Format string
 
 ```powershell
 <format> -f <value>[, ...]
@@ -330,35 +319,40 @@ $array.Where({
 "{0} is {1}" -f "Life", "great"
 ```
 
-## Filter string
+Filter string
 
 ```powershell
 <command> | Select-String "<pattern>"
 ```
 
-## Concatenate string
+Concatenate string
+
 ```powershell
 "$A $B"
 ```
 
 # Path
 
-## Get script path
+Get script path
+
 ```powershell
 $Script:MyInvocation.MyCommand.Path
 ```
 
-## Get file name of path
+Get file name of path
+
 ```powershell
 Split-Path -Leaf <path>
 ```
 
-## Get folder of path
+Get folder of path
+
 ```powershell
 Split-Path <path>
 ```
 
-## Join path
+Join path
+
 ```powershell
 Join-Path <path> <path> ...
 ```

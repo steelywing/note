@@ -70,7 +70,16 @@ ASA(config-applet)# [no] action [<action number>] cli command "<command>"
 ## Output
 
 ```
-ASA(config-applet)# [no] output { none | console | file { new | rotate <number> | overwrite <file name> | append <file name> } }
+ASA(config-applet)# [no] output {
+    none |
+    console |
+    file {
+        new |
+        rotate <number> |
+        overwrite <file name> |
+        append <file name>
+    }
+}
 ```
 
 ## Verify applet
