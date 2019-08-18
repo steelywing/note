@@ -58,7 +58,7 @@
 - [DNS](#dns)
 - [Sharing desktop](#sharing-desktop)
   - [Disable sharing desktop encryption (Ubuntu)](#disable-sharing-desktop-encryption-ubuntu)
-- [Disk](#disk)
+- [Disk / Storage](#disk--storage)
   - [Disk usage](#disk-usage)
   - [Disk free space](#disk-free-space)
   - [List block devices / disk](#list-block-devices--disk)
@@ -69,9 +69,9 @@
     - [Read speed](#read-speed)
   - [Partition](#partition)
     - [Partition table / Disk label](#partition-table--disk-label)
-    - [`fdisk`](#fdisk)
-    - [`parted`](#parted)
-    - [`gdisk` (GPT fdisk)](#gdisk-gpt-fdisk)
+    - [Partition command](#partition-command)
+  - [File system](#file-system-1)
+    - [Resize file system](#resize-file-system)
 - [LVM (Logical Volume Management)](#lvm-logical-volume-management)
   - [Troubleshooting](#troubleshooting)
 - [Find](#find)
@@ -97,6 +97,7 @@
   - [Suppress `Last Login` message](#suppress-last-login-message)
   - [Clear last login log](#clear-last-login-log)
   - [Disable logging last login](#disable-logging-last-login)
+- [Identify processes using files or sockets](#identify-processes-using-files-or-sockets)
 
 # Command
 
@@ -339,16 +340,16 @@ uname -a
 
 | Option | Description |
 | - | - |
-| `-a`, `--archive` | archive mode, equals `-rlptgoD` (no `-H`, `-A`, `-X`) |
-| `-H`, `--hard-links` | preserve hard links |
-| `-A`, `--acls` | preserve ACLs (implies `-p`) |
-| `-X`, `--xattrs` | preserve extended attributes |
-| `-v`, `--verbose` | verbose |
-| `-z`, `--compress` | compress during the transfer |
-| `--partial` | keep partially transferred files |
-| `--progress` | show progress |
+| `-a`, `--archive` | Archive mode, equals `-rlptgoD` (no `-H`, `-A`, `-X`) |
+| `-H`, `--hard-links` | Preserve hard links |
+| `-A`, `--acls` | Preserve ACLs (implies `-p`) |
+| `-X`, `--xattrs` | Preserve extended attributes |
+| `-v`, `--verbose` | Verbose |
+| `-z`, `--compress` | Compress during the transfer |
+| `--partial` | Keep partially transferred files |
+| `--progress` | Show progress |
 | `-P` | `--partial --progress` |
-| `-e "ssh [-p <port>]"` | use SSH, default use `rsync` daemon |
+| `-e "ssh [-p <port>]"` | Use SSH, default use `rsync` daemon |
 
 ```sh
 # <source>, <destination> = [[<user>@]<host>:]<path>
@@ -406,13 +407,13 @@ chmod [-R] a=r+X,u+w <path>
 
 | Attribute | Description |
 | - | - |
-| `a` | append only |
-| `A` | no atime updates |
-| `c` | compressed |
-| `i` | immutable |
-| `s` | secure deletion |
-| `S` | synchronous updates |
-| `u` | undeletable |
+| `a` | Append only |
+| `A` | No atime updates |
+| `c` | Compressed |
+| `i` | Immutable |
+| `s` | Secure deletion |
+| `S` | Synchronous updates |
+| `u` | Undeletable |
 
 List attribute
 
@@ -528,7 +529,7 @@ dconf-editor
 gsettings set org.gnome.Vino require-encryption false
 ```
 
-# Disk
+# Disk / Storage
 
 ## Disk usage
 
@@ -662,24 +663,40 @@ hdparm -T /dev/<device>
 ### Partition table / Disk label
 
 - MBR (Master Boot Record) / DOS
-  - Max size 2 TiB
+  - Max size 2 TiB (2³² sectors × 2⁹ bytes per sector)
   - Max 4 primary partition
 - GPT (GUID Partition Table)
-  - Max size 8 ZiB
+  - Max size 8 ZiB (2⁶⁴ sectors × 2⁹ bytes per sector)
   - Unlimited partition (Windows support 128 partitions)
 
-### `fdisk` 
+### Partition command
 
-[Reference](https://wiki.archlinux.org/index.php/Fdisk)
+- `fdisk` ([Reference](https://wiki.archlinux.org/index.php/Fdisk))
+  - Common
+  - Not support GPT before `util-linux` 2.23
+- `parted`
+  - Support GPT
+- `gdisk` (GPT fdisk)
+  - Support GPT
 
-- Common
-- Not support GPT before `util-linux` 2.23
+## File system
 
-### `parted`
+### Resize file system
 
-- Support GPT
+ext2 / ext3 / ext4
 
-### `gdisk` (GPT fdisk)
+```sh
+# Force check file system
+e2fsck -f <device>
+resize2fs <device> <size>[<unit>]
+```
+
+| Unit | Description |
+| - | - |
+| `s` | 512 byte sectors |
+| `K` | 1024 |
+| `M` | 1024² |
+| `G` | 1024³ |
 
 # LVM (Logical Volume Management)
 
@@ -919,4 +936,16 @@ touch ~/.hushlogin
 ## Disable logging last login
 ```sh
 chattr +i /var/log/lastlog
+```
+
+# Identify processes using files or sockets
+
+| Option | Description |
+| - | - |
+| `-v`, `--verbose` | Verbose |
+| `-k`, `--kill` | Kill processes accessing the file |
+| `{ -c | -m | --mount } { <mount point> | <device> }` | Mount point or device |
+
+```sh
+fuser <option> <file>
 ```
