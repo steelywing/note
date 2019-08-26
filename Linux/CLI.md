@@ -708,6 +708,154 @@ Config file
 /etc/lvm/lvm.conf
 ```
 
+| Abbreviation | Name |
+| - | - |
+| PV | Physical Volume |
+| VG | Volume Group |
+| LV | Logical Volume |
+
+![LVM](img/LVM.png)
+
+Scan for all available devices for LVM
+
+```sh
+lvmdiskscan
+```
+
+```sh
+pvscan
+```
+
+Create PV
+
+```sh
+# <device> = <disk> | <partition>
+pvcreate <device> ...
+```
+
+Remove PV
+```sh
+pvmove <PV>
+vgreduce <VG> <PV>
+pvremove <PV>
+```
+
+Show PV information
+
+```sh
+pvs
+```
+
+```sh
+pvdisplay
+```
+
+Create VG
+
+```sh
+vgcreate <VG name> <PV> ...
+```
+
+Add PV to VG
+
+```sh
+vgextend <VG name> <PV> ...
+```
+
+Remove VG
+
+```sh
+vgremove <VG name>
+```
+
+Show VG information
+
+```sh
+vgs
+```
+
+```sh
+vgdisplay
+```
+
+Create LV
+
+```sh
+lvcreate 
+    [
+        -L <size>[K|M|G|T|P|E] |
+        -l <percent>[%{VG|FREE}]
+    ]
+    –type { linear | raid1 | raid5 | raid6 }
+    -n <LV name>
+    <VG name>
+```
+
+Show LV information
+
+```sh
+lvs
+```
+
+```sh
+lvdisplay
+```
+
+Remove LV
+```sh
+lvremove <LV>
+```
+
+Resize LV
+
+```sh
+lvresize 
+    {
+        -L {+|-}<size>[K|M|G|T|P|E] |
+        -l {+|-}<percent>[%{VG|FREE}]
+    }
+    # Auto resize2fs
+    [--resizefs]
+    <LV>
+```
+
+Extent LV
+
+`lvextend <size>` = `lvresize +<size>`
+
+Reduce LV
+
+`lvreduce <size>` = `lvresize -<size>`
+
+- Unmount LV
+  ```sh
+  umount <LV>
+  ```
+- Resize LV
+  ```sh
+  lvresize 
+    -L [-]<size>[K|M|G|T|P|E]
+    --resizefs
+    <LV>
+  ```
+
+  Same as
+
+  - Check file system
+    ```sh
+    fsck -f <LV>
+    ```
+  - Resize file system
+    ```sh
+    resize2fs <LV> <size>[s|K|M|G]
+    ```
+  - Resize LV
+    ```sh
+    lvresize 
+      -L [-]<size>[K|M|G|T|P|E]
+      <LV>
+    ```
+
 ## Troubleshooting
 
 `Device <device> excluded by a filter.`
