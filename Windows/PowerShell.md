@@ -6,6 +6,7 @@
 - [Property](#property)
 - [Filter object](#filter-object)
 - [Network profile](#network-profile)
+- [Firewall](#firewall)
 - [PowerShell remoting](#powershell-remoting)
 - [Trusted host](#trusted-host)
 - [Get credential from user input](#get-credential-from-user-input)
@@ -25,8 +26,8 @@
  `help` equal `Get-Help | more`
 
 ```powershell
-Get-Help [<cmdlet>]
-    [ -ShowWindow ]
+Get-Help [<cmdlet>] `
+    [ -ShowWindow ] `
     [ -Detailed | -Full | -Examples ]
 ```
 
@@ -104,9 +105,29 @@ Alias: `?`
 ```powershell
 Get-NetConnectionProfile
 
-Set-NetConnectionProfile 
-    { -InterfaceIndex <ID> | -Name <name> }
+Set-NetConnectionProfile `
+    { -InterfaceIndex <ID> | -Name <name> } `
     -NetworkCategory { Private | Public }
+```
+
+# Firewall
+
+Allow ICMP echo request
+
+```powershell
+New-NetFirewallRule `
+    -DisplayName "ICMPv4 echo request" `
+    -Direction Inbound `
+    -Protocol ICMPv4 `
+    -IcmpType 8 `
+    -Action Allow
+
+New-NetFirewallRule `
+    -DisplayName "ICMPv6 echo request" `
+    -Direction Inbound `
+    -Protocol ICMPv6 `
+    -IcmpType 8 `
+    -Action Allow
 ```
 
 # PowerShell remoting
@@ -151,16 +172,16 @@ Get-Credential [[-UserName] <username>]
 Create PowerShell session
 
 ```powershell
-$<variable> = New-PSSession
-    [[-ComputerName] <host[]>]
+$<variable> = New-PSSession `
+    [[-ComputerName] <host[]>] `
     [-Credential { <user> | <credential> }]
 ```
 
 Connect to remote PowerShell
 
 ```powershell
-Enter-PSSession
-    [-ComputerName] <host>
+Enter-PSSession `
+    [-ComputerName] <host> `
     [-Credential { <user> | <credential> }]
 ```
 
@@ -175,9 +196,9 @@ Get-PSDrive
 [Referense](https://social.technet.microsoft.com/wiki/contents/articles/7703.powershell-running-executables.aspx#The_Call_Operator_amp)
 
 ```powershell
-Invoke-Command [[-ComputerName] <host[]>]
-    [-ScriptBlock] <ScriptBlock>
-    [-Credential <PSCredential>]
+Invoke-Command [[-ComputerName] <host[]>] `
+    [-ScriptBlock] <ScriptBlock> `
+    [-Credential <PSCredential>] `
     [-ArgumentList <argument[]>]
 ```
 
