@@ -62,6 +62,7 @@
   - [Disk usage](#disk-usage)
   - [Disk free space](#disk-free-space)
   - [List block devices / disk](#list-block-devices--disk)
+  - [Show devices UUID](#show-devices-uuid)
   - [I/O priority](#io-priority)
     - [`ionice` (I/O nice)](#ionice-io-nice)
   - [Disk benchmark](#disk-benchmark)
@@ -98,6 +99,9 @@
   - [Clear last login log](#clear-last-login-log)
   - [Disable logging last login](#disable-logging-last-login)
 - [Identify processes using files or sockets](#identify-processes-using-files-or-sockets)
+- [Watch](#watch)
+- [SSH](#ssh)
+  - [SSH tunnel (port forward)](#ssh-tunnel-port-forward)
 
 # Command
 
@@ -251,6 +255,8 @@ vi-preserve-time () {
 
 
 # GRUB
+
+[Reference](https://help.ubuntu.com/community/Grub2)
 
 ## Show GRUB when boot
 
@@ -554,14 +560,28 @@ du -hs <path> | sort -h -r
 | - | - |
 | `-h` | Disk free space in human readable format |
 
-```
+```sh
 df <option>
 ```
 
 ## List block devices / disk
 
-```
+```sh
 lsblk
+```
+
+## Show devices UUID
+
+```sh
+lsblk { -f | --fs }
+```
+
+```sh
+blkid
+```
+
+```sh
+ls /dev/disk/by-uuid/
 ```
 
 ## I/O priority
@@ -688,8 +708,12 @@ ext2 / ext3 / ext4
 ```sh
 # Force check file system
 e2fsck -f <device>
-resize2fs <device> <size>[<unit>]
+resize2fs [-M] <device> [<size>[<unit>]]
 ```
+
+| Unit | Description |
+| - | - |
+| `-M` | Minimize size |
 
 | Unit | Description |
 | - | - |
@@ -724,6 +748,26 @@ lvmdiskscan
 
 ```sh
 pvscan
+```
+
+Change partition type ID to LVM (Optional)
+
+```sh
+gdisk <device>
+
+Command (? for help): t
+Partition number (1-3): <partition>
+Hex code or GUID (L to show codes, Enter = 8300): 8e00
+Command (? for help): w
+```
+
+```sh
+fdisk <device>
+
+Command (m for help): t
+Partition type (type L to list all types): L
+Partition type (type L to list all types): <Linux LVM type ID>
+Command (m for help): w
 ```
 
 Create PV
@@ -1097,3 +1141,36 @@ chattr +i /var/log/lastlog
 ```sh
 fuser <option> <file>
 ```
+
+# Watch
+
+Execute command periodically
+
+```sh
+watch [-n <seconds>] <command>
+```
+
+# SSH
+
+## SSH tunnel (port forward)
+
+| Option | Description |
+| - | - |
+| `-N` | Do not execute a remote command |
+| `-f` | Run in background |
+| `-p <port>` | Port to connect to on the remote host |
+
+```sh
+ssh [<option>] -L [<SSH client bind address>:]<SSH client port>:<remote server host>:<remote server port> [<user>@]<SSH remote server host>
+```
+
+Example
+
+![SSH Tunnel](img/SSH&#32;Tunnel.png)
+
+```sh
+# SSH Client
+ssh -L 8000:10.0.2.2:80 10.0.1.2
+```
+
+Now, open `http://10.0.0.2:8000/` on *Client*, will port forward to *Remote Server* `http://10.0.2.2:80/`
