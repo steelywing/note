@@ -1152,25 +1152,4 @@ watch [-n <seconds>] <command>
 
 # SSH
 
-## SSH tunnel (port forward)
-
-| Option | Description |
-| - | - |
-| `-N` | Do not execute a remote command |
-| `-f` | Run in background |
-| `-p <port>` | Port to connect to on the remote host |
-
-```sh
-ssh [<option>] -L [<SSH client bind address>:]<SSH client port>:<remote server host>:<remote server port> [<user>@]<SSH remote server host>
-```
-
-Example
-
-![SSH Tunnel](img/SSH&#32;Tunnel.png)
-
-```sh
-# SSH Client
-ssh -L 8000:10.0.2.2:80 10.0.1.2
-```
-
-Now, open `http://10.0.0.2:8000/` on *Client*, will port forward to *Remote Server* `http://10.0.2.2:80/`
+## [SSH tunnel (port forward)](SSH&#32;Tunnel.md)
