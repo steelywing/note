@@ -8,6 +8,9 @@
   - [Network Profile](#network-profile)
   - [IP address conflict](#ip-address-conflict)
   - [Network monitor](#network-monitor)
+  - [Show TCP / UDP connection](#show-tcp--udp-connection)
+  - [Reset (Repair) TCP/IP stack](#reset-repair-tcpip-stack)
+- [Startup](#startup)
 - [User](#user)
   - [User Account Management / Auto Login](#user-account-management--auto-login)
   - [Computer Management / Local User](#computer-management--local-user)
@@ -68,6 +71,46 @@ Windows will use IP `169.254.0.0/16` if IP address conflict
 - [TCPView](https://docs.microsoft.com/en-us/sysinternals/downloads/tcpview)
 - [WireShark](https://www.wireshark.org/)
 - [WinDump](https://www.winpcap.org/windump/)
+
+## Show TCP / UDP connection
+
+[PowerShell](./PowerShell.md#show-tcp-listening-port)
+
+| Option | Permission |
+| --- | --- |
+| `-a` | Displays all connections and listening ports |
+| `-n` | Displays addresses and port numbers in numerical form |
+
+```cmd
+netstat <option>
+```
+
+## Reset (Repair) TCP/IP stack
+
+[Reference](https://support.microsoft.com/en-us/help/299357/how-to-reset-tcp-ip-by-using-the-netshell-utility)
+
+[Reference](https://support.microsoft.com/en-us/help/10741/windows-fix-network-connection-issues)
+
+```cmd
+netsh winsock reset
+netsh int ip reset
+netsh int ipv6 reset
+ipconfig /flushdns
+```
+
+# Startup
+
+[Reference](https://support.microsoft.com/en-us/help/4026268/windows-10-change-startup-apps)
+
+Startup folder
+```
+shell:startup
+```
+
+Open in command
+```cmd
+start shell:startup
+```
 
 # User
 
