@@ -58,6 +58,8 @@
 - [DNS](#dns)
 - [Sharing desktop](#sharing-desktop)
   - [Disable sharing desktop encryption (Ubuntu)](#disable-sharing-desktop-encryption-ubuntu)
+- [File](#file)
+  - [Copy](#copy)
 - [Disk / Storage](#disk--storage)
   - [Disk usage](#disk-usage)
   - [Disk free space](#disk-free-space)
@@ -533,6 +535,19 @@ dconf-editor
 
 ```sh
 gsettings set org.gnome.Vino require-encryption false
+```
+
+# File
+
+## Copy
+
+| Option | Description |
+| --- | --- |
+| `-p | --preserve[=<attributes>]` | Preserve mode, ownership, timestamps |
+| `-R | -r | --recursive` | Copy directories recursively |
+
+```sh
+cp [<option>] <source> <destination>
 ```
 
 # Disk / Storage
@@ -1152,4 +1167,4 @@ watch [-n <seconds>] <command>
 
 # SSH
 
-## [SSH tunnel (port forward)](SSH&#32;Tunnel.md)
+## [SSH tunnel (port forward)](./SSH&#32;Tunnel.md)
