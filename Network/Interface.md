@@ -1,22 +1,24 @@
 # Table of Contents
-- [Table of Contents](#Table-of-Contents)
-- [Copper](#Copper)
-  - [10BASE-T](#10BASE-T)
-  - [100BASE-TX](#100BASE-TX)
-  - [1000BASE-T](#1000BASE-T)
-  - [10GBASE-T](#10GBASE-T)
-  - [Pinout](#Pinout)
-- [Fiber](#Fiber)
-  - [1000BASE‑LX/LH](#1000BASE%E2%80%91LXLH)
-  - [1000BASE‑SX](#1000BASE%E2%80%91SX)
-  - [SMF (Single Mode Fiber)](#SMF-Single-Mode-Fiber)
-  - [MMF (Multi Mode Fiber)](#MMF-Multi-Mode-Fiber)
-- [Slot](#Slot)
-  - [SFP (Small Form-factor Pluggable)](#SFP-Small-Form-factor-Pluggable)
-  - [SFP+](#SFP)
-  - [GBIC (GigaBit Interface Converter)](#GBIC-GigaBit-Interface-Converter)
-  - [XFP](#XFP)
-  - [X2](#X2)
+- [Table of Contents](#table-of-contents)
+- [Copper](#copper)
+  - [10BASE-T](#10base-t)
+  - [100BASE-TX](#100base-tx)
+  - [1000BASE-T](#1000base-t)
+  - [10GBASE-T](#10gbase-t)
+  - [Pinout](#pinout)
+  - [PoE (Power over Ethernet)](#poe-power-over-ethernet)
+    - [802.3af](#8023af)
+- [Fiber](#fiber)
+  - [1000BASE‑LX/LH](#1000base%e2%80%91lxlh)
+  - [1000BASE‑SX](#1000base%e2%80%91sx)
+  - [SMF (Single Mode Fiber)](#smf-single-mode-fiber)
+  - [MMF (Multi Mode Fiber)](#mmf-multi-mode-fiber)
+- [Slot](#slot)
+  - [SFP (Small Form-factor Pluggable)](#sfp-small-form-factor-pluggable)
+  - [SFP+](#sfp)
+  - [GBIC (GigaBit Interface Converter)](#gbic-gigabit-interface-converter)
+  - [XFP](#xfp)
+  - [X2](#x2)
 
 # Copper
 
@@ -84,6 +86,23 @@ TIA/EIA-568A
 TIA/EIA-568B
 
 ![TIA-568A](img/TIA-568B.png)
+
+## PoE (Power over Ethernet)
+
+### 802.3af
+
+[Reference](https://en.wikipedia.org/wiki/Power_over_Ethernet)
+
+| Pin | Data | Mode A | Mode B (Passive) |
+| - | - | - | - |
+| 1 | RX+ | DC+ | - |
+| 2 | RX- | DC+ | - |
+| 3 | TX+ | DC- | - |
+| 4 | - | - | DC+ |
+| 5 | - | - | DC+ |
+| 6 | TX- | DC- | - |
+| 7 | - | - | DC- |
+| 8 | - | - | DC- |
 
 # Fiber
 
