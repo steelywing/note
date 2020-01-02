@@ -1,36 +1,65 @@
 # Table of Contents
-- [Table of Contents](#Table-of-Contents)
-- [Version](#Version)
-- [RSA key](#RSA-key)
-  - [Generating RSA key](#Generating-RSA-key)
-  - [View RSA key file](#View-RSA-key-file)
-  - [Extracting RSA public key](#Extracting-RSA-public-key)
-- [CSR (Certificate Signing Request)](#CSR-Certificate-Signing-Request)
-  - [Creating CSR](#Creating-CSR)
-  - [CSR config](#CSR-config)
-  - [Verify CSR](#Verify-CSR)
+- [Table of Contents](#table-of-contents)
+- [Version](#version)
+- [X509 (TLS/SSL certificate)](#x509-tlsssl-certificate)
+- [RSA key](#rsa-key)
+- [CSR (Certificate Signing Request)](#csr-certificate-signing-request)
 
 # Version
 ```sh
 openssl version
 ```
 
+# X509 (TLS/SSL certificate)
+
+[Reference](https://www.openssl.org/docs/man1.1.1/man1/x509.html)
+
+Self signed certificate
+
+```sh
+openssl x509 
+    -req 
+    -in <file.csr> 
+    -days <days>
+    -signkey <file.key> 
+    -out <file.crt> 
+```
+
+CA (Certificate Authority) sign certificate
+
+```sh
+openssl x509 
+    -req 
+    -in <file.csr> 
+    -days <days> 
+    -CA <ca.crt> 
+    -CAkey <ca.key> 
+    { -CAcreateserial | -set_serial <serial> } 
+    -out <cert.{crt|pem}>
+```
+
+Display the contents of certificate (PEM/CRT)
+
+```sh
+openssl x509 -in <file.{pem|crt}> -text -noout
+```
+
 # RSA key
 
-## Generating RSA key
+Generating RSA key
 
 ```sh
 # Default key lenght = 2048
 openssl genrsa [-out <file.key>] [<key length>]
 ```
 
-## View RSA key file
+View RSA key file
 
 ```sh
-openssl rsa -text -in <file.key> [-noout]
+openssl rsa -in <file.key> -text -noout
 ```
 
-## Extracting RSA public key
+Extracting RSA public key
 
 ```sh
 openssl rsa -in <file.key> -pubout -out <public.key>
@@ -42,14 +71,14 @@ openssl rsa -in <file.key> -pubout -out <public.key>
 
 [Reference](https://www.openssl.org/docs/manmaster/man1/req.html)
 
-## Creating CSR
+Creating CSR
 
 ```sh
 # <subject> = "/C=<country>/ST=<state>/L=<locality>/O=<organization>/OU=<organizational unit>/CN=<common name>/emailAddress=<email>"
 openssl req -new -key <file.key> -out <file.csr> [-subj <subject>] [-config <config.ini>]
 ```
 
-## CSR config
+CSR config
 
 ```ini
 [ req ]
@@ -90,7 +119,7 @@ DNS.2 = <domain>
 # ...
 ```
 
-## Verify CSR
+Verify CSR
 
 ```sh
 openssl req -text -in <file.csr> -noout -verify
