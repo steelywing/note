@@ -1,27 +1,39 @@
 # Table of Contents
-- [Table of Contents](#Table-of-Contents)
-- [IP forward](#IP-forward)
-- [Ping](#Ping)
-- [Nmap](#Nmap)
-  - [Host](#Host)
-  - [Host discovery](#Host-discovery)
-  - [Scan](#Scan)
-- [TCP Dump](#TCP-Dump)
-- [IP](#IP)
-  - [Interface](#Interface)
-  - [IP address](#IP-address)
-  - [ARP / IPv6 neighbour](#ARP--IPv6-neighbour)
-  - [Route](#Route)
-- [Socket](#Socket)
+- [Table of Contents](#table-of-contents)
+- [Firewall](#firewall)
+  - [iptables](#iptables)
+  - [nftables](#nftables)
+- [IP forward](#ip-forward)
+- [Ping](#ping)
+- [Nmap](#nmap)
+  - [Host](#host)
+  - [Host discovery](#host-discovery)
+  - [Scan](#scan)
+- [TCP Dump](#tcp-dump)
+- [IP](#ip)
+  - [Interface](#interface)
+  - [IP address](#ip-address)
+  - [ARP / Neighbour](#arp--neighbour)
+  - [Route](#route)
+- [Socket statistics](#socket-statistics)
+
+# Firewall
+
+## [iptables](iptables.md)
+
+## nftables
 
 # IP forward
 
 [Reference](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Security_Guide/s1-firewall-ipt-fwd.html)
 
+Get IP forward setting
 ```sh
-# Get IP forward setting
 sysctl net.ipv4.ip_forward
-# Set IP forward setting (0 = Disable, 1 = Enable)
+```
+
+Set IP forward setting (`0` = Disable, `1` = Enable)
+```sh
 sysctl -w net.ipv4.ip_forward={0|1}
 ```
 
@@ -66,9 +78,9 @@ nmap <option>
 | Option | Description |
 | - | - |
 | `-Pn` | No ping (Skip host discovery) |
-| `-PS <port list>` | TCP SYN ping |
-| `-PA <port list>` | TCP ACK ping |
-| `-PU <port list>` | UDP ping |
+| `-PS<port list>` | TCP SYN ping |
+| `-PA<port list>` | TCP ACK ping |
+| `-PU<port list>` | UDP ping |
 | `-PE` | ICMP ping |
 | `-PR` | ARP ping<br>Default: use on local ethernet |
 
@@ -200,7 +212,7 @@ Flush (Delete all) IP address
 ip a flush [dev <device>] [up]
 ```
 
-## ARP / IPv6 neighbour
+## ARP / Neighbour
 
 Reference: `ip neighbour help`
 
@@ -274,10 +286,10 @@ route del default
 route del -net <IP address>/<prefix length> [gw <next hop IP address>] [dev <device>] [metric <metric>]
 ```
 
-# Socket
+# Socket statistics
 
 ```sh
-ss
+ss [<option> ...] [state <state>] [<expression>]
 ```
 
 | Option | Description |
