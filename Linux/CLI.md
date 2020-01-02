@@ -28,7 +28,7 @@
   - [Chanage shell](#chanage-shell)
   - [Open file manager from CLI](#open-file-manager-from-cli)
   - [Indicate command type](#indicate-command-type)
-- [Preserve file timestamp after edit (`bash`)](#preserve-file-timestamp-after-edit-bash)
+- [Preserve file timestamp after edit (bash)](#preserve-file-timestamp-after-edit-bash)
 - [GRUB](#grub)
   - [Show GRUB when boot](#show-grub-when-boot)
   - [Update GRUB config](#update-grub-config)
@@ -41,7 +41,7 @@
   - [Kernel module](#kernel-module)
 - [Jobs](#jobs)
 - [File system](#file-system)
-  - [`rsync`](#rsync)
+  - [rsync](#rsync)
   - [ACL](#acl)
   - [File permission](#file-permission)
   - [File attribute](#file-attribute)
@@ -66,12 +66,13 @@
   - [List block devices / disk](#list-block-devices--disk)
   - [Show devices UUID](#show-devices-uuid)
   - [I/O priority](#io-priority)
-    - [`ionice` (I/O nice)](#ionice-io-nice)
+    - [ionice (I/O nice)](#ionice-io-nice)
   - [Disk benchmark](#disk-benchmark)
     - [Write speed](#write-speed)
     - [Read speed](#read-speed)
   - [Partition](#partition)
     - [Partition table / Disk label](#partition-table--disk-label)
+    - [Reload partition table](#reload-partition-table)
     - [Partition command](#partition-command)
   - [File system](#file-system-1)
     - [Resize file system](#resize-file-system)
@@ -97,13 +98,15 @@
   - [Download package with dependence](#download-package-with-dependence)
   - [List installed package](#list-installed-package)
 - [Last login](#last-login)
-  - [Suppress `Last Login` message](#suppress-last-login-message)
+  - [Suppress Last Login message](#suppress-last-login-message)
   - [Clear last login log](#clear-last-login-log)
   - [Disable logging last login](#disable-logging-last-login)
 - [Identify processes using files or sockets](#identify-processes-using-files-or-sockets)
 - [Watch](#watch)
 - [SSH](#ssh)
   - [SSH tunnel (port forward)](#ssh-tunnel-port-forward)
+- [Auto start](#auto-start)
+  - [LXDE](#lxde)
 
 # Command
 
@@ -704,6 +707,12 @@ hdparm -T /dev/<device>
   - Max size 8 ZiB (2⁶⁴ sectors × 2⁹ bytes per sector)
   - Unlimited partition (Windows support 128 partitions)
 
+### Reload partition table
+
+```sh
+partprobe /dev/<device>
+```
+
 ### Partition command
 
 - `fdisk` ([Reference](https://wiki.archlinux.org/index.php/Fdisk))
@@ -1168,3 +1177,12 @@ watch [-n <seconds>] <command>
 # SSH
 
 ## [SSH tunnel (port forward)](./SSH&#32;Tunnel.md)
+
+# Auto start
+
+## LXDE
+
+[Reference](https://wiki.archlinux.org/index.php/LXDE#Autostart)
+
+- `~/.config/lxsession/LXDE/`
+- `/etc/xdg/lxsession/LXDE/autostart`
