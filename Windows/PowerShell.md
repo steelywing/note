@@ -6,6 +6,7 @@
 - [Property](#property)
 - [Filter object](#filter-object)
 - [Network profile](#network-profile)
+- [Show TCP listening port](#show-tcp-listening-port)
 - [Firewall](#firewall)
 - [PowerShell remoting](#powershell-remoting)
 - [Trusted host](#trusted-host)
@@ -20,14 +21,17 @@
 - [Array](#array)
 - [String](#string)
 - [Path](#path)
+- [VLAN](#vlan)
+  - [Create VLAN interface](#create-vlan-interface)
+  - [Remove VLAN interface](#remove-vlan-interface)
 
 # Help
 
  `help` equal `Get-Help | more`
 
 ```powershell
-Get-Help [<cmdlet>] `
-    [ -ShowWindow ] `
+Get-Help [<cmdlet>]
+    [ -ShowWindow ]
     [ -Detailed | -Full | -Examples ]
 ```
 
@@ -105,9 +109,15 @@ Alias: `?`
 ```powershell
 Get-NetConnectionProfile
 
-Set-NetConnectionProfile `
-    { -InterfaceIndex <ID> | -Name <name> } `
+Set-NetConnectionProfile
+    { -InterfaceIndex <ID> | -Name <name> }
     -NetworkCategory { Private | Public }
+```
+
+# Show TCP listening port
+
+```powershell
+Get-NetTCPConnection -State Listen [-LocalPort <port>]
 ```
 
 # Firewall
@@ -172,16 +182,16 @@ Get-Credential [[-UserName] <username>]
 Create PowerShell session
 
 ```powershell
-$<variable> = New-PSSession `
-    [[-ComputerName] <host[]>] `
+$<variable> = New-PSSession
+    [[-ComputerName] <host[]>]
     [-Credential { <user> | <credential> }]
 ```
 
 Connect to remote PowerShell
 
 ```powershell
-Enter-PSSession `
-    [-ComputerName] <host> `
+Enter-PSSession
+    [-ComputerName] <host>
     [-Credential { <user> | <credential> }]
 ```
 
@@ -196,9 +206,9 @@ Get-PSDrive
 [Referense](https://social.technet.microsoft.com/wiki/contents/articles/7703.powershell-running-executables.aspx#The_Call_Operator_amp)
 
 ```powershell
-Invoke-Command [[-ComputerName] <host[]>] `
-    [-ScriptBlock] <ScriptBlock> `
-    [-Credential <PSCredential>] `
+Invoke-Command [[-ComputerName] <host[]>]
+    [-ScriptBlock] <ScriptBlock>
+    [-Credential <PSCredential>]
     [-ArgumentList <argument[]>]
 ```
 
@@ -376,4 +386,36 @@ Join path
 
 ```powershell
 Join-Path <path> <path> ...
+```
+
+# VLAN
+
+## Create VLAN interface
+
+- Enable Hyper-V virtual switch
+  ```powershell
+  Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-Services
+  ```
+
+- Enable Hyper-V tools
+  ```powershell
+  Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-Tools-All
+  ```
+
+- Add external virtual switch
+  ```powershell
+  $ethernet = Get-NetAdapter -Name "Ethernet"
+  New-VMSwitch -Name "External Switch" -NetAdapterName $ethernet.Name -AllowManagementOS $true
+  ```
+
+- Add VLAN interface
+  ```powershell
+  Add-VMNetworkAdapter -ManagementOS -Name "<name>"
+  Set-VMNetworkAdapterVlan -ManagementOS -VMNetworkAdapterName "<name>" -Access -VlanId <VLAN ID>
+  ```
+
+## Remove VLAN interface
+
+```powershell
+Remove-VMNetworkAdapter -ManagementOS -Name "<name>"
 ```
