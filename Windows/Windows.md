@@ -22,14 +22,14 @@
 - [Credential Manager](#credential-manager)
 - [Remote Desktop](#remote-desktop)
 - [Hibernate](#hibernate)
-- [`.cab` file](#cab-file)
+- [.cab file](#cab-file)
 - [File Permission (ACL)](#file-permission-acl)
-  - [`calcs`](#calcs)
-  - [`icacls`](#icacls)
+  - [calcs](#calcs)
+  - [icacls](#icacls)
     - [Permission](#permission)
 - [Registry](#registry)
 - [Cortana](#cortana)
-- [Allow input unicode with <kbd>Alt</kbd> + <kbd>+\<Code\></kbd>](#allow-input-unicode-with-kbdaltkbd--kbdcodekbd)
+- [Allow input unicode with <kbd>Alt</kbd> + <kbd>+&lt;Code&gt;</kbd>](#allow-input-unicode-with-kbdaltkbd--kbdltcodegtkbd)
 - [Enable / Disable the Local Built-In Administrator Account](#enable--disable-the-local-built-in-administrator-account)
 - [Get OS Architecture (32-bit / 64-bit)](#get-os-architecture-32-bit--64-bit)
 - [SLP (System Locked Pre-installation) / SLIC (System License Internal Code)](#slp-system-locked-pre-installation--slic-system-license-internal-code)
@@ -38,6 +38,8 @@
 - [Cleanup](#cleanup)
   - [Cleanup WinSxS](#cleanup-winsxs)
   - [Cleanup hibernate](#cleanup-hibernate)
+- [Fix](#fix)
+  - [Microsoft.Windows.Photos with high CPU usage](#microsoftwindowsphotos-with-high-cpu-usage)
 
 # Recovery
 
@@ -431,3 +433,11 @@ Dism.exe /online /Cleanup-Image /SPSuperseded
 ```
 
 ## [Cleanup hibernate](#hibernate)
+
+# Fix
+
+## Microsoft.Windows.Photos with high CPU usage
+
+- `Default apps`
+  - Disable `Photos` app
+- Reset `Photos` app
