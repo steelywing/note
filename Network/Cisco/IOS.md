@@ -7,7 +7,7 @@
 - [Log](#log)
 - [Diagnostic](#diagnostic)
   - [CDP (Cisco Discovery Protocol)](#cdp-cisco-discovery-protocol)
-  - [LLDP](#lldp)
+  - [LLDP (Link Layer Discovery Protocol)](#lldp-link-layer-discovery-protocol)
   - [SPAN (Switched Port Analyzer) / Port mirror](#span-switched-port-analyzer--port-mirror)
 - [VLAN](#vlan)
   - [VTP (VLAN Trunking Protocol)](#vtp-vlan-trunking-protocol)
@@ -199,6 +199,12 @@ Get version, up time
 Switch# show version
 ```
 
+Get PID, serial number
+
+```
+Switch# show inventory
+```
+
 Get IP traffic info
 
 ```
@@ -225,7 +231,7 @@ Switch# show tech-support
 Switch# show cdp neighbors [<interface>] [detail]
 ```
 
-## LLDP
+## LLDP (Link Layer Discovery Protocol)
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst4500/12-2/46sg/configuration/guide/Wrapper-46SG/swlldp.html)
 
