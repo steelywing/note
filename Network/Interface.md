@@ -13,6 +13,7 @@
   - [1000BASE‑SX](#1000base%e2%80%91sx)
   - [SMF (Single Mode Fiber)](#smf-single-mode-fiber)
   - [MMF (Multi Mode Fiber)](#mmf-multi-mode-fiber)
+  - [Connector](#connector)
 - [Slot](#slot)
   - [SFP (Small Form-factor Pluggable)](#sfp-small-form-factor-pluggable)
   - [SFP+](#sfp)
@@ -130,6 +131,8 @@ TIA/EIA-568B
 
 ## SMF (Single Mode Fiber)
 
+[FOA Reference](https://www.thefoa.org/tech/ref/basic/fiber.html)
+
 [ISO/IEC 11801](https://en.wikipedia.org/wiki/ISO/IEC_11801)
 
 |  |  |
@@ -142,6 +145,8 @@ TIA/EIA-568B
 
 [Reference](https://en.wikipedia.org/wiki/Multi-mode_optical_fiber)
 
+[FOA Reference](https://www.thefoa.org/tech/ref/basic/fiber.html)
+
 [ISO/IEC 11801](https://en.wikipedia.org/wiki/ISO/IEC_11801)
 
 |  |  |
@@ -149,6 +154,15 @@ TIA/EIA-568B
 | OM (Optical Multi-mode) | OM1 - OM5 |
 | Core diameter | 50 – 100 µm, OM1 = 62.5 µm, OM2, OM3, OM4, OM5 = 50 µm |
 | Cladding diameter | 125 µm |
+
+## Connector
+
+[Reference](https://www.thefoa.org/tech/connID.htm)
+
+| Name | Image |
+| - | - |
+| SC | ![SC](img/SC.jpg) |
+| LC | ![LC](img/LC.jpg) |
 
 # Slot
 
