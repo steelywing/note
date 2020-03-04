@@ -19,16 +19,12 @@
   - [User database file](#user-database-file)
   - [Password file](#password-file)
 - [Date](#date)
-  - [Set date](#set-date)
-  - [RTC (Real-Time Clock) as the local time](#rtc-real-time-clock-as-the-local-time)
-  - [RTC (Real-Time Clock) as the UTC (Coordinated Universal Time)](#rtc-real-time-clock-as-the-utc-coordinated-universal-time)
-  - [Convert timestamp to date time](#convert-timestamp-to-date-time)
 - [Shell](#shell)
   - [Shell list](#shell-list)
   - [Chanage shell](#chanage-shell)
   - [Open file manager from CLI](#open-file-manager-from-cli)
   - [Indicate command type](#indicate-command-type)
-- [Preserve file timestamp after edit (bash)](#preserve-file-timestamp-after-edit-bash)
+- [Preserve file timestamp after edit (`bash`)](#preserve-file-timestamp-after-edit-bash)
 - [GRUB](#grub)
   - [Show GRUB when boot](#show-grub-when-boot)
   - [Update GRUB config](#update-grub-config)
@@ -36,15 +32,19 @@
   - [GRUB option file](#grub-option-file)
   - [Set GRUB default to last selected option](#set-grub-default-to-last-selected-option)
 - [Hardware](#hardware)
+- [Performance](#performance)
+  - [Display memory info](#display-memory-info)
+  - [Display process info](#display-process-info)
 - [Kernel](#kernel)
   - [Kernel info](#kernel-info)
   - [Kernel module](#kernel-module)
 - [Jobs](#jobs)
 - [File system](#file-system)
-  - [rsync](#rsync)
+  - [`rsync`](#rsync)
   - [ACL](#acl)
   - [File permission](#file-permission)
   - [File attribute](#file-attribute)
+  - [List open files](#list-open-files)
 - [SELinux](#selinux)
   - [Get SELinux status](#get-selinux-status)
   - [Set SELinux status](#set-selinux-status)
@@ -64,9 +64,9 @@
   - [Disk usage](#disk-usage)
   - [Disk free space](#disk-free-space)
   - [List block devices / disk](#list-block-devices--disk)
-  - [Show devices UUID](#show-devices-uuid)
+  - [Show devices UUID (GUID)](#show-devices-uuid-guid)
   - [I/O priority](#io-priority)
-    - [ionice (I/O nice)](#ionice-io-nice)
+    - [`ionice` (I/O nice)](#ionice-io-nice)
   - [Disk benchmark](#disk-benchmark)
     - [Write speed](#write-speed)
     - [Read speed](#read-speed)
@@ -98,7 +98,7 @@
   - [Download package with dependence](#download-package-with-dependence)
   - [List installed package](#list-installed-package)
 - [Last login](#last-login)
-  - [Suppress Last Login message](#suppress-last-login-message)
+  - [Suppress `Last Login` message](#suppress-last-login-message)
   - [Clear last login log](#clear-last-login-log)
   - [Disable logging last login](#disable-logging-last-login)
 - [Identify processes using files or sockets](#identify-processes-using-files-or-sockets)
@@ -107,6 +107,7 @@
   - [SSH tunnel (port forward)](#ssh-tunnel-port-forward)
 - [Auto start](#auto-start)
   - [LXDE](#lxde)
+- [FHS (Filesystem Hierarchy Standard) / Filesystem Structure](#fhs-filesystem-hierarchy-standard--filesystem-structure)
 
 # Command
 
@@ -191,25 +192,59 @@ usermod -aG <group>[,...] <user>
 
 # Date
 
-## Set date
+Display date
+
+```sh
+date [-u|--utc]
+```
+
+Set date
 
 ```sh
 timedatectl set-time [<YYYY>-<MM>-<DD>] [<HH>:<MM>:<SS>]
 ```
 
-## RTC (Real-Time Clock) as the local time
+```sh
+date [-u|--utc] [MMDDhhmm[YYYY][.ss]]
+```
+
+```sh
+date -s "YYYY-MM-DD hh:mm:ss"
+```
+
+Display timezone
+
+```sh
+date "+%Z %z"
+```
+
+```sh
+cat /etc/timezone
+```
+
+Set timezone
+
+```sh
+tzselect
+```
+
+```sh
+timedatectl set-timezone <timezone>
+```
+
+RTC (Real-Time Clock) as the local time
 
 ```sh
 timedatectl set-local-rtc { true | t | yes | y | 1 }
 ```
 
-## RTC (Real-Time Clock) as the UTC (Coordinated Universal Time)
+RTC (Real-Time Clock) as the UTC (Coordinated Universal Time)
 
 ```sh
 timedatectl set-local-rtc { false | f | no | n | 0 }
 ```
 
-## Convert timestamp to date time
+Convert timestamp to date time
 
 ```sh
 date -d @<timestamp>
@@ -304,8 +339,38 @@ GRUB_SAVEDEFAULT=true
 | `lspci -nn` | List PCI devices and devices code |
 | `lspci -k` | List PCI devices and kernel driver |
 | `cat /proc/cpuinfo` | Show CPU info |
-| `free` | Show memory info |
+| `cat /proc/meminfo` | Show CPU info |
 
+# Performance
+
+## Display memory info
+
+| Option | Description |
+| - | - |
+| `-h` | Human readable unit |
+
+```sh
+free <options>
+```
+
+## Display process info
+
+| Option | Description |
+| - | - |
+| `-e|-A` | Entire / All processes |
+| `-f` | Full format / Detail |
+
+```sh
+# BSD syntax
+ps [aux]
+
+# Unix syntax
+ps [-ef]
+```
+
+```sh
+top
+```
 
 # Kernel
 
@@ -436,6 +501,12 @@ Change attribute
 
 ```sh
 chattr {+|-}<attribute> <file>
+```
+
+## List open files
+
+```sh
+lsof <path>
 ```
 
 
@@ -588,7 +659,7 @@ df <option>
 lsblk
 ```
 
-## Show devices UUID
+## Show devices UUID (GUID)
 
 ```sh
 lsblk { -f | --fs }
@@ -1186,3 +1257,11 @@ watch [-n <seconds>] <command>
 
 - `~/.config/lxsession/LXDE/`
 - `/etc/xdg/lxsession/LXDE/autostart`
+
+# FHS (Filesystem Hierarchy Standard) / Filesystem Structure
+
+[Reference](http://refspecs.linuxfoundation.org/fhs.shtml)
+
+```sh
+man hier
+```
