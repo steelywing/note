@@ -11,6 +11,8 @@
   - [Show TCP / UDP connection](#show-tcp--udp-connection)
   - [Reset (Repair) TCP/IP stack](#reset-repair-tcpip-stack)
 - [Startup](#startup)
+  - [User Startup folder](#user-startup-folder)
+  - [All Users Startup folder](#all-users-startup-folder)
 - [User](#user)
   - [User Account Management / Auto Login](#user-account-management--auto-login)
   - [Computer Management / Local User](#computer-management--local-user)
@@ -22,14 +24,14 @@
 - [Credential Manager](#credential-manager)
 - [Remote Desktop](#remote-desktop)
 - [Hibernate](#hibernate)
-- [.cab file](#cab-file)
+- [`.cab` file](#cab-file)
 - [File Permission (ACL)](#file-permission-acl)
-  - [calcs](#calcs)
-  - [icacls](#icacls)
+  - [`calcs`](#calcs)
+  - [`icacls`](#icacls)
     - [Permission](#permission)
 - [Registry](#registry)
 - [Cortana](#cortana)
-- [Allow input unicode with <kbd>Alt</kbd> + <kbd>+&lt;Code&gt;</kbd>](#allow-input-unicode-with-kbdaltkbd--kbdltcodegtkbd)
+- [Allow input unicode with <kbd>Alt</kbd> + <kbd>+\<Code\></kbd>](#allow-input-unicode-with-kbdaltkbd--kbdcodekbd)
 - [Enable / Disable the Local Built-In Administrator Account](#enable--disable-the-local-built-in-administrator-account)
 - [Get OS Architecture (32-bit / 64-bit)](#get-os-architecture-32-bit--64-bit)
 - [SLP (System Locked Pre-installation) / SLIC (System License Internal Code)](#slp-system-locked-pre-installation--slic-system-license-internal-code)
@@ -104,7 +106,10 @@ ipconfig /flushdns
 
 [Reference](https://support.microsoft.com/en-us/help/4026268/windows-10-change-startup-apps)
 
-Startup folder
+## User Startup folder
+
+Open in `Run` or Explorer
+
 ```
 shell:startup
 ```
@@ -112,6 +117,19 @@ shell:startup
 Open in command
 ```cmd
 start shell:startup
+```
+
+## All Users Startup folder
+
+Open in `Run` or Explorer
+
+```
+shell:common startup
+```
+
+Open in PowerShell
+```cmd
+start "shell:common startup"
 ```
 
 # User
