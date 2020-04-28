@@ -1,4 +1,5 @@
 # Generate RSA key for SSH by ASDM CLI
+
 ```
 ASA(config)# crypto key generate rsa [noconfirm]
 ```
@@ -21,6 +22,10 @@ ASA(config)# sla monitor schedule <SLA ID> life { forever | <seconds> } start-ti
 
 ## Track route with SLA
 
+當 `<SLA ID>` 狀態正常才啟用 route
+
+Enable route only when `<SLA ID>` is OK
+
 ```
 ASA(config)# track <track ID> rtr <SLA ID> reachability
 ASA(config)# route <interface> <IP> <netmask> <gateway> [<metric>] track <track ID>
@@ -29,18 +34,26 @@ ASA(config)# route <interface> <IP> <netmask> <gateway> [<metric>] track <track 
 # Event manager
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/117883-config-eem-00.html)
+
+Execute specified command on specified event
+
+在指定的情況下執行指定的指令
+
 ```
 ASA(config)# [no] event manager applet <name>
 ASA(config-applet)# [no] description <text>
 ```
 
 ## Manual event
+
 Required for manually run
+
 ```
 ASA(config-applet)# [no] event none
 ```
 
 ## Syslog event
+
 ```
 ASA(config-applet)# [no] event syslog id <start ID>[-<end ID>] [occurs <times>] [period <seconds>]
 ```
@@ -48,21 +61,33 @@ ASA(config-applet)# [no] event syslog id <start ID>[-<end ID>] [occurs <times>] 
 ## Periodic event
 
 ### Absolute event
+
 ```
 ASA(config-applet)# [no] event timer absolute time <hh:mm:ss>
 ```
 
 ### Countdown event
+
+Execute once only
+
+只執行一次
+
 ```
 ASA(config-applet)# [no] event timer countdown time <seconds>
 ```
 
 ### Watchdog event
+
+Repeat execute every `<seconds>`
+
+每隔 `<seconds>` 執行
+
 ```
 ASA(config-applet)# [no] event timer watchdog time <seconds>
 ```
 
 ## Action
+
 ```
 ASA(config-applet)# [no] action [<action number>] cli command "<command>"
 ```
