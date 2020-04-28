@@ -24,6 +24,7 @@
 - [VLAN](#vlan)
   - [Create VLAN interface](#create-vlan-interface)
   - [Remove VLAN interface](#remove-vlan-interface)
+- [Virtual switch](#virtual-switch)
 
 # Help
 
@@ -418,4 +419,13 @@ Join-Path <path> <path> ...
 
 ```powershell
 Remove-VMNetworkAdapter -ManagementOS -Name "<name>"
+```
+
+# Virtual switch
+
+Enable virtual switch without Hyper-V
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-Tools-All -All
+Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V
 ```
