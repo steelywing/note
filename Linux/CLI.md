@@ -5,26 +5,14 @@
   - [awk](#awk)
   - [iptables](#iptables)
 - [User](#user)
-  - [Add user](#add-user)
-  - [Delete user](#delete-user)
-  - [Change password](#change-password)
-  - [Delete password](#delete-password)
-  - [Lock user](#lock-user)
-  - [Unlock user](#unlock-user)
-  - [Expire user password (force user to change password)](#expire-user-password-force-user-to-change-password)
-  - [Set password expire day](#set-password-expire-day)
-  - [Change / Override user's primary group](#change--override-users-primary-group)
-  - [Change / Override user's supplementary groups](#change--override-users-supplementary-groups)
-  - [Add user's supplementary groups](#add-users-supplementary-groups)
-  - [User database file](#user-database-file)
-  - [Password file](#password-file)
+  - [Password](#password)
+  - [Group](#group)
 - [Date](#date)
 - [Shell](#shell)
   - [Shell list](#shell-list)
   - [Chanage shell](#chanage-shell)
   - [Open file manager from CLI](#open-file-manager-from-cli)
   - [Indicate command type](#indicate-command-type)
-- [Preserve file timestamp after edit (`bash`)](#preserve-file-timestamp-after-edit-bash)
 - [GRUB](#grub)
   - [Show GRUB when boot](#show-grub-when-boot)
   - [Update GRUB config](#update-grub-config)
@@ -77,6 +65,9 @@
   - [File system](#file-system-1)
     - [Resize file system](#resize-file-system)
 - [LVM (Logical Volume Management)](#lvm-logical-volume-management)
+  - [PV (Physical Volume)](#pv-physical-volume)
+  - [VG (Volume Group)](#vg-volume-group)
+  - [LV (Logical Volume)](#lv-logical-volume)
   - [Troubleshooting](#troubleshooting)
 - [Find](#find)
 - [Directory Stack](#directory-stack)
@@ -119,7 +110,13 @@
 
 # User
 
-## Add user
+|  | Description |
+| - | - |
+| `<group>` | Primary group, User must and only have 1 primary group. Can be view with `getent passwd` file (Usually stored in `/etc/passwd`) |
+| `<supplementary group>` | Additional groups, User may have multiple supplementary group. Can be view with `getent group` file (Usually stored in `/etc/group`) |
+
+Add user
+
 ```sh
 useradd <user> [-d <home directory>] [-g <group>] [-G <supplementary group>[,...]] [-s <shell>]
 
@@ -127,7 +124,8 @@ useradd <user> [-d <home directory>] [-g <group>] [-G <supplementary group>[,...
 adduser <user>
 ```
 
-## Delete user
+Delete user
+
 ```sh
 userdel <user>
 
@@ -135,59 +133,82 @@ userdel <user>
 deluser <user>
 ```
 
-## Change password
-```sh
-passwd [<user>]
-```
+Lock user
 
-## Delete password
-```sh
-passwd -d <user>
-```
-
-## Lock user
 ```sh
 passwd -l <user>
 ```
 
-## Unlock user
+Unlock user
+
 ```sh
 passwd -u <user>
 ```
 
-## Expire user password (force user to change password)
+User database file
+
+```sh
+getent passwd
+
+# Usually store in
+/etc/passwd
+```
+
+Password file
+
+```sh
+getent shadow
+
+# Usually store in
+/etc/shadow
+```
+
+## Password
+
+Change password
+
+```sh
+passwd [<user>]
+```
+
+Delete password
+
+```sh
+passwd -d <user>
+```
+
+Expire user password
+
+force user to change password
+
 ```sh
 passwd -e <user>
 ```
 
-## Set password expire day
+Set password expire day
+
 ```sh
 passwd -x <day> <user>
 ```
 
-## Change / Override user's primary group
+## Group
+
+Change / Override user's primary group
+
 ```sh
 usermod -g <group> <user>
 ```
 
-## Change / Override user's supplementary groups
+Change / Override user's supplementary groups
+
 ```sh
 usermod -G <group>[,...] <user>
 ```
 
-## Add user's supplementary groups
+Add user's supplementary groups
+
 ```sh
 usermod -aG <group>[,...] <user>
-```
-
-## User database file
-```sh
-/etc/passwd
-```
-
-## Password file
-```sh
-/etc/shadow
 ```
 
 # Date
@@ -270,19 +291,21 @@ usermod -s <shell> <user>
 ```
 
 ## Open file manager from CLI
+
 ```sh
 xdg-open <path>
 ```
 
 ## Indicate command type
 
-Type: function, builtin, or file
+Type: `function`, `builtin`, or `file`
 
 ```sh
 type [-a] <command>
 ```
 
-# Preserve file timestamp after edit (`bash`)
+Preserve file timestamp after edit (`bash`)
+
 ```sh
 vi-preserve-time () {
     for file in "$@"; do
@@ -345,20 +368,15 @@ GRUB_SAVEDEFAULT=true
 
 ## Display memory info
 
-| Option | Description |
-| - | - |
-| `-h` | Human readable unit |
-
 ```sh
 free <options>
 ```
 
-## Display process info
-
 | Option | Description |
 | - | - |
-| `-e|-A` | Entire / All processes |
-| `-f` | Full format / Detail |
+| `-h` | Human readable unit |
+
+## Display process info
 
 ```sh
 # BSD syntax
@@ -367,6 +385,11 @@ ps [aux]
 # Unix syntax
 ps [-ef]
 ```
+
+| Option | Description |
+| - | - |
+| `-e|-A` | Entire / All processes |
+| `-f` | Full format / Detail |
 
 ```sh
 top
@@ -414,6 +437,11 @@ uname -a
 
 ## `rsync`
 
+```sh
+# <source>, <destination> = [[<user>@]<host>:]<path>
+rsync <option> <source> <destination>
+```
+
 | Option | Description |
 | - | - |
 | `-a`, `--archive` | Archive mode, equals `-rlptgoD` (no `-H`, `-A`, `-X`) |
@@ -426,11 +454,6 @@ uname -a
 | `--progress` | Show progress |
 | `-P` | `--partial --progress` |
 | `-e "ssh [-p <port>]"` | Use SSH, default use `rsync` daemon |
-
-```sh
-# <source>, <destination> = [[<user>@]<host>:]<path>
-rsync <option> <source> <destination>
-```
 
 Trailing slash on `<source>`
 
@@ -615,14 +638,14 @@ gsettings set org.gnome.Vino require-encryption false
 
 ## Copy
 
+```sh
+cp [<option>] <source> <destination>
+```
+
 | Option | Description |
 | --- | --- |
 | `-p | --preserve[=<attributes>]` | Preserve mode, ownership, timestamps |
 | `-R | -r | --recursive` | Copy directories recursively |
-
-```sh
-cp [<option>] <source> <destination>
-```
 
 # Disk / Storage
 
@@ -645,13 +668,13 @@ du -hs <path> | sort -h -r
 
 ## Disk free space
 
-| Option | Description |
-| - | - |
-| `-h` | Disk free space in human readable format |
-
 ```sh
 df <option>
 ```
+
+| Option | Description |
+| - | - |
+| `-h` | Disk free space in human readable format |
 
 ## List block devices / disk
 
@@ -865,6 +888,8 @@ Partition type (type L to list all types): <Linux LVM type ID>
 Command (m for help): w
 ```
 
+## PV (Physical Volume)
+
 Create PV
 
 ```sh
@@ -873,6 +898,7 @@ pvcreate <device> ...
 ```
 
 Remove PV
+
 ```sh
 pvmove <PV>
 vgreduce <VG> <PV>
@@ -888,6 +914,8 @@ pvs
 ```sh
 pvdisplay
 ```
+
+## VG (Volume Group)
 
 Create VG
 
@@ -916,6 +944,8 @@ vgs
 ```sh
 vgdisplay
 ```
+
+## LV (Logical Volume)
 
 Create LV
 
@@ -1227,15 +1257,15 @@ chattr +i /var/log/lastlog
 
 # Identify processes using files or sockets
 
+```sh
+fuser <option> <file>
+```
+
 | Option | Description |
 | - | - |
 | `-v`, `--verbose` | Verbose |
 | `-k`, `--kill` | Kill processes accessing the file |
 | `{ -c | -m | --mount } { <mount point> | <device> }` | Mount point or device |
-
-```sh
-fuser <option> <file>
-```
 
 # Watch
 
