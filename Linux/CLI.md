@@ -96,9 +96,11 @@
 - [Watch](#watch)
 - [SSH](#ssh)
   - [SSH tunnel (port forward)](#ssh-tunnel-port-forward)
+  - [SSH agent](#ssh-agent)
 - [Auto start](#auto-start)
   - [LXDE](#lxde)
 - [FHS (Filesystem Hierarchy Standard) / Filesystem Structure](#fhs-filesystem-hierarchy-standard--filesystem-structure)
+- [Dash "`-`" as file name](#dash-%22-%22-as-file-name)
 
 # Command
 
@@ -1277,7 +1279,27 @@ watch [-n <seconds>] <command>
 
 # SSH
 
-## [SSH tunnel (port forward)](./SSH&#32;Tunnel.md)
+## [SSH tunnel (port forward)](./SSH%20Tunnel.md)
+
+## SSH agent
+
+For `sh` / `bash`
+
+```sh
+eval $(ssh-agent -s)
+```
+
+For `csh` / `fish`
+
+```sh
+eval (ssh-agent -c)
+```
+
+Add SSH private key
+
+```sh
+ssh-add <private key path>
+```
 
 # Auto start
 
@@ -1295,3 +1317,10 @@ watch [-n <seconds>] <command>
 ```sh
 man hier
 ```
+
+# Dash "`-`" as file name
+
+[Reference](http://tldp.org/LDP/abs/html/special-chars.html#DASHREF2)
+
+- Redirection from `stdin` / to `stdout`
+- `cd -` change to previous working directory
