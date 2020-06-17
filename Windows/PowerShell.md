@@ -1,4 +1,4 @@
-# Table of Contents
+## Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Help](#help)
 - [List](#list)
@@ -26,7 +26,7 @@
   - [Remove VLAN interface](#remove-vlan-interface)
 - [Virtual switch](#virtual-switch)
 
-# Help
+## Help
 
  `help` equal `Get-Help | more`
 
@@ -48,19 +48,19 @@ PowerShell version
 $PSVersionTable
 ```
 
-# List
+## List
 
 ```powershell
 <expression>[, ...]
 ```
 
-# Alias
+## Alias
 
 ```powershell
 Get-Alias [[-Name] <alias> | -Definition <cmdlet>]
 ```
 
-# Property
+## Property
 
 Get the properties and methods of objects
 
@@ -94,7 +94,7 @@ Create property
 <command> | Select-Object @{N[ame]="<property name>"; E[xpression]={<expression>}}
 ```
 
-# Filter object
+## Filter object
 
 ```powershell
 <command> | Where-Object [-FilterScript] { <Script> }
@@ -105,7 +105,7 @@ Create property
 ```
 Alias: `?`
 
-# Network profile
+## Network profile
 
 ```powershell
 Get-NetConnectionProfile
@@ -115,13 +115,13 @@ Set-NetConnectionProfile
     -NetworkCategory { Private | Public }
 ```
 
-# Show TCP listening port
+## Show TCP listening port
 
 ```powershell
 Get-NetTCPConnection -State Listen [-LocalPort <port>]
 ```
 
-# Firewall
+## Firewall
 
 Allow ICMP echo request
 
@@ -141,7 +141,7 @@ New-NetFirewallRule `
     -Action Allow
 ```
 
-# PowerShell remoting
+## PowerShell remoting
 
 Enable PowerShell remoting
 
@@ -149,7 +149,7 @@ Enable PowerShell remoting
 Enable-PSRemoting [-SkipNetworkProfileCheck] [-Force]
 ```
 
-# Trusted host
+## Trusted host
 
 Get trusted host
 
@@ -172,13 +172,13 @@ winrm set winrm/config/client @{TrustedHosts="<host>[,<host>]"}
 Set-Item WSMan:\localhost\Client\TrustedHosts -Value "<host>[,<host>]" [-Force]
 ```
 
-# Get credential from user input
+## Get credential from user input
 
 ```powershell
 Get-Credential [[-UserName] <username>]
 ```
 
-# PowerShell session
+## PowerShell session
 
 Create PowerShell session
 
@@ -196,13 +196,13 @@ Enter-PSSession
     [-Credential { <user> | <credential> }]
 ```
 
-# Get drive
+## Get drive
 
 ```powershell
 Get-PSDrive
 ```
 
-# Run command
+## Run command
 
 [Referense](https://social.technet.microsoft.com/wiki/contents/articles/7703.powershell-running-executables.aspx#The_Call_Operator_amp)
 
@@ -217,7 +217,7 @@ Invoke-Command [[-ComputerName] <host[]>]
 & <ScriptBlock> [<argument[]>]
 ```
 
-# Execution policies
+## Execution policies
 
 [Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)
 
@@ -226,13 +226,13 @@ Get-ExecutionPolicy
 Set-ExecutionPolicy <policy>
 ```
 
-# Unblock script that it was downloaded from the Internet
+## Unblock script that it was downloaded from the Internet
 
 ```powershell
 Unblock-File <path>
 ```
 
-# History
+## History
 
 Alias: `history`
 
@@ -246,7 +246,7 @@ Get all session history
 Get-Content (Get-PSReadlineOption).HistorySavePath
 ```
 
-# Hash table
+## Hash table
 
 [Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_hash_tables)
 
@@ -282,7 +282,7 @@ Remove
 $hash.Remove(<key>)
 ```
 
-# Array
+## Array
 
 [Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_arrays)
 
@@ -341,7 +341,7 @@ $array.Where({
 })
 ```
 
-# String
+## String
 
 Format string
 
@@ -363,7 +363,7 @@ Concatenate string
 "$A $B"
 ```
 
-# Path
+## Path
 
 Get script path
 
@@ -389,9 +389,9 @@ Join path
 Join-Path <path> <path> ...
 ```
 
-# VLAN
+## VLAN
 
-## Create VLAN interface
+### Create VLAN interface
 
 - Enable Hyper-V virtual switch
   ```powershell
@@ -415,13 +415,13 @@ Join-Path <path> <path> ...
   Set-VMNetworkAdapterVlan -ManagementOS -VMNetworkAdapterName "<name>" -Access -VlanId <VLAN ID>
   ```
 
-## Remove VLAN interface
+### Remove VLAN interface
 
 ```powershell
 Remove-VMNetworkAdapter -ManagementOS -Name "<name>"
 ```
 
-# Virtual switch
+## Virtual switch
 
 Enable virtual switch without Hyper-V
 
