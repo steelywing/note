@@ -20,15 +20,17 @@
 
 | Variable | Description | Property | Value |
 | - | - | - | - |
-| `g` | Base | public, prime, usually is 2, 3, 5 |  |
-| `p` | Modulus | public, prime, large |  |
+| `g` | Base | public, prime | Usually = 2, 3, 5 |
+| `p` | Modulus | public, prime | Usually >= 1024 bits |
 | `a` | Alice's private key |  |
 | `b` | Bob's private key |  |
 | `A` | Alice's public key |  | `A = gᵃ mod p` |
 | `B` | Bob's public key |  | `B = gᵇ mod p` |
-| `s` | Shared secret key | private, use for encrypt / decrypt | `s = gᵃᵇ mod p` |
+| `s` | Secret key (for encrypt / decrypt) | private | `s = gᵃᵇ mod p` |
 
 算法目的：找一個只有 Alice 及 Bob 知道的值 `s`
+
+- 用密鑰交換中傳送的值 `g`, `p`, `A`, `B`，很難去計算出 `a`, `b`, `s` 值 (Discrete logarithm 離散對數)
 
 將 `s` 賦值為 `s = gᵃᵇ mod p`，則
 
@@ -52,6 +54,6 @@ s = (gᵃ mod p)ᵇ mod p = (gᵇ mod p)ᵃ mod p
 
 ## 密鑰交換過程
 
-- Alice 和 Bob 公開交換 `g` 和 `p` 數值
-- Alice 傳送 `A` 值給 Bob，Bob 可以計算 `Aᵇ mod p` 得到 `s`
-- Bob 傳送 `B` 值給 Alice，Alic 可以計算 `Bᵃ mod p` 得到 `s`
+- Alice 傳送 `g`, `p`, `A` 的值給 Bob，Bob 可以計算 `Aᵇ mod p` 得到 `s` 值
+- Bob 傳送 `B` 值給 Alice，Alice 可以計算 `Bᵃ mod p` 得到 `s` 值
+- Alice 和 Bob 都取得了 `s` 值
