@@ -40,3 +40,11 @@ settings put global captive_portal_use_https {0|1}
 settings put global captive_portal_http_url "<URL>"
 settings put global captive_portal_https_url "<URL>"
 ```
+
+## WiFi password file
+
+```sh
+/data/misc/wifi/wpa_supplicant.conf
+/data/misc/wifi/wpa.conf
+/data/wifi/bcm_supp.conf
+```
