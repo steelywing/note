@@ -48,10 +48,26 @@ function isAllow(match_allow, match_deny) {
 
 [Reference](https://httpd.apache.org/docs/2.4/sections.html#merging)
 
+The order of merging is
+
 - `<Directory>`
 - `<DirectoryMatch>` and `<Directory "~">`
 - `<Files>` and `<FilesMatch>`
 - `<Location>` and `<LocationMatch>`
 - `<If>`
+
+```js
+// Pseudo code
+
+Object.assign(
+    Directory, 
+    DirectoryMatch,
+    Files,
+    Location,
+    If
+)
+```
+
+[`Object.assign reference`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 
 Sections having same priority are processed in the configuration file order.
