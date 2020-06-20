@@ -27,6 +27,7 @@
   - [Kernel info](#kernel-info)
   - [Kernel module](#kernel-module)
 - [Jobs](#jobs)
+- [Trap](#trap)
 - [File system](#file-system)
   - [`rsync`](#rsync)
   - [ACL](#acl)
@@ -434,6 +435,32 @@ uname -a
 | `kill [%<job spec>]` | Kill job |
 | `disown [%<job spec>]` | Don't terminate job when terminal exit (default is all jobs) |
 | `nohup <command>` | Don't terminate command when terminal exit (no hangup) |
+
+# Trap
+
+Execute command when shell receives signal
+
+```sh
+trap "<command>" <signal>[ ...]
+```
+
+Execute on shell exit
+
+```sh
+trap "<command>" { EXIT | 0 }
+```
+
+Show associated commands
+
+```sh
+trap -p
+```
+
+Show signal list
+
+```sh
+trap -l
+```
 
 # File system
 
@@ -896,7 +923,7 @@ Create PV
 
 ```sh
 # <device> = <disk> | <partition>
-pvcreate <device> ...
+pvcreate <device>[ ...]
 ```
 
 Remove PV
