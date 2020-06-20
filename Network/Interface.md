@@ -15,8 +15,11 @@
   - [MMF (Multi Mode Fiber)](#mmf-multi-mode-fiber)
   - [Connector](#connector)
 - [Slot](#slot)
-  - [SFP (Small Form-factor Pluggable)](#sfp-small-form-factor-pluggable)
+  - [QSFP28](#qsfp28)
+  - [QSFP+](#qsfp)
+  - [QSFP (Quad Small Form-factor Pluggable)](#qsfp-quad-small-form-factor-pluggable)
   - [SFP+](#sfp)
+  - [SFP (Small Form-factor Pluggable)](#sfp-small-form-factor-pluggable)
   - [GBIC (GigaBit Interface Converter)](#gbic-gigabit-interface-converter)
   - [XFP](#xfp)
   - [X2](#x2)
@@ -166,17 +169,41 @@ TIA/EIA-568B
 
 # Slot
 
-## SFP (Small Form-factor Pluggable)
+## QSFP28
 
-Speed: 1 Gb/s
+100 Gigabit Ethernet
 
-Hot-pluggable
+Channel: 4
+
+Fiber Channel: 32 Gb/s
+
+## QSFP+
+
+40 Gigabit Ethernet
+
+Channel: 4
+
+Fiber Channel: 10 Gb/s
+
+## QSFP (Quad Small Form-factor Pluggable)
+
+4 Gigabit Ethernet
+
+Channel: 4
+
+Fiber Channel: 4 Gb/s
 
 ## SFP+
 
 Compatible SFP module
 
 Speed: 10 Gb/s
+
+Hot-pluggable
+
+## SFP (Small Form-factor Pluggable)
+
+Speed: 1 Gb/s
 
 Hot-pluggable
 
