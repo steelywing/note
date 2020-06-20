@@ -13,9 +13,11 @@
 
 |  |  |
 | - | - |
-| Chains | `INPUT` `OUTPUT` `FORWARD` `PREROUTING` `POSTROUTING` |
-| Tables | `raw` `filter` `nat` `mangle` `security` (Default `filter`) |
-| Targets | `ACCEPT` `DROP` `QUEUE` `RETURN` `REJECT` `LOG` |
+| Chains | `INPUT` / `OUTPUT` / `FORWARD` / `PREROUTING` / `POSTROUTING` |
+| Tables | `raw` / `filter` / `nat` / `mangle` / `security` (Default is `filter`) |
+| Targets | `ACCEPT` / `DROP` / `QUEUE` / `RETURN` / `REJECT` / `LOG` |
+
+[Reference](https://stuffphilwrites.com/2014/09/iptables-processing-flowchart/)
 
 ![iptables flow chart](img/iptables.png)
 
@@ -63,4 +65,14 @@ iptables <rule>
 
 ```sh
 iptables -t nat -A PREROUTING [-i <interface>] -p tcp --dport <from port> -j REDIRECT --to-port <to port>
+```
+
+# Masquerading (Source NAT)
+
+[Reference](https://www.netfilter.org/documentation/HOWTO/NAT-HOWTO-6.html)
+
+Use the address of the interface the packet is going out as source address
+
+```sh
+iptables -t nat -A POSTROUTING -o <interface> -j MASQUERADE
 ```
