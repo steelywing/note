@@ -50,7 +50,7 @@ net.ipv4.ip_forward = {0|1}
 ```sh
 # Display timeout
 ping -O <IP address>
-
+ 
 # Display time
 ping <IP address> | while read log; do
   echo "$(date): $log";
@@ -114,6 +114,7 @@ Dump traffic
 | `-i {<interface>|any}` | Listen on interface<br>Default: lowest numbered of interface list |
 | `-n` | Not resolve hostname |
 | `-nn` | Not resolve hostname or port |
+| `-v` | Verbose |
 | `-w <file.pcap>` | Write to file |
 
 Expression
@@ -325,3 +326,15 @@ netstat
 cat /proc/net/udp
 cat /proc/net/tcp
 ```
+
+```sh
+lsof -i [4|6][TCP|UDP][@<host>][:<port>]
+```
+
+| Option | Description |
+| - | - |
+| `-n` | Numeric |
+| `[4|6]` | IPv4 / IPv6 |
+| `<host>` | `Host` / `IPv4` / `[<IPv6>]` |
+| `<port>` | Port / `<port>-<port>` |
+| `-p [^]<PID>` | Process ID, `^`: Exclude |
