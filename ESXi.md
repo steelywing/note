@@ -1,4 +1,4 @@
-# Reset license
+## Reset license
 ```sh
 #!/bin/sh
 rm /etc/vmware/license.cfg
@@ -6,7 +6,7 @@ cp /etc/vmware/.#license.cfg /etc/vmware/license.cfg
 /etc/init.d/vpxa restart
 ```
 
-# Cron
+## Cron
 Default `/var/spool/cron/crontabs/root` is read only, use `:w!` in `vi` to save.
 ```sh
 kill $(cat /var/run/crond.pid)
@@ -22,24 +22,24 @@ echo "* * * * * <cron job>" >> /var/spool/cron/crontabs/root
 crond
 ```
 
-# VM
+## VM
 
-## Show all VM
+### Show all VM
 ```sh
 vim-cmd vmsvc/getallvms
 ```
 
-## Power on VM
+### Power on VM
 ```sh
 vim-cmd vmsvc/power.on <VM ID>
 ```
 
-## Reboot VM
+### Reboot VM
 ```sh
 vim-cmd vmsvc/power.reboot <VM ID>
 ```
 
-# SSH public key
+## SSH public key
 
 [Reference](https://kb.vmware.com/s/article/1002866)
 
@@ -47,7 +47,7 @@ vim-cmd vmsvc/power.reboot <VM ID>
 /etc/ssh/keys-<user name>/authorized_keys
 ```
 
-# Create partition table
+## Create partition table
 [Reference](https://kb.vmware.com/s/article/1036609)
 ```sh
 partedUtil setptbl "/vmfs/devices/disks/<device>" { msdos | gpt }

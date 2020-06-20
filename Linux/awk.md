@@ -1,11 +1,13 @@
-# CLI
+# awk
+
+[Reference](https://www.gnu.org/software/gawk/manual/gawk.html)
 
 ```sh
 awk '<program>' [<input file> [<input file>]]
 awk -f '<program file>' [<input file> [<input file>]]
 ```
 
-# Program
+## Program
 
 ```awk
 # A BEGIN rule is executed once only, before the first input record is read.
@@ -36,7 +38,7 @@ Default `<action>` is `print`
 <pattern>
 ```
 
-# Built-in Variable
+## Built-in Variable
 
 | Name | Description | Default |
 | --- | --- | --- |
@@ -52,15 +54,15 @@ Default `<action>` is `print`
 | `RS` | Record Separator | `"\n"` |
 | `ORS` | Output Record Separator | `"\n"` |
 
-# RegExp
+## RegExp
 
-## Match
+### Match
 
 ```awk
 <string> ~ /<regexp>/
 ```
 
-## Not match
+### Not match
 
 ```awk
 <string> !~ /<regexp>/
@@ -75,11 +77,11 @@ Default `<string>` is `$0`
 $0 ~ /<regexp>/
 ```
 
-# Print
+## Print
 
 ```awk
 {
-    print <item>, <item>, ...
+    print <item>, ...
 }
 ```
 
