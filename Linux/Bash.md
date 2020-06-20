@@ -50,13 +50,13 @@ Redirect `stderr` to `stdout`
 
 # Pipeline
 
-Pipe `stdout` ▶ `stdin`
+Pipe `stdout` ➡ `stdin`
 
 ```
 <command> | <command>
 ```
 
-Pipe `stdout` and `stderr` ▶ `stdin`
+Pipe `stdout` and `stderr` ➡ `stdin`
 
 ```
 <command> |& <command>
@@ -79,6 +79,15 @@ done
 ```sh
 find [<expression>] -print0 | while IFS= read -r -d $'\0' <file variable name>; do
   <...>
+done
+```
+
+## For each array value
+
+```sh
+array=(a b c)
+for i in "${array[@]}"; do
+  // $i == <current value>
 done
 ```
 
@@ -123,15 +132,15 @@ unset HISTFILE
 
 Kill bash
 ```sh
-kill -9 $$
 # $$ == Current shell PID
+kill -9 $$
 ```
 
 ## Delete all bash history
 
 Empty history file
 ```sh
-echo > $HISTFILE
+> $HISTFILE
 ```
 
 Set history size to 0
