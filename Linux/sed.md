@@ -1,7 +1,12 @@
 # CLI
 
+| Option | Description |
+| - | - |
+| `-i[<suffix>]` | Edit files in place (makes backup if `<suffix>` supplied) |
+| `-r` | Extended regular expressions |
+
 ```sh
-sed '<script>' <input file> <input file> ...
+sed [<option>] '<script>' <input file> <input file> ...
 ```
 
 # Script
@@ -22,7 +27,7 @@ sed '<script>' <input file> <input file> ...
 | `$` | Last line |
 | `<first>,<last>` | Line number range |
 | `<first>~<step>` | Line number step |
-| `/<RegExp>/` <br> `\<character>RegExp<character>` | RegExp |
+| `/<RegExp>/` <br><br> `\<character><RegExp><character>` | RegExp |
 | `<address>!` | Not matching `<address>` |
 
 ## Command
@@ -51,4 +56,7 @@ sed '<script>' <input file> <input file> ...
 
 ### RegExp capture group
 
-`\1` `\2` ...
+| Expression | Description |
+| - | - |
+| `&` | Whole matched string |
+| `\1` `\2` ... | Capture group |
