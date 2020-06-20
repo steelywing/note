@@ -2,7 +2,7 @@
 
 [Reference](http://kb.fortinet.com/kb/viewContent.do?externalId=11186)
 ```
-diag sniffer packet <interface> '<filter>' <verbose> <count>
+diagnose sniffer packet <interface> '<filter>' <verbose> <count>
 ```
 
 # SSH public key
