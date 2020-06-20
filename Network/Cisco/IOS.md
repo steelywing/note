@@ -746,7 +746,7 @@ Switch(config-line)# escape-character 3
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus5000/sw/configuration/guide/cli/CLIConfigurationGuide/EtherChannel.html)
 
-Enable LACP
+Enable LACP (802.3ad)
 
 ```
 Switch(config)# feature lacp
@@ -756,6 +756,34 @@ Create port channel interface
 
 ```
 Switch(config)# interface port-channel <port channel number>
+```
+
+If change the configure of `port-channel` interface, that will pass the configure to the assigned interface.
+
+```
+Switch(config)# interface range Gi0/1 - 2
+Switch(config-if-range)# channel-group 1 mode active
+
+Switch(config)# interface port-channel 1
+Switch(config-if)# switchport mode trunk
+
+Switch# show running-config interface port-channel 1
+!
+interface Port-channel1
+ switchport mode trunk
+end
+
+Switch# show running-config interface Gi0/1
+!
+interface GigabitEthernet0/1
+ switchport mode trunk
+end
+
+Switch# show running-config interface Gi0/2
+!
+interface GigabitEthernet0/2
+ switchport mode trunk
+end
 ```
 
 Assign interface to port channel group (LACP) (Recommend)
