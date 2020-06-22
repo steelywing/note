@@ -4,12 +4,6 @@
   - [WinRE (Windows Recovery Environment)](#winre-windows-recovery-environment)
   - [System image](#system-image)
 - [Control panel](#control-panel)
-- [Network](#network)
-  - [Network Profile](#network-profile)
-  - [IP address conflict](#ip-address-conflict)
-  - [Network monitor](#network-monitor)
-  - [Show TCP / UDP connection](#show-tcp--udp-connection)
-  - [Reset (Repair) TCP/IP stack](#reset-repair-tcpip-stack)
 - [Startup](#startup)
   - [User Startup folder](#user-startup-folder)
   - [All Users Startup folder](#all-users-startup-folder)
@@ -20,7 +14,6 @@
   - [Delete User](#delete-user)
   - [Password Expire](#password-expire)
 - [Group Policy](#group-policy)
-- [Windows firewall change default to block](#windows-firewall-change-default-to-block)
 - [Credential Manager](#credential-manager)
 - [Remote Desktop](#remote-desktop)
 - [Hibernate](#hibernate)
@@ -35,15 +28,10 @@
 - [Enable / Disable the Local Built-In Administrator Account](#enable--disable-the-local-built-in-administrator-account)
 - [Get OS Architecture (32-bit / 64-bit)](#get-os-architecture-32-bit--64-bit)
 - [SLP (System Locked Pre-installation) / SLIC (System License Internal Code)](#slp-system-locked-pre-installation--slic-system-license-internal-code)
-- [BSOD (Blue Screen of Death) dump](#bsod-blue-screen-of-death-dump)
 - [Code page](#code-page)
 - [Cleanup](#cleanup)
   - [Cleanup WinSxS](#cleanup-winsxs)
   - [Cleanup hibernate](#cleanup-hibernate)
-- [Fix](#fix)
-  - [Microsoft.Windows.Photos with high CPU usage](#microsoftwindowsphotos-with-high-cpu-usage)
-- [Windows Loader](#windows-loader)
-- [`svchost.exe` service](#svchostexe-service)
 
 ## Recovery
 
@@ -61,47 +49,6 @@
 
 - Input `control panel` in `Start` search
 - Run `start control`
-
-## Network
-
-### Network Profile
-
-[PowerShell](PowerShell.md#network-profile)
-
-### IP address conflict
-
-Windows will use IP `169.254.0.0/16` if IP address conflict
-
-### Network monitor
-
-- [TCPView](https://docs.microsoft.com/en-us/sysinternals/downloads/tcpview)
-- [WireShark](https://www.wireshark.org/)
-- [WinDump](https://www.winpcap.org/windump/)
-
-### Show TCP / UDP connection
-
-[PowerShell](./PowerShell.md#show-tcp-listening-port)
-
-```cmd
-netstat <option>
-```
-
-| Option | Permission |
-| --- | --- |
-| `-a` | Displays all connections and listening ports |
-| `-n` | Displays addresses and port numbers in numerical form |
-
-### Reset (Repair) TCP/IP stack
-
-- [Reference](https://support.microsoft.com/en-us/help/299357/how-to-reset-tcp-ip-by-using-the-netshell-utility)
-- [Reference](https://support.microsoft.com/en-us/help/10741/windows-fix-network-connection-issues)
-
-```cmd
-netsh winsock reset
-netsh int ip reset
-netsh int ipv6 reset
-ipconfig /flushdns
-```
 
 ## Startup
 
@@ -179,14 +126,10 @@ Using group policy
 `Computer Configuration` > `Windows Settings` > `Security Settings` > `Password Policy` > `Maximum password age`
 
 ## Group Policy
+
 ```cmd
 gpedit.msc
 ```
-
-## Windows firewall change default to block
-- [Reference](https://www.howtogeek.com/112564/how-to-create-advanced-firewall-rules-in-the-windows-firewall/)
-
-![Windows Firewall](img/windows-firewall.png)
 
 ## Credential Manager
 
@@ -364,6 +307,7 @@ Edit registry file
 - When you're done, go to the menu `File` > `Unload Hive...`
 
 ## Cortana
+
 Disable Cortana in Windows 10
 ```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /t REG_DWORD /d 0 /f
@@ -385,18 +329,21 @@ Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Sea
 ```
 
 ## Allow input unicode with <kbd>Alt</kbd> + <kbd>+\<Code\></kbd>
+
 - [Reference](http://www.fileformat.info/tip/microsoft/enter_unicode.htm)
 ```cmd
 reg add "HKCU\Control Panel\Input Method" /v "EnableHexNumpad" /t REG_SZ /d 1 /f
 ```
 
 ## Enable / Disable the Local Built-In Administrator Account
+
 - [Reference](https://social.technet.microsoft.com/wiki/contents/articles/3040.windows-7-enable-disable-the-local-built-in-administrator-account.aspx)
 ```
 net user administrator /active:{yes|no}
 ```
 
 ## Get OS Architecture (32-bit / 64-bit)
+
 - [Reference](https://www.lisenet.com/2014/get-windows-system-information-via-wmi-command-line-wmic/)
 ```cmd
 wmic OS get OSArchitecture
@@ -420,12 +367,6 @@ Install product key
 ```cmd
 slmgr.vbs -ipk <product key>
 ```
-
-## BSOD (Blue Screen of Death) dump
-
-[BlueScreenView](https://www.nirsoft.net/utils/blue_screen_view.html)
-
-![BSOD Dump](img/bsod-dump.png)
 
 ## Code page
 
@@ -452,22 +393,3 @@ Dism.exe /online /Cleanup-Image /SPSuperseded
 ```
 
 ### [Cleanup hibernate](#hibernate)
-
-## Fix
-
-### Microsoft.Windows.Photos with high CPU usage
-
-- `Default apps`
-  - Disable `Photos` app
-- Reset `Photos` app
-
-## Windows Loader
-
-Windows Loader does not work on UEFI
-
-## `svchost.exe` service
-
-Get service of `svchost.exe`
-
-- Right click `svchost.exe` process in Task Manager
-- Click "Go to Service(s)"
