@@ -3,7 +3,7 @@
 # Dovecot maildir compression
 # Based on https://gist.github.com/cs278/1490556
 # Fixed some bug and compatibility
-# https://wiki2.dovecot.org/Plugins/Zlib
+# https://doc.dovecot.org/configuration_manual/zlib_plugin/
 
 if [ $# -eq 0 ]; then
 	echo "Compress path and sub directory email"
