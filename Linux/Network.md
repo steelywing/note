@@ -1,4 +1,4 @@
-# Table of Contents
+## Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Firewall](#firewall)
   - [iptables](#iptables)
@@ -17,13 +17,13 @@
   - [Route](#route)
 - [Socket statistics](#socket-statistics)
 
-# Firewall
+## Firewall
 
-## [iptables](iptables.md)
+### [iptables](iptables.md)
 
-## nftables
+### nftables
 
-# IP forward
+## IP forward
 
 [Reference](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Security_Guide/s1-firewall-ipt-fwd.html)
 
@@ -45,7 +45,7 @@ Set IP forward on boot
 net.ipv4.ip_forward = {0|1}
 ```
 
-# Ping
+## Ping
 
 ```sh
 # Display timeout
@@ -58,7 +58,7 @@ done
 ```
 
 
-# Nmap
+## Nmap
 
 [Reference](https://nmap.org/book/man.html)
 
@@ -66,14 +66,14 @@ done
 nmap <option>
 ```
 
-## Host
+### Host
 
 | Option | Description |
 | - | - |
 | `<host>[/prefix]` | Host or CIDR |
 | `10.0.0-255.0-255` | Range |
 
-## Host discovery
+### Host discovery
 
 | Option | Description |
 | - | - |
@@ -84,7 +84,7 @@ nmap <option>
 | `-PE` | ICMP ping |
 | `-PR` | ARP ping<br>Default: use on local ethernet |
 
-## Scan
+### Scan
 
 Default: scan most common 1,000 ports
 
@@ -99,7 +99,7 @@ Default: scan most common 1,000 ports
 | `-sU` | UDP scan |
 | `-T<0-5>` | Timing template<br><br>paranoid (0), sneaky (1), polite (2), normal (3), aggressive (4), and insane (5) |
 
-# TCP Dump
+## TCP Dump
 
 List interface
 
@@ -139,7 +139,7 @@ Expression
 tcpdump [<option>] [<expression>]
 ```
 
-# IP
+## IP
 
 Reference: `ip help`
 
@@ -153,7 +153,7 @@ Reference: `ip help`
 ip [<option>] { link | address | route | neigh | tunnel | tuntap | maddress | mroute | monitor | l2tp | ... } { <command> | help }
 ```
 
-## Interface
+### Interface
 
 Reference: `ip link help`
 
@@ -172,7 +172,7 @@ ip l set [dev] <device> { up | down }
 ifconfig <interface> { up | down }
 ```
 
-## IP address
+### IP address
 
 Reference: `ip address help`
 
@@ -213,7 +213,7 @@ Flush (Delete all) IP address
 ip a flush [dev <device>] [up]
 ```
 
-## ARP / Neighbour
+### ARP / Neighbour
 
 Reference: `ip neighbour help`
 
@@ -232,7 +232,7 @@ Clear ARP / neighbour
 ip n flush [dev <device>]
 ```
 
-## Route
+### Route
 
 Reference: `ip route help`
 
@@ -287,7 +287,7 @@ route del default
 route del -net <IP address>/<prefix length> [gw <next hop IP address>] [dev <device>] [metric <metric>]
 ```
 
-# Socket statistics
+## Socket statistics
 
 ```sh
 ss [<option> ...] [state <state>] [<expression>]
