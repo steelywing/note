@@ -1,12 +1,11 @@
-# Boot Tools
-
 ## [Rufus](http://rufus.akeo.ie/)
 
 Write bootable ISO to USB
 
-## [BootIce](http://bbs.wuyou.net/forum.php?mod=viewthread&tid=57675) (close source)
+## [BootIce](http://bbs.wuyou.net/forum.php?mod=viewthread&tid=57675)
 
-Backup MBR, PBR, edit BCD, Grub4DOS menu (grldr)...
+- Close source
+- Backup MBR, PBR, edit BCD, Grub4DOS menu (grldr)...
 
 ## [fbinst](http://download.gna.org/grubutil/)
 
