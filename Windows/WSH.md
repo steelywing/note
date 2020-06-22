@@ -1,4 +1,4 @@
-# Include external file
+## Include external file
 
 ```js
 function load(file) {

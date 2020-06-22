@@ -1,18 +1,18 @@
-# 2G
+## 2G
 
 | Network | Name | Company |
 | - | - | - |
 | GSM | Global System for Mobile Communications | CTM (1800, 停用), 和記 (900, 1800), 數碼通 (900, 1800) |
 | CDMA | Code Division Multiple Access | 中國電信 - 澳門 |
 
-# 3G
+## 3G
 
 | Network | Name | Company |
 | - | - | - |
 | UMTS-FDD / W-CDMA | Universal Mobile Telecommunications System | CTM (2100), 和記 (900, 2100), 數碼通 (900, 2100) |
 | CDMA2000 | Code Division Multiple Access | 中國電信 - 澳門 |
 
-# 4G
+## 4G
 
 | Network | Name | Company |
 | - | - | - |

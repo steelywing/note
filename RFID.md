@@ -1,23 +1,23 @@
-# Table of Contents
-- [Table of Contents](#Table-of-Contents)
-- [LF (Low Frequency)](#LF-Low-Frequency)
-  - [EM4100](#EM4100)
-- [HF (High Frequency)](#HF-High-Frequency)
-  - [MiFare](#MiFare)
-    - [MiFare Classic](#MiFare-Classic)
-      - [PICC status](#PICC-status)
-      - [Memory Organization](#Memory-Organization)
-  - [NFC](#NFC)
+## Table of Contents
+- [Table of Contents](#table-of-contents)
+- [LF (Low Frequency)](#lf-low-frequency)
+  - [EM4100](#em4100)
+- [HF (High Frequency)](#hf-high-frequency)
+  - [MiFare](#mifare)
+    - [MiFare Classic](#mifare-classic)
+      - [PICC status](#picc-status)
+      - [Memory Organization](#memory-organization)
+  - [NFC](#nfc)
 
-# LF (Low Frequency)
+## LF (Low Frequency)
 
 RF: 125 KHz
 
-## EM4100
+### EM4100
 
 Alias: ID card
 
-# HF (High Frequency)
+## HF (High Frequency)
 
 RF: 13.56 MHz
 
@@ -25,9 +25,9 @@ ISO 18000-3
 
 Reader: MFRC522 (SPI port), PN532 (UART port)
 
-## MiFare
+### MiFare
 
-### MiFare Classic
+#### MiFare Classic
 
 [MiFare Classic 1K Reference](https://www.nxp.com/docs/en/data-sheet/MF1S50YYX_V1.pdf)
 
@@ -48,7 +48,7 @@ Alias: IC card
 | NAK | Not AcKnowledge |
 | RF | Radio Frequency |
 
-#### PICC status
+##### PICC status
 
 ```
 IDLE
@@ -63,7 +63,7 @@ READY
 ```
 
 
-#### Memory Organization
+##### Memory Organization
 
 ```
 MiFare Classic 1K = 40 ✖ Sector = 64 ✖ Block
@@ -88,4 +88,4 @@ Data Block = 16 Bytes
 Sector Trailer = Key A (6 Bytes) + Access Bits (4 Bytes) + Key B (6 Bytes)
 ```
 
-## NFC
+### NFC

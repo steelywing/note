@@ -1,4 +1,4 @@
-# Remove URL query
+## Remove URL query
 
 [Reference](https://developer.mozilla.org/en-US/docs/Web/API/Window/location#Example_5_Send_a_string_of_data_to_the_server_by_modifying_the_search_property)
 
@@ -17,12 +17,12 @@ Using relative URL
 location = '?';
 ```
 
-# URL for browser
+## URL for browser
 
 https://github.com/medialize/URI.js
 
 
-# Absolute URL for browser
+## Absolute URL for browser
 
 [Reference](https://davidwalsh.name/get-absolute-url)
 
@@ -40,7 +40,7 @@ var getAbsUrl = (function() {
 })();
 ```
 
-# Metric prefix
+## Metric prefix
 
 ```js
 Number.prototype.prefix = function (precision, base) {
@@ -72,7 +72,7 @@ Number.prototype.prefix = function (precision, base) {
 }
 ```
 
-# Performance / Benchmark
+## Performance / Benchmark
 ```js
 function benchmark(run) {
   var start = performance.now();

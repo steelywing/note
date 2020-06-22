@@ -14,14 +14,14 @@
   - ESP8285 = ESP8266 + 1MiB Flash
   - ESP32 (WiFi + Bluetooth)
 
-# Development board
+## Development board
 
-## Arduino
+### Arduino
 
 IDE: Arduino, PlatformIO
 
-## STM
-## Espressif
+### STM
+### Espressif
 
 ESP8266 (WiFi): ESP-01 ~ ESP-12
 
@@ -29,11 +29,11 @@ ESP32 (WiFi + Bluetooth)
 
 IDE: Arduino, PlatformIO
 
-## Raspberry Pi
+### Raspberry Pi
 
 System: Linux
 
-# USB to UART (RS232)
+## USB to UART (RS232)
 
 - WCH CH340 (UART)
 - WCH CH341 (UART, I2C, SPI)
@@ -41,7 +41,7 @@ System: Linux
 - Silicon CP2102
 - FTDI232 (Expensive)
 
-# Interface
+## Interface
 
 - UART (Universal Asynchronous Receiver Transmitter)
   - [RS-232](https://en.wikipedia.org/wiki/RS-232)
@@ -52,7 +52,7 @@ System: Linux
 - SPI (Serial Peripheral Interface)
 - I²C / I2C (Inter-Integrated Circuit)
 
-## DB-9
+### DB-9
 
 | Pin | SIG | Name | DTE (male) |
 | - | - | - | - |
@@ -68,11 +68,11 @@ System: Linux
 
 ![DB-9 pinout](img/db9-pinout.gif)
 
-## Common usage
+### Common usage
 
 `RXD TXD GND [RTS CTS]`
 
-# IR (Infrared)
+## IR (Infrared)
 
 | Wave length | Command |
 | - | - |
