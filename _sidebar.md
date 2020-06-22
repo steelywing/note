@@ -5,7 +5,7 @@
 - [Apache](Apache.md)
 - [Boot](Boot.md)
 - [Cryptography](Cryptography.md)
-- [Deprecated.md](Deprecated.md)
+- [Deprecated](Deprecated.md)
 - [DNS](DNS.md)
 - [ESXi](ESXi.md)
 - [File System](FileSystem.md)
