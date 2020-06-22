@@ -44,7 +44,7 @@ System: Linux
 ## Interface
 
 - UART (Universal Asynchronous Receiver Transmitter)
-  - [RS-232](https://en.wikipedia.org/wiki/RS-232)
+  - [RS-232](https://en.wikipedia.org/wiki/RS-232) / Serial port
     - [DB-9](https://www.db9-pinout.com/)
       - DTE (male)
       - DCE (female)
