@@ -2,7 +2,9 @@
 
 [Reference](https://docs.microsoft.com/en-us/windows/win32/fileio/filesystem-functionality-comparison)
 
-## [Journaling](https://en.wikipedia.org/wiki/Journaling_file_system)
+## Journaling
+
+[Reference](https://en.wikipedia.org/wiki/Journaling_file_system)
 
 Prevent being corrupted
 
