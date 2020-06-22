@@ -1,4 +1,5 @@
 # Permission
+
 [Reference](https://wiki.archlinux.org/index.php/File_permissions_and_attributes)
 
 | Permission | Effect on file | Effect on directory |
@@ -8,6 +9,7 @@
 | `x` | Execute | Access (Read, Write, Execute) directory's contents<br><br> *If any directory in the path does not have the `x` bit set, the final file or folder cannot be accessed either, regardless of its permissions* |
 
 # `SysRq`
+
 [Reference](https://github.com/torvalds/linux/blob/master/Documentation/admin-guide/sysrq.rst)
 
 ## How to use `SysRq`
@@ -49,3 +51,13 @@ echo 1 > /proc/sys/kernel/sysrq
 
 # Reset `root` password
 [Reference](https://wiki.archlinux.org/index.php/Reset_lost_root_password)
+
+# Security
+
+## SELinux
+
+RedHat use SELinux by default
+
+## AppArmor
+
+Debian / Ubuntu use AppArmor by default
