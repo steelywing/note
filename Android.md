@@ -1,6 +1,6 @@
-# ADB shell
+## ADB shell
 
-## Settings
+### Settings
 
 ```sh
 settings list global
@@ -9,13 +9,13 @@ settings put global <key> <value>
 settings delete global <key>
 ```
 
-# WiFi
+## WiFi
 
-## Captive portal
+### Captive portal
 
 [Reference](https://www.noisyfox.io/android-captive-portal.html)
 
-### Connect to WiFi but no internet
+#### Connect to WiFi but no internet
 
 ```sh
 # ADB shell
@@ -27,7 +27,7 @@ settings put global captive_portal_detection_enabled 0
 settings put global captive_portal_mode 0
 ```
 
-### Captive portal server
+#### Captive portal server
 
 ```sh
 # ADB shell
@@ -41,7 +41,7 @@ settings put global captive_portal_http_url "<URL>"
 settings put global captive_portal_https_url "<URL>"
 ```
 
-## WiFi password file
+### WiFi password file
 
 ```sh
 /data/misc/wifi/wpa_supplicant.conf
