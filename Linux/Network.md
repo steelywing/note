@@ -334,7 +334,8 @@ lsof -i [4|6][TCP|UDP][@<host>][:<port>]
 | Option | Description |
 | - | - |
 | `-n` | Numeric |
-| `[4|6]` | IPv4 / IPv6 |
+| `4` | IPv4 |
+| `6` | IPv6 |
 | `<host>` | `Host` / `IPv4` / `[<IPv6>]` |
 | `<port>` | Port / `<port>-<port>` |
 | `-p [^]<PID>` | Process ID, `^`: Exclude |
