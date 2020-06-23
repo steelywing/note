@@ -2,7 +2,7 @@
 
 ### Settings
 
-```sh
+```bash
 settings list global
 settings get global <key>
 settings put global <key> <value>
@@ -17,7 +17,7 @@ settings delete global <key>
 
 #### Connect to WiFi but no internet
 
-```sh
+```bash
 # ADB shell
 
 # < Android 7.1.2
@@ -29,7 +29,7 @@ settings put global captive_portal_mode 0
 
 #### Captive portal server
 
-```sh
+```bash
 # ADB shell
 
 # < Android 7.0
@@ -43,7 +43,7 @@ settings put global captive_portal_https_url "<URL>"
 
 ### WiFi password file
 
-```sh
+```bash
 /data/misc/wifi/wpa_supplicant.conf
 /data/misc/wifi/wpa.conf
 /data/wifi/bcm_supp.conf

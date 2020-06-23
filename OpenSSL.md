@@ -24,7 +24,7 @@ Bundle X509 full chain certificate, private key
 
 ## Version
 
-```sh
+```bash
 openssl version
 ```
 
@@ -34,7 +34,7 @@ openssl version
 
 Self signed certificate
 
-```sh
+```bash
 openssl x509 
     -req 
     -in <file.csr> 
@@ -45,7 +45,7 @@ openssl x509
 
 CA (Certificate Authority) sign certificate
 
-```sh
+```bash
 openssl x509 
     -req 
     -in <file.csr> 
@@ -58,7 +58,7 @@ openssl x509
 
 Display the contents of certificate (PEM/CRT)
 
-```sh
+```bash
 openssl x509 -in <file.{pem|crt}> -text -noout
 ```
 
@@ -70,7 +70,7 @@ openssl x509 -in <file.{pem|crt}> -text -noout
 
 Creating CSR
 
-```sh
+```bash
 # <subject> = "/C=<country>/ST=<state>/L=<locality>/O=<organization>/OU=<organizational unit>/CN=<common name>/emailAddress=<email>"
 openssl req -new -key <file.key> -out <file.csr> [-subj <subject>] [-config <config.ini>]
 ```
@@ -122,7 +122,7 @@ DNS.2 = <domain>
 
 Verify CSR
 
-```sh
+```bash
 openssl req -text -in <file.csr> -noout -verify
 ```
 
@@ -130,19 +130,19 @@ openssl req -text -in <file.csr> -noout -verify
 
 Generating RSA key
 
-```sh
+```bash
 # Default key lenght = 2048
 openssl genrsa [-out <file.key>] [<key length>]
 ```
 
 View RSA key file
 
-```sh
+```bash
 openssl rsa -in <file.key> -text -noout
 ```
 
 Extracting RSA public key
 
-```sh
+```bash
 openssl rsa -in <file.key> -pubout -out <public.key>
 ```

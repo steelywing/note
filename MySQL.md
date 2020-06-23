@@ -16,18 +16,18 @@
 
 Output redirect (`mysqldump > file.sql`) will use UTF-16 on PowerShell, MySQL cannot import UTF-16
 
-```sh
+```bash
 mysqldump [-u <user>] [-p] { --all-databases | <database> [<table> [...]] } --result-file=<file.sql>
 ```
 
 Export with `gzip`
-```sh
+```bash
 mysqldump <database> | gzip [-9] > <file.sql.gz>
 ```
 
 ## Import
 [Reference](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)
-```sh
+```bash
 mysql [-u <user>] [-p] <database> < <file.sql>
 ```
 
@@ -85,7 +85,7 @@ innodb_purge_threads = 0
 ```
 
 ### Check tables
-```sh
+```bash
 mysqlcheck [{ -c | --check }] [-u <user>] [-p] <database> [<table> [...]]
 ```
 
@@ -97,7 +97,7 @@ check table <table> [, ...]
 
 ### Repair tables
 
-```sh
+```bash
 mysqlcheck [{ -r | --repair }] [-u <user>] [-p] <database> [<table> [...]]
 ```
 

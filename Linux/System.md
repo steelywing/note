@@ -16,7 +16,7 @@
 
 Hold <kbd>Alt</kbd>, press <kbd>SysRq</kbd>, press `<command key>`, press `<command key>`, ...
 
-```sh
+```bash
 echo <command key> > /proc/sysrq-trigger
 ```
 
@@ -35,13 +35,13 @@ echo <command key> > /proc/sysrq-trigger
 
 ## Disable `SysRq`
 
-```sh
+```bash
 echo 0 > /proc/sys/kernel/sysrq
 ```
 
 ## Enable all function of `SysRq`
 
-```sh
+```bash
 echo 1 > /proc/sys/kernel/sysrq
 ```
 

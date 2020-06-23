@@ -4,7 +4,7 @@ On SSH server, check `AllowTcpForwarding` is allow, default is allow.
 
 On SSH client
 
-```sh
+```bash
 ssh [<option>] [<user>@]<SSH remote server host>
 ```
 
@@ -24,7 +24,7 @@ If no bind address colon (`<port>:<host>:<port>`), will bind to loopback interfa
 
 ![SSH Tunnel](img/SSH&#32;Tunnel.png)
 
-- ```sh
+- ```bash
   # SSH Client
   ssh -L :8000:10.0.2.2:80 10.0.1.2
   ```
@@ -33,7 +33,7 @@ If no bind address colon (`<port>:<host>:<port>`), will bind to loopback interfa
 
 ## SSH tunnel on `localhost`
 
-- ```sh
+- ```bash
   # SSH Remote Server
   ssh -L 8000:10.0.2.2:80 127.0.0.1
   ```
@@ -49,7 +49,7 @@ If no bind address colon (`<port>:<host>:<port>`), will bind to loopback interfa
   # /etc/ssh/sshd_config
   GatewayPorts yes
   ```
-- ```sh
+- ```bash
   # SSH Client
   ssh -R :8000:10.0.2.2:80 10.0.1.1
   ```

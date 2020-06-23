@@ -5,7 +5,7 @@
 | `-i[<suffix>]` | Edit files in place (makes backup if `<suffix>` supplied) |
 | `-r` | Extended regular expressions |
 
-```sh
+```bash
 sed [<option>] '<script>' <input file> <input file> ...
 ```
 

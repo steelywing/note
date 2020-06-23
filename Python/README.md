@@ -21,43 +21,43 @@ hasattr(object, name)
 [Reference](https://pip.pypa.io/en/stable/)
 
 CLI
-```sh
+```bash
 pip
 python -m pip
 ```
 
 Install package
-```sh
+```bash
 pip install <package>
 ```
 
 Uninstall package
-```sh
+```bash
 pip uninstall <package>
 ```
 
 List installed package
-```sh
+```bash
 pip list
 ```
 
 Download package
-```sh
+```bash
 pip download <package>
 ```
 
 Install downloaded package
-```sh
+```bash
 pip install --no-index --find-links <directory> <package>
 ```
 
 Export `requirements.txt`
-```sh
+```bash
 pip freeze > requirements.txt
 ```
 
 Install `requirements.txt`
-```sh
+```bash
 pip install -r requirements.txt
 ```
 
@@ -94,7 +94,7 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
-```sh
+```bash
 # In /module/ folder
 python -m tests.test_module
 ```
@@ -107,7 +107,7 @@ python -m tests.test_module
 
 ## Show `sys.path` (module path) in CLI
 
-```sh
+```bash
 python -m site
 ```
 

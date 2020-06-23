@@ -2,19 +2,19 @@
 
 ## Reset
 
-```sh
+```bash
 hponcfg { -r | --reset }
 ```
 
 ## Export config to file
 
-```sh
+```bash
 hponcfg { -w | --writeconfig } <file.xml>
 ```
 
 ## Import config from file
 
-```sh
+```bash
 hponcfg { -f | --file } <file.xml>
 ```
 
@@ -35,7 +35,7 @@ hponcfg { -f | --file } <file.xml>
 </RIBCL>
 ```
 
-```sh
+```bash
 hponcfg -f config.xml
 ```
 
@@ -58,7 +58,7 @@ hponcfg -f config.xml
 </RIBCL>
 ```
 
-```sh
+```bash
 hponcfg -f config.xml
 ```
 

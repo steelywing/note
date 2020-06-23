@@ -25,7 +25,7 @@
 
 Policy = Default target
 
-```sh
+```bash
 iptables -P <chain> <target>
 ```
 
@@ -33,7 +33,7 @@ iptables -P <chain> <target>
 
 [Reference](https://www.netfilter.org/documentation/HOWTO/packet-filtering-HOWTO-7.html)
 
-```sh
+```bash
 iptables 
     { -A <chain> | -I <chain> [rule number] | -D <chain> [rule number] }
     [[!] -i <interface>]
@@ -50,7 +50,7 @@ iptables
 
 [Reference](http://ipset.netfilter.org/iptables-extensions.man.html)
 
-```sh
+```bash
 iptables <rule>
     [-m state [!] --state { NEW | ESTABLISHED | RELATED }]
     [-m conntrack 
@@ -63,7 +63,7 @@ iptables <rule>
 
 [Reference](https://www.netfilter.org/documentation/HOWTO/NAT-HOWTO-6.html)
 
-```sh
+```bash
 iptables -t nat -A PREROUTING [-i <interface>] -p tcp --dport <from port> -j REDIRECT --to-port <to port>
 ```
 
@@ -73,6 +73,6 @@ iptables -t nat -A PREROUTING [-i <interface>] -p tcp --dport <from port> -j RED
 
 Use the address of the interface the packet is going out as source address
 
-```sh
+```bash
 iptables -t nat -A POSTROUTING -o <interface> -j MASQUERADE
 ```

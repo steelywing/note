@@ -2,12 +2,12 @@
 
 Install GNOME tweaks
 
-```sh
+```bash
 apt install gnome-tweaks
 ```
 
 Install Arc theme
 
-```sh
+```bash
 apt install arc-theme
 ```

@@ -120,7 +120,7 @@
 
 Add user
 
-```sh
+```bash
 useradd <user> [-d <home directory>] [-g <group>] [-G <supplementary group>[,...]] [-s <shell>]
 
 # Debian only
@@ -129,7 +129,7 @@ adduser <user>
 
 Delete user
 
-```sh
+```bash
 userdel <user>
 
 # Debian only
@@ -138,19 +138,19 @@ deluser <user>
 
 Lock user
 
-```sh
+```bash
 passwd -l <user>
 ```
 
 Unlock user
 
-```sh
+```bash
 passwd -u <user>
 ```
 
 User database file
 
-```sh
+```bash
 getent passwd
 
 # Usually store in
@@ -159,7 +159,7 @@ getent passwd
 
 Password file
 
-```sh
+```bash
 getent shadow
 
 # Usually store in
@@ -170,13 +170,13 @@ getent shadow
 
 Change password
 
-```sh
+```bash
 passwd [<user>]
 ```
 
 Delete password
 
-```sh
+```bash
 passwd -d <user>
 ```
 
@@ -184,13 +184,13 @@ Expire user password
 
 force user to change password
 
-```sh
+```bash
 passwd -e <user>
 ```
 
 Set password expire day
 
-```sh
+```bash
 passwd -x <day> <user>
 ```
 
@@ -198,19 +198,19 @@ passwd -x <day> <user>
 
 Change / Override user's primary group
 
-```sh
+```bash
 usermod -g <group> <user>
 ```
 
 Change / Override user's supplementary groups
 
-```sh
+```bash
 usermod -G <group>[,...] <user>
 ```
 
 Add user's supplementary groups
 
-```sh
+```bash
 usermod -aG <group>[,...] <user>
 ```
 
@@ -218,59 +218,59 @@ usermod -aG <group>[,...] <user>
 
 Display date
 
-```sh
+```bash
 date [-u|--utc]
 ```
 
 Set date
 
-```sh
+```bash
 timedatectl set-time [<YYYY>-<MM>-<DD>] [<HH>:<MM>:<SS>]
 ```
 
-```sh
+```bash
 date [-u|--utc] [MMDDhhmm[YYYY][.ss]]
 ```
 
-```sh
+```bash
 date -s "YYYY-MM-DD hh:mm:ss"
 ```
 
 Display timezone
 
-```sh
+```bash
 date "+%Z %z"
 ```
 
-```sh
+```bash
 cat /etc/timezone
 ```
 
 Set timezone
 
-```sh
+```bash
 tzselect
 ```
 
-```sh
+```bash
 timedatectl set-timezone <timezone>
 ```
 
 RTC (Real-Time Clock) as the local time
 
-```sh
+```bash
 timedatectl set-local-rtc { true | t | yes | y | 1 }
 ```
 
 RTC (Real-Time Clock) as the UTC (Coordinated Universal Time)
 
-```sh
+```bash
 timedatectl set-local-rtc { false | f | no | n | 0 }
 ```
 
 Convert timestamp to date time
 
-```sh
+```bash
 date -d @<timestamp>
 ```
 
@@ -279,23 +279,23 @@ date -d @<timestamp>
 
 ## Shell list
 
-```sh
+```bash
 cat /etc/shells
 ```
 
 ## Chanage shell
 
-```sh
+```bash
 chsh -s <shell> [<user>]
 ```
 
-```sh
+```bash
 usermod -s <shell> <user>
 ```
 
 ## Open file manager from CLI
 
-```sh
+```bash
 xdg-open <path>
 ```
 
@@ -303,13 +303,13 @@ xdg-open <path>
 
 Type: `function`, `builtin`, or `file`
 
-```sh
+```bash
 type [-a] <command>
 ```
 
 Preserve file timestamp after edit (`bash`)
 
-```sh
+```bash
 vi-preserve-time () {
     for file in "$@"; do
         local mtime=$(stat -c %y "$file")
@@ -332,7 +332,7 @@ Hold `Shift` when boot
 
 Find all OS, update GRUB config, install GRUB to MBR / UEFI
 
-```sh
+```bash
 update-grub
 ```
 
@@ -350,7 +350,7 @@ update-grub
 
 ## Set GRUB default to last selected option
 
-```sh
+```bash
 # /etc/default/grub
 GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
@@ -371,7 +371,7 @@ GRUB_SAVEDEFAULT=true
 
 ## Display memory info
 
-```sh
+```bash
 free <options>
 ```
 
@@ -381,7 +381,7 @@ free <options>
 
 ## Display process info
 
-```sh
+```bash
 # BSD syntax
 ps [aux]
 
@@ -394,14 +394,14 @@ ps [-ef]
 | `-e|-A` | Entire / All processes |
 | `-f` | Full format / Detail |
 
-```sh
+```bash
 top
 ```
 
 # Kernel
 
 ## Kernel info
-```sh
+```bash
 uname -a
 ```
 
@@ -440,25 +440,25 @@ uname -a
 
 Execute command when shell receives signal
 
-```sh
+```bash
 trap "<command>" <signal>[ ...]
 ```
 
 Execute on shell exit
 
-```sh
+```bash
 trap "<command>" { EXIT | 0 }
 ```
 
 Show associated commands
 
-```sh
+```bash
 trap -p
 ```
 
 Show signal list
 
-```sh
+```bash
 trap -l
 ```
 
@@ -466,7 +466,7 @@ trap -l
 
 ## `rsync`
 
-```sh
+```bash
 # <source>, <destination> = [[<user>@]<host>:]<path>
 rsync <option> <source> <destination>
 ```
@@ -486,7 +486,7 @@ rsync <option> <source> <destination>
 
 Trailing slash on `<source>`
 
-```sh
+```bash
 rsync -av /src /dest
 # same as
 rsync -av /src/ /dest/src
@@ -500,18 +500,18 @@ rsync -av /src/ /dest/src
 
 ~~Only change directory permission~~
 
-```sh
+```bash
 chmod <permission> $(find -type d)
 ```
 
 ~~Only change file permission~~
-```sh
+```bash
 chmod <permission> $(find -type f)
 ```
 
 Change file owner and group
 
-```sh
+```bash
 chown { <owner>[:<group>] | --reference <file> } <file>
 ```
 
@@ -521,11 +521,11 @@ Change file permission to `644`, directory to `755`
 | - | - |
 | `-R` | Recursive |
 
-```sh
+```bash
 chmod [-R] u=rw,go=r,a+X <path>
 ```
 
-```sh
+```bash
 chmod [-R] a=r+X,u+w <path>
 ```
 
@@ -545,19 +545,19 @@ chmod [-R] a=r+X,u+w <path>
 
 List attribute
 
-```sh
+```bash
 lsattr
 ```
 
 Change attribute
 
-```sh
+```bash
 chattr {+|-}<attribute> <file>
 ```
 
 ## List open files
 
-```sh
+```bash
 lsof <path>
 ```
 
@@ -565,26 +565,26 @@ lsof <path>
 # SELinux
 
 ## Get SELinux status
-```sh
+```bash
 sestatus [-v]
 ```
 
 ## Set SELinux status
-```sh
+```bash
 setenforce { Enforcing | Permissive | 1 | 0 }
 ```
 
 # Service
 
 ## Add / Delete service
-```sh
+```bash
 # System V (Red Hat <= 6)
 chkconfig { --add | --del } <service>
 ```
 
 ## Enable / Disable service auto start
 
-```sh
+```bash
 # System V (Ubuntu <= 14)
 update-rc.d <service> { enable | disable }
 
@@ -597,7 +597,7 @@ systemctl { enable | disable } <service>
 
 ## Start / Stop service
 
-```sh
+```bash
 # System V (Ubuntu <= 14 and Red Hat <= 6)
 service <service> { start | stop }
 
@@ -607,7 +607,7 @@ systemctl { start | stop } <service>
 
 ## Show service status
 
-```sh
+```bash
 # System V (Ubuntu <= 14 and Red Hat <= 6)
 service <service> status
 
@@ -619,7 +619,7 @@ systemctl status <service>
 
 Show manual
 
-```sh
+```bash
 man [<page>]
 ```
 
@@ -634,7 +634,7 @@ apropos <keyword>
 
 Force sync time
 
-```sh
+```bash
 service ntpd stop
 ntpd -gq
 service ntpd start
@@ -643,7 +643,7 @@ service ntpd start
 
 # DNS
 
-```sh
+```bash
 vi /etc/resolv.conf
 ```
 
@@ -654,12 +654,12 @@ vi /etc/resolv.conf
 
 [Reference](https://askubuntu.com/a/487267/235264)
 
-```sh
+```bash
 dconf-editor
 # org > gnome > desktop > remote-accessand > require-encryption
 ```
 
-```sh
+```bash
 gsettings set org.gnome.Vino require-encryption false
 ```
 
@@ -667,7 +667,7 @@ gsettings set org.gnome.Vino require-encryption false
 
 ## Copy
 
-```sh
+```bash
 cp [<option>] <source> <destination>
 ```
 
@@ -680,7 +680,7 @@ cp [<option>] <source> <destination>
 
 ## Disk usage
 
-```sh
+```bash
 du <option> <path>
 ```
 
@@ -691,13 +691,13 @@ du <option> <path>
 
 Sort human readable disk usage
 
-```sh
+```bash
 du -hs <path> | sort -h -r
 ```
 
 ## Disk free space
 
-```sh
+```bash
 df <option>
 ```
 
@@ -707,21 +707,21 @@ df <option>
 
 ## List block devices / disk
 
-```sh
+```bash
 lsblk
 ```
 
 ## Show devices UUID (GUID)
 
-```sh
+```bash
 lsblk { -f | --fs }
 ```
 
-```sh
+```bash
 blkid
 ```
 
-```sh
+```bash
 ls /dev/disk/by-uuid/
 ```
 
@@ -731,7 +731,7 @@ ls /dev/disk/by-uuid/
 
 Get I/O priority
 
-```sh
+```bash
 ionice [-p <PID>]
 ```
 
@@ -744,7 +744,7 @@ Set I/O priority
 | 2 | Best-effort |
 | 3 | Idle |
 
-```sh
+```bash
 # <level> = 0 to 7, only for best-effort and realtime
 ionice 
     { -c | --class } <class>
@@ -756,7 +756,7 @@ ionice
 
 ### Write speed
 
-```sh
+```bash
 dd if=/dev/zero of=<file> bs=<size>[K|M|G] count=<count>[K|M|G] { conv=fsync | oflag={sync|dsync|direct} }
 ```
 
@@ -786,7 +786,7 @@ dd if=/dev/zero of=<file> bs=<size>[K|M|G] count=<count>[K|M|G] { conv=fsync | o
 | `Z` | 1024⁷ |
 | `Y` | 1024⁸ |
 
-```sh
+```bash
 dd
     if=<file>
     of=/dev/null
@@ -797,7 +797,7 @@ dd
 
 [drop_caches reference](https://www.kernel.org/doc/Documentation/sysctl/vm.txt)
 
-```sh
+```bash
 # Synchronize cached writes to persistent storage
 sync
 
@@ -809,13 +809,13 @@ dd if=<file> of=/dev/null bs=<size>[K|M|G] [count=<count>[K|M|G]]
 
 Read speed test without prior cache
 
-```sh
+```bash
 hdparm -t /dev/<device>
 ```
 
 Read speed test with buffer
 
-```sh
+```bash
 hdparm -T /dev/<device>
 ```
 
@@ -832,7 +832,7 @@ hdparm -T /dev/<device>
 
 ### Reload partition table
 
-```sh
+```bash
 partprobe /dev/<device>
 ```
 
@@ -852,7 +852,7 @@ partprobe /dev/<device>
 
 ext2 / ext3 / ext4
 
-```sh
+```bash
 # Force check file system
 e2fsck -f <device>
 resize2fs [-M] <device> [<size>[<unit>]]
@@ -875,7 +875,7 @@ resize2fs [-M] <device> [<size>[<unit>]]
 
 Config file
 
-```sh
+```bash
 /etc/lvm/lvm.conf
 ```
 
@@ -889,17 +889,17 @@ Config file
 
 Scan for all available devices for LVM
 
-```sh
+```bash
 lvmdiskscan
 ```
 
-```sh
+```bash
 pvscan
 ```
 
 Change partition type ID to LVM (Optional)
 
-```sh
+```bash
 gdisk <device>
 
 Command (? for help): t
@@ -908,7 +908,7 @@ Hex code or GUID (L to show codes, Enter = 8300): 8e00
 Command (? for help): w
 ```
 
-```sh
+```bash
 fdisk <device>
 
 Command (m for help): t
@@ -921,14 +921,14 @@ Command (m for help): w
 
 Create PV
 
-```sh
+```bash
 # <device> = <disk> | <partition>
 pvcreate <device>[ ...]
 ```
 
 Remove PV
 
-```sh
+```bash
 pvmove <PV>
 vgreduce <VG> <PV>
 pvremove <PV>
@@ -936,11 +936,11 @@ pvremove <PV>
 
 Show PV information
 
-```sh
+```bash
 pvs
 ```
 
-```sh
+```bash
 pvdisplay
 ```
 
@@ -948,29 +948,29 @@ pvdisplay
 
 Create VG
 
-```sh
+```bash
 vgcreate <VG name> <PV> ...
 ```
 
 Add PV to VG
 
-```sh
+```bash
 vgextend <VG name> <PV> ...
 ```
 
 Remove VG
 
-```sh
+```bash
 vgremove <VG name>
 ```
 
 Show VG information
 
-```sh
+```bash
 vgs
 ```
 
-```sh
+```bash
 vgdisplay
 ```
 
@@ -978,7 +978,7 @@ vgdisplay
 
 Create LV
 
-```sh
+```bash
 lvcreate 
     [
         -L <size>[K|M|G|T|P|E] |
@@ -991,22 +991,22 @@ lvcreate
 
 Show LV information
 
-```sh
+```bash
 lvs
 ```
 
-```sh
+```bash
 lvdisplay
 ```
 
 Remove LV
-```sh
+```bash
 lvremove <LV>
 ```
 
 Resize LV
 
-```sh
+```bash
 lvresize 
     {
         -L {+|-}<size>[K|M|G|T|P|E] |
@@ -1026,11 +1026,11 @@ Reduce LV
 `lvreduce <size>` = `lvresize -<size>`
 
 - Unmount LV
-  ```sh
+  ```bash
   umount <LV>
   ```
 - Resize LV
-  ```sh
+  ```bash
   lvresize 
     -L [-]<size>[K|M|G|T|P|E]
     --resizefs
@@ -1040,15 +1040,15 @@ Reduce LV
   Same as
 
   - Check file system
-    ```sh
+    ```bash
     fsck -f <LV>
     ```
   - Resize file system
-    ```sh
+    ```bash
     resize2fs <LV> <size>[s|K|M|G]
     ```
   - Resize LV
-    ```sh
+    ```bash
     lvresize 
       -L [-]<size>[K|M|G|T|P|E]
       <LV>
@@ -1058,13 +1058,13 @@ Reduce LV
 
 `Device <device> excluded by a filter.`
 
-```sh
+```bash
 pvcreate -vvv <device> |& grep <device>
 ```
 
 `Skipping: Partition table signature found`
 
-```sh
+```bash
 # Wipe all magic strings (BE CAREFUL!)
 wipefs --all <device>
 ```
@@ -1073,13 +1073,13 @@ wipefs --all <device>
 
 Run command in `find` result, `{}` is result path
 
-```sh
+```bash
 find [<path>] [[!] <expression>] -exec <command> {} +
 ```
 
 `<command> {} +` will expand to `<command> <path> <path> ...`
 
-```sh
+```bash
 find [<path>] [[!] <expression>] -exec <command> {} \;
 ```
 
@@ -1107,17 +1107,17 @@ find [<path>] [[!] <expression>] -exec <command> {} \;
 [Reference](https://unix.stackexchange.com/a/270437/104608)
 
 ## Push directory
-```sh
+```bash
 pushd <directory>
 ```
 
 ## Pop and change to the directory
-```sh
+```bash
 popd
 ```
 
 ## List directory stack
-```sh
+```bash
 dirs [-v]
 ```
 
@@ -1134,7 +1134,7 @@ User `crontab` file
 
 `crontab` file
 
-```sh
+```bash
 /etc/crontab
 
 # Debian only
@@ -1144,19 +1144,19 @@ User `crontab` file
 # OpenJDK (Java)
 
 ## List installed JVM
-```sh
+```bash
 update-java-alternatives --list
 ```
 
 ## Switch JVM
-```sh
+```bash
 update-java-alternatives --set <JVM name>
 ```
 
 
 # Show Linux distribution / version
 
-```sh
+```bash
 cat /etc/*-release
 cat /proc/version
 uname -a
@@ -1171,18 +1171,18 @@ lsb_release -a
 
 # Mount
 
-```sh
+```bash
 mount [-t <type>] { <source> | <device> } <directory>
 ```
 
 ## Remount mount point in fstab
-```sh
+```bash
 # rw: read-write
 mount -o remount[,rw] <directory>
 ```
 
 ## Lists all mounted filesystems
-```sh
+```bash
 # -l: lable
 mount [-l] [-t type]
 ```
@@ -1200,7 +1200,7 @@ mount [-l] [-t type]
 | `vers=3.0` | SMBv3.0 for Windows 8 and 2012 |
 | `noperm` | Client bypass permission checks |
 
-```sh
+```bash
 # mount.cifs = mount -t cifs
 mount.cifs -o <option>[,...]] //<host>/<share name> <directory>
 ```
@@ -1211,7 +1211,7 @@ mount.cifs -o <option>[,...]] //<host>/<share name> <directory>
 
 CentOS
 
-```sh
+```bash
 # List available groups
 yum group list
 
@@ -1221,13 +1221,13 @@ yum group install "Development Tools"
 
 Ubuntu
 
-```sh
+```bash
 apt install build-essential
 ```
 
 MSYS2
 
-```sh
+```bash
 pacman -S base-devel
 ```
 
@@ -1235,7 +1235,7 @@ pacman -S base-devel
 
 [Reference](https://fedoraproject.org/wiki/EPEL)
 
-```sh
+```bash
 sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 ```
 
@@ -1245,7 +1245,7 @@ Debian
 
 [Reference](https://stackoverflow.com/a/41428445/1877620)
 
-```sh
+```bash
 # -i = --important : Show only Depends and Pre-Depends
 sudo apt-get download $(apt-cache depends --recurse -i <package> | grep -v "^[ <]")
 
@@ -1258,7 +1258,7 @@ sudo apt-get install -m --no-download ./*
 
 Debian
 
-```sh
+```bash
 apt list --installed [<package name pattern>]
 
 # -l = --list
@@ -1270,23 +1270,23 @@ dpkg -l [<package name pattern>]
 [Reference](https://linuxconfig.org/how-to-disable-last-login-message-on-rhel-linux)
 
 ## Suppress `Last Login` message
-```sh
+```bash
 touch ~/.hushlogin
 ```
 
 ## Clear last login log
-```sh
+```bash
 > /var/log/lastlog
 ```
 
 ## Disable logging last login
-```sh
+```bash
 chattr +i /var/log/lastlog
 ```
 
 # Identify processes using files or sockets
 
-```sh
+```bash
 fuser <option> <file>
 ```
 
@@ -1300,7 +1300,7 @@ fuser <option> <file>
 
 Execute command periodically
 
-```sh
+```bash
 watch [-n <seconds>] <command>
 ```
 
@@ -1312,19 +1312,19 @@ watch [-n <seconds>] <command>
 
 For `sh` / `bash`
 
-```sh
+```bash
 eval $(ssh-agent -s)
 ```
 
 For `csh` / `fish`
 
-```sh
+```bash
 eval (ssh-agent -c)
 ```
 
 Add SSH private key
 
-```sh
+```bash
 ssh-add <private key path>
 ```
 
@@ -1341,7 +1341,7 @@ ssh-add <private key path>
 
 [Reference](http://refspecs.linuxfoundation.org/fhs.shtml)
 
-```sh
+```bash
 man hier
 ```
 

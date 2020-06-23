@@ -2,7 +2,7 @@
 
 [Reference](https://www.gnu.org/software/gawk/manual/gawk.html)
 
-```sh
+```bash
 awk '<program>' [<input file> [<input file>]]
 awk -f '<program file>' [<input file> [<input file>]]
 ```

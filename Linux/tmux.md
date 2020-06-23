@@ -1,12 +1,12 @@
 # New session
 
-```sh
+```bash
 tmux new[-session] [-n<session name>]
 ```
 
 # Attach session
 
-```sh
+```bash
 tmux attach [-t<session name>]
 ```
 
@@ -18,7 +18,7 @@ tmux attach [-t<session name>]
 
 ## In CLI
 
-```sh
+```bash
 tmux <command>
 ```
 

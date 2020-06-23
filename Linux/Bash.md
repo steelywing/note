@@ -66,7 +66,7 @@ Pipe `stdout` and `stderr` ➡ `stdin`
 
 ## For each file
 
-```sh
+```bash
 for <file variable name> in *; do
   <...>
 done
@@ -76,7 +76,7 @@ done
 ## For each `find` result
 
 [Reference](https://stackoverflow.com/a/15066129) / [Reference](https://stackoverflow.com/a/9612232/1877620)
-```sh
+```bash
 find [<expression>] -print0 | while IFS= read -r -d $'\0' <file variable name>; do
   <...>
 done
@@ -84,7 +84,7 @@ done
 
 ## For each array value
 
-```sh
+```bash
 array=(a b c)
 for i in "${array[@]}"; do
   // $i == <current value>
@@ -93,14 +93,14 @@ done
 
 # Command substitution
 
-```sh
+```bash
 $(<command>)
 `<command>`
 ```
 
 ## cat file
 
-```sh
+```bash
 $(< <file>)
 $(cat <file>)
 ```
@@ -108,12 +108,12 @@ $(cat <file>)
 # Variable
 
 ## Set variable
-```sh
+```bash
 <name>=<value>
 ```
 
 ## Get variable
-```sh
+```bash
 $<name>
 ${<name>}
 ```
@@ -121,17 +121,17 @@ ${<name>}
 ## Remove current session bash history
 
 Clear current history buffer
-```sh
+```bash
 history -c
 ```
 
 Don't save the history when session close
-```sh
+```bash
 unset HISTFILE
 ```
 
 Kill bash
-```sh
+```bash
 # $$ == Current shell PID
 kill -9 $$
 ```
@@ -139,7 +139,7 @@ kill -9 $$
 ## Delete all bash history
 
 Empty history file
-```sh
+```bash
 > $HISTFILE
 ```
 

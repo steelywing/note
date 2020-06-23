@@ -28,12 +28,12 @@
 [Reference](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Security_Guide/s1-firewall-ipt-fwd.html)
 
 Get IP forward setting
-```sh
+```bash
 sysctl net.ipv4.ip_forward
 ```
 
 Set IP forward setting (`0` = Disable, `1` = Enable)
-```sh
+```bash
 sysctl -w net.ipv4.ip_forward={0|1}
 ```
 
@@ -47,7 +47,7 @@ net.ipv4.ip_forward = {0|1}
 
 ## Ping
 
-```sh
+```bash
 # Display timeout
 ping -O <IP address>
  
@@ -62,7 +62,7 @@ done
 
 [Reference](https://nmap.org/book/man.html)
 
-```sh
+```bash
 nmap <option>
 ```
 
@@ -103,7 +103,7 @@ Default: scan most common 1,000 ports
 
 List interface
 
-```sh
+```bash
 tcpdump { -D | --list-interfaces }
 ```
 
@@ -135,7 +135,7 @@ Expression
 | `<expression> {and|&&} <expression>` | and |
 | `<expression> { or | || } <expression>` | or |
 
-```sh
+```bash
 tcpdump [<option>] [<expression>]
 ```
 
@@ -149,7 +149,7 @@ Reference: `ip help`
 | `-6` | IPv6 |
 | `-c` | Color output |
 
-```sh
+```bash
 ip [<option>] { link | address | route | neigh | tunnel | tuntap | maddress | mroute | monitor | l2tp | ... } { <command> | help }
 ```
 
@@ -157,17 +157,17 @@ ip [<option>] { link | address | route | neigh | tunnel | tuntap | maddress | mr
 
 Reference: `ip link help`
 
-```sh
+```bash
 ip l [show [<dev>] [up]]
 ```
 
 Interface up / down
 
-```sh
+```bash
 ip l set [dev] <device> { up | down }
 ```
 
-```sh
+```bash
 # Deprecated
 ifconfig <interface> { up | down }
 ```
@@ -176,40 +176,40 @@ ifconfig <interface> { up | down }
 
 Reference: `ip address help`
 
-```sh
+```bash
 ip a [show [<device>] [up]]
 ```
 
-```sh
+```bash
 # Deprecated
 ifconfig
 ```
 
 Add IP address
 
-```sh
+```bash
 ip a add <IP address>/<prefix length> dev <device>
 ```
 
-```sh
+```bash
 # Deprecated
 ifconfig <interface> add <IP address>/<prefix length>
 ```
 
 Delete IP address
 
-```sh
+```bash
 ip a del <IP address>/<prefix length> dev <device>
 ```
 
-```sh
+```bash
 # Deprecated
 ifconfig <interface> del <IP address>/<prefix length>
 ```
 
 Flush (Delete all) IP address
 
-```sh
+```bash
 ip a flush [dev <device>] [up]
 ```
 
@@ -217,18 +217,18 @@ ip a flush [dev <device>] [up]
 
 Reference: `ip neighbour help`
 
-```sh
+```bash
 ip n [show]
 ```
 
-```sh
+```bash
 # Deprecated
 arp
 ```
 
 Clear ARP / neighbour
 
-```sh
+```bash
 ip n flush [dev <device>]
 ```
 
@@ -242,46 +242,46 @@ Reference: `ip route help`
 | `match` | Prefix not longer than `<prefix length>` |
 | `root` | Prefix not shorter than `<prefix length>` |
 
-```sh
+```bash
 ip r [list] [match|root] [<IP address>[/<prefix length>]]
 ```
 
-```sh
+```bash
 # Deprecated
 route [-n]
 ```
 
-```sh
+```bash
 # Deprecated
 netstat -[n]r
 ```
 
 Get route to destination address
 
-```sh
+```bash
 ip r get <IP address>
 ```
 
 Add route
 
-```sh
+```bash
 # default = 0/0 or ::/0
 ip r add { default | <IP-address>/<prefix length> } via <next hop IP address> [dev <device>] [metric <metric>]
 ```
 
-```sh
+```bash
 # Deprecated
 route add -net <IP address>/<prefix length> gw <next hop IP address> [dev <device>] [metric <metric>]
 ```
 
 Delete route
 
-```sh
+```bash
 # default = 0/0 or ::/0
 ip r delete { default | <IP address>/<prefix length> } [via <next hop IP address>] [dev <device>]
 ```
 
-```sh
+```bash
 # Deprecated
 route del default
 route del -net <IP address>/<prefix length> [gw <next hop IP address>] [dev <device>] [metric <metric>]
@@ -289,7 +289,7 @@ route del -net <IP address>/<prefix length> [gw <next hop IP address>] [dev <dev
 
 ## Socket statistics
 
-```sh
+```bash
 ss [<option> ...] [state <state>] [<expression>]
 ```
 
@@ -306,7 +306,7 @@ ss [<option> ...] [state <state>] [<expression>]
 | `state <state>` | State: `{ all | connected | synchronized }`, TCP State: `{ established | syn-sent | syn-recv | fin-wait-1 | fin-wait-2 | time-wait | closed | close-wait | last-ack | listen | closing }` |
 | `<expression>` |  |
 
-```sh
+```bash
 # Deprecated
 netstat
 ```
@@ -322,12 +322,12 @@ netstat
 | `-t` | TCP |
 | `-u` | UDP |
 
-```sh
+```bash
 cat /proc/net/udp
 cat /proc/net/tcp
 ```
 
-```sh
+```bash
 lsof -i [4|6][TCP|UDP][@<host>][:<port>]
 ```
 
