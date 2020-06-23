@@ -66,9 +66,12 @@ READY
 ##### Memory Organization
 
 ```
-MiFare Classic 1K = 40 ✖ Sector = 64 ✖ Block
-Sector = 3 ✖ Data Block + Sector Trailer
+MiFare Classic 1K = 16 ✖ Sector
 
+Sector = 3 ✖ Data Block + Sector Trailer = 4 ✖ (16 Bytes)
+```
+
+```
 MiFare Classic 4K = 
   32 ✖ Sector ( 3 ✖ Block + Sector Trailer) + 
    8 ✖ Sector (15 ✖ Block + Sector Trailer)
