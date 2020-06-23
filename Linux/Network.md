@@ -111,7 +111,7 @@ Dump traffic
 
 | Option | Description |
 | - | - |
-| `-i {<interface>|any}` | Listen on interface<br>Default: lowest numbered of interface list |
+| `-i {<interface>\|any}` | Listen on interface<br>Default: lowest numbered of interface list |
 | `-n` | Not resolve hostname |
 | `-nn` | Not resolve hostname or port |
 | `-v` | Verbose |
@@ -123,17 +123,17 @@ Expression
 
 | Expression | Description |
 | - | - |
-| `[src|dst] {host|ip} [not] <host>` | Match `<host>` |
-| `{host|ip} <host> and <host>` | Match traffic between `<host>` and `<host>` |
-| `[src|dst] net <IP address>[/<prefix length>]` | Match IP |
+| `[src\|dst] {host\|ip} [not] <host>` | Match `<host>` |
+| `{host\|ip} <host> and <host>` | Match traffic between `<host>` and `<host>` |
+| `[src\|dst] net <IP address>[/<prefix length>]` | Match IP |
 | `<IP address>` | `<#>[.<#>[.<#>[.<#>]]]` |
-| `[src|dst] port <port>` | Port |
-| `[src|dst] portrange <port>-<port>` | Port range |
-| `{tcp|udp|icmp}` | TCP / UDP / ICMP |
+| `[src\|dst] port <port>` | Port |
+| `[src\|dst] portrange <port>-<port>` | Port range |
+| `{tcp\|udp\|icmp}` | TCP / UDP / ICMP |
 | `vlan [VLAN ID]` | VLAN<br>Default: all IEEE 802.1Q packet |
-| `{not|!} <expression>` | not |
-| `<expression> {and|&&} <expression>` | and |
-| `<expression> { or | || } <expression>` | or |
+| `{not\|!} <expression>` | not |
+| `<expression> { and \| && } <expression>` | and |
+| `<expression> { or \| \|\| } <expression>` | or |
 
 ```bash
 tcpdump [<option>] [<expression>]
@@ -303,7 +303,7 @@ ss [<option> ...] [state <state>] [<expression>]
 | `-6` | IPv6 |
 | `-t` | TCP |
 | `-u` | UDP |
-| `state <state>` | State: `{ all | connected | synchronized }`, TCP State: `{ established | syn-sent | syn-recv | fin-wait-1 | fin-wait-2 | time-wait | closed | close-wait | last-ack | listen | closing }` |
+| `state <state>` | State: `{ all \| connected \| synchronized }`, TCP State: `{ established \| syn-sent \| syn-recv \| fin-wait-1 \| fin-wait-2 \| time-wait \| closed \| close-wait \| last-ack \| listen \| closing }` |
 | `<expression>` |  |
 
 ```bash
@@ -334,8 +334,7 @@ lsof -i [4|6][TCP|UDP][@<host>][:<port>]
 | Option | Description |
 | - | - |
 | `-n` | Numeric |
-| `4` | IPv4 |
-| `6` | IPv6 |
+| `[4\|6]` | IPv4 / IPv6 |
 | `<host>` | `Host` / `IPv4` / `[<IPv6>]` |
 | `<port>` | Port / `<port>-<port>` |
 | `-p [^]<PID>` | Process ID, `^`: Exclude |

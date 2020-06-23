@@ -101,7 +101,7 @@
 - [Auto start](#auto-start)
   - [LXDE](#lxde)
 - [FHS (Filesystem Hierarchy Standard) / Filesystem Structure](#fhs-filesystem-hierarchy-standard--filesystem-structure)
-- [Dash "`-`" as file name](#dash-%22-%22-as-file-name)
+- [Dash "`-`" as file name](#dash---as-file-name)
 
 # Command
 
@@ -391,7 +391,7 @@ ps [-ef]
 
 | Option | Description |
 | - | - |
-| `-e|-A` | Entire / All processes |
+| `-e\|-A` | Entire / All processes |
 | `-f` | Full format / Detail |
 
 ```bash
@@ -673,8 +673,8 @@ cp [<option>] <source> <destination>
 
 | Option | Description |
 | --- | --- |
-| `-p | --preserve[=<attributes>]` | Preserve mode, ownership, timestamps |
-| `-R | -r | --recursive` | Copy directories recursively |
+| `-p \| --preserve[=<attributes>]` | Preserve mode, ownership, timestamps |
+| `-R \| -r \| --recursive` | Copy directories recursively |
 
 # Disk / Storage
 
@@ -1089,10 +1089,10 @@ find [<path>] [[!] <expression>] -exec <command> {} \;
 | - | - |
 | `-name "<glob pattern>"` | Match file name |
 | `-iname "<glob pattern>"` | Match file name with case insensitive |
-| `-type { f | d }` | File / Directory |
-| `-mtime [+|-]<days>` | Last modified time |
-| `-atime [+|-]<days>` | Last accessed time |
-| `-size [+|-]<size>[k|M|G]` | File size |
+| `-type { f \| d }` | File / Directory |
+| `-mtime [+\|-]<days>` | Last modified time |
+| `-atime [+\|-]<days>` | Last accessed time |
+| `-size [+\|-]<size>[k\|M\|G]` | File size |
 
 | Time Expression | Description |
 | - | - |
