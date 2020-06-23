@@ -1,3 +1,3 @@
-- [Cisco](Cisco/)
+- [Cisco](Cisco/_sidebar.md)
 - [FortiGate](FortiGate.md)
 - [Interface](Interface.md)
