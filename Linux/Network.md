@@ -16,6 +16,9 @@
   - [ARP / Neighbour](#arp--neighbour)
   - [Route](#route)
 - [Socket statistics](#socket-statistics)
+- [Traffic control](#traffic-control)
+  - [netem (Network Emulator)](#netem-network-emulator)
+  - [TBF (Token Bucket Filter)](#tbf-token-bucket-filter)
 
 ## Firewall
 
@@ -338,3 +341,50 @@ lsof -i [4|6][TCP|UDP][@<host>][:<port>]
 | `<host>` | `Host` / `IPv4` / `[<IPv6>]` |
 | `<port>` | Port / `<port>-<port>` |
 | `-p [^]<PID>` | Process ID, `^`: Exclude |
+
+## Traffic control
+
+- [Reference](https://www.excentis.com/blog/use-linux-traffic-control-impairment-node-test-environment-part-2)
+- [Manual](https://man7.org/linux/man-pages/man8/tc-tbf.8.html)
+- `man tc-netem`
+
+Show `qdisc` (queueing discipline)
+
+```bash
+tc qdisc show dev <dev>
+```
+
+Remove `qdisc` (queueing discipline)
+
+```bash
+tc qdisc add dev <dev> root
+```
+
+### netem (Network Emulator)
+
+Latency
+
+```bash
+tc qdisc add dev <dev> root netem \
+  delay <min latency>ms [<max latency>ms]
+```
+
+Loss / Corrupt / Duplicate
+
+```bash
+tc qdisc add dev <dev> root netem \
+  { loss | corrupt | duplicate } <chance>%
+```
+
+### TBF (Token Bucket Filter)
+
+Limit traffic rate / speed / bandwidth
+
+```bash
+# min burst = rate / HZ(1000)
+
+tc qdisc add dev <dev> root tbf \
+  rate <rate>{k|m}bit \
+  burst <burst>{k|m}bit \
+  { limit <limit>{k|m}bit | latency <latency>ms }
+```
