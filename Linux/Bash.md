@@ -1,5 +1,5 @@
 | Command | Description |
-| --- | --- |
+| - | - |
 | `Tab` | Complete command |
 | `Ctrl`+`D` | Exit |
 | `Ctrl`+`L` | Clear screen |
@@ -11,7 +11,7 @@
 # Parameter
 
 | Parameter | Description |
-| --- | --- |
+| - | - |
 | `$#` | Count of parameter |
 | `$0` | The path of shell script |
 | `basename $0` | The file name of shell script |

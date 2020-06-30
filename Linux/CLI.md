@@ -1,4 +1,4 @@
-# Table of Contents
+## Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Command](#command)
   - [sed](#sed)
@@ -103,15 +103,15 @@
 - [FHS (Filesystem Hierarchy Standard) / Filesystem Structure](#fhs-filesystem-hierarchy-standard--filesystem-structure)
 - [Dash "`-`" as file name](#dash---as-file-name)
 
-# Command
+## Command
 
-## [sed](sed.md)
+### [sed](sed.md)
 
-## [awk](awk.md)
+### [awk](awk.md)
 
-## [iptables](iptables.md)
+### [iptables](iptables.md)
 
-# User
+## User
 
 |  | Description |
 | - | - |
@@ -166,7 +166,7 @@ getent shadow
 /etc/shadow
 ```
 
-## Password
+### Password
 
 Change password
 
@@ -194,7 +194,7 @@ Set password expire day
 passwd -x <day> <user>
 ```
 
-## Group
+### Group
 
 Change / Override user's primary group
 
@@ -214,7 +214,7 @@ Add user's supplementary groups
 usermod -aG <group>[,...] <user>
 ```
 
-# Date
+## Date
 
 Display date
 
@@ -275,15 +275,15 @@ date -d @<timestamp>
 ```
 
 
-# Shell
+## Shell
 
-## Shell list
+### Shell list
 
 ```bash
 cat /etc/shells
 ```
 
-## Chanage shell
+### Chanage shell
 
 ```bash
 chsh -s <shell> [<user>]
@@ -293,13 +293,13 @@ chsh -s <shell> [<user>]
 usermod -s <shell> <user>
 ```
 
-## Open file manager from CLI
+### Open file manager from CLI
 
 ```bash
 xdg-open <path>
 ```
 
-## Indicate command type
+### Indicate command type
 
 Type: `function`, `builtin`, or `file`
 
@@ -320,15 +320,15 @@ vi-preserve-time () {
 ```
 
 
-# GRUB
+## GRUB
 
 [Reference](https://help.ubuntu.com/community/Grub2)
 
-## Show GRUB when boot
+### Show GRUB when boot
 
 Hold `Shift` when boot
 
-## Update GRUB config
+### Update GRUB config
 
 Find all OS, update GRUB config, install GRUB to MBR / UEFI
 
@@ -336,19 +336,19 @@ Find all OS, update GRUB config, install GRUB to MBR / UEFI
 update-grub
 ```
 
-## GRUB auto-generate config file
+### GRUB auto-generate config file
 
 ```
 /boot/grub/grub.cfg
 ```
 
-## GRUB option file
+### GRUB option file
 
 ```
 /etc/default/grub
 ```
 
-## Set GRUB default to last selected option
+### Set GRUB default to last selected option
 
 ```bash
 # /etc/default/grub
@@ -356,10 +356,10 @@ GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
 ```
 
-# Hardware
+## Hardware
 
 | Command | Description |
-| --- | --- |
+| - | - |
 | `lsusb` | List USB devices |
 | `lspci` | List PCI devices |
 | `lspci -nn` | List PCI devices and devices code |
@@ -367,9 +367,9 @@ GRUB_SAVEDEFAULT=true
 | `cat /proc/cpuinfo` | Show CPU info |
 | `cat /proc/meminfo` | Show CPU info |
 
-# Performance
+## Performance
 
-## Display memory info
+### Display memory info
 
 ```bash
 free <options>
@@ -379,7 +379,7 @@ free <options>
 | - | - |
 | `-h` | Human readable unit |
 
-## Display process info
+### Display process info
 
 ```bash
 # BSD syntax
@@ -398,19 +398,19 @@ ps [-ef]
 top
 ```
 
-# Kernel
+## Kernel
 
-## Kernel info
+### Kernel info
 ```bash
 uname -a
 ```
 
-## Kernel module
+### Kernel module
 
-`module-name` is same as `module_name`
+> `module-name` is same as `module_name`
 
 | Command | Description |
-| --- | --- |
+| - | - |
 | `lsmod` | List module |
 | `insmod <module>` | Add module |
 | `rmmod <module>` | Remove module |
@@ -420,12 +420,12 @@ uname -a
 | Add `install <module> /bin/false` to `/etc/modprobe.d/*.conf` | Blacklist module even other modules depend on it |
 
 
-# Jobs
+## Jobs
 
 [Reference](http://www.linuxnix.com/11-fc-bg-jobs-commands-know/)
 
 | Command | Description |
-| --- | --- |
+| - | - |
 | <kbd>Ctrl</kbd>+<kbd>Z</kbd> | Suspend current process |
 | <kbd>Ctrl</kbd>+<kbd>C</kbd> | Terminate current process |
 | `jobs` | List job |
@@ -436,7 +436,7 @@ uname -a
 | `disown [%<job spec>]` | Don't terminate job when terminal exit (default is all jobs) |
 | `nohup <command>` | Don't terminate command when terminal exit (no hangup) |
 
-# Trap
+## Trap
 
 Execute command when shell receives signal
 
@@ -462,9 +462,9 @@ Show signal list
 trap -l
 ```
 
-# File system
+## File system
 
-## `rsync`
+### `rsync`
 
 ```bash
 # <source>, <destination> = [[<user>@]<host>:]<path>
@@ -492,11 +492,11 @@ rsync -av /src /dest
 rsync -av /src/ /dest/src
 ```
 
-## ACL
+### ACL
 
 [Reference](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/acls-setting)
 
-## File permission
+### File permission
 
 ~~Only change directory permission~~
 
@@ -529,7 +529,7 @@ chmod [-R] u=rw,go=r,a+X <path>
 chmod [-R] a=r+X,u+w <path>
 ```
 
-## File attribute
+### File attribute
 
 [Reference](http://man7.org/linux/man-pages/man1/chattr.1.html)
 
@@ -555,34 +555,34 @@ Change attribute
 chattr {+|-}<attribute> <file>
 ```
 
-## List open files
+### List open files
 
 ```bash
 lsof <path>
 ```
 
 
-# SELinux
+## SELinux
 
-## Get SELinux status
+### Get SELinux status
 ```bash
 sestatus [-v]
 ```
 
-## Set SELinux status
+### Set SELinux status
 ```bash
 setenforce { Enforcing | Permissive | 1 | 0 }
 ```
 
-# Service
+## Service
 
-## Add / Delete service
+### Add / Delete service
 ```bash
 # System V (Red Hat <= 6)
 chkconfig { --add | --del } <service>
 ```
 
-## Enable / Disable service auto start
+### Enable / Disable service auto start
 
 ```bash
 # System V (Ubuntu <= 14)
@@ -595,7 +595,7 @@ chkconfig <service> { on | off }
 systemctl { enable | disable } <service>
 ```
 
-## Start / Stop service
+### Start / Stop service
 
 ```bash
 # System V (Ubuntu <= 14 and Red Hat <= 6)
@@ -605,7 +605,7 @@ service <service> { start | stop }
 systemctl { start | stop } <service>
 ```
 
-## Show service status
+### Show service status
 
 ```bash
 # System V (Ubuntu <= 14 and Red Hat <= 6)
@@ -615,7 +615,7 @@ service <service> status
 systemctl status <service>
 ```
 
-# Manual / Help
+## Manual / Help
 
 Show manual
 
@@ -630,7 +630,7 @@ apropos <keyword>
 ```
 
 
-# Time
+## Time
 
 Force sync time
 
@@ -641,16 +641,16 @@ service ntpd start
 ```
 
 
-# DNS
+## DNS
 
 ```bash
 vi /etc/resolv.conf
 ```
 
 
-# Sharing desktop
+## Sharing desktop
 
-## Disable sharing desktop encryption (Ubuntu)
+### Disable sharing desktop encryption (Ubuntu)
 
 [Reference](https://askubuntu.com/a/487267/235264)
 
@@ -663,29 +663,29 @@ dconf-editor
 gsettings set org.gnome.Vino require-encryption false
 ```
 
-# File
+## File
 
-## Copy
+### Copy
 
 ```bash
 cp [<option>] <source> <destination>
 ```
 
 | Option | Description |
-| --- | --- |
+| - | - |
 | `-p \| --preserve[=<attributes>]` | Preserve mode, ownership, timestamps |
 | `-R \| -r \| --recursive` | Copy directories recursively |
 
-# Disk / Storage
+## Disk / Storage
 
-## Disk usage
+### Disk usage
 
 ```bash
 du <option> <path>
 ```
 
 | Option | Description |
-| --- | --- |
+| - | - |
 | `-h` | Human readable |
 | `-s` | Summarize: Display only a total for each argument |
 
@@ -695,7 +695,7 @@ Sort human readable disk usage
 du -hs <path> | sort -h -r
 ```
 
-## Disk free space
+### Disk free space
 
 ```bash
 df <option>
@@ -705,13 +705,13 @@ df <option>
 | - | - |
 | `-h` | Disk free space in human readable format |
 
-## List block devices / disk
+### List block devices / disk
 
 ```bash
 lsblk
 ```
 
-## Show devices UUID (GUID)
+### Show devices UUID (GUID)
 
 ```bash
 lsblk { -f | --fs }
@@ -725,9 +725,9 @@ blkid
 ls /dev/disk/by-uuid/
 ```
 
-## I/O priority
+### I/O priority
 
-### `ionice` (I/O nice)
+#### `ionice` (I/O nice)
 
 Get I/O priority
 
@@ -752,9 +752,9 @@ ionice
     { <command> | -p <PID> }
 ```
 
-## Disk benchmark
+### Disk benchmark
 
-### Write speed
+#### Write speed
 
 ```bash
 dd if=/dev/zero of=<file> bs=<size>[K|M|G] count=<count>[K|M|G] { conv=fsync | oflag={sync|dsync|direct} }
@@ -767,7 +767,7 @@ dd if=/dev/zero of=<file> bs=<size>[K|M|G] count=<count>[K|M|G] { conv=fsync | o
 | `sync` | Synchronized I/O for data and meta data |
 | `direct` | Direct I/O |
 
-### Read speed
+#### Read speed
 
 | Unit | Description |
 | - | - |
@@ -819,9 +819,9 @@ Read speed test with buffer
 hdparm -T /dev/<device>
 ```
 
-## Partition
+### Partition
 
-### Partition table / Disk label
+#### Partition table / Disk label
 
 - MBR (Master Boot Record) / DOS
   - Max size 2 TiB (2³² sectors × 2⁹ bytes per sector)
@@ -830,13 +830,13 @@ hdparm -T /dev/<device>
   - Max size 8 ZiB (2⁶⁴ sectors × 2⁹ bytes per sector)
   - Unlimited partition (Windows support 128 partitions)
 
-### Reload partition table
+#### Reload partition table
 
 ```bash
 partprobe /dev/<device>
 ```
 
-### Partition command
+#### Partition command
 
 - `fdisk` ([Reference](https://wiki.archlinux.org/index.php/Fdisk))
   - Common
@@ -846,9 +846,9 @@ partprobe /dev/<device>
 - `gdisk` (GPT fdisk)
   - Support GPT
 
-## File system
+### File system
 
-### Resize file system
+#### Resize file system
 
 ext2 / ext3 / ext4
 
@@ -869,7 +869,7 @@ resize2fs [-M] <device> [<size>[<unit>]]
 | `M` | 1024² |
 | `G` | 1024³ |
 
-# LVM (Logical Volume Management)
+## LVM (Logical Volume Management)
 
 [Reference](https://www.digitalocean.com/community/tutorials/an-introduction-to-lvm-concepts-terminology-and-operations) / [Reference](https://www.digitalocean.com/community/tutorials/how-to-use-lvm-to-manage-storage-devices-on-ubuntu-16-04)
 
@@ -917,7 +917,7 @@ Partition type (type L to list all types): <Linux LVM type ID>
 Command (m for help): w
 ```
 
-## PV (Physical Volume)
+### PV (Physical Volume)
 
 Create PV
 
@@ -944,7 +944,7 @@ pvs
 pvdisplay
 ```
 
-## VG (Volume Group)
+### VG (Volume Group)
 
 Create VG
 
@@ -974,7 +974,7 @@ vgs
 vgdisplay
 ```
 
-## LV (Logical Volume)
+### LV (Logical Volume)
 
 Create LV
 
@@ -1054,7 +1054,7 @@ Reduce LV
       <LV>
     ```
 
-## Troubleshooting
+### Troubleshooting
 
 `Device <device> excluded by a filter.`
 
@@ -1069,7 +1069,7 @@ pvcreate -vvv <device> |& grep <device>
 wipefs --all <device>
 ```
 
-# Find
+## Find
 
 Run command in `find` result, `{}` is result path
 
@@ -1102,27 +1102,27 @@ find [<path>] [[!] <expression>] -exec <command> {} \;
 | `<days>` | `diff == <days>` |
 
 
-# Directory Stack
+## Directory Stack
 
 [Reference](https://unix.stackexchange.com/a/270437/104608)
 
-## Push directory
+### Push directory
 ```bash
 pushd <directory>
 ```
 
-## Pop and change to the directory
+### Pop and change to the directory
 ```bash
 popd
 ```
 
-## List directory stack
+### List directory stack
 ```bash
 dirs [-v]
 ```
 
 
-# cron / crontab
+## cron / crontab
 
 [Reference](https://www.computerhope.com/unix/ucrontab.htm)
 
@@ -1141,20 +1141,20 @@ User `crontab` file
 /etc/cron.d/
 ```
 
-# OpenJDK (Java)
+## OpenJDK (Java)
 
-## List installed JVM
+### List installed JVM
 ```bash
 update-java-alternatives --list
 ```
 
-## Switch JVM
+### Switch JVM
 ```bash
 update-java-alternatives --set <JVM name>
 ```
 
 
-# Show Linux distribution / version
+## Show Linux distribution / version
 
 ```bash
 cat /etc/*-release
@@ -1169,28 +1169,28 @@ lsb_release -a
 ```
 
 
-# Mount
+## Mount
 
 ```bash
 mount [-t <type>] { <source> | <device> } <directory>
 ```
 
-## Remount mount point in fstab
+### Remount mount point in fstab
 ```bash
 # rw: read-write
 mount -o remount[,rw] <directory>
 ```
 
-## Lists all mounted filesystems
+### Lists all mounted filesystems
 ```bash
 # -l: lable
 mount [-l] [-t type]
 ```
 
-## Mount CIFS / SMB / Windows Shared Folder
+### Mount CIFS / SMB / Windows Shared Folder
 
 | Option | Description |
-| --- | --- |
+| - | - |
 | `username=<username>` | Username |
 | `password=<password>` | Password |
 | `domain=<domain>` | Domain |
@@ -1205,9 +1205,9 @@ mount [-l] [-t type]
 mount.cifs -o <option>[,...]] //<host>/<share name> <directory>
 ```
 
-# Package management
+## Package management
 
-## Install Development Tools
+### Install Development Tools
 
 CentOS
 
@@ -1231,7 +1231,7 @@ MSYS2
 pacman -S base-devel
 ```
 
-## Add EPEL repository to CentOS / RHEL
+### Add EPEL repository to CentOS / RHEL
 
 [Reference](https://fedoraproject.org/wiki/EPEL)
 
@@ -1239,7 +1239,7 @@ pacman -S base-devel
 sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 ```
 
-## Download package with dependence
+### Download package with dependence
 
 Debian
 
@@ -1254,7 +1254,7 @@ sudo apt-get download $(apt-cache depends --recurse -i <package> | grep -v "^[ <
 sudo apt-get install -m --no-download ./*
 ```
 
-## List installed package
+### List installed package
 
 Debian
 
@@ -1265,26 +1265,26 @@ apt list --installed [<package name pattern>]
 dpkg -l [<package name pattern>]
 ```
 
-# Last login
+## Last login
 
 [Reference](https://linuxconfig.org/how-to-disable-last-login-message-on-rhel-linux)
 
-## Suppress `Last Login` message
+### Suppress `Last Login` message
 ```bash
 touch ~/.hushlogin
 ```
 
-## Clear last login log
+### Clear last login log
 ```bash
 > /var/log/lastlog
 ```
 
-## Disable logging last login
+### Disable logging last login
 ```bash
 chattr +i /var/log/lastlog
 ```
 
-# Identify processes using files or sockets
+## Identify processes using files or sockets
 
 ```bash
 fuser <option> <file>
@@ -1296,7 +1296,7 @@ fuser <option> <file>
 | `-k`, `--kill` | Kill processes accessing the file |
 | `{ -c | -m | --mount } { <mount point> | <device> }` | Mount point or device |
 
-# Watch
+## Watch
 
 Execute command periodically
 
@@ -1304,11 +1304,11 @@ Execute command periodically
 watch [-n <seconds>] <command>
 ```
 
-# SSH
+## SSH
 
-## [SSH tunnel (port forward)](./SSH%20Tunnel.md)
+### [SSH tunnel (port forward)](./SSH%20Tunnel.md)
 
-## SSH agent
+### SSH agent
 
 For `sh` / `bash`
 
@@ -1328,16 +1328,16 @@ Add SSH private key
 ssh-add <private key path>
 ```
 
-# Auto start
+## Auto start
 
-## LXDE
+### LXDE
 
 [Reference](https://wiki.archlinux.org/index.php/LXDE#Autostart)
 
 - `~/.config/lxsession/LXDE/`
 - `/etc/xdg/lxsession/LXDE/autostart`
 
-# FHS (Filesystem Hierarchy Standard) / Filesystem Structure
+## FHS (Filesystem Hierarchy Standard) / Filesystem Structure
 
 [Reference](http://refspecs.linuxfoundation.org/fhs.shtml)
 
@@ -1345,7 +1345,7 @@ ssh-add <private key path>
 man hier
 ```
 
-# Dash "`-`" as file name
+## Dash "`-`" as file name
 
 [Reference](http://tldp.org/LDP/abs/html/special-chars.html#DASHREF2)
 

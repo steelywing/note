@@ -382,6 +382,8 @@ Limit traffic rate / speed / bandwidth
 
 ```bash
 # min burst = rate / HZ(1000)
+# limit = queue size
+# latency = max amount of time in queue
 
 tc qdisc add dev <dev> root tbf \
   rate <rate>{k|m}bit \

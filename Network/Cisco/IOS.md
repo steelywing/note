@@ -54,7 +54,7 @@
   - [Archive to SCP](#archive-to-scp)
 - [Banner](#banner)
 - [Show TCAM (ACL, MAC, QOS, Route) utilization](#show-tcam-acl-mac-qos-route-utilization)
-- [SDM - Switch Database Management (TCAM, ACL, Routing)](#sdm---switch-database-management-tcam-acl-routing)
+- [SDM - Switch Database Management (TCAM, ACL, Routing)](#sdm-switch-database-management-tcam-acl-routing)
 - [ACL](#acl)
   - [VACL (VLAN ACL)](#vacl-vlan-acl)
   - [IP ACL](#ip-acl)
@@ -961,7 +961,7 @@ Switch(config)# service unsupported-transceiver
 # Archive configuration
 
 | Variable | Value |
-| --- | --- |
+| - | - |
 | `$h` | Hostname |
 | `$t` | Time |
 
@@ -984,7 +984,7 @@ Switch(config-archive)# path scp://<username>:<password>@<IP>/<path>
 # Banner
 
 | Variable | Value |
-| --- | --- |
+| - | - |
 | `$(hostname)` | Hostname |
 
 ```

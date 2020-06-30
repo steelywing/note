@@ -2,7 +2,7 @@
 
 - [Table of Contents](#table-of-contents)
 - [Access attribute using string](#access-attribute-using-string)
-- [`pip` - PIP Installs Packages](#pip---pip-installs-packages)
+- [`pip` - PIP Installs Packages](#pip-pip-installs-packages)
 - [Formatter](#formatter)
 - [Unit test](#unit-test)
   - [Unit test framework](#unit-test-framework)

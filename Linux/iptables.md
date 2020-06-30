@@ -3,7 +3,7 @@
 [Reference](https://wiki.archlinux.org/index.php/iptables)
 
 | Description | Command |
-| --- | --- |
+| - | - |
 | Verbose list rules | `iptables -v -L [<chain>]` |
 | List rules | `iptables -S [<chain>]` |
 | Dump iptables to file | `iptables-save > <file>` |

@@ -154,12 +154,12 @@ cmdkey /list
 
 ## Remote Desktop
 
-Description | Command
---- | ---
-Connect to remote | `mstsc [/v:<host>[:<port>]]`
-Toggle full screen | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Break</kbd>
-List remote desktop session | `query session`
-Attach remote desktop session to console | `tscon <session ID> /dest:console`
+| Description | Command |
+| - | - |
+| Connect to remote | `mstsc [/v:<host>[:<port>]]` |
+| Toggle full screen | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Break</kbd> |
+| List remote desktop session | `query session` |
+| Attach remote desktop session to console | `tscon <session ID> /dest:console` |
 
 ## Hibernate
 
@@ -193,7 +193,7 @@ makecab <file> <file.cab>
 - [Reference](http://technet.microsoft.com/en-us/library/bb490872.aspx)
 
 | Option | Permission |
-| --- | --- |
+| - | - |
 | `n` | None |
 | `r` | Read |
 | `w` | Write |
@@ -288,7 +288,7 @@ Registry file location
 - [Reference](http://msdn.microsoft.com/en-us/library/ms724877%28v=vs.85%29.aspx)
 
 | Registry hive | Supporting files |
-| --- | --- |
+| - | - |
 | `HKEY_CURRENT_CONFIG` | System, System.alt, System.log, System.sav |
 | `HKEY_CURRENT_USER` | Ntuser.dat, Ntuser.dat.log |
 | `HKEY_LOCAL_MACHINE\SAM` | Sam, Sam.log, Sam.sav |

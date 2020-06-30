@@ -22,7 +22,7 @@ sed [<option>] '<script>' <input file> <input file> ...
 ## Address
 
 | Address | Description |
-| --- | --- |
+| - | - |
 | `<number>` | Line number |
 | `$` | Last line |
 | `<first>,<last>` | Line number range |
@@ -33,7 +33,7 @@ sed [<option>] '<script>' <input file> <input file> ...
 ## Command
 
 | Command | Description |
-| --- | --- |
+| - | - |
 | `d` | Delete and go to next cycle |
 | `s/<RegExp>/<replacement>/[<flags]>` | Substitute RegExp |
 | `=` | Print line number |
@@ -47,7 +47,7 @@ sed [<option>] '<script>' <input file> <input file> ...
 ### RegExp flags
 
 | Flag | Description |
-| --- | --- |
+| - | - |
 | `g` | Global, replace all matches |
 | `<number>` | Replace the **number** th match |
 | `p` | Print if match |

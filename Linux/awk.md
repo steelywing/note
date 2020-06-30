@@ -41,7 +41,7 @@ Default `<action>` is `print`
 ## Built-in Variable
 
 | Name | Description | Default |
-| --- | --- | --- |
+| - | - | - |
 | `ARGC` | Argument Count | |
 | `ARGV` | Argument Value | |
 | `$0` | Current Record | |
