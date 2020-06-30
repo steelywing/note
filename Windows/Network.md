@@ -38,7 +38,7 @@ netstat <option>
 ```
 
 | Option | Permission |
-| --- | --- |
+| - | - |
 | `-a` | Displays all connections and listening ports |
 | `-n` | Displays addresses and port numbers in numerical form |
 
@@ -49,7 +49,29 @@ netstat <option>
 
 ```cmd
 netsh winsock reset
-netsh int ip reset
-netsh int ipv6 reset
+netsh int[erface] ip[v4] reset
+netsh int[erface] ipv6 reset
 ipconfig /flushdns
+```
+
+## Reserve TCP/UDP port
+
+[Reference](https://support.microsoft.com/en-us/help/2665809/you-cannot-exclude-ports-by-using-the-reservedports-registry-key-in-wi)
+
+Add / Delete reserved port
+
+```cmd
+netsh int[erface] ipv4 `
+    { add | delete } excludedportrange `
+    { tcp | udp } `
+    <start port> `
+    <number of ports> `
+    [ active | persistent ]
+```
+
+Show reserved port
+
+```cmd
+netsh int[erface] ipv4 `
+    show excludedportrange { tcp | udp }
 ```
