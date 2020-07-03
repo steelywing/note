@@ -1,4 +1,3 @@
-// import './src/plugins/search/search';
 const fs = require('fs');
 const path = require('path');
 const marked = require('marked');
@@ -24,7 +23,6 @@ function loadSidebar(sidebar) {
     return links;
 }
 
-// process.chdir('docs');
 new Promise((resolve, reject) => {
     glob('**/_sidebar.md', (error, sidebars) => {
         if (error) {
@@ -37,6 +35,7 @@ new Promise((resolve, reject) => {
     const { SitemapStream, streamToPromise } = require('sitemap')
     const stream = new SitemapStream({ hostname: HOSTNAME })
     sidebars.forEach((sidebar) => {
+        console.log('Reading ' + sidebar);
         links = loadSidebar(sidebar);
         links.forEach(link => {
             link = link.replace(/\\/g, '/');
@@ -46,8 +45,9 @@ new Promise((resolve, reject) => {
     stream.end()
     streamToPromise(stream).then(
         data => {
+            console.log('Writing sitemap.xml');
             fs.writeFileSync('sitemap.xml', data.toString())
-            console.log(data.toString());
+            // console.log(data.toString());
         }
     );
 });
