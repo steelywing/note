@@ -5,9 +5,8 @@
   "author": "Steely Wing <steely.wing@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
     "glob": "^7.1.6",
-    "marked": "^1.1.0",
+    "markdown-it": "^11.0.0",
     "sitemap": "^6.1.7"
   }
 }

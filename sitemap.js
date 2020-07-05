@@ -1,11 +1,28 @@
 const fs = require('fs');
 const path = require('path');
-const marked = require('marked');
-const cheerio = require('cheerio');
+const md = require('markdown-it')();
 const glob = require('glob');
 const HOSTNAME = 'https://steelywing.github.io/';
 const BASE_URL = '/note/#/';
 let sidebars = [];
+
+function getMarkdownLinks(tokens) {
+    let links = [];
+
+    tokens.forEach((token) => {
+        if (Array.isArray(token.attrs)) {
+            token.attrs.forEach((attr) => {
+                if (attr[0] === 'href') {
+                    links.push(attr[1]);
+                }
+            })
+        }
+        if (Array.isArray(token.children)) {
+            links = links.concat(getMarkdownLinks(token.children));
+        }
+    });
+    return links;
+}
 
 function loadSidebar(sidebar) {
     sidebar = path.resolve(sidebar);
@@ -13,11 +30,11 @@ function loadSidebar(sidebar) {
     let links = [];
 
     let file = fs.readFileSync(sidebar, { encoding: 'utf8' });
-    // console.log(marked(sidebar));
-    const $ = cheerio.load(marked(file));
-    $('a').each((i, e) => {
-        let url = $(e).attr('href');
-        links.push(path.relative('', path.resolve(dir, url)));
+    let tokens = md.parse(file);
+    links = getMarkdownLinks(tokens);
+    console.log(links);
+    return links.map((link) => {
+        return path.relative('', path.resolve(dir, link));
     });
 
     return links;
