@@ -20,7 +20,7 @@
 
 [Reference](https://stuffphilwrites.com/2014/09/iptables-processing-flowchart/)
 
-![iptables flow chart](img/iptables.png)
+![iptables flow chart](img/iptables.svg)
 
 ## Policy
 
