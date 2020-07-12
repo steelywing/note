@@ -9,7 +9,8 @@
 | Dump iptables to file | `iptables-save > <file>` |
 | Restore iptables from file | `iptables-restore < <file>` |
 | Save iptables (Red Hat <= 6) | `service iptables save` |
-# Flow
+
+## Flow
 
 |  |  |
 | - | - |
@@ -21,7 +22,7 @@
 
 ![iptables flow chart](img/iptables.png)
 
-# Policy
+## Policy
 
 Policy = Default target
 
@@ -29,7 +30,7 @@ Policy = Default target
 iptables -P <chain> <target>
 ```
 
-# Rule
+## Rule
 
 [Reference](https://www.netfilter.org/documentation/HOWTO/packet-filtering-HOWTO-7.html)
 
@@ -46,7 +47,7 @@ iptables
     -j <target>
 ```
 
-# Extension
+## Extension
 
 [Reference](http://ipset.netfilter.org/iptables-extensions.man.html)
 
@@ -59,7 +60,7 @@ iptables <rule>
     -j <target>
 ```
 
-# Redirect input to other port
+## Redirect input to other port
 
 [Reference](https://www.netfilter.org/documentation/HOWTO/NAT-HOWTO-6.html)
 
@@ -67,7 +68,7 @@ iptables <rule>
 iptables -t nat -A PREROUTING [-i <interface>] -p tcp --dport <from port> -j REDIRECT --to-port <to port>
 ```
 
-# Masquerading (Source NAT)
+## Masquerading (Source NAT)
 
 [Reference](https://www.netfilter.org/documentation/HOWTO/NAT-HOWTO-6.html)
 
