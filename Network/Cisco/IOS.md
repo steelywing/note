@@ -1,4 +1,4 @@
-# Table of Contents
+## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Basic](#basic)
@@ -54,7 +54,7 @@
   - [Archive to SCP](#archive-to-scp)
 - [Banner](#banner)
 - [Show TCAM (ACL, MAC, QOS, Route) utilization](#show-tcam-acl-mac-qos-route-utilization)
-- [SDM - Switch Database Management (TCAM, ACL, Routing)](#sdm-switch-database-management-tcam-acl-routing)
+- [SDM - Switch Database Management (TCAM, ACL, Routing)](#sdm---switch-database-management-tcam-acl-routing)
 - [ACL](#acl)
   - [VACL (VLAN ACL)](#vacl-vlan-acl)
   - [IP ACL](#ip-acl)
@@ -71,8 +71,11 @@
   - [IGMP](#igmp)
   - [Multicast Debug](#multicast-debug)
 - [Broadcast](#broadcast)
+- [Decrypt / Crack password](#decrypt--crack-password)
+  - [Type 5](#type-5)
+  - [Type 7](#type-7)
 
-# Basic
+## Basic
 
 Cut command before cursor
 
@@ -89,7 +92,7 @@ Switch# sh?
 shell  show
 ```
 
-# EXEC / Config Mode
+## EXEC / Config Mode
 
 Privileged EXEC Mode
 
@@ -119,7 +122,7 @@ Switch(config)# exit
 Switch# 
 ```
 
-# Save / Reset
+## Save / Reset
 
 Save config
 
@@ -141,7 +144,7 @@ Switch# write erase
 Switch# delete flash:/vlan.dat
 ```
 
-# Log
+## Log
 
 Monitor log in Telnet / SSH
 
@@ -179,7 +182,7 @@ Send log
 Switch# send log <message>
 ```
 
-# Diagnostic
+## Diagnostic
 
 Get CPU usage
 
@@ -225,13 +228,13 @@ Tech Support
 Switch# show tech-support
 ```
 
-## CDP (Cisco Discovery Protocol)
+### CDP (Cisco Discovery Protocol)
 
 ```
 Switch# show cdp neighbors [<interface>] [detail]
 ```
 
-## LLDP (Link Layer Discovery Protocol)
+### LLDP (Link Layer Discovery Protocol)
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst4500/12-2/46sg/configuration/guide/Wrapper-46SG/swlldp.html)
 
@@ -256,7 +259,7 @@ Show LLDP neighbor
 Switch# show lldp neighbors
 ```
 
-## SPAN (Switched Port Analyzer) / Port mirror
+### SPAN (Switched Port Analyzer) / Port mirror
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-1_19_ea1/configuration/guide/3750scg/swspan.html)
 
@@ -294,7 +297,7 @@ Switch(config)# monitor session <session number>
 Switch(config)# no monitor session <session number>
 ```
 
-# VLAN
+## VLAN
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/lan-switching/vlan/10023-3.html)
 
@@ -329,7 +332,7 @@ Show trunk port information
 Switch# show interfaces trunk
 ```
 
-## VTP (VLAN Trunking Protocol)
+### VTP (VLAN Trunking Protocol)
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3560/software/release/12-2_52_se/configuration/guide/3560scg/swvtp.html)
 
@@ -339,7 +342,7 @@ Switch(config)# vtp domain <name>
 Switch(config)# vtp password <password>
 ```
 
-# STP (Spanning Tree Protocol)
+## STP (Spanning Tree Protocol)
 
 [Wiki Reference](https://en.wikipedia.org/wiki/Spanning_Tree_Protocol) / [AlliedWare Reference](https://www.alliedtelesis.com/sites/default/files/documents/how-alliedware-plus/howto_aw-_config_pvst_interop_cisco_revb.pdf)
 
@@ -358,7 +361,7 @@ Switch(config)# vtp password <password>
   - Compatible with PVST
   - PVST = RSTP BPDU on native VLAN + SSTP per VLAN
 
-## STP mode
+### STP mode
 
 Recommended: Rapid-PVST
 
@@ -366,7 +369,7 @@ Recommended: Rapid-PVST
 Switch(config)# spanning-tree mode { pvst | rapid-pvst | mst }
 ```
 
-## Root guard
+### Root guard
 
 If a root guard enabled port receives superior STP BPDU, root guard moves this port to a root-inconsistent (listening) state.
 
@@ -374,7 +377,7 @@ If a root guard enabled port receives superior STP BPDU, root guard moves this p
 Switch(config-if)# spanning-tree guard root
 ```
 
-## Loop guard
+### Loop guard
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/10596-84.html)
 
@@ -390,7 +393,7 @@ Enable loop guard on all port
 Switch(config)# spanning-tree loopguard default
 ```
 
-## Port fast
+### Port fast
 
 ```
 Switch(config-if)# spanning-tree portfast [disable]
@@ -402,7 +405,7 @@ Enable port fast on all access port
 Switch(config)# spanning-tree portfast default
 ```
 
-## BPDU guard
+### BPDU guard
 
 If BPDU is detected on the port, the port will be `err-disable`.
 
@@ -416,7 +419,7 @@ Enable BPDU guard on all port fast port
 Switch(config)# spanning-tree portfast bpduguard default
 ```
 
-## BPDU filter
+### BPDU filter
 
 Ignore BPDU
 
@@ -424,7 +427,7 @@ Ignore BPDU
 Switch(config-if)# spanning-tree bpdufilter { enable | disable }
 ```
 
-# DHCP
+## DHCP
 
 [Reference](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html)
 / [Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_dhcp/configuration/15-sy/dhcp-15-sy-book/dhcp-prt-bsd-aa.html#GUID-D3427E9D-D0F3-4FFE-889C-8091A84006C6)
@@ -437,7 +440,7 @@ Switch(dhcp-config)# dns-server <DNS IP> [<DNS IP> ...]
 Switch(dhcp-config)# default-router <gateway IP>
 ```
 
-## Preassigning IP Addresses
+### Preassigning IP Addresses
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_dhcp/configuration/15-sy/dhcp-15-sy-book/dhcp-prt-bsd-aa.html#GUID-D3427E9D-D0F3-4FFE-889C-8091A84006C6)
 
@@ -456,14 +459,14 @@ Switch(dhcp-config)# client-identifier <ID>
 Switch(dhcp-config)# hardware-address <MAC address>
 ```
 
-## Verify DHCP
+### Verify DHCP
 
 ```
 Switch# show ip dhcp binding
 Switch# show ip dhcp conflict 
 ```
 
-## DHCP snooping
+### DHCP snooping
 
 Drop DHCP on untrust interface
 
@@ -481,9 +484,9 @@ Trust DHCP from this port
 Switch(config-if)# ip dhcp snooping trust
 ```
 
-# Routing
+## Routing
 
-## Gateway
+### Gateway
 
 For `no ip routing`
 
@@ -497,13 +500,13 @@ For `ip routing`
 Switch(config)# ip route 0.0.0.0 0.0.0.0 <gateway>
 ```
 
-## Change to routing mode
+### Change to routing mode
 
 ```
 Switch(config)# ip routing
 ```
 
-## Policy-based routing
+### Policy-based routing
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/ios/12_2/qos/configuration/guide/fqos_c/qcfpbr.html)
 
@@ -529,7 +532,7 @@ Switch(config-route-map)# set ip next-hop <IP>
 Switch(config-if)# ip policy route-map <route-map name>
 ```
 
-## OSPF
+### OSPF
 
 ```
 Switch(config)# router ospf <process ID>
@@ -577,7 +580,7 @@ Redistributing default route into OSPF
 Switch(config-router)# default-information originate
 ```
 
-# DNS
+## DNS
 
 ```
 Switch(config)# ip name-server <DNS IP> <DNS IP>...
@@ -601,7 +604,7 @@ Device domain
 Switch(config)# ip domain-name <domain>
 ```
 
-# Date / Time
+## Date / Time
 
 Timezone
 
@@ -609,7 +612,7 @@ Timezone
 Switch(config)# clock timezone <timezone name> <timezone offset>
 ```
 
-## NTP
+### NTP
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/bsm/command/bsm-xe-3se-3850-cr-book/bsm-xe-3se-3850-cr-book_chapter_00.html#wp1522568655)
 
@@ -625,7 +628,7 @@ Set as NTP server
 Switch(config)# ntp master [<stratum>]
 ```
 
-# SNMP
+## SNMP
 
 Enable SNMP
 
@@ -633,7 +636,7 @@ Enable SNMP
 Switch(config)# snmp-server community <community string> ro
 ```
 
-# Authenticate
+## Authenticate
 
 Enable AAA authentication / authorization
 ```
@@ -742,7 +745,7 @@ Ctrl-C to break
 Switch(config-line)# escape-character 3
 ```
 
-# Port channel (Ether channel)
+## Port channel (Ether channel)
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus5000/sw/configuration/guide/cli/CLIConfigurationGuide/EtherChannel.html)
 
@@ -818,9 +821,9 @@ Show LACP neighbor
 Switch# show lacp neighbor
 ```
 
-# Interface
+## Interface
 
-## Interface diagnostic
+### Interface diagnostic
 
 Show interface status
 
@@ -847,7 +850,7 @@ Show transceiver (fiber gain/loss)
 Switch# show interfaces transceiver
 ```
 
-## Config interface
+### Config interface
 
 ```
 Switch(config)# interface <interface>/<port number>
@@ -870,49 +873,49 @@ Switch(config-if)# ip address <IP> <netmask>
 Switch(config-if)# no shutdown
 ```
 
-### Interface description
+#### Interface description
 
 ```
 Switch(config-if)# description <description>
 ```
 
-### Auto MDI-X (Medium-Dependent Interface Crossover)
+#### Auto MDI-X (Medium-Dependent Interface Crossover)
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960x/software/15-0_2_EX/int_hw_components/configuration_guide/b_int_152ex_2960-x_cg/b_int_152ex_2960-x_cg_chapter_011.html)
 ```
 Switch(config-if)# [no] mdix auto
 ```
 
-### Layer 3 mode
+#### Layer 3 mode
 
 ```
 Switch(config-if)# no switchport
 ```
 
-### Layer 2 mode
+#### Layer 2 mode
 
 ```
 Switch(config-if)# switchport
 ```
 
-### Set trunk encapsulation to 802.1Q
+#### Set trunk encapsulation to 802.1Q
 
 ```
 Switch(config-if)# switchport trunk encapsulation dot1q
 ```
 
-### Interface access / trunk mode
+#### Interface access / trunk mode
 
 ```
 Switch(config-if)# switchport mode { access | trunk }
 ```
 
-### Trunk native VLAN
+#### Trunk native VLAN
 
 ```
 Switch(config-if)# switchport trunk native vlan <VLAN ID>
 ```
 
-### Allow specified VLAN on trunk
+#### Allow specified VLAN on trunk
 
 Default allow all
 
@@ -920,13 +923,13 @@ Default allow all
 Switch(config-if)# switchport trunk allowed vlan <VLAN ID list>
 ```
 
-### Specify access port VLAN
+#### Specify access port VLAN
 
 ```
 Switch(config-if)# switchport access vlan <VLAN ID>
 ```
 
-### Protected mode
+#### Protected mode
 
 Do not forward traffic to other protected port
 
@@ -934,7 +937,7 @@ Do not forward traffic to other protected port
 Switch(config-if)# switchport protected
 ```
 
-## Bandwidth limit
+### Bandwidth limit
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3750-series-switches/91862-cat3750-qos-config.html)
 
@@ -942,14 +945,14 @@ Switch(config-if)# switchport protected
 Switch(config-if)# srr-queue bandwidth limit <percentage>
 ```
 
-## Recovery `err-disable` port
+### Recovery `err-disable` port
 
 ```
 Switch(config-if)# shutdown
 Switch(config-if)# no shutdown
 ```
 
-## Disable (non Cisco) GBIC module checking
+### Disable (non Cisco) GBIC module checking
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/interfaces-modules/gbics/200296-Unsupported-GBIC-SFP-in-sub-module-of.html)
 
@@ -958,14 +961,14 @@ Switch(config)# no errdisable detect cause gbic-invalid
 Switch(config)# service unsupported-transceiver
 ```
 
-# Archive configuration
+## Archive configuration
 
 | Variable | Value |
 | - | - |
 | `$h` | Hostname |
 | `$t` | Time |
 
-## Archive to FTP
+### Archive to FTP
 
 ```
 Switch(config)# ip ftp username <username>
@@ -975,13 +978,13 @@ Switch(config)# archive
 Switch(config-archive)# path ftp://<IP>/<path>
 ```
 
-## Archive to SCP
+### Archive to SCP
 ```
 Switch(config)# archive
 Switch(config-archive)# path scp://<username>:<password>@<IP>/<path>
 ```
 
-# Banner
+## Banner
 
 | Variable | Value |
 | - | - |
@@ -994,7 +997,7 @@ Switch(config)# banner login ^
 Switch(config)# 
 ```
 
-# Show TCAM (ACL, MAC, QOS, Route) utilization
+## Show TCAM (ACL, MAC, QOS, Route) utilization
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3850-series-switches/118957-troubleshoot-sec-acl-tcam-cat3850.html)
 
@@ -1004,7 +1007,7 @@ If TCAM ACL full, switch will randomly drop traffic.
 Switch# show platform tcam utilization asic all
 ```
 
-# SDM - Switch Database Management (TCAM, ACL, Routing)
+## SDM - Switch Database Management (TCAM, ACL, Routing)
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-2_55_se/configuration/guide/scg3750/swsdm.html)
 
@@ -1025,9 +1028,9 @@ Switch# show sdm prefer
 Switch(config)# sdm prefer ?
 ```
 
-# ACL
+## ACL
 
-## VACL (VLAN ACL)
+### VACL (VLAN ACL)
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst6500/ios/15-0SY/configuration/guide/15_0_sy_swcg/vlan_acls.html)
 
@@ -1069,7 +1072,7 @@ Switch(config)# vlan filter <access-map name>
     vlan-list <VLAN list>
 ```
 
-## IP ACL
+### IP ACL
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/security/ios-firewall/23602-confaccesslists.html)
 
@@ -1115,7 +1118,7 @@ List ACL
 Switch# show ip access-lists
 ```
 
-## MAC ACL
+### MAC ACL
 
 ACL default (no match) is `drop`
 
@@ -1128,9 +1131,9 @@ Switch(config-ext-macl)# { permit | deny }
     <destination MAC address>
 ```
 
-# ARP
+## ARP
 
-## Static ARP
+### Static ARP
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_arp/configuration/15-mt/arp-15-mt-book/arp-config-arp.html)
 
@@ -1138,7 +1141,7 @@ Switch(config-ext-macl)# { permit | deny }
 Switch(config)# arp <IP address> <MAC address> arpa
 ```
 
-## ARP inspection
+### ARP inspection
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750x_3560x/software/release/12-2_55_se/configuration/guide/3750xscg/swdynarp.html)
 
@@ -1153,7 +1156,7 @@ Auto recovery
 Switch(config)# errdisable recovery cause arp-inspection
 ```
 
-# Q-in-Q / IEEE 802.1Q tunnel
+## Q-in-Q / IEEE 802.1Q tunnel
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750x_3560x/software/release/12-2_55_se/configuration/guide/3750xscg/swtunnel.html)
 
@@ -1163,13 +1166,13 @@ Switch(config-if)# switchport mode dot1q-tunnel
 Switch(config)# vlan dot1q tag native
 ```
 
-## Show IEEE 802.1Q tunnel port
+### Show IEEE 802.1Q tunnel port
 
 ```
 Switch# show dot1q-tunnel
 ```
 
-# QoS
+## QoS
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3550-series-switches/24800-153.html)
 
@@ -1208,9 +1211,9 @@ Apply policy map
 Switch(config-if)# service-policy { input | output } <policy name>
 ```
 
-# Multicast
+## Multicast
 
-## PIM (Protocol Independent Multicast)
+### PIM (Protocol Independent Multicast)
 
 [Overview](https://www.cisco.com/c/en/us/td/docs/ios/solutions_docs/ip_multicast/White_papers/mcst_ovr.html#wp1009074)
 / [Quick Reference](https://www.cisco.com/c/en/us/support/docs/ip/ip-multicast/9356-48.html)
@@ -1225,7 +1228,7 @@ Switch(config)# ip pim rp-address <IP> [<ACL ID>]
 Switch(config-if)# ip pim ( sparse-mode | dense-mode | sparse-dense-mode )
 ```
 
-## IP Querier
+### IP Querier
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/68131-cat-multicast-prob.html)
 
@@ -1233,7 +1236,7 @@ Switch(config-if)# ip pim ( sparse-mode | dense-mode | sparse-dense-mode )
 Switch(config)# ip igmp snooping querier [address <source IP>]
 ```
 
-## IGMP
+### IGMP
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960x/software/15-0_2_EX/igmp_snoop/configuration_guide/b_mc_152ex_2960-x_cg/b_mc_152ex_2960-x_cg_chapter_010.html)
 
@@ -1243,7 +1246,7 @@ Default enabled
 Switch(config)# ip igmp snooping [vlan <VLAN ID>]
 ```
 
-## Multicast Debug
+### Multicast Debug
 
 [Reference](https://www.cisco.com/c/en/us/support/docs/ip/ip-multicast/16450-mcastguide0.html)
 
@@ -1253,7 +1256,7 @@ Switch# show ip igmp membership
 Switch# show ip mroute [<IP>] [count]
 ```
 
-# Broadcast
+## Broadcast
 
 [Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipapp/command/iap-cr-book/iap-i1.html)
 
@@ -1275,4 +1278,45 @@ Allow specified UDP port forward broadcast
 
 ```
 Switch(config)# ip forward-protocol udp [<port number>]
+```
+
+## Decrypt / Crack password
+
+### Type 5
+
+[Python module](https://passlib.readthedocs.io/en/stable/lib/passlib.hash.html)
+
+### Type 7
+
+[Reference](https://insecure.org/sploits/cisco.passwords.html)
+
+[Reference](https://www.ifm.net.nz/cookbooks/passwordcracker.html)
+
+```js
+function decryptCiscoType7(encrypted) {
+    var password = '';
+    var xlat = "dsfd;kfoA,.iyewrkldJKDHSUBsgvca69834ncxv9873254k;fg87";
+    var seed;
+
+    if (encrypted.length & 1) {
+        return null;
+    }
+
+    seed = parseInt(encrypted.slice(0, 2), 10);
+
+    if (isNaN(seed) || seed > 15) {
+        return null;
+    }
+
+    for (var i = 2; i < encrypted.length; i += 2) {
+        var byte = parseInt(encrypted.slice(i, i + 2), 16);
+        if (isNaN(byte)) {
+            return null;
+        }
+        password += String.fromCharCode(byte ^ xlat.charCodeAt(seed));
+        seed = (seed + 1) % xlat.length;
+    }
+
+    return password;
+}
 ```
