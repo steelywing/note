@@ -23,6 +23,7 @@
   - [`icacls`](#icacls)
     - [Permission](#permission)
 - [Registry](#registry)
+  - [Registry CLI](#registry-cli)
 - [Cortana](#cortana)
 - [Allow input unicode with <kbd>Alt</kbd> + <kbd>+\<Code\></kbd>](#allow-input-unicode-with-kbdaltkbd--kbdcodekbd)
 - [Enable / Disable the Local Built-In Administrator Account](#enable--disable-the-local-built-in-administrator-account)
@@ -32,6 +33,7 @@
 - [Cleanup](#cleanup)
   - [Cleanup WinSxS](#cleanup-winsxs)
   - [Cleanup hibernate](#cleanup-hibernate)
+- [Disable USB storage](#disable-usb-storage)
 
 ## Recovery
 
@@ -306,6 +308,29 @@ Edit registry file
 - You can then edit the registry you just loaded in the same manner as any other registry. All changes are made in real time, just as normal
 - When you're done, go to the menu `File` > `Unload Hive...`
 
+### Registry CLI
+
+```cmd
+reg add
+    {HKLM|HKCU|HKCR|HKU|HKCC}\<key>
+    { /ve | /v <value name> }
+    /t { REG_SZ | REG_MULTI_SZ | REG_EXPAND_SZ | REG_DWORD | REG_QWORD | REG_BINARY | REG_NONE }
+    /d <value>
+```
+
+```cmd
+reg query
+    {HKLM|HKCU|HKCR|HKU|HKCC}\<key>
+    [<option> ...]
+```
+
+| Option | Description |
+| - | - |
+| `/ve ` | Query default value |
+| `/v <value name>` | Query specific value name |
+| `/t { REG_SZ \| REG_MULTI_SZ \| REG_EXPAND_SZ \| REG_DWORD \| REG_QWORD \| REG_BINARY \| REG_NONE }` | Query specific data type |
+| `/f <data>` | Search specific data |
+
 ## Cortana
 
 Disable Cortana in Windows 10
@@ -393,3 +418,17 @@ Dism.exe /online /Cleanup-Image /SPSuperseded
 ```
 
 ### [Cleanup hibernate](#hibernate)
+
+## Disable USB storage
+
+[Reference](https://support.microsoft.com/en-ie/help/823732/how-can-i-prevent-users-from-connecting-to-a-usb-storage-device)
+
+```powershell
+Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\USBSTOR\ -Name Start -Value 4
+```
+
+Enable USB storage
+
+```powershell
+Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\USBSTOR\ -Name Start -Value 3
+```
