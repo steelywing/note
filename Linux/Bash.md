@@ -8,7 +8,7 @@
 | `!<string>` | Most recent command starting with `<string>` |
 
 
-# Parameter
+## Parameter
 
 | Parameter | Description |
 | - | - |
@@ -21,7 +21,7 @@
 | `"$@"` | `"$1" "$2" "$3"...` |
 
 
-# Redirect output
+## Redirect output
 
 | File descriptor | Description |
 | - | - |
@@ -48,7 +48,7 @@ Redirect `stderr` to `stdout`
 <command> 2>&1
 ```
 
-# Pipeline
+## Pipeline
 
 Pipe `stdout` ➡ `stdin`
 
@@ -62,9 +62,9 @@ Pipe `stdout` and `stderr` ➡ `stdin`
 <command> |& <command>
 ```
 
-# For
+## Loop / Iterate
 
-## For each file
+### For each file
 
 ```bash
 for <file variable name> in *; do
@@ -72,8 +72,7 @@ for <file variable name> in *; do
 done
 ```
 
-
-## For each `find` result
+### For each `find` result
 
 [Reference](https://stackoverflow.com/a/15066129) / [Reference](https://stackoverflow.com/a/9612232/1877620)
 ```bash
@@ -82,7 +81,7 @@ find [<expression>] -print0 | while IFS= read -r -d $'\0' <file variable name>; 
 done
 ```
 
-## For each array value
+### For each array value
 
 ```bash
 array=(a b c)
@@ -91,34 +90,64 @@ for i in "${array[@]}"; do
 done
 ```
 
-# Command substitution
+## Command substitution
 
 ```bash
 $(<command>)
 `<command>`
 ```
 
-## cat file
+## Process substitution
+
+Redirect input to `<input command>`
+
+```bash
+<command> <( <input command> )
+```
+
+Redirect output to `<output command>`
+
+```bash
+<command> >( <output command> )
+```
+
+### cat file
 
 ```bash
 $(< <file>)
 $(cat <file>)
 ```
 
-# Variable
+## Environment variable
 
-## Set variable
+### Set variable
+
 ```bash
 <name>=<value>
 ```
 
-## Get variable
+### Get variable
+
 ```bash
 $<name>
 ${<name>}
 ```
 
-## Remove current session bash history
+### List variable
+
+```bash
+env
+```
+
+### Export variable
+
+Export `env` variable to child process
+
+```bash
+export <name>[=<value>]
+```
+
+### Remove current session bash history
 
 Clear current history buffer
 ```bash
@@ -132,11 +161,11 @@ unset HISTFILE
 
 Kill bash
 ```bash
-# $$ == Current shell PID
+## $$ == Current shell PID
 kill -9 $$
 ```
 
-## Delete all bash history
+### Delete all bash history
 
 Empty history file
 ```bash
