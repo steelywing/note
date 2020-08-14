@@ -1,20 +1,27 @@
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
 - [File format](#file-format)
-  - [PEM](#pem)
+  - [PEM (Privacy-Enhanced Mail)](#pem-privacy-enhanced-mail)
   - [PKCS #12 (`.p12`)](#pkcs-12-p12)
+- [Option](#option)
 - [Version](#version)
+- [RSA key](#rsa-key)
 - [X509 (TLS/SSL certificate)](#x509-tlsssl-certificate)
 - [CSR (Certificate Signing Request)](#csr-certificate-signing-request)
-- [RSA key](#rsa-key)
+- [Full chain certificate](#full-chain-certificate)
+- [Test SSL/TLS connection](#test-ssltls-connection)
 
 ## File format
 
-### PEM
+### PEM (Privacy-Enhanced Mail)
 
 [RFC 1421](https://tools.ietf.org/html/rfc1421)
 
-Use to store X509 certificate (`.crt`), public / private key (`.key`), certificate signing request (`.csr`)
+Use to store
+
+- X509 certificate (`.crt`)
+- Public / private key (`.key`)
+- Certificate signing request (`.csr`)
 
 ### PKCS #12 (`.p12`)
 
@@ -22,10 +29,39 @@ Use to store X509 certificate (`.crt`), public / private key (`.key`), certifica
 
 Bundle X509 full chain certificate, private key
 
+## Option
+
+| Option | Description |
+| - | - |
+| `-noout` | Prevents output encoded data |
+| `-text` | Print the data in text form |
+| `-modulus` | Print the modulus of public key |
+
 ## Version
 
 ```bash
 openssl version
+```
+
+## RSA key
+
+Generating RSA key
+
+```bash
+# Default key lenght = 2048
+openssl genrsa [-out <file.key>] [<key length>]
+```
+
+View RSA key file
+
+```bash
+openssl rsa -in <file.key> -text -noout
+```
+
+Extracting RSA public key
+
+```bash
+openssl rsa -in <file.key> -pubout -out <public.key>
 ```
 
 ## X509 (TLS/SSL certificate)
@@ -37,18 +73,22 @@ Self signed certificate
 ```bash
 openssl x509 
     -req 
-    -in <file.csr> 
+    -in <request.csr> 
     -days <days>
-    -signkey <file.key> 
-    -out <file.crt> 
+    -signkey <private.key> 
+    -out <cert.{crt|pem}> 
 ```
+
+| Option | Description |
+| - | - |
+| `-req` | Use CSR as input (default is CRT) |
 
 CA (Certificate Authority) sign certificate
 
 ```bash
 openssl x509 
     -req 
-    -in <file.csr> 
+    -in <request.csr> 
     -days <days> 
     -CA <ca.crt> 
     -CAkey <ca.key> 
@@ -56,10 +96,10 @@ openssl x509
     -out <cert.{crt|pem}>
 ```
 
-Display the contents of certificate (PEM/CRT)
+Display the contents of certificate (`.crt`)
 
 ```bash
-openssl x509 -in <file.{pem|crt}> -text -noout
+openssl x509 -in <cert.{crt|pem}> -text -noout
 ```
 
 ## CSR (Certificate Signing Request)
@@ -72,8 +112,16 @@ Creating CSR
 
 ```bash
 # <subject> = "/C=<country>/ST=<state>/L=<locality>/O=<organization>/OU=<organizational unit>/CN=<common name>/emailAddress=<email>"
-openssl req -new -key <file.key> -out <file.csr> [-subj <subject>] [-config <config.ini>]
+openssl req -new 
+  { -newkey rsa[:<bits>] [-nodes] | -key <private.key> }
+  -out <request.csr>
+  [-subj <subject>]
+  [-config <config.ini>]
 ```
+
+| Option | Description |
+| - | - |
+| `-nodes` | Don't encrypt private key |
 
 CSR configuration file `.ini`
 
@@ -120,29 +168,20 @@ DNS.2 = <domain>
 # ...
 ```
 
-Verify CSR
+Verify CSR signature
 
 ```bash
 openssl req -text -in <file.csr> -noout -verify
 ```
 
-## RSA key
-
-Generating RSA key
+## Full chain certificate
 
 ```bash
-# Default key lenght = 2048
-openssl genrsa [-out <file.key>] [<key length>]
+cat <cert.crt> <chain.crt> > <fullchain.crt>
 ```
 
-View RSA key file
+## Test SSL/TLS connection
 
 ```bash
-openssl rsa -in <file.key> -text -noout
-```
-
-Extracting RSA public key
-
-```bash
-openssl rsa -in <file.key> -pubout -out <public.key>
+openssl s_client -connect <host>:<port>
 ```
