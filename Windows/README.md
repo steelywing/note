@@ -34,6 +34,8 @@
   - [Cleanup WinSxS](#cleanup-winsxs)
   - [Cleanup hibernate](#cleanup-hibernate)
 - [Disable USB storage](#disable-usb-storage)
+- [Windows Features](#windows-features)
+  - [Install Windows Sandbox](#install-windows-sandbox)
 
 ## Recovery
 
@@ -78,7 +80,7 @@ shell:common startup
 ```
 
 Open in PowerShell
-```cmd
+```powershell
 start "shell:common startup"
 ```
 
@@ -431,4 +433,22 @@ Enable USB storage
 
 ```powershell
 Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\USBSTOR\ -Name Start -Value 3
+```
+
+## Windows Features
+
+```powershell
+& ([System.Environment]::SystemDirectory + "\OptionalFeatures.exe")
+```
+
+![Windows Features](img/windows-features.png)
+
+### Install Windows Sandbox
+
+Use [Windows Features](#windows-features)
+
+or
+
+```powershell
+Enable-WindowsOptionalFeature -Online -All -FeatureName Containers-DisposableClientVM
 ```
