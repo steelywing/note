@@ -24,7 +24,6 @@
 - [VLAN](#vlan)
   - [Create VLAN interface](#create-vlan-interface)
   - [Remove VLAN interface](#remove-vlan-interface)
-- [Virtual switch](#virtual-switch)
 - [Get system directory](#get-system-directory)
   - [List Windows Features](#list-windows-features)
 
@@ -421,15 +420,6 @@ Join-Path <path> <path> ...
 
 ```powershell
 Remove-VMNetworkAdapter -ManagementOS -Name "<name>"
-```
-
-## Virtual switch
-
-Enable virtual switch without Hyper-V
-
-```powershell
-Enable-WindowsOptionalFeature -Online -All -FeatureName Microsoft-Hyper-V-Tools-All
-Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V
 ```
 
 ## Get system directory
