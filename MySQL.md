@@ -12,9 +12,10 @@
   - [Rebuild / Reorganize index](#rebuild--reorganize-index)
 
 ## Export / Dump
-[Reference](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)
 
-Output redirect (`mysqldump > file.sql`) will use UTF-16 on PowerShell, MySQL cannot import UTF-16
+> [Reference](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)
+
+> PowerShell output redirect ( `mysqldump > file.sql` ) will use UTF-16, MySQL cannot import UTF-16
 
 ```bash
 mysqldump [-u <user>] [-p] { --all-databases | <database> [<table> [...]] } --result-file=<file.sql>
@@ -26,7 +27,8 @@ mysqldump <database> | gzip [-9] > <file.sql.gz>
 ```
 
 ## Import
-[Reference](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)
+
+> [Reference](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)
 ```bash
 mysql [-u <user>] [-p] <database> < <file.sql>
 ```
@@ -38,6 +40,7 @@ mysql> source <file>;
 ```
 
 ## Show tables size
+
 ```sql
 select 
     table_schema as `Database`, 
@@ -47,44 +50,50 @@ from INFORMATION_SCHEMA.TABLES;
 ```
 
 ## Calculate age
+
 ```sql
 -- <birth> = YYYY-MM-DD
 select timeStampDiff(year, <birth>, curDate()) as age;
 ```
 
 ## Find in set
+
 ```sql
 select find_in_set('B', 'A,B,C'), find_in_set('D', 'A,B,C'); -- Return 2, 0
 ```
 
 ## Insert large number of row
 
-[Reference](https://dev.mysql.com/doc/refman/5.6/en/optimizing-innodb-transaction-management.html)
+> [Reference](https://dev.mysql.com/doc/refman/5.6/en/optimizing-innodb-transaction-management.html)
 
 Use `START TRANSACTION` and `COMMIT`
 
 ## Recovery
 
-[Reference](https://dev.mysql.com/doc/refman/5.5/en/forcing-innodb-recovery.html)
+> [Reference](https://dev.mysql.com/doc/refman/5.5/en/forcing-innodb-recovery.html)
 
 Edit option file
+
 ```ini
 [mysqld]
 innodb_force_recovery = 1
 ```
 
 If the log loops with
+
 ```
 InnoDB: Waiting for the background threads to start
 ```
 
 Edit option file
+
 ```ini
 [mysqld]
 innodb_purge_threads = 0
 ```
 
 ### Check tables
+
 ```bash
 mysqlcheck [{ -c | --check }] [-u <user>] [-p] <database> [<table> [...]]
 ```
