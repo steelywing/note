@@ -24,6 +24,8 @@ If no bind address colon (`<port>:<host>:<port>`), will bind to loopback interfa
 
 ![SSH Tunnel](img/SSH&#32;Tunnel.png)
 
+Forward *SSH Client TCP port* ➡ *SSH Server* (NAT) ➡ *Destination address port*
+
 - ```bash
   # SSH Client
   ssh -L :8000:10.0.2.2:80 10.0.1.2
@@ -32,6 +34,8 @@ If no bind address colon (`<port>:<host>:<port>`), will bind to loopback interfa
 - On *Client*, open `http://10.0.0.2:8000/`, will port forward to *Remote Server* `http://10.0.2.2:80/`
 
 ## SSH tunnel on `localhost`
+
+Forward *SSH Server TCP port* (NAT) ➡ *Destination address port*
 
 - ```bash
   # SSH Remote Server
@@ -42,9 +46,11 @@ If no bind address colon (`<port>:<host>:<port>`), will bind to loopback interfa
 
 ## SSH reverse tunnel
 
+Forward *SSH Server TCP port* ➡ *SSH Client* (NAT) ➡ *Destination address port*
+
 ![SSH Reverse Tunnel](img/SSH&#32;Reverse&#32;Tunnel.png)
 
-- Enable SSH `GatewayPorts`
+- Enable `GatewayPorts` on SSH server
   ```
   # /etc/ssh/sshd_config
   GatewayPorts yes
