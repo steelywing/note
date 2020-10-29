@@ -12,7 +12,7 @@
   - [Computer Management / Local User](#computer-management--local-user)
   - [Create User](#create-user)
   - [Delete User](#delete-user)
-  - [Password Expire](#password-expire)
+  - [Make password never expire](#make-password-never-expire)
 - [Group Policy](#group-policy)
 - [Credential Manager](#credential-manager)
 - [Remote Desktop](#remote-desktop)
@@ -25,7 +25,7 @@
 - [Registry](#registry)
   - [Registry CLI](#registry-cli)
 - [Cortana](#cortana)
-- [Allow input unicode with <kbd>Alt</kbd> + <kbd>+\<Code\></kbd>](#allow-input-unicode-with-kbdaltkbd--kbdcodekbd)
+- [Allow input unicode with <kbd>Alt</kbd> + <kbd>+\<Code\></kbd>](#allow-input-unicode-with-alt--code)
 - [Enable / Disable the Local Built-In Administrator Account](#enable--disable-the-local-built-in-administrator-account)
 - [Get OS Architecture (32-bit / 64-bit)](#get-os-architecture-32-bit--64-bit)
 - [SLP (System Locked Pre-installation) / SLIC (System License Internal Code)](#slp-system-locked-pre-installation--slic-system-license-internal-code)
@@ -47,6 +47,8 @@
 <kbd>Shift</kbd> + Restart
 
 ### System image
+
+Use to backup / restore OS
 
 ![System image](img/system-image.png)
 
@@ -120,7 +122,7 @@ net user <user name> /delete
 Remove-LocalUser <user name>
 ```
 
-### Password Expire
+### Make password never expire
 
 ```cmd
 wmic UserAccount [where Name=<user name>] set PasswordExpires={True|False}
@@ -128,7 +130,7 @@ wmic UserAccount [where Name=<user name>] set PasswordExpires={True|False}
 
 Using group policy
 
-`Computer Configuration` > `Windows Settings` > `Security Settings` > `Password Policy` > `Maximum password age`
+`Computer Configuration` > `Windows Settings` > `Security Settings` > `Password Policy` > `Maximum password age` > Set to `0`
 
 ## Group Policy
 
@@ -168,8 +170,7 @@ cmdkey /list
 
 ## Hibernate
 
-- [Reference](https://support.microsoft.com/en-us/help/920730/how-to-disable-and-re-enable-hibernation-on-a-computer-that-is-running)
-- [Reference](https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/powercfg-command-line-options)
+> [Reference](https://support.microsoft.com/en-us/help/920730/how-to-disable-and-re-enable-hibernation-on-a-computer-that-is-running), [Reference](https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/powercfg-command-line-options)
 
 Enable / Disable hibernate (remove `hiberfil.sys` file)
 
@@ -195,7 +196,7 @@ makecab <file> <file.cab>
 
 ### `calcs`
 
-- [Reference](http://technet.microsoft.com/en-us/library/bb490872.aspx)
+> [Reference](http://technet.microsoft.com/en-us/library/bb490872.aspx)
 
 | Option | Permission |
 | - | - |
@@ -222,7 +223,7 @@ cacls <file> /r <user>
 
 ### `icacls`
 
-- [Reference](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/icacls)
+> [Reference](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/icacls)
 
 ```cmd
 icacls <file> <option>
@@ -235,10 +236,9 @@ icacls <file> <option>
 | `/l` | Performs on a symbolic link, not its destination |
 | `/setowner <user>` | Changes the owner |
 | `/reset` | Replaces with default inherited ACLs |
-| `/grant <user>:<permissions>` | Grants specified user access rights |
-| `/grant:r <user>:<permissions>` | Replace previously granted explicit permissions |
+| `/grant[:r] <user>:<permissions>` | Grants specified user access rights<br> `:r` means replace previously granted explicit permissions |
 | `/deny <user>:<permissions>` | Denies specified user access rights |
-| `/remove[:g|:d] <user>` | Remove specified user from DACL<br>`:g` = Grant<br>`:d` = Deny |
+| `/remove[:g|:d] <user>` | Remove access rights of specified user from DACL<br>`:g` = Grant<br>`:d` = Deny |
 
 #### Permission
 
