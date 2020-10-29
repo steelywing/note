@@ -41,18 +41,41 @@ End Sub
 
 ## Keyboard Shortcut
 
+> [Reference](https://support.microsoft.com/en-us/office/keyboard-shortcuts-in-excel-1798d9d5-842a-42b8-9c99-9b7213f0040f)
+
 | Description | Key |
 | - | - |
-| Paste Value | <kbd>Ctrl + Alt + v</kbd> + <kbd>v</kbd> |
+| Edit cell | <kbd>F2</kbd> |
+| New line in the same cell | <kbd>Alt + Enter</kbd> |
+| Paste value | <kbd>Ctrl + Alt + V</kbd> <kbd>V</kbd> |
+| Copy the the topmost cell of a selected range into the cells below | <kbd>Ctrl + D</kbd> |
+| Apply the General number format | <kbd>Ctrl + Shift + Tilde(~)</kbd> |
+| Apply the Currency format | <kbd>Ctrl + Shift + Dollar($)</kbd> |
+| Apply the Percentage format | <kbd>Ctrl + Shift + Percent(%)</kbd> |
+| Apply the Date format | <kbd>Ctrl + Shift + Number(#)</kbd> |
+| Apply the Time format | <kbd>Ctrl + Shift + At(@)</kbd> |
+| Apply the Number format | <kbd>Ctrl + Shift + Exclamation point(!)</kbd> |
+| Repeat the last action | <kbd>Ctrl + Y</kbd> |
 | Select row | <kbd>Shift + Space</kbd> |
 | Select column | <kbd>Ctrl + Space</kbd> |
 | Insert row / column | <kbd>Ctrl + Shift + Plus(+)</kbd> |
+| Delete row / column | <kbd>Ctrl + Minus(-)</kbd> |
+| Enter the current date | <kbd>Ctrl + Semi-colon(;) |
+| Enter the current time | <kbd>Ctrl + Shift + Colon(:) |
 | Move to edge of data range | <kbd>Ctrl + Arrow</kbd> |
 | Move to edge of data range | <kbd>End</kbd> <kbd>Arrow</kbd> |
+| Open the list of validation / auto-complete | <kbd>Alt + Down</kbd> |
 
 ## Note
 
 - Global object is `Application` (like `window` in JavaScript)
+
+## Highlight duplicates
+
+[Reference](https://support.microsoft.com/en-us/office/find-and-remove-duplicates-00e35bea-b46a-4d5d-b28e-66a552dc138d)
+
+- Select the cells you want to check for duplicates
+- **Home** > **Conditional Formatting** > **Highlight Cells Rules** > **Duplicate Values**
 
 ## Formula / Function
 
@@ -76,6 +99,8 @@ End Sub
 | `Space` | Intersection range |
 
 ### Reference
+
+> [Reference](https://support.microsoft.com/en-us/office/overview-of-formulas-in-excel-ecfdc708-9162-49e8-b993-c311f47ca173?wt.mc_id=otc_excel)
 
 Reference to cell
 
@@ -117,7 +142,7 @@ $<column>$<row>
 
 ### VLOOKUP
 
-找尋 `<range>` 第 1 欄中等於 `<value>` 的列，然後傳回 `<column>` 所指的欄的值。找不到會傳回 `#N/A`。
+找尋 `<range>` 第 1 欄中等於 `<value>` 的列，然後傳回 `<column>` 所指的欄的值。如果找不到會傳回 `#N/A`。
 
 ```xlsx
 VLOOKUP(
