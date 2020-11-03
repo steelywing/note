@@ -1,6 +1,8 @@
 ## Order
 
-[Reference](https://httpd.apache.org/docs/2.4/mod/mod_access_compat.html)
+> *Deprecated* by `Require`
+
+> [Reference](https://httpd.apache.org/docs/2.4/mod/mod_access_compat.html)
 
 `Order Allow, Deny`
 
@@ -46,7 +48,7 @@ function isAllow(match_allow, match_deny) {
 
 ## Sections order ( Priority / Precedence )
 
-[Reference](https://httpd.apache.org/docs/2.4/sections.html#merging)
+> [Reference](https://httpd.apache.org/docs/2.4/sections.html#merging)
 
 The order of merging is
 
@@ -59,7 +61,8 @@ The order of merging is
 ```js
 // Pseudo code
 
-Object.assign(
+var Config = Object.assign(
+    {},
     Directory, 
     DirectoryMatch,
     Files,
