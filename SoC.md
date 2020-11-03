@@ -18,26 +18,29 @@
 
 ### Arduino
 
-IDE: Arduino, PlatformIO
+- IDE: [Arduino](https://www.arduino.cc/), [PlatformIO](https://platformio.org/)
 
 ### STM
+
 ### Espressif
 
-ESP8266 (WiFi): ESP-01 ~ ESP-12
+| | | |
+|-|-|-|
+| ESP8266 | WiFi | ESP-01 ~ ESP-12 |
+| ESP32 | WiFi + Bluetooth |  |
 
-ESP32 (WiFi + Bluetooth)
-
-IDE: Arduino, PlatformIO
+- IDE: [Arduino](https://www.arduino.cc/), [PlatformIO](https://platformio.org/)
+- PCB: [AI-Thinker](http://www.ai-thinker.com/)
 
 ### Raspberry Pi
 
-System: Linux
+- System: Linux
 
-## USB to UART (RS232)
+## USB to UART
 
-- WCH CH340 (UART)
-- WCH CH341 (UART, I2C, SPI)
-- Prolific PL2303 (Fake)
+- [WCH CH340](http://www.wch.cn/products/CH340.html) (UART) *Popular*
+- [WCH CH341](http://www.wch.cn/products/CH341.html) (UART, I2C, SPI) *Popular*
+- Prolific PL2303 (Mostly fake)
 - Silicon CP2102
 - FTDI232 (Expensive)
 
@@ -49,6 +52,7 @@ System: Linux
       - DTE (male)
       - DCE (female)
     - DB-25
+  - TTL (Transistor–Transistor Logic)
 - SPI (Serial Peripheral Interface)
 - I²C / I2C (Inter-Integrated Circuit)
 
@@ -70,7 +74,7 @@ System: Linux
 
 ### Common usage
 
-`RXD TXD GND [RTS CTS]`
+`RXD TXD GND [RTS] [CTS]`
 
 ## IR (Infrared)
 
