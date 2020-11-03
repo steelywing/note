@@ -95,7 +95,7 @@ TIA/EIA-568B
 
 ### 802.3af
 
-[Reference](https://en.wikipedia.org/wiki/Power_over_Ethernet)
+> [Reference](https://en.wikipedia.org/wiki/Power_over_Ethernet)
 
 | Pin | Data | Mode A | Mode B (Passive) |
 | - | - | - | - |
@@ -110,7 +110,7 @@ TIA/EIA-568B
 
 # Fiber
 
-[Reference](https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/gigabit-ethernet-gbic-sfp-modules/datasheet-c78-366584.html)
+> [Reference](https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/gigabit-ethernet-gbic-sfp-modules/datasheet-c78-366584.html)
 
 ## 1000BASE‑LX/LH
 
@@ -134,9 +134,9 @@ TIA/EIA-568B
 
 ## SMF (Single Mode Fiber)
 
-[FOA Reference](https://www.thefoa.org/tech/ref/basic/fiber.html)
+> [FOA Reference](https://www.thefoa.org/tech/ref/basic/fiber.html)
 
-[ISO/IEC 11801](https://en.wikipedia.org/wiki/ISO/IEC_11801)
+> [ISO/IEC 11801](https://en.wikipedia.org/wiki/ISO/IEC_11801)
 
 |  |  |
 | - | - |
@@ -146,11 +146,11 @@ TIA/EIA-568B
 
 ## MMF (Multi Mode Fiber)
 
-[Reference](https://en.wikipedia.org/wiki/Multi-mode_optical_fiber)
+> [Reference](https://en.wikipedia.org/wiki/Multi-mode_optical_fiber)
 
-[FOA Reference](https://www.thefoa.org/tech/ref/basic/fiber.html)
+> [FOA Reference](https://www.thefoa.org/tech/ref/basic/fiber.html)
 
-[ISO/IEC 11801](https://en.wikipedia.org/wiki/ISO/IEC_11801)
+> [ISO/IEC 11801](https://en.wikipedia.org/wiki/ISO/IEC_11801)
 
 |  |  |
 | - | - |
@@ -160,7 +160,7 @@ TIA/EIA-568B
 
 ## Connector
 
-[Reference](https://www.thefoa.org/tech/connID.htm)
+> [Reference](https://www.thefoa.org/tech/connID.htm)
 
 | Name | Image |
 | - | - |

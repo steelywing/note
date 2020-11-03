@@ -21,7 +21,6 @@
 - [File Permission (ACL)](#file-permission-acl)
   - [`calcs`](#calcs)
   - [`icacls`](#icacls)
-    - [Permission](#permission)
 - [Registry](#registry)
   - [Registry CLI](#registry-cli)
 - [Cortana](#cortana)
@@ -240,7 +239,13 @@ icacls <file> <option>
 | `/deny <user>:<permissions>` | Denies specified user access rights |
 | `/remove[:g|:d] <user>` | Remove access rights of specified user from DACL<br>`:g` = Grant<br>`:d` = Deny |
 
-#### Permission
+Permission syntax
+
+```
+[(OI)][(CI)][(IO)][(NP)][<simple permission>[...]](<permission>[,...])
+```
+
+Permission
 
 | Inherit | Description |
 | - | - |
@@ -279,12 +284,6 @@ icacls <file> <option>
 | `DC` | Delete child |
 | `RA` | Read attributes |
 | `WA` | Write attributes |
-
-Permission syntax
-
-```
-[(OI)][(CI)][(IO)][(NP)][<simple permission>[...]](<permission>[,...])
-```
 
 ## Registry
 
