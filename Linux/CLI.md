@@ -75,7 +75,8 @@
   - [Push directory](#push-directory)
   - [Pop and change to the directory](#pop-and-change-to-the-directory)
   - [List directory stack](#list-directory-stack)
-- [cron / crontab](#cron--crontab)
+- [`cron` / `crontab`](#cron--crontab)
+- [`at`](#at)
 - [OpenJDK (Java)](#openjdk-java)
   - [List installed JVM](#list-installed-jvm)
   - [Switch JVM](#switch-jvm)
@@ -97,11 +98,13 @@
 - [Watch](#watch)
 - [SSH](#ssh)
   - [SSH tunnel (port forward)](#ssh-tunnel-port-forward)
+  - [Copy SSH public key to remote host](#copy-ssh-public-key-to-remote-host)
   - [SSH agent](#ssh-agent)
 - [Auto start](#auto-start)
   - [LXDE](#lxde)
+  - [bash](#bash)
 - [FHS (Filesystem Hierarchy Standard) / Filesystem Structure](#fhs-filesystem-hierarchy-standard--filesystem-structure)
-- [Dash "`-`" as file name](#dash---as-file-name)
+- [Using dash "`-`" as path argument](#using-dash-%22-%22-as-path-argument)
 
 ## Command
 
@@ -182,7 +185,7 @@ passwd -d <user>
 
 Expire user password
 
-force user to change password
+> Force user to change password
 
 ```bash
 passwd -e <user>
@@ -520,6 +523,7 @@ Change file permission to `644`, directory to `755`
 | Option | Description |
 | - | - |
 | `-R` | Recursive |
+| `-h | --no-dereference` | Change symbolic links instead of referenced file |
 
 ```bash
 chmod [-R] u=rw,go=r,a+X <path>
@@ -1009,11 +1013,11 @@ Resize LV
 ```bash
 lvresize 
     {
-        -L {+|-}<size>[K|M|G|T|P|E] |
-        -l {+|-}<percent>[%{VG|FREE}]
+        { -L | --size } {+|-}<size>[K|M|G|T|P|E] |
+        { -l | --extends } {+|-}<percent>[%{VG|FREE}]
     }
     # Auto resize2fs
-    [--resizefs]
+    [ -r | --resizefs ]
     <LV>
 ```
 
@@ -1122,7 +1126,7 @@ dirs [-v]
 ```
 
 
-## cron / crontab
+## `cron` / `crontab`
 
 [Reference](https://www.computerhope.com/unix/ucrontab.htm)
 
@@ -1139,6 +1143,69 @@ User `crontab` file
 
 # Debian only
 /etc/cron.d/
+```
+
+## `at`
+
+Check if `atd` is running
+
+```bash
+systemctl status atd.service
+```
+
+Run command at a time
+
+```bash
+at <time spec>
+<command>
+[...]
+<Ctrl + D>
+```
+
+```bash
+at <time spec> <<END
+<command>
+[...]
+END
+```
+
+```bash
+echo "<command>" | at <time spec>
+```
+
+| | |
+|-|-|
+| `<time spec>` | `{ NOW | <time> | <date> | <time> <date> } [{+|-} <period> <unit>]` |
+| `<time>` | `{ <HH>:<MM> [AM|PM] } [UTC]` |
+| `<date>` | `<month name> <day> [<year>] | MM/DD/[YY]YY | [YY]YY-MM-DD | [NEXT] <day of week> | TODAY | TOMORROW `
+| `<month name>` | `JAN | FEB | MAR | APR | MAY | JUN | JUL | AUG | SEP | OCT | NOV | DEC` |
+| `<day of week>` | `SUN | MON | TUE | WED | THU | FRI | SAT` |
+| `<unit>` | `MINUTE | HOUR | DAY | WEEK | MONTH | YEAR` |
+
+List job
+
+```bash
+atq
+```
+
+```bash
+at -l
+```
+
+Remove job
+
+```bash
+atrm <job ID>
+```
+
+```bash
+at {-r|-d} <job ID>
+```
+
+View job
+
+```bash
+at -c <job ID>
 ```
 
 ## OpenJDK (Java)
@@ -1306,7 +1373,21 @@ watch [-n <seconds>] <command>
 
 ## SSH
 
-### [SSH tunnel (port forward)](./SSH%20Tunnel.md)
+### SSH tunnel (port forward)
+
+> [Link](./SSH%20Tunnel.md)
+
+### Copy SSH public key to remote host
+
+```bash
+ssh-copy-id [<options>] <host>
+```
+
+| Option | Description |
+| - | - |
+| `-i <id_rsa.pub>` | The public key file to be copy, default is `~/.ssh/id*.pub`
+| `-p <port>` | TCP port |
+| `"-o IdentityFile <id_rsa>"` | Use `<id_rsa>` key file to connect remote host |
 
 ### SSH agent
 
@@ -1337,6 +1418,10 @@ ssh-add <private key path>
 - `~/.config/lxsession/LXDE/`
 - `/etc/xdg/lxsession/LXDE/autostart`
 
+### bash
+
+`~/.bashrc`
+
 ## FHS (Filesystem Hierarchy Standard) / Filesystem Structure
 
 [Reference](http://refspecs.linuxfoundation.org/fhs.shtml)
@@ -1345,9 +1430,11 @@ ssh-add <private key path>
 man hier
 ```
 
-## Dash "`-`" as file name
+## Using dash "`-`" as path argument
 
 [Reference](http://tldp.org/LDP/abs/html/special-chars.html#DASHREF2)
+
+使用 "`-`" 做為檔案路徑參數時，一般有以下用途
 
 - Redirection from `stdin` / to `stdout`
 - `cd -` change to previous working directory
