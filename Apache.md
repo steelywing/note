@@ -1,3 +1,11 @@
+## Test configuration file syntax
+
+> [Reference](https://httpd.apache.org/docs/2.4/programs/apachectl.html)
+
+```bash
+sudo apachectl configtest
+```
+
 ## Order
 
 > *Deprecated* by `Require`
