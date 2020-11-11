@@ -104,8 +104,8 @@ Switch#
 Exit to User EXEC Mode
 
 ```
-Switch> disable
-Switch#
+Switch# disable
+Switch>
 ```
 
 Enter config mode
@@ -360,6 +360,12 @@ Switch(config)# vtp password <password>
   - Cisco proprietary protocol
   - Compatible with PVST
   - PVST = RSTP BPDU on native VLAN + SSTP per VLAN
+
+| Port role | Forward BPDU | Forward frame |
+|-|-|-|
+| Root | X | O |
+| Blocked / Alternate | X | X |
+| Designated | O | O |
 
 ### STP mode
 
@@ -1294,8 +1300,8 @@ Switch(config)# ip forward-protocol udp [<port number>]
 
 ```js
 function decryptCiscoType7(encrypted) {
-    var password = '';
     var xlat = "dsfd;kfoA,.iyewrkldJKDHSUBsgvca69834ncxv9873254k;fg87";
+    var password = '';
     var seed;
 
     if (encrypted.length & 1) {
