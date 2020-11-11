@@ -127,7 +127,7 @@ Switch#
 Save config
 
 ```
-write
+Switch# write
 ```
 
 Reset to Factory Default
