@@ -25,3 +25,16 @@ Priority
 |  | Physical | IEEE 802.11 (WiFi), 100BASE-TX, 1000BASE-T |
 
 OSI: Open Systems Interconnection
+
+## IGP (Interior Gateway Protocol)
+
+內部閘道協定
+
+- Within an autonomous system
+
+Include
+
+- RIP
+- IGRP
+- OSPF
+- IS-IS
