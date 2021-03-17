@@ -147,6 +147,12 @@ Export `env` variable to child process
 export <name>[=<value>]
 ```
 
+## History
+
+### Search history
+
+<kbd>Ctrl + R</kbd>
+
 ### Remove current session bash history
 
 Clear current history buffer
