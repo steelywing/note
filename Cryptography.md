@@ -20,17 +20,17 @@
 
 | Variable | Description | Property | Value |
 | - | - | - | - |
-| `g` | Base | public, prime | Usually = 2, 3, 5 |
+| `g` | Generator / Base | public, [primitive root modulo `p` (`p`的原根)](https://en.wikipedia.org/wiki/Primitive_root_modulo_n) | Usually = 2, 3, 5 |
 | `p` | Modulus | public, prime | Usually >= 1024 bits |
-| `a` | Alice's private key |  |
-| `b` | Bob's private key |  |
-| `A` | Alice's public key |  | `A = gᵃ mod p` |
-| `B` | Bob's public key |  | `B = gᵇ mod p` |
+| `a` | Alice's private key | | `1 <= a <= p-1` |
+| `b` | Bob's private key | | `1 <= b <= p-1` |
+| `A` | Alice's public key | | `A = gᵃ mod p` |
+| `B` | Bob's public key | | `B = gᵇ mod p` |
 | `s` | Secret key (for encrypt / decrypt) | private | `s = gᵃᵇ mod p` |
 
 算法目的：找一個只有 Alice 及 Bob 知道的值 `s`
 
-- 用密鑰交換中傳送的值 `g`, `p`, `A`, `B`，很難去計算出 `a`, `b`, `s` 值 (Discrete logarithm 離散對數)
+- 只知道密鑰交換中傳送的值 `g`, `p`, `A`, `B`，很難計算出 `a`, `b`, `s` 的值 (Discrete logarithm 離散對數)
 
 將 `s` 賦值為 `s = gᵃᵇ mod p`，則
 
@@ -57,3 +57,22 @@ s = (gᵃ mod p)ᵇ mod p = (gᵇ mod p)ᵃ mod p
 - Alice 傳送 `g`, `p`, `A` 的值給 Bob，Bob 可以計算 `Aᵇ mod p` 得到 `s` 值
 - Bob 傳送 `B` 值給 Alice，Alice 可以計算 `Bᵃ mod p` 得到 `s` 值
 - Alice 和 Bob 都取得了 `s` 值
+
+## DH group
+
+MODP (Modular exponentiation)
+
+EC2N (Elliptic Curve over GF[2^N])
+
+| DH Group | Algorithm |
+|-|-|
+| [DH Group 1](https://tools.ietf.org/html/rfc2409#section-6.1) | MODP 768-bit |
+| [DH Group 2](https://tools.ietf.org/html/rfc2409#section-6.2) | MODP 1024-bit |
+| [DH Group 3](https://tools.ietf.org/html/rfc2409#section-6.3) | EC2N group on GP[2^155] |
+| [DH Group 4](https://tools.ietf.org/html/rfc2409#section-6.4) | EC2N group on GP[2^185] |
+| [DH Group 5](https://tools.ietf.org/html/rfc3526#section-2) | MODP 1536-bit |
+| [DH Group 14](https://tools.ietf.org/html/rfc3526#section-3) | MODP 2048-bit |
+| [DH Group 15](https://tools.ietf.org/html/rfc3526#section-4) | MODP 3072-bit |
+| [DH Group 16](https://tools.ietf.org/html/rfc3526#section-5) | MODP 4096-bit |
+| [DH Group 17](https://tools.ietf.org/html/rfc3526#section-6) | MODP 6144-bit |
+| [DH Group 18](https://tools.ietf.org/html/rfc3526#section-7) | MODP 8192-bit |
