@@ -48,3 +48,35 @@ settings put global captive_portal_https_url "<URL>"
 /data/misc/wifi/wpa.conf
 /data/wifi/bcm_supp.conf
 ```
+
+## Dump / Backup partition
+
+```bash
+adb shell
+
+# Some device already is root when connect
+whoami
+
+# Switch to root if is not root
+su
+
+cd /dev/block/by-name/
+# or
+# cd /dev/block/platform/<dev>/by-name/
+
+# Show partiton
+ls -l
+
+dd if=<partition> of=/sdcard/<partition>.img
+```
+
+## Magisk bypass SafetyNet
+
+- Install Magisk modules
+  - MagiskHide Props Config
+  - Busybox for Android NDK
+- Open shell (ConnectBot)
+  - `props`
+    - `1 - Edit device fingerprint`
+    - `f - Pick a certified fingerprint`
+    - Select a fingerprint
