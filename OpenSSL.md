@@ -170,7 +170,7 @@ req_extensions = req_ext
 [ req_distinguished_name ]
 
 # C=
-# <country> = US / HK / MO / ...
+# <country> = US | HK | TW | ...
 # ISO 3166-1 alpha-2
 # two-letter country codes
 countryName = <country>
@@ -366,8 +366,7 @@ authorityKeyIdentifier = keyid:always,issuer:always
 
 ```bash
 openssl ca
-  # No prompt
-  [-batch]
+  [-batch] # No prompt
   [-config <ca.conf>]
   -in <request.csr>
   -out <cert.{crt|pem}>
