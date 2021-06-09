@@ -2,12 +2,14 @@
 
 - [Table of Contents](#table-of-contents)
 - [Access attribute using string](#access-attribute-using-string)
-- [`pip` - PIP Installs Packages](#pip-pip-installs-packages)
+- [`pip` - PIP Installs Packages](#pip---pip-installs-packages)
 - [Formatter](#formatter)
 - [Unit test](#unit-test)
   - [Unit test framework](#unit-test-framework)
 - [Show `sys.path` (module path) in CLI](#show-syspath-module-path-in-cli)
 - [Pass all arguments to another function](#pass-all-arguments-to-another-function)
+- [Decorator](#decorator)
+- [Bind `self` to function](#bind-self-to-function)
 
 ## Access attribute using string
 
@@ -59,6 +61,11 @@ pip freeze > requirements.txt
 Install `requirements.txt`
 ```bash
 pip install -r requirements.txt
+```
+
+Download `requirements.txt`
+```bash
+pip download -r requirements.txt
 ```
 
 ## Formatter
@@ -118,4 +125,59 @@ class List(list):
     def append_twice(self, *args, **kwargs):
         self.append(*args, **kwargs)
         self.append(*args, **kwargs)
+```
+
+## Decorator
+
+> [Reference](https://www.python.org/dev/peps/pep-0318/)
+
+```py
+@decorator
+def run():
+    pass
+```
+
+is equivalent to
+
+```py
+def run():
+    pass
+run = decorator(run)
+```
+
+```py
+from functools import wraps
+
+def decorator(func):
+    # Using original func name and doc string
+    @wraps(func)
+    def wrap():
+        print("[Before]")
+        func()
+        print("[After]")
+    return wrap
+
+@decorator
+def run():
+    print("Run")
+
+run()
+
+# [Before]
+# Run
+# [After]
+```
+
+## Bind `self` to function
+
+> [Reference](https://docs.python.org/3/howto/descriptor.html#functions-and-methods)
+
+```py
+import types
+
+def power(self, exp):
+    return pow(self, exp)
+
+power2 = types.MethodType(power, 2)
+print(power2(8)) # 256
 ```
