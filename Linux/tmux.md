@@ -1,13 +1,13 @@
 # New session
 
 ```bash
-tmux new[-session] [-n<session name>]
+tmux new[-session] [-n <session name>]
 ```
 
 # Attach session
 
 ```bash
-tmux attach [-t<session name>]
+tmux attach[-session] [<option>] [-t <session name>]
 ```
 
 | Option | Description |

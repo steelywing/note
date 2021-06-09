@@ -7,7 +7,7 @@ awk '<program>' [<input file> [<input file>]]
 awk -f '<program file>' [<input file> [<input file>]]
 ```
 
-## Program
+## `<program>`
 
 ```awk
 # A BEGIN rule is executed once only, before the first input record is read.

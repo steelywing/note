@@ -1,11 +1,11 @@
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Command](#command)
-  - [sed](#sed)
-  - [awk](#awk)
-  - [iptables](#iptables)
-  - [User](#user)
-  - [Password](#password)
+  - [sed](#sedsedmd)
+  - [awk](#awkawkmd)
+  - [iptables](#iptablesiptablesmd)
+  - [User](#userusermd)
+  - [Password](#passwordusermdpassword)
 - [Date](#date)
 - [Shell](#shell)
   - [Shell list](#shell-list)
@@ -1214,11 +1214,18 @@ Debian
 
 ```bash
 # -i = --important : Show only Depends and Pre-Depends
-sudo apt-get download $(apt-cache depends --recurse -i <package> | grep -v "^[ <]")
+apt download $(apt-cache depends --recurse -i <package> | grep -v "^[ <]")
+```
 
-# Install
+Install
+
+```bash
 # -m = --fix-missing : Ignore missing packages
-sudo apt-get install -m --no-download ./*
+sudo apt-get install -m --no-download ./*.deb
+```
+or
+```bash
+sudo dpkg -i ./*.deb
 ```
 
 ### List installed package
