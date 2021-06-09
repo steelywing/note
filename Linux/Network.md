@@ -1,7 +1,7 @@
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Firewall](#firewall)
-  - [iptables](#iptables)
+  - [iptables](#iptablesiptablesmd)
   - [nftables](#nftables)
 - [IP forward](#ip-forward)
 - [Ping](#ping)
@@ -19,6 +19,7 @@
 - [Traffic control](#traffic-control)
   - [netem (Network Emulator)](#netem-network-emulator)
   - [TBF (Token Bucket Filter)](#tbf-token-bucket-filter)
+- [Network manager](#network-manager)
 
 ## Firewall
 
@@ -73,6 +74,7 @@ nmap <option>
 
 | Option | Description |
 | - | - |
+| `-oG` | Grepable Output |
 | `<host>[/prefix]` | Host or CIDR |
 | `10.0.0-255.0-255` | Range |
 
@@ -229,10 +231,10 @@ ip n [show]
 arp
 ```
 
-Clear ARP / neighbour
+Clear ARP / NDP / neighbour
 
 ```bash
-ip n flush [dev <device>]
+ip n flush { all | dev <device> }
 ```
 
 ### Route
@@ -269,7 +271,7 @@ Add route
 
 ```bash
 # default = 0/0 or ::/0
-ip r add { default | <IP-address>/<prefix length> } via <next hop IP address> [dev <device>] [metric <metric>]
+ip r add { default | <IP-address>/<prefix length> } [metric <metric>] [via <next hop IP address>] [dev <device>] [metric <metric>]
 ```
 
 ```bash
@@ -311,7 +313,7 @@ ss [<option> ...] [state <state>] [<expression>]
 
 ```bash
 # Deprecated
-netstat
+netstat [<option>]
 ```
 
 | Option | Description |
@@ -331,7 +333,7 @@ cat /proc/net/tcp
 ```
 
 ```bash
-lsof -i [4|6][TCP|UDP][@<host>][:<port>]
+lsof [-n] -i [4|6][TCP|UDP][@<host>][:<port>]
 ```
 
 | Option | Description |
@@ -389,4 +391,39 @@ tc qdisc add dev <dev> root tbf \
   rate <rate>{k|m}bit \
   burst <burst>{k|m}bit \
   { limit <limit>{k|m}bit | latency <latency>ms }
+```
+
+## Network manager
+
+< Ubuntu 18
+
+```bash
+apt show ifupdown
+
+# Config
+/etc/network/interfaces
+```
+
+Ubuntu 18, 20
+
+```bash
+apt show netplan.io
+
+# Config
+/etc/netplan/
+```
+
+> `netplan` use `systemd-networkd` by default
+
+RHEL
+
+```bash
+yum info NetworkManager
+
+nmcli
+
+nmtui
+
+# Config
+/etc/sysconfig/network-scripts/
 ```
