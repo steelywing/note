@@ -4,6 +4,7 @@
 - [Basic](#basic)
 - [EXEC / Config Mode](#exec--config-mode)
 - [Save / Reset](#save--reset)
+- [Reset password](#reset-password)
 - [Log](#log)
 - [Diagnostic](#diagnostic)
   - [CDP (Cisco Discovery Protocol)](#cdp-cisco-discovery-protocol)
@@ -142,6 +143,51 @@ Switch# write erase
 - Delete VLAN config
 ```
 Switch# delete flash:/vlan.dat
+```
+
+## Reset password
+
+- Serial setting
+  - 9600 baud rate
+  - No parity
+  - 8 data bits
+  - 1 stop bit
+  - No flow control 
+- Send **Break** key in 15 seconds while reboot
+
+USB to Serial (RS232) cable may be not working
+
+> [Reference](https://www.cisco.com/c/en/us/support/docs/routers/10000-series-routers/12818-61.html)
+
+- Serial setting
+  - 1200 baud rate
+  - No parity
+  - 8 data bits
+  - 1 stop bit
+  - No flow control 
+- Repeatedly press **Space** for 10~15 seconds while reboot
+- Change serial setting
+  - 9600 baud rate
+  - No parity
+  - 8 data bits
+  - 1 stop bit
+  - No flow control 
+
+For Switch
+
+```
+switch: flash_init
+switch: load_helper
+switch: dir flash:
+switch: rename flash:config.text flash:config.old
+switch: boot
+```
+
+```ios
+Switch# rename flash:config.old flash:config.text
+Switch# copy flash:config.text system:running-config
+Switch# conf t
+Switch(config)# enable password <password>
 ```
 
 ## Log
@@ -837,7 +883,7 @@ Show interface status
 Switch# show interfaces status
 ```
 
-Show interface queue, drop, traffic rate
+Show interface queue, drop, traffic rate (usage)
 
 ```
 Switch# show interfaces summary
@@ -1042,10 +1088,10 @@ Switch(config)# sdm prefer ?
 
 ![Flow](img/VACL.svg)
 
-VACL default (if no match and at least has 1 ACL) is `drop`
+By default VACL `drop` (if no match and at least has 1 ACL)
 
-```
-Switch(config)# vlan access-map <access-map name> <sequence number>
+```cisco
+Switch(config)# vlan access-map <access-map name> [<sequence number>]
 Switch(config-access-map)# action { forward | drop }
 Switch(config-access-map)# match ip address <IP ACL>
 Switch(config-access-map)# match mac address <MAC ACL>
