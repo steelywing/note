@@ -52,24 +52,19 @@ Number.prototype.prefix = function (precision, base) {
   }
 
   if (typeof base === 'undefined') {
-    base = 1024;
+    base = 1000;
   }
 
-  if (this < 0) {
-    return '-' + Math.abs(this).prefix(precision);
+  if (this == 0 || !isFinite(this)) {
+    return this.toFixed(precision) + units[0];
   }
 
-  if (this < base || !Number.isFinite(this)) {
-    return this + units[0];
-  }
-
-  var power = Math.min(
-    Math.floor(Math.log(this) / Math.log(base)),
-    units.length - 1
-  );
+  var power = Math.floor(Math.log(Math.abs(this)) / Math.log(base));
+  // Make sure not larger than max prefix
+  power = Math.min(power, units.length - 1);
 
   return (this / Math.pow(base, power)).toFixed(precision) + units[power];
-}
+};
 ```
 
 ## Performance / Benchmark
@@ -79,4 +74,53 @@ function benchmark(run) {
   run();
   return performance.now() - start;
 }
+```
+
+## Promise
+
+Executor
+
+> [Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise)
+
+```js
+var executor = (resolve, reject) => {
+    // ...
+};
+var promise = new Promise(executor);
+```
+
+- `executor` will be executed when `Promise` create
+  - > [Reference](https://tc39.es/ecma262/#sec-promise-executor)
+- `resolve` and `reject` are callback function
+- If call `resolve(value)`, `promise` will be fulfilled
+- If call `reject(value)`, `promise` will be rejected
+- `executor` doesn't need to return value
+
+Handler function
+- `resolve(value)`
+- `reject(value)`
+
+> [Return value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then#return_value)
+
+- If `value` is not a `Promise`, the promise return `value`.
+- If value is a `Promise`, it will be settled, and return the promise `value`
+- If `reject()` is called, or value is reject, the promise will be rejected.
+- If call `resolve(Promise.reject(value))`, the promise will be rejected.
+- If call `reject(Promise.resolve(value))`, the promise will be rejected. 
+
+```js
+function onFulfilled(value) {
+    // ...
+}
+
+function onRejected(value) {
+    // ...
+}
+
+var promise = new Promise(
+  (resolve, reject) => {
+    // ...
+  }
+);
+promise.then(onFulfilled, onRejected);
 ```
