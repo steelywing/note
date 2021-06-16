@@ -480,43 +480,38 @@ setenforce { Enforcing | Permissive | 1 | 0 }
 
 ## Service
 
+For [`systemd` (Ubuntu 16, Red Hat 7)](systemd.md)
+
+For System V
+
 ### Add / Delete service
 ```bash
-# System V (Red Hat <= 6)
+# Red Hat
 chkconfig { --add | --del } <service>
 ```
 
 ### Enable / Disable service auto start
 
 ```bash
-# System V (Ubuntu <= 14)
+# Ubuntu <= 14
 update-rc.d <service> { enable | disable }
 
-# System V (Red Hat <= 6)
+# Red Hat <= 6
 chkconfig <service> { on | off }
-
-# systemd (Ubuntu 16, Red Hat 7)
-systemctl { enable | disable } <service>
 ```
 
 ### Start / Stop service
 
 ```bash
-# System V (Ubuntu <= 14 and Red Hat <= 6)
+# Ubuntu <= 14 and Red Hat <= 6
 service <service> { start | stop }
-
-# systemd (Ubuntu 16, Red Hat 7)
-systemctl { start | stop } <service>
 ```
 
 ### Show service status
 
 ```bash
-# System V (Ubuntu <= 14 and Red Hat <= 6)
+# Ubuntu <= 14 and Red Hat <= 6
 service <service> status
-
-# systemd (Ubuntu 16, Red Hat 7)
-systemctl status <service>
 ```
 
 ## Manual / Help
