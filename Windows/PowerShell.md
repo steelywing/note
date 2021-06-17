@@ -26,6 +26,11 @@
   - [Remove VLAN interface](#remove-vlan-interface)
 - [Get system directory](#get-system-directory)
   - [List Windows Features](#list-windows-features)
+- [Registry](#registry)
+  - [Key](#key)
+  - [Value](#value)
+- [Clear MRU (Most Recently Used)](#clear-mru-most-recently-used)
+- [Get route for IP address](#get-route-for-ip-address)
 
 ## Help
 
@@ -42,6 +47,8 @@ Get command info
 ```powershell
 Get-Command <command>
 ```
+
+> Alias: `gcm`
 
 PowerShell version
 
@@ -65,19 +72,19 @@ Get-Alias [[-Name] <alias> | -Definition <cmdlet>]
 
 Get the properties and methods of objects
 
-Alias: `gm`
-
 ```powershell
 <cmdlet> | Get-Member
 ```
 
-Select property
+> Alias: `gm`
 
-Alias: `select`
+Select property
 
 ```powershell
 <command> | Select-Object [[-Property] <property[]>]
 ```
+
+> Alias: `select`
 
 Expand property
 
@@ -104,7 +111,7 @@ Create property
 1, 2, 3, 4, 5, 6 | ? { $_ % 2 -eq 0 }
 # 2 4 6
 ```
-Alias: `?`
+> Alias: `?`
 
 ## Network profile
 
@@ -220,7 +227,7 @@ Invoke-Command [[-ComputerName] <host[]>]
 
 ## Execution policies
 
-[Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)
+> [Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)
 
 ```powershell
 Get-ExecutionPolicy
@@ -235,11 +242,15 @@ Unblock-File <path>
 
 ## History
 
-Alias: `history`
-
 ```powershell
 Get-History
 ```
+
+> Alias: `history`
+
+Search history
+
+<kbd>Ctrl + R</kbd>
 
 Get all session history
 
@@ -249,7 +260,7 @@ Get-Content (Get-PSReadlineOption).HistorySavePath
 
 ## Hash table
 
-[Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_hash_tables)
+> [Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_hash_tables)
 
 ```powershell
 $hash = @{
@@ -285,7 +296,7 @@ $hash.Remove(<key>)
 
 ## Array
 
-[Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_arrays)
+> [Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_arrays)
 
 ```powershell
 $array = <value>, <value>[, ...]
@@ -432,4 +443,71 @@ Remove-VMNetworkAdapter -ManagementOS -Name "<name>"
 
 ```powershell
 Get-WindowsOptionalFeature -Online
+```
+
+## Registry
+
+```powershell
+cd Registry::
+cd HKCU:
+cd HKLM:
+```
+
+### Key
+
+> [Reference](https://docs.microsoft.com/en-us/powershell/scripting/samples/working-with-registry-keys?view=powershell-7)
+
+List keys
+
+```powershell
+ls [<key path>]
+```
+
+Create key
+
+```powershell
+ni <key path>
+```
+
+Delete key
+
+```powershell
+ri <key path>
+```
+
+### Value
+
+> [Reference](https://docs.microsoft.com/en-us/powershell/scripting/samples/working-with-registry-entries?view=powershell-7)
+
+Get values
+
+```powershell
+gp <key path> [-Name <name>]
+```
+
+Set value
+
+```powershell
+sp <key path>
+  -Name <name>
+  -Value <value>
+  [-Type { Binary | DWord | QWord | ExpandString | MultiString | String }]
+```
+
+Remove value
+
+```powershell
+rp <key path> -Name <name>
+```
+
+## Clear MRU (Most Recently Used)
+
+```powershell
+sp "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU\" -Name MRUList -Type String -Value ""
+```
+
+## Get route for IP address
+
+```powershell
+Find-NetRoute -RemoteIPAddress <IP address>
 ```
