@@ -1,2 +1,0 @@
-- [JavaScript](./)
-- [Module](Module.md)
