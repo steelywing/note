@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html style="" class="applicationcache geolocation history postmessage svg websockets localstorage sessionstorage no-websqldatabase webworkers hashchange pointerevents canvas audio canvastext video webgl cssgradients multiplebgs opacity rgba inlinesvg hsla supports svgclippaths smil no-touchevents fontface generatedcontent textshadow cssanimations backgroundsize borderimage borderradius boxshadow csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth no-csscolumns-breakbefore no-csscolumns-breakafter no-csscolumns-breakinside flexbox flexboxlegacy no-cssreflections csstransforms csstransforms3d csstransitions indexeddb indexeddb-deletedatabase js ibm-v18 ibm-cxtype-na hires win firefox firefox8 gecko gecko8 ibm-grid-xlarge ibm-background-white-core" lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+
+<meta name="dcterms.rights" content="© Copyright IBM Corporation 2021">
+
+
+
+<meta name="description" content="When you receive the certificate for another entity, you might need to use a certificate chain to obtain the root CA certificate.">
+<meta name="keywords" content="sy10600_, digital certificate, certificate chain, certificate, chain, certification path">
+<meta name="geo.country" content="ZZ">
+<script type="text/javascript" src="How%20certificate%20chains%20work_files/ruxitagentjs_ICA2SVdfgjqru_10211210226114004.js" data-dtconfig="app=e9316d006ad9dbaf|rcdec=1209600000|featureHash=ICA2SVdfgjqru|vcv=2|rdnt=1|uxrgce=1|srcss=1|bp=2|srmcrv=10|cuc=im172lcx|mel=100000|dpvc=1|lastModification=1615415102247|dtVersion=10211210226114004|srmcrl=1|tp=500,50,0,1|uxdcw=1500|vs=2|agentUri=/support/knowledgecenter/ruxitagentjs_ICA2SVdfgjqru_10211210226114004.js|reportUrl=/support/rb_bf33897nam|rid=RID_1337280429|rpid=1094799899|domain=ibm.com"></script><script>
+    digitalData = {
+      page: {
+        pageInfo: {
+  language: "en-us",
+publisher: "IBM",
+
+  version: "v18",
+  ibm: {
+  country: "ZZ",
+  type: "CT701"
+  
+         }
+       }
+     }
+   };
+  </script><!-- Licensed Materials - Property of IBM -->
+<!-- US Government Users Restricted Rights -->
+<!-- Use, duplication or disclosure restricted by -->
+<!-- GSA ADP Schedule Contract with IBM Corp. -->
+
+<link rel="Start" href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009820_.html">
+<title>How certificate chains work</title>
+<script type="text/javascript">
+window.digitalData = {page: {pageInfo: {ibm: {config: {coremodules: {enabled: false}, survey: {global_percent: 0}}}}}};
+window.kcTranslations = {'content.copy': '複製碼', 'content.playpausegif': '播放或暫停動畫影像 $IMGNAME$'};
+</script>
+
+
+<link type="text/css" href="How%20certificate%20chains%20work_files/www.css" rel="stylesheet">
+<link type="text/css" href="How%20certificate%20chains%20work_files/tables.css" rel="stylesheet">
+<link type="text/css" href="How%20certificate%20chains%20work_files/grid-fluid.css" rel="stylesheet">
+<link type="text/css" href="How%20certificate%20chains%20work_files/content_northstar_styles.css" rel="stylesheet">
+<script type="text/javascript" charset="utf-8" src="How%20certificate%20chains%20work_files/www.js"></script><style></style>
+<script type="text/javascript" charset="utf-8" src="How%20certificate%20chains%20work_files/tables.js"></script>
+<script type="text/javascript" charset="utf-8" src="How%20certificate%20chains%20work_files/dyntabs.js"></script>
+<script type="text/javascript" charset="utf-8" src="How%20certificate%20chains%20work_files/libgif.js"></script><script type="text/javascript" charset="utf-8" src="How%20certificate%20chains%20work_files/content_northstar_main.js"></script>
+</head>
+<body id="q009880_" class="ibm-type ibm-background-white-core"><header><div class="runningheader">
+
+<b><i>February 2021: We have made a minor change to this URL (.htm to .html), please update your bookmarks.</i></b>
+<hr align="left">
+<br><br>
+</div></header><div id="ibm-top"><div id="ibm-content-wrapper"><main role="main" aria-label=""><article role="article" aria-labelledby="d242828e10">
+<h1 class="topictitle1 ibm-h2" id="d242828e10">How certificate chains work</h1>
+
+
+
+
+<div class="body conbody"><p class="shortdesc">When you receive the certificate for another entity, you might need to use a <dfn class="term">certificate chain</dfn> to obtain the <dfn class="term">root CA</dfn> certificate.
+</p>
+
+<p>The certificate chain, also known as the <dfn class="term">certification path</dfn>,
+ is a list of certificates used to authenticate an entity. The chain, or
+ path, begins with the certificate of that entity, and each certificate 
+in the chain is signed by the entity identified by the next certificate 
+in the chain. The chain terminates with a root CA certificate. The root 
+CA certificate is always signed by the certificate authority (CA) 
+itself. The signatures of all certificates in the chain must be verified
+ until the root CA certificate is reached.
+</p>
+
+<p><a href="#q009880___q009880_1">Figure 1</a> illustrates a certification path from the certificate owner to the root CA, where the chain of trust begins.
+</p>
+
+<figure class="fignone" id="q009880___q009880_1"><figcaption>Figure 1. Chain of trust</figcaption>
+
+<div class="image"><img src="How%20certificate%20chains%20work_files/q009880a.gif" alt="This diagram shows the signature on a user certificate verified with a CA certificate that is itself verified with the root CA certificate. The certificates are on a certification path." class="ibm-downsize"></div>
+</figure>
+
+<p>Each certificate can contain one or more extensions. A certificate 
+belonging to a CA typically contains a BasicConstraints extension with 
+the isCA flag set to indicate that it is allowed to sign other 
+certificates.
+</p>
+
+</div>
+
+<aside role="complementary" aria-labelledby="d242828e10"><nav role="navigation" class="ibm-padding-top-1 ibm-padding-bottom-2" style="overflow: auto;">
+<div class="familylinks ibm-col-1-1 margin-bottom-1" style="list-style: outside none none; width: 100%;">
+<div class="parentlink"><strong>Parent topic:</strong> <div class="ibm-ind-link"><a data-hd-product="SSFKSJ_9.0.0" href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009820_.html" class="ibm-forward-link tipso_style ibm-widget-processed" data-widget="tooltip">Digital certificates</a></div></div>
+</div>
+</nav></aside></article></main></div></div><footer><p>Last updated: 2021-02-09</p></footer><script type="text/javascript">var _cf = _cf || []; _cf.push(['_setFsp', true]);  _cf.push(['_setBm', true]);  _cf.push(['_setAu', '/webcontent/a4765eaaui232f2a975b3add504bc8']); </script><script type="text/javascript" src="How%20certificate%20chains%20work_files/a4765eaaui232f2a975b3add504bc8.js"></script><div id="ibm-overlay-backdrop"></div></body></html>
