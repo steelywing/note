@@ -1,0 +1,12 @@
+{
+  "name": "sitemap",
+  "version": "1.0.0",
+  "main": "sitemap.js",
+  "author": "Steely Wing <steely.wing@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "glob": "^7.1.6",
+    "markdown-it": "^11.0.0",
+    "sitemap": "^6.1.7"
+  }
+}

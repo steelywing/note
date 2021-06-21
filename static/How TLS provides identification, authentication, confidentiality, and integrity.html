@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html style="" class="applicationcache geolocation history postmessage svg websockets localstorage sessionstorage no-websqldatabase webworkers hashchange pointerevents canvas audio canvastext video webgl cssgradients multiplebgs opacity rgba inlinesvg hsla supports svgclippaths smil no-touchevents fontface generatedcontent textshadow cssanimations backgroundsize borderimage borderradius boxshadow csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth no-csscolumns-breakbefore no-csscolumns-breakafter no-csscolumns-breakinside flexbox flexboxlegacy no-cssreflections csstransforms csstransforms3d csstransitions indexeddb indexeddb-deletedatabase js ibm-v18 ibm-cxtype-na hires win firefox firefox8 gecko gecko8 ibm-grid-xlarge ibm-background-white-core" lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+
+<meta name="dcterms.rights" content="© Copyright IBM Corporation 2021">
+
+
+
+<meta name="description" content="During both client and server authentication there is a step that requires data to be encrypted with one of the keys in an asymmetric key pair and decrypted with the other key of the pair. A message digest is used to provide integrity.">
+<meta name="keywords" content="sy10670_, authentication, TLS, digital certificate, TLS authentication, impersonation, confidentiality, privacy, encryption, TLS confidentiality, data integrity, digital signature, TLS integrity">
+<meta name="geo.country" content="ZZ">
+<script type="text/javascript" src="How%20TLS%20provides%20identification,%20authentication,%20confidentiality,%20and%20integrity_files/ruxitagentjs_ICA2SVdfgjqru_10211210226114004.js" data-dtconfig="app=e9316d006ad9dbaf|rcdec=1209600000|featureHash=ICA2SVdfgjqru|vcv=2|rdnt=1|uxrgce=1|srcss=1|bp=2|srmcrv=10|cuc=im172lcx|mel=100000|dpvc=1|lastModification=1615415102247|dtVersion=10211210226114004|srmcrl=1|tp=500,50,0,1|uxdcw=1500|vs=2|agentUri=/support/knowledgecenter/ruxitagentjs_ICA2SVdfgjqru_10211210226114004.js|reportUrl=/support/rb_bf33897nam|rid=RID_-219349816|rpid=-1960798578|domain=ibm.com"></script><script>
+    digitalData = {
+      page: {
+        pageInfo: {
+  language: "en-us",
+publisher: "IBM",
+
+  version: "v18",
+  ibm: {
+  country: "ZZ",
+  type: "CT701"
+  
+         }
+       }
+     }
+   };
+  </script><!-- Licensed Materials - Property of IBM -->
+<!-- US Government Users Restricted Rights -->
+<!-- Use, duplication or disclosure restricted by -->
+<!-- GSA ADP Schedule Contract with IBM Corp. -->
+
+<link rel="Start" href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009910_.html">
+<title>How TLS provides identification, authentication, confidentiality, and integrity</title>
+<script type="text/javascript">
+window.digitalData = {page: {pageInfo: {ibm: {config: {coremodules: {enabled: false}, survey: {global_percent: 0}}}}}};
+window.kcTranslations = {'content.copy': '複製碼', 'content.playpausegif': '播放或暫停動畫影像 $IMGNAME$'};
+</script>
+
+
+<link type="text/css" href="How%20TLS%20provides%20identification,%20authentication,%20confidentiality,%20and%20integrity_files/www.css" rel="stylesheet">
+<link type="text/css" href="How%20TLS%20provides%20identification,%20authentication,%20confidentiality,%20and%20integrity_files/tables.css" rel="stylesheet">
+<link type="text/css" href="How%20TLS%20provides%20identification,%20authentication,%20confidentiality,%20and%20integrity_files/grid-fluid.css" rel="stylesheet">
+<link type="text/css" href="How%20TLS%20provides%20identification,%20authentication,%20confidentiality,%20and%20integrity_files/content_northstar_styles.css" rel="stylesheet">
+<script type="text/javascript" charset="utf-8" src="How%20TLS%20provides%20identification,%20authentication,%20confidentiality,%20and%20integrity_files/www.js"></script><style></style>
+<script type="text/javascript" charset="utf-8" src="How%20TLS%20provides%20identification,%20authentication,%20confidentiality,%20and%20integrity_files/tables.js"></script>
+<script type="text/javascript" charset="utf-8" src="How%20TLS%20provides%20identification,%20authentication,%20confidentiality,%20and%20integrity_files/dyntabs.js"></script>
+<script type="text/javascript" charset="utf-8" src="How%20TLS%20provides%20identification,%20authentication,%20confidentiality,%20and%20integrity_files/libgif.js"></script><script type="text/javascript" charset="utf-8" src="How%20TLS%20provides%20identification,%20authentication,%20confidentiality,%20and%20integrity_files/content_northstar_main.js"></script>
+</head>
+<body id="q009940_" class="ibm-type ibm-background-white-core"><header><div class="runningheader">
+
+<b><i>February 2021: We have made a minor change to this URL (.htm to .html), please update your bookmarks.</i></b>
+<hr align="left">
+<br><br>
+</div></header><div id="ibm-top"><div id="ibm-content-wrapper"><main role="main" aria-label=""><article role="article" aria-labelledby="d134303e10">
+<h1 class="topictitle1 ibm-h2" id="d134303e10">How TLS provides identification, authentication, confidentiality, and integrity</h1>
+
+
+
+
+<div class="body conbody"><p class="shortdesc">During both client and 
+server authentication there is a step that requires data to be encrypted
+ with one of the keys in an asymmetric key pair and decrypted with the 
+other key of the pair. A message digest is used to provide integrity.
+</p>
+
+<section class="section" role="region" aria-labelledby="d134303e80"><h2 class="sectiontitle ibm-h3 ibm-padding-top-1" id="d134303e80">How TLS provides authentication</h2>
+
+<p>For server authentication, the client uses the server's public key to
+ encrypt the data that is used to compute the secret key. The server can
+ generate the secret key only if it can decrypt that data with the 
+correct private key.
+</p>
+
+<p>For client authentication, the server uses the public key in the 
+client certificate to decrypt the data the client sends during step <a href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009930_.html#q009930___q009930_1">5</a> of the handshake. The exchange of finished messages that are encrypted with the secret key (steps <a href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009930_.html#q009930___q009930_2">7</a> and <a href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009930_.html#q009930___q009930_3">8</a> in the overview) confirms that authentication is complete.
+</p>
+
+<p>If any of the authentication steps fail, the handshake fails and the session terminates.
+</p>
+
+<p>The exchange of digital certificates during the TLS handshake is part
+ of the authentication process. For more information about how 
+certificates provide protection against impersonation, refer to the 
+related information. The certificates required are as follows, where CA <code class="ph codeph">X</code> issues the certificate to the TLS client, and CA <code class="ph codeph">Y</code> issues the certificate to the TLS server:
+</p>
+
+<div class="p ibm-padding-bottom-1">For server authentication only, the TLS server needs:<ul class="ibm-colored-list ibm-textcolor-gray-80">
+<li>The personal certificate issued to the server by CA <code class="ph codeph">Y</code>
+</li>
+
+<li>The server's private key
+</li>
+
+</ul>
+
+and the TLS client needs:<ul class="ibm-colored-list ibm-textcolor-gray-80">
+<li>The CA certificate for CA <code class="ph codeph">Y</code>
+</li>
+
+</ul>
+
+</div>
+
+<div class="p ibm-padding-bottom-1">If the TLS server requires client 
+authentication, the server verifies the client's identity by verifying 
+the client's digital certificate with the public key for the CA that 
+issued the personal certificate to the client, in this case CA <code class="ph codeph">X</code>. For both server and client authentication, the server needs:<ul class="ibm-colored-list ibm-textcolor-gray-80">
+<li>The personal certificate issued to the server by CA <code class="ph codeph">Y</code>
+</li>
+
+<li>The server's private key
+</li>
+
+<li>The CA certificate for CA <code class="ph codeph">X</code>
+</li>
+
+</ul>
+
+and the client needs:<ul class="ibm-colored-list ibm-textcolor-gray-80">
+<li>The personal certificate issued to the client by CA <code class="ph codeph">X</code>
+</li>
+
+<li>The client's private key
+</li>
+
+<li>The CA certificate for CA <code class="ph codeph">Y</code>
+</li>
+
+</ul>
+
+</div>
+
+<p>Both the TLS server and client might need other CA certificates to 
+form a certificate chain to the root CA certificate. For more 
+information about certificate chains, refer to the related information.
+</p>
+
+</section>
+
+<section class="section" role="region" aria-labelledby="d134303e186"><h2 class="sectiontitle ibm-h3 ibm-padding-top-1" id="d134303e186">What happens during certificate verification</h2>
+
+<div class="p ibm-padding-bottom-1">As noted in steps <a href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009930_.html#q009930___q009930_4">3</a> and <a href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009930_.html#q009930___q009930_5">6</a>
+ of the overview, the TLS client verifies the server's certificate, and 
+the TLS server verifies the client's certificate. There are four aspects
+ to this verification:<ol class="ibm-colored-list ibm-textcolor-gray-80">
+<li>The digital signature is checked (see <a href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009960_.html" data-widget="tooltip" class="tipso_style ibm-widget-processed">Digital signatures in SSL/TLS</a> ).
+</li>
+
+<li>The certificate chain is checked; you should have intermediate CA certificates (see <a href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009880_.html" data-widget="tooltip" class="tipso_style ibm-widget-processed">How certificate chains work</a> ).
+</li>
+
+<li>The expiry and activation dates and the validity period are checked.
+</li>
+
+<li>The revocation status of the certificate is checked (see <a href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q013350_.html" data-widget="tooltip" class="tipso_style ibm-widget-processed">Working with revoked certificates</a> ).
+</li>
+
+</ol>
+
+</div>
+
+</section>
+
+<section class="section" role="region" aria-labelledby="d134303e245"><h2 class="sectiontitle ibm-h3 ibm-padding-top-1" id="d134303e245">Secret key reset</h2>
+
+<p>During a TLS handshake a <dfn class="term">secret key</dfn> is 
+generated to encrypt data between the TLS client and server. The secret 
+key is used in a mathematical formula that is applied to the data to 
+transform plaintext into unreadable ciphertext, and ciphertext into 
+plaintext.
+</p>
+
+<p>The secret key is generated from the random text sent as part of the 
+handshake and is used to encrypt plaintext into ciphertext. The secret 
+key is also used in the MAC (Message Authentication Code) algorithm, 
+which is used to determine whether a message has been altered. See <a href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009810_.html" data-widget="tooltip" class="tipso_style ibm-widget-processed">Message digests and digital signatures</a> for more information.
+</p>
+
+<p>If the secret key is discovered, the plaintext of a message could be 
+deciphered from the ciphertext, or the message digest could be 
+calculated, allowing messages to be altered without detection. Even for a
+ complex algorithm, the plaintext can eventually be discovered by 
+applying every possible mathematical transformation to the ciphertext. 
+To minimize the amount of data that can be deciphered or altered if the 
+secret key is broken, the secret key can be renegotiated periodically. 
+When the secret key has been renegotiated, the previous secret key can 
+no longer be used to decrypt data encrypted with the new secret key.
+</p>
+
+</section>
+
+<section class="section" role="region" aria-labelledby="d134303e270"><h2 class="sectiontitle ibm-h3 ibm-padding-top-1" id="d134303e270">How TLS provides confidentiality</h2>
+
+<p>TLS uses a combination of symmetric and asymmetric encryption to 
+ensure message privacy. During the TLS handshake, the TLS client and 
+server agree an encryption algorithm and a shared secret key to be used 
+for one session only. All messages transmitted between the TLS client 
+and server are encrypted using that algorithm and key, ensuring that the
+ message remains private even if it is intercepted. Because TLS uses 
+asymmetric encryption when transporting the shared secret key, there is 
+no key distribution problem. For more information about encryption 
+techniques, refer to <a href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009800_.html" data-widget="tooltip" class="tipso_style ibm-widget-processed">Cryptography</a>.
+</p>
+
+</section>
+
+<section class="section" role="region" aria-labelledby="d134303e292"><h2 class="sectiontitle ibm-h3 ibm-padding-top-1" id="d134303e292">How TLS provides integrity</h2>
+
+<p>TLS provides data integrity by calculating a message digest. For more information, refer to <a href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q014330_.html" data-widget="tooltip" class="tipso_style ibm-widget-processed">Data integrity of messages</a>.
+</p>
+
+<p>Use of TLS does ensure data integrity, provided that the CipherSpec 
+in your channel definition uses a hash algorithm as described in the 
+table in <a href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q014260_.html" data-widget="tooltip" class="tipso_style ibm-widget-processed">Enabling CipherSpecs</a>.
+</p>
+
+<p>In particular, if data integrity is a concern, you should avoid 
+choosing a CipherSpec whose hash algorithm is listed as "None". Use of 
+MD5 is also strongly discouraged as this is now very old and no longer 
+secure for most practical purposes.
+</p>
+
+</section>
+
+</div>
+
+<aside role="complementary" aria-labelledby="d134303e10"><nav role="navigation" class="ibm-padding-top-1 ibm-padding-bottom-2" style="overflow: auto;">
+<div class="familylinks ibm-col-1-1 margin-bottom-1" style="list-style: outside none none; width: 100%;">
+<div class="parentlink"><strong>Parent topic:</strong> <div class="ibm-ind-link"><a data-hd-product="SSFKSJ_9.0.0" href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009910_.html" class="ibm-forward-link tipso_style ibm-widget-processed" data-widget="tooltip">Cryptographic security protocols: TLS</a></div></div>
+</div>
+</nav></aside></article></main></div></div><footer><p>Last updated: 2021-02-09</p></footer><script type="text/javascript">var _cf = _cf || []; _cf.push(['_setFsp', true]);  _cf.push(['_setBm', true]);  _cf.push(['_setAu', '/webcontent/a4765eaaui232f2a975b3add504bc8']); </script><script type="text/javascript" src="How%20TLS%20provides%20identification,%20authentication,%20confidentiality,%20and%20integrity_files/a4765eaaui232f2a975b3add504bc8.js"></script><div id="ibm-overlay-backdrop"></div></body></html>

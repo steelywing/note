@@ -1,2 +1,0 @@
-- [iLO](iLO.md)
-- [ssacli](ssacli.md)

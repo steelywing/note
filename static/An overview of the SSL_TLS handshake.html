@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html style="" class="applicationcache geolocation history postmessage svg websockets localstorage sessionstorage no-websqldatabase webworkers hashchange pointerevents canvas audio canvastext video webgl cssgradients multiplebgs opacity rgba inlinesvg hsla supports svgclippaths smil no-touchevents fontface generatedcontent textshadow cssanimations backgroundsize borderimage borderradius boxshadow csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth no-csscolumns-breakbefore no-csscolumns-breakafter no-csscolumns-breakinside flexbox flexboxlegacy no-cssreflections csstransforms csstransforms3d csstransitions indexeddb indexeddb-deletedatabase js ibm-v18 ibm-cxtype-na hires win firefox firefox8 gecko gecko8 ibm-grid-xlarge ibm-background-white-core" lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+
+<meta name="dcterms.rights" content="© Copyright IBM Corporation 2021">
+
+
+
+<meta name="description" content="The SSL/TLS handshake enables the TLS client and server to establish the secret keys with which they communicate.">
+<meta name="keywords" content="sy10660_, TLS, handshake, handshake, TLS">
+<meta name="geo.country" content="ZZ">
+<script type="text/javascript" src="An%20overview%20of%20the%20SSL_TLS%20handshake_files/ruxitagentjs_ICA2SVdfgjqru_10209210209190405.js" data-dtconfig="app=e9316d006ad9dbaf|rcdec=1209600000|featureHash=ICA2SVdfgjqru|vcv=2|rdnt=1|uxrgce=1|srcss=1|bp=2|srmcrv=10|cuc=im172lcx|mel=100000|dpvc=1|lastModification=1615059110934|dtVersion=10209210209190405|srmcrl=1|tp=500,50,0,1|uxdcw=1500|vs=2|agentUri=/support/knowledgecenter/ruxitagentjs_ICA2SVdfgjqru_10209210209190405.js|reportUrl=/support/rb_bf33897nam|rid=RID_1588104647|rpid=1123320332|domain=ibm.com"></script><script>
+    digitalData = {
+      page: {
+        pageInfo: {
+  language: "en-us",
+publisher: "IBM",
+
+  version: "v18",
+  ibm: {
+  country: "ZZ",
+  type: "CT701"
+  
+         }
+       }
+     }
+   };
+  </script><!-- Licensed Materials - Property of IBM -->
+<!-- US Government Users Restricted Rights -->
+<!-- Use, duplication or disclosure restricted by -->
+<!-- GSA ADP Schedule Contract with IBM Corp. -->
+
+<link rel="Start" href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009910_.html">
+<title>An overview of the SSL/TLS handshake</title>
+<script type="text/javascript">
+window.digitalData = {page: {pageInfo: {ibm: {config: {coremodules: {enabled: false}, survey: {global_percent: 0}}}}}};
+window.kcTranslations = {'content.copy': 'Copy code', 'content.playpausegif': 'Play or pause animated image $IMGNAME$'};
+</script>
+
+
+<link type="text/css" href="An%20overview%20of%20the%20SSL_TLS%20handshake_files/www.css" rel="stylesheet">
+<link type="text/css" href="An%20overview%20of%20the%20SSL_TLS%20handshake_files/tables.css" rel="stylesheet">
+<link type="text/css" href="An%20overview%20of%20the%20SSL_TLS%20handshake_files/grid-fluid.css" rel="stylesheet">
+<link type="text/css" href="An%20overview%20of%20the%20SSL_TLS%20handshake_files/content_northstar_styles.css" rel="stylesheet">
+<script type="text/javascript" charset="utf-8" src="An%20overview%20of%20the%20SSL_TLS%20handshake_files/www.js"></script><style></style>
+<script type="text/javascript" charset="utf-8" src="An%20overview%20of%20the%20SSL_TLS%20handshake_files/tables.js"></script>
+<script type="text/javascript" charset="utf-8" src="An%20overview%20of%20the%20SSL_TLS%20handshake_files/dyntabs.js"></script>
+<script type="text/javascript" charset="utf-8" src="An%20overview%20of%20the%20SSL_TLS%20handshake_files/libgif.js"></script><script type="text/javascript" charset="utf-8" src="An%20overview%20of%20the%20SSL_TLS%20handshake_files/content_northstar_main.js"></script>
+</head>
+<body id="q009930_" class="ibm-type ibm-background-white-core"><header><div class="runningheader">
+
+<b><i>February 2021: We have made a minor change to this URL (.htm to .html), please update your bookmarks.</i></b>
+<hr align="left">
+<br><br>
+</div></header><div id="ibm-top"><div id="ibm-content-wrapper"><main role="main" aria-label=""><article role="article" aria-labelledby="d191826e10">
+<h1 class="topictitle1 ibm-h2" id="d191826e10">An overview of the SSL/TLS handshake</h1>
+
+
+
+<div class="body conbody"><p class="shortdesc">The SSL/TLS handshake enables the TLS client and server to establish the secret keys with
+which they communicate. </p>
+
+<p>This section provides a summary of the steps that enable the TLS client and server to communicate
+with each other: </p>
+
+<ul class="ibm-colored-list ibm-textcolor-gray-80">
+<li>Agree on the version of the protocol to use.
+</li>
+
+<li>Select cryptographic algorithms.
+</li>
+
+<li>Authenticate each other by exchanging and validating digital certificates.
+</li>
+
+<li>Use asymmetric encryption techniques to generate a shared secret key, which avoids the key
+distribution problem. TLS then uses the shared key for the symmetric encryption of messages, which
+is faster than asymmetric encryption. </li>
+
+</ul>
+
+<p>For more information about cryptographic algorithms and digital certificates, refer to the related information.
+</p>
+
+<div class="p ibm-padding-bottom-1">This section does not attempt to provide full details of the messages exchanged during the TLS
+handshake. In overview, the steps involved in the TLS handshake are as follows:<ol class="ibm-colored-list ibm-textcolor-gray-80">
+<li>The TLS client sends a <q class="q">client hello</q> message that lists cryptographic information such as
+the TLS version and, in the client's order of preference, the CipherSuites supported by the client.
+The message also contains a random byte string that is used in subsequent computations. The protocol
+allows for the <q class="q">client hello</q> to include the data compression methods supported by the client. </li>
+
+<li>The TLS server responds with a <q class="q">server hello</q> message that contains the CipherSuite chosen
+by the server from the list provided by the client, the session ID, and another random byte string.
+The server also sends its digital certificate. If the server requires a digital certificate for
+client authentication, the server sends a <q class="q">client certificate request</q> that includes a list of
+the types of certificates supported and the Distinguished Names of acceptable Certification
+Authorities (CAs). </li>
+
+<li id="q009930___q009930_4">The TLS client verifies the server's digital certificate. For more information,
+see <a href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009940_.html" data-widget="tooltip" class="tipso_style ibm-widget-processed">How TLS provides identification, authentication, confidentiality, and integrity</a>. </li>
+
+<li>The TLS client sends the random byte string that enables both the client and the server to
+compute the secret key to be used for encrypting subsequent message data. The random byte string
+itself is encrypted with the server's public key. </li>
+
+<li id="q009930___q009930_1">If the TLS server sent a <q class="q">client certificate request</q>, the client sends a
+random byte string encrypted with the client's private key, together with the client's digital
+certificate, or a <q class="q">no digital certificate alert</q>. This alert is only a warning, but with some
+implementations the handshake fails if client authentication is mandatory. </li>
+
+<li id="q009930___q009930_5">The TLS server verifies the client's certificate. For more information, see <a href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009940_.html" data-widget="tooltip" class="tipso_style ibm-widget-processed">How TLS provides identification, authentication, confidentiality, and integrity</a>. </li>
+
+<li id="q009930___q009930_2">The TLS client sends the server a <q class="q">finished</q> message, which is encrypted
+with the secret key, indicating that the client part of the handshake is complete. </li>
+
+<li id="q009930___q009930_3">The TLS server sends the client a <q class="q">finished</q> message, which is encrypted
+with the secret key, indicating that the server part of the handshake is complete. </li>
+
+<li>For the duration of the TLS session, the server and client can now exchange messages that are
+symmetrically encrypted with the shared secret key. </li>
+
+</ol>
+
+<a href="#q009930___q009930_6">Figure 1</a> illustrates the TLS handshake. </div>
+
+<figure class="fignone" id="q009930___q009930_6"><figcaption>Figure 1. Overview of the TLS handshake</figcaption>
+
+<div class="image"><img src="An%20overview%20of%20the%20SSL_TLS%20handshake_files/q009930a.gif" alt="This diagram illustrates the TLS handshake as described in the text preceding the diagram." class="ibm-downsize"></div>
+</figure>
+
+</div>
+
+<aside role="complementary" aria-labelledby="d191826e10"><nav role="navigation" class="ibm-padding-top-1 ibm-padding-bottom-2" style="overflow: auto;">
+<div class="familylinks ibm-col-1-1 margin-bottom-1" style="list-style: outside none none; width: 100%;">
+<div class="parentlink"><strong>Parent topic:</strong> <div class="ibm-ind-link"><a data-hd-product="SSFKSJ_9.0.0" href="https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sec.doc/q009910_.html" class="ibm-forward-link tipso_style ibm-widget-processed" data-widget="tooltip">Cryptographic security protocols: TLS</a></div></div>
+</div>
+</nav></aside></article></main></div></div><footer><p>Last updated: 2021-02-09</p></footer><script type="text/javascript">var _cf = _cf || []; _cf.push(['_setFsp', true]);  _cf.push(['_setBm', true]);  _cf.push(['_setAu', '/webcontent/a4765eaaui232f2a975b3add504bc8']); </script><script type="text/javascript" src="An%20overview%20of%20the%20SSL_TLS%20handshake_files/a4765eaaui232f2a975b3add504bc8.js"></script><div id="ibm-overlay-backdrop"></div></body></html>
