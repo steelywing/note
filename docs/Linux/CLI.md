@@ -1277,7 +1277,7 @@ watch [-n <seconds>] <command>
 
 ### SSH tunnel (port forward)
 
-> [Link](./SSH%20Tunnel.md)
+> [Link](SSH-Tunnel.md)
 
 ### Copy SSH public key to remote host
 
