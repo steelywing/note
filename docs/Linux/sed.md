@@ -1,15 +1,17 @@
-# CLI
+# sed
+
+## CLI Option
+
+```bash
+sed [<option>] '<script>' <input file> <input file> ...
+```
 
 | Option | Description |
 | - | - |
 | `-i[<suffix>]` | Edit files in place (makes backup if `<suffix>` supplied) |
 | `-r` | Extended regular expressions |
 
-```bash
-sed [<option>] '<script>' <input file> <input file> ...
-```
-
-# Script
+## `<script>`
 
 ```sed
 [<address>] <command>
@@ -19,7 +21,7 @@ sed [<option>] '<script>' <input file> <input file> ...
 
 `pattern space` ≈ `current record`
 
-## Address
+### Address
 
 | Address | Description |
 | - | - |
@@ -30,7 +32,7 @@ sed [<option>] '<script>' <input file> <input file> ...
 | `/<RegExp>/` <br/><br/> `\<character><RegExp><character>` | RegExp |
 | `<address>!` | Not matching `<address>` |
 
-## Command
+### Command
 
 | Command | Description |
 | - | - |
@@ -44,7 +46,7 @@ sed [<option>] '<script>' <input file> <input file> ...
 | `q[<exit code>]` | Quit with `exit code` |
 | `{ <command>; <command>; ... }` | Group command |
 
-### RegExp flags
+#### RegExp flags
 
 | Flag | Description |
 | - | - |
@@ -54,7 +56,7 @@ sed [<option>] '<script>' <input file> <input file> ...
 | `i` | Case insensitive |
 | `m` | Multi-line mode |
 
-### RegExp capture group
+#### RegExp capture group
 
 | Expression | Description |
 | - | - |

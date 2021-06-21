@@ -1,3 +1,10 @@
+---
+id: index
+slug: .
+---
+
+# Network
+
 ## Routing
 
 ### Path selection

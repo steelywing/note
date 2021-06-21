@@ -17,12 +17,30 @@ module.exports = {
         src: 'img/logo.svg',
       },
       items: [
-        /*{
+        {
           type: 'doc',
-          docId: 'index',
+          docId: 'Note/index',
           position: 'left',
           label: 'Note',
-        },*/
+        },
+        {
+          type: 'doc',
+          docId: 'Linux/Bash',
+          position: 'left',
+          label: 'Linux',
+        },
+        {
+          type: 'doc',
+          docId: 'Network/index',
+          position: 'left',
+          label: 'Network',
+        },
+        {
+          type: 'doc',
+          docId: 'Programming/C-Sharp',
+          position: 'left',
+          label: 'Programming',
+        },
         {
           href: 'https://github.com/steelywing/note',
           label: 'GitHub',

@@ -1,75 +1,6 @@
-## Command
+# CLI
 
-### [sed](sed.md)
-
-### [awk](awk.md)
-
-### [iptables](iptables.md)
-
-### [User](User.md)
-
-### [Password](User.md#password)
-
-## Date
-
-Display date
-
-```bash
-date [-u|--utc]
-```
-
-Set date
-
-```bash
-timedatectl set-time [<YYYY>-<MM>-<DD>] [<HH>:<MM>:<SS>]
-```
-
-```bash
-date [-u|--utc] [MMDDhhmm[YYYY][.ss]]
-```
-
-```bash
-date -s "YYYY-MM-DD hh:mm:ss"
-```
-
-Display timezone
-
-```bash
-date "+%Z %z"
-```
-
-```bash
-cat /etc/timezone
-```
-
-Set timezone
-
-```bash
-tzselect
-```
-
-```bash
-timedatectl set-timezone <timezone>
-```
-
-RTC (Real-Time Clock) as the local time
-
-```bash
-timedatectl set-local-rtc { true | t | yes | y | 1 }
-```
-
-RTC (Real-Time Clock) as the UTC (Coordinated Universal Time)
-
-```bash
-timedatectl set-local-rtc { false | f | no | n | 0 }
-```
-
-Convert timestamp to date time
-
-```bash
-date -d @<timestamp>
-```
-
+Command Line Interface
 
 ## Shell
 
@@ -89,13 +20,13 @@ chsh -s <shell> [<user>]
 usermod -s <shell> <user>
 ```
 
-### Open file manager from CLI
+## Open file manager from CLI
 
 ```bash
 xdg-open <path>
 ```
 
-### Indicate command type
+## Indicate command type
 
 Type: `function`, `builtin`, or `file`
 
@@ -115,43 +46,6 @@ vi-preserve-time () {
 }
 ```
 
-
-## GRUB
-
-[Reference](https://help.ubuntu.com/community/Grub2)
-
-### Show GRUB when boot
-
-Hold `Shift` when boot
-
-### Update GRUB config
-
-Find all OS, update GRUB config, install GRUB to MBR / UEFI
-
-```bash
-update-grub
-```
-
-### GRUB auto-generate config file
-
-```
-/boot/grub/grub.cfg
-```
-
-### GRUB option file
-
-```
-/etc/default/grub
-```
-
-### Set GRUB default to last selected option
-
-```bash
-# /etc/default/grub
-GRUB_DEFAULT=saved
-GRUB_SAVEDEFAULT=true
-```
-
 ## Hardware
 
 | Command | Description |
@@ -162,37 +56,6 @@ GRUB_SAVEDEFAULT=true
 | `lspci -k` | List PCI devices and kernel driver |
 | `cat /proc/cpuinfo` | Show CPU info |
 | `cat /proc/meminfo` | Show CPU info |
-
-## Performance
-
-### Display memory info
-
-```bash
-free <options>
-```
-
-| Option | Description |
-| - | - |
-| `-h` | Human readable unit |
-
-### Display process info
-
-```bash
-# BSD syntax
-ps [aux]
-
-# Unix syntax
-ps [-ef]
-```
-
-| Option | Description |
-| - | - |
-| `-e\|-A` | Entire / All processes |
-| `-f` | Full format / Detail |
-
-```bash
-top
-```
 
 ## Kernel
 
@@ -218,7 +81,7 @@ uname -a
 
 ## Jobs
 
-[Reference](http://www.linuxnix.com/11-fc-bg-jobs-commands-know/)
+> [Reference](http://www.linuxnix.com/11-fc-bg-jobs-commands-know/)
 
 | Command | Description |
 | - | - |
@@ -290,7 +153,7 @@ rsync -av /src/ /dest/src
 
 ### ACL
 
-[Reference](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/acls-setting)
+> [Reference](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/acls-setting)
 
 ### File permission
 
@@ -328,7 +191,7 @@ chmod [-R] a=r+X,u+w <path>
 
 ### File attribute
 
-[Reference](http://man7.org/linux/man-pages/man1/chattr.1.html)
+> [Reference](http://man7.org/linux/man-pages/man1/chattr.1.html)
 
 | Attribute | Description |
 | - | - |
@@ -444,7 +307,7 @@ vi /etc/resolv.conf
 
 ### Disable sharing desktop encryption (Ubuntu)
 
-[Reference](https://askubuntu.com/a/487267/235264)
+> [Reference](https://askubuntu.com/a/487267/235264)
 
 ```bash
 dconf-editor
@@ -587,7 +450,7 @@ dd
     iflag=direct
 ```
 
-[drop_caches reference](https://www.kernel.org/doc/Documentation/sysctl/vm.txt)
+> [drop_caches reference](https://www.kernel.org/doc/Documentation/sysctl/vm.txt)
 
 ```bash
 # Synchronize cached writes to persistent storage
@@ -661,191 +524,6 @@ resize2fs [-M] <device> [<size>[<unit>]]
 | `M` | 1024² |
 | `G` | 1024³ |
 
-## LVM (Logical Volume Management)
-
-[Reference](https://www.digitalocean.com/community/tutorials/an-introduction-to-lvm-concepts-terminology-and-operations) / [Reference](https://www.digitalocean.com/community/tutorials/how-to-use-lvm-to-manage-storage-devices-on-ubuntu-16-04)
-
-Config file
-
-```bash
-/etc/lvm/lvm.conf
-```
-
-| Abbreviation | Name |
-| - | - |
-| PV | Physical Volume |
-| VG | Volume Group |
-| LV | Logical Volume |
-
-![LVM](img/LVM.png)
-
-Scan for all available devices for LVM
-
-```bash
-lvmdiskscan
-```
-
-```bash
-pvscan
-```
-
-Change partition type ID to LVM (Optional)
-
-```bash
-gdisk <device>
-
-Command (? for help): t
-Partition number (1-3): <partition>
-Hex code or GUID (L to show codes, Enter = 8300): 8e00
-Command (? for help): w
-```
-
-```bash
-fdisk <device>
-
-Command (m for help): t
-Partition type (type L to list all types): L
-Partition type (type L to list all types): <Linux LVM type ID>
-Command (m for help): w
-```
-
-### PV (Physical Volume)
-
-Create PV
-
-```bash
-# <device> = <disk> | <partition>
-pvcreate <device>[ ...]
-```
-
-Remove PV
-
-```bash
-pvmove <PV>
-vgreduce <VG> <PV>
-pvremove <PV>
-```
-
-Show PV information
-
-```bash
-pvs
-```
-
-```bash
-pvdisplay
-```
-
-### VG (Volume Group)
-
-Create VG
-
-```bash
-vgcreate <VG name> <PV> ...
-```
-
-Add PV to VG
-
-```bash
-vgextend <VG name> <PV> ...
-```
-
-Remove VG
-
-```bash
-vgremove <VG name>
-```
-
-Show VG information
-
-```bash
-vgs
-```
-
-```bash
-vgdisplay
-```
-
-### LV (Logical Volume)
-
-Create LV
-
-```bash
-lvcreate 
-    [
-        -L <size>[K|M|G|T|P|E] |
-        -l <percent>[%{VG|FREE}]
-    ]
-    –type { linear | raid1 | raid5 | raid6 }
-    -n <LV name>
-    <VG name>
-```
-
-Show LV information
-
-```bash
-lvs
-```
-
-```bash
-lvdisplay
-```
-
-Remove LV
-```bash
-lvremove <LV>
-```
-
-Resize LV
-
-```bash
-lvresize 
-    {
-        { -L | --size } {+|-}<size>[K|M|G|T|P|E] |
-        { -l | --extends } {+|-}<percent>[%{VG|FREE}]
-    }
-    # Auto resize2fs
-    [ -r | --resizefs ]
-    <LV>
-```
-
-Extent LV
-
-`lvextend <size>` = `lvresize +<size>`
-
-Reduce LV
-
-`lvreduce <size>` = `lvresize -<size>`
-
-- Unmount LV
-  ```bash
-  umount <LV>
-  ```
-- Resize LV
-  ```bash
-  lvresize 
-    -L [-]<size>[K|M|G|T|P|E]
-    --resizefs
-    <LV>
-  ```
-
-  Same as
-
-  - Check file system
-    ```bash
-    fsck -f <LV>
-    ```
-  - Resize file system
-    ```bash
-    resize2fs <LV> <size>[s|K|M|G]
-    ```
-  - Resize LV
-    ```bash
-    lvresize 
-      -L [-]<size>[K|M|G|T|P|E]
-      <LV>
-    ```
-
 ### Troubleshooting
 
 `Device <device> excluded by a filter.`
@@ -896,7 +574,7 @@ find [<path>] [[!] <expression>] -exec <command> {} \;
 
 ## Directory Stack
 
-[Reference](https://unix.stackexchange.com/a/270437/104608)
+> [Reference](https://unix.stackexchange.com/a/270437/104608)
 
 ### Push directory
 ```bash
@@ -916,7 +594,7 @@ dirs [-v]
 
 ## `cron` / `crontab`
 
-[Reference](https://www.computerhope.com/unix/ucrontab.htm)
+> [Reference](https://www.computerhope.com/unix/ucrontab.htm)
 
 User `crontab` file
 
@@ -1088,7 +766,7 @@ pacman -S base-devel
 
 ### Add EPEL repository to CentOS / RHEL
 
-[Reference](https://fedoraproject.org/wiki/EPEL)
+> [Reference](https://fedoraproject.org/wiki/EPEL)
 
 ```bash
 sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
@@ -1098,7 +776,7 @@ sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noa
 
 Debian
 
-[Reference](https://stackoverflow.com/a/41428445/1877620)
+> [Reference](https://stackoverflow.com/a/41428445/1877620)
 
 ```bash
 # -i = --important : Show only Depends and Pre-Depends
@@ -1129,7 +807,7 @@ dpkg -l [<package name pattern>]
 
 ## Last login
 
-[Reference](https://linuxconfig.org/how-to-disable-last-login-message-on-rhel-linux)
+> [Reference](https://linuxconfig.org/how-to-disable-last-login-message-on-rhel-linux)
 
 ### Suppress `Last Login` message
 ```bash
@@ -1208,7 +886,7 @@ ssh-add <private key path>
 
 ### LXDE
 
-[Reference](https://wiki.archlinux.org/index.php/LXDE#Autostart)
+> [Reference](https://wiki.archlinux.org/index.php/LXDE#Autostart)
 
 - `~/.config/lxsession/LXDE/`
 - `/etc/xdg/lxsession/LXDE/autostart`
@@ -1219,7 +897,7 @@ ssh-add <private key path>
 
 ## FHS (Filesystem Hierarchy Standard) / Filesystem Structure
 
-[Reference](http://refspecs.linuxfoundation.org/fhs.shtml)
+> [Reference](http://refspecs.linuxfoundation.org/fhs.shtml)
 
 ```bash
 man hier
@@ -1227,7 +905,7 @@ man hier
 
 ## Using dash "`-`" as path argument
 
-[Reference](http://tldp.org/LDP/abs/html/special-chars.html#DASHREF2)
+> [Reference](http://tldp.org/LDP/abs/html/special-chars.html#DASHREF2)
 
 使用 "`-`" 做為檔案路徑參數時，一般有以下用途
 

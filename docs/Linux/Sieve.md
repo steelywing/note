@@ -1,5 +1,7 @@
 # Sieve
 
+dovecot / script / mail
+
 ## keep
 
 Save the mail into main mailbox
