@@ -1,25 +1,3 @@
-## Table of Contents
-- [Table of Contents](#table-of-contents)
-- [Export / Dump](#export--dump)
-- [Import](#import)
-- [Show tables size](#show-tables-size)
-- [Calculate age](#calculate-age)
-- [Find in set](#find-in-set)
-- [Insert large number of row](#insert-large-number-of-row)
-- [Recovery](#recovery)
-  - [Check tables](#check-tables)
-  - [Repair tables](#repair-tables)
-  - [Rebuild / Reorganize index](#rebuild--reorganize-index)
-- [Config file](#config-file)
-- [Help](#help)
-- [Slow query log](#slow-query-log)
-- [Explain](#explain)
-- [Create database](#create-database)
-- [Drop database](#drop-database)
-- [User](#user)
-  - [Create user](#create-user)
-  - [Grant permission](#grant-permission)
-
 ## Export / Dump
 
 > [Reference](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) / [Reference](https://dev.mysql.com/doc/refman/8.0/en/mysqldump-stored-programs.html)

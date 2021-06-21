@@ -1,14 +1,3 @@
-## Table of Contents
-- [Table of Contents](#table-of-contents)
-- [LF (Low Frequency)](#lf-low-frequency)
-  - [EM4100](#em4100)
-- [HF (High Frequency)](#hf-high-frequency)
-  - [MiFare](#mifare)
-    - [MiFare Classic](#mifare-classic)
-      - [PICC status](#picc-status)
-      - [Memory Organization](#memory-organization)
-  - [NFC](#nfc)
-
 ## LF (Low Frequency)
 
 RF: 125 KHz

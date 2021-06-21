@@ -45,6 +45,10 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Steely Wing 夜羽`,
     },
+    googleAnalytics: {
+      trackingID: 'G-0KG7P5XKJP',
+      // anonymizeIP: true, // Should IPs be anonymized?
+    },
   },
   presets: [
     [

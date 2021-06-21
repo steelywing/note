@@ -1,4 +1,6 @@
-# SoC (System on a Chip)
+# SoC
+
+System on a Chip
 
 - Atmel (Microchip)
   - AVR

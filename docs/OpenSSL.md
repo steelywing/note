@@ -1,24 +1,3 @@
-## Table of Contents
-- [Table of Contents](#table-of-contents)
-- [File format](#file-format)
-  - [PEM (Privacy-Enhanced Mail)](#pem-privacy-enhanced-mail)
-  - [PKCS #12 (`.p12`)](#pkcs-12-p12)
-  - [Convert `.pem` to `.p12`](#convert-pem-to-p12)
-- [Certificate signature](#certificate-signature)
-- [Option](#option)
-- [Version](#version)
-- [RSA key](#rsa-key)
-- [CSR (Certificate Signing Request)](#csr-certificate-signing-request)
-- [X509 (TLS/SSL certificate)](#x509-tlsssl-certificate)
-- [Full chain certificate](#full-chain-certificate)
-- [Test SSL/TLS connection](#test-ssltls-connection)
-- [Test SMTP StartTLS](#test-smtp-starttls)
-- [CA (Certificate Authority)](#ca-certificate-authority)
-  - [CA sign certificate](#ca-sign-certificate)
-- [Revoke signed certificate](#revoke-signed-certificate)
-  - [CRL (Certificate Revocation List)](#crl-certificate-revocation-list)
-- [Env](#env)
-
 ## File format
 
 ### PEM (Privacy-Enhanced Mail)

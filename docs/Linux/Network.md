@@ -1,26 +1,3 @@
-## Table of Contents
-- [Table of Contents](#table-of-contents)
-- [Firewall](#firewall)
-  - [iptables](#iptablesiptablesmd)
-  - [nftables](#nftables)
-- [IP forward](#ip-forward)
-- [Ping](#ping)
-- [Nmap](#nmap)
-  - [Host](#host)
-  - [Host discovery](#host-discovery)
-  - [Scan](#scan)
-- [TCP Dump](#tcp-dump)
-- [IP](#ip)
-  - [Interface](#interface)
-  - [IP address](#ip-address)
-  - [ARP / Neighbour](#arp--neighbour)
-  - [Route](#route)
-- [Socket statistics](#socket-statistics)
-- [Traffic control](#traffic-control)
-  - [netem (Network Emulator)](#netem-network-emulator)
-  - [TBF (Token Bucket Filter)](#tbf-token-bucket-filter)
-- [Network manager](#network-manager)
-
 ## Firewall
 
 ### [iptables](iptables.md)

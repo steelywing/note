@@ -1,16 +1,3 @@
-## Table of Contents
-
-- [Table of Contents](#table-of-contents)
-- [Access attribute using string](#access-attribute-using-string)
-- [`pip` - PIP Installs Packages](#pip---pip-installs-packages)
-- [Formatter](#formatter)
-- [Unit test](#unit-test)
-  - [Unit test framework](#unit-test-framework)
-- [Show `sys.path` (module path) in CLI](#show-syspath-module-path-in-cli)
-- [Pass all arguments to another function](#pass-all-arguments-to-another-function)
-- [Decorator](#decorator)
-- [Bind `self` to function](#bind-self-to-function)
-
 ## Access attribute using string
 
 ```python

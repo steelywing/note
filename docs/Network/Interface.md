@@ -1,32 +1,6 @@
-# Table of Contents
-- [Table of Contents](#table-of-contents)
-- [Copper](#copper)
-  - [10BASE-T](#10base-t)
-  - [100BASE-TX](#100base-tx)
-  - [1000BASE-T](#1000base-t)
-  - [10GBASE-T](#10gbase-t)
-  - [Pinout](#pinout)
-  - [PoE (Power over Ethernet)](#poe-power-over-ethernet)
-    - [802.3af](#8023af)
-- [Fiber](#fiber)
-  - [1000BASE‑LX/LH](#1000base%E2%80%91lxlh)
-  - [1000BASE‑SX](#1000base%E2%80%91sx)
-  - [SMF (Single Mode Fiber)](#smf-single-mode-fiber)
-  - [MMF (Multi Mode Fiber)](#mmf-multi-mode-fiber)
-  - [Connector](#connector)
-- [Slot](#slot)
-  - [QSFP28](#qsfp28)
-  - [QSFP+](#qsfp)
-  - [QSFP (Quad Small Form-factor Pluggable)](#qsfp-quad-small-form-factor-pluggable)
-  - [SFP+](#sfp)
-  - [SFP (Small Form-factor Pluggable)](#sfp-small-form-factor-pluggable)
-  - [GBIC (GigaBit Interface Converter)](#gbic-gigabit-interface-converter)
-  - [XFP](#xfp)
-  - [X2](#x2)
+## Copper
 
-# Copper
-
-## 10BASE-T
+### 10BASE-T
 
 Usually use in WOL (Wake On LAN)
 
@@ -37,7 +11,7 @@ Usually use in WOL (Wake On LAN)
 | Cable | Cat 5, Cat 5e, Cat 6 |
 | Connector | 8P8C |
 
-## 100BASE-TX
+### 100BASE-TX
 
 |  |  |
 | - | - |
@@ -46,7 +20,7 @@ Usually use in WOL (Wake On LAN)
 | Cable | Cat 5, Cat 5e, Cat 6 |
 | Connector | 8P8C |
 
-## 1000BASE-T
+### 1000BASE-T
 
 |  |  |
 | - | - |
@@ -57,7 +31,7 @@ Usually use in WOL (Wake On LAN)
 
 [Auto MDI-X](https://en.wikipedia.org/wiki/Medium-dependent_interface) (Medium Dependent Interface, X = Crossover)
 
-## 10GBASE-T
+### 10GBASE-T
 
 |  |  |
 | - | - |
@@ -66,7 +40,7 @@ Usually use in WOL (Wake On LAN)
 | Cable | Cat 6, Cat 7 |
 | Connector | 8P8C |
 
-## Pinout
+### Pinout
 
 | Pin | 10BASE-T / 100BASE-TX<br/> Signal ID | 1G / 10GBASE-T<br/> Signal ID |
 | - | - | - |
@@ -91,9 +65,9 @@ TIA/EIA-568B
 
 ![TIA-568A](img/TIA-568B.png)
 
-## PoE (Power over Ethernet)
+### PoE (Power over Ethernet)
 
-### 802.3af
+#### 802.3af
 
 > [Reference](https://en.wikipedia.org/wiki/Power_over_Ethernet)
 
@@ -108,11 +82,11 @@ TIA/EIA-568B
 | 7 | - | - | DC- |
 | 8 | - | - | DC- |
 
-# Fiber
+## Fiber
 
 > [Reference](https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/gigabit-ethernet-gbic-sfp-modules/datasheet-c78-366584.html)
 
-## 1000BASE‑LX/LH
+### 1000BASE‑LX/LH
 
 |  |  |
 | - | - |
@@ -122,7 +96,7 @@ TIA/EIA-568B
 | Slot | GBIC, SFP |
 | Connector | SC, LC |
 
-## 1000BASE‑SX
+### 1000BASE‑SX
 
 |  |  |
 | - | - |
@@ -132,7 +106,7 @@ TIA/EIA-568B
 | Slot | GBIC, SFP |
 | Connector | SC, LC |
 
-## SMF (Single Mode Fiber)
+### SMF (Single Mode Fiber)
 
 > [FOA Reference](https://www.thefoa.org/tech/ref/basic/fiber.html)
 
@@ -144,7 +118,7 @@ TIA/EIA-568B
 | Core diameter | 8 - 10.5 µm |
 | Cladding diameter | 125 µm |
 
-## MMF (Multi Mode Fiber)
+### MMF (Multi Mode Fiber)
 
 > [Reference](https://en.wikipedia.org/wiki/Multi-mode_optical_fiber)
 
@@ -158,7 +132,7 @@ TIA/EIA-568B
 | Core diameter | 50 – 100 µm, OM1 = 62.5 µm, OM2, OM3, OM4, OM5 = 50 µm |
 | Cladding diameter | 125 µm |
 
-## Connector
+### Connector
 
 > [Reference](https://www.thefoa.org/tech/connID.htm)
 
@@ -167,9 +141,9 @@ TIA/EIA-568B
 | SC | ![SC](img/SC.jpg) |
 | LC | ![LC](img/LC.jpg) |
 
-# Slot
+## Slot
 
-## QSFP28
+### QSFP28
 
 100 Gigabit Ethernet
 
@@ -177,7 +151,7 @@ Channel: 4
 
 Fiber Channel: 32 Gb/s
 
-## QSFP+
+### QSFP+
 
 40 Gigabit Ethernet
 
@@ -185,7 +159,7 @@ Channel: 4
 
 Fiber Channel: 10 Gb/s
 
-## QSFP (Quad Small Form-factor Pluggable)
+### QSFP (Quad Small Form-factor Pluggable)
 
 4 Gigabit Ethernet
 
@@ -193,7 +167,7 @@ Channel: 4
 
 Fiber Channel: 4 Gb/s
 
-## SFP+
+### SFP+
 
 Compatible SFP module
 
@@ -201,20 +175,20 @@ Speed: 10 Gb/s
 
 Hot-pluggable
 
-## SFP (Small Form-factor Pluggable)
+### SFP (Small Form-factor Pluggable)
 
 Speed: 1 Gb/s
 
 Hot-pluggable
 
-## GBIC (GigaBit Interface Converter)
+### GBIC (GigaBit Interface Converter)
 
-#obsolete
+##obsolete
 
-## XFP
+### XFP
 
-#uncommon #obsolete
+##uncommon #obsolete
 
-## X2
+### X2
 
-#uncommon #obsolete
+##uncommon #obsolete

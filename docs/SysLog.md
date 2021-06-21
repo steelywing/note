@@ -1,9 +1,11 @@
-# syslog-ng
+# Sys Log
+
+## syslog-ng
 
 **Recommended**
 
-# rsyslog
+## rsyslog
 
-# syslog
+## syslog
 
 **Deprecated**

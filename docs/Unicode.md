@@ -1,4 +1,6 @@
-# Superscript
+# Unicode
+
+## Superscript
 
 [Reference](https://unicode.org/charts/PDF/U2070.pdf)
 
@@ -8,6 +10,6 @@
 ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖ ʳˢᵗᵘᵛʷˣʸᶻ
 ```
 
-# Math
+## Math
 
 +-×÷
