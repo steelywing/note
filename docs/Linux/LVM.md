@@ -169,19 +169,12 @@ Reduce LV
     <LV>
   ```
 
-  Same as
-
-  - Check file system
-    ```bash
-    fsck -f <LV>
-    ```
-  - Resize file system
-    ```bash
-    resize2fs <LV> <size>[s|K|M|G]
-    ```
-  - Resize LV
-    ```bash
-    lvresize 
-      -L [-]<size>[K|M|G|T|P|E]
-      <LV>
-    ```
+  - `--resizefs` similar to do the following
+    - Check file system
+      ```bash
+      fsck -f <LV>
+      ```
+    - Resize file system
+      ```bash
+      resize2fs <LV> <size>[s|K|M|G]
+      ```

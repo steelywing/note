@@ -1,3 +1,5 @@
+# Date / Time
+
 ## Date
 
 Display date
@@ -6,7 +8,7 @@ Display date
 date [-u|--utc]
 ```
 
-Set date
+Set date / time
 
 ```bash
 timedatectl set-time [<YYYY>-<MM>-<DD>] [<HH>:<MM>:<SS>]
@@ -62,4 +64,14 @@ timedatectl set-local-rtc { false | f | no | n | 0 }
 
 ```bash
 date -d @<timestamp>
+```
+
+## Sync Time
+
+Force sync time
+
+```bash
+service ntpd stop
+ntpd -gq
+service ntpd start
 ```

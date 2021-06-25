@@ -10,6 +10,9 @@ module.exports = {
   organizationName: 'steelywing', // Usually your GitHub org/user name.
   projectName: 'note', // Usually your repo name.
   themeConfig: {
+    colorMode: {
+      defaultMode: 'dark',
+    },
     navbar: {
       title: 'Steely Wing Note',
       logo: {

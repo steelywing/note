@@ -1,4 +1,4 @@
-# CLI
+# iLO
 
 ## Reset
 
