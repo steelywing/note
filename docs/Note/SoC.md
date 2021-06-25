@@ -40,11 +40,18 @@ System on a Chip
 
 ## USB to UART
 
-- [WCH CH340](http://www.wch.cn/products/CH340.html) (UART) *Popular*
-- [WCH CH341](http://www.wch.cn/products/CH341.html) (UART, I2C, SPI) *Popular*
-- Prolific PL2303 (Mostly fake)
+- [WCH CH340](http://www.wch.cn/products/CH340.html)
+  - *Popular*
+  - UART
+- [WCH CH341](http://www.wch.cn/products/CH341.html)
+  - *Popular*
+  - UART, I2C, SPI
+- Prolific PL2303
+  - Many fake
+  - Fake version need [driver version 3.3.2.102](http://www.ifamilysoftware.com/Prolific_PL-2303_Code_10_Fix.html)
 - Silicon CP2102
-- FTDI232 (Expensive)
+- FTDI232
+  - Expensive
 
 ## Interface
 
