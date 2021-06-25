@@ -4,7 +4,6 @@ module.exports = {
   tagline: '夜羽筆記',
   url: 'https://steelywing.github.io',
   baseUrl: '/note/',
-  defaultMode: 'dark',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
