@@ -1,8 +1,11 @@
 ## Export / Dump
 
-> [Reference](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) / [Reference](https://dev.mysql.com/doc/refman/8.0/en/mysqldump-stored-programs.html)
+> - [Doc](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)
+> - [Doc](https://dev.mysql.com/doc/refman/8.0/en/mysqldump-stored-programs.html)
 
-> PowerShell output redirect ( `mysqldump > file.sql` ) will use UTF-16, MySQL cannot import UTF-16
+:::caution
+PowerShell output redirect ( `mysqldump > file.sql` ) will use UTF-16, MySQL cannot import UTF-16
+:::
 
 ```bash
 mysqldump [-u <user>] [-p]
@@ -20,12 +23,14 @@ mysqldump <database> | gzip [-9] > <file.sql.gz>
 
 ## Import
 
-> [Reference](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)
+> [Doc](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)
+
 ```bash
 mysql [-u <user>] [-p] <database> < <file.sql>
 ```
 
 or
+
 ```sql
 mysql> use <database>;
 mysql> source <file>;

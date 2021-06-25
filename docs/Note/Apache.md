@@ -1,6 +1,6 @@
 ## Test configuration file syntax
 
-> [Reference](https://httpd.apache.org/docs/2.4/programs/apachectl.html)
+> [Doc](https://httpd.apache.org/docs/2.4/programs/apachectl.html)
 
 ```bash
 sudo apachectl configtest
@@ -10,7 +10,7 @@ sudo apachectl configtest
 
 > *Deprecated* by `Require`
 
-> [Reference](https://httpd.apache.org/docs/2.4/mod/mod_access_compat.html)
+> [Doc](https://httpd.apache.org/docs/2.4/mod/mod_access_compat.html)
 
 `Order Allow, Deny`
 
@@ -56,7 +56,7 @@ function isAllow(match_allow, match_deny) {
 
 ## Sections order ( Priority / Precedence )
 
-> [Reference](https://httpd.apache.org/docs/2.4/sections.html#merging)
+> [Doc](https://httpd.apache.org/docs/2.4/sections.html#merging)
 
 The order of merging is
 
@@ -100,7 +100,7 @@ Sections having same priority are processed in the configuration file order.
 
 ## Proxy
 
-> [Reference](https://httpd.apache.org/docs/2.4/mod/mod_proxy.html)
+> [Doc](https://httpd.apache.org/docs/2.4/mod/mod_proxy.html)
 
 Enable proxy module
 
@@ -148,8 +148,8 @@ ProxyPassReverse "/" "https://<server>/"
 ## Load balancer
 
 > Reference
-> - [Reverse Proxy](https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html)
-> - [Proxy Balancer](http://httpd.apache.org/docs/2.4/mod/mod_proxy_balancer.html)
+> - [How To - Reverse Proxy](https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html)
+> - [Doc - Proxy Balancer](http://httpd.apache.org/docs/2.4/mod/mod_proxy_balancer.html)
 
 ```apache
 <Proxy "balancer://cluster">
@@ -175,7 +175,7 @@ ProxyPassReverse "/" "balancer://cluster/"
 ## mod_rewrite
 
 > - [Intro](https://httpd.apache.org/docs/2.4/rewrite/intro.html)
-> - [Reference](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)
+> - [Doc](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)
 
 Use PCRE to rewrite URL
 
@@ -210,8 +210,8 @@ LogLevel alert rewrite:trace3
 
 Using certificate
 
-> - [Reference](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)
-> - [Reference](https://httpd.apache.org/docs/2.4/mod/mod_ssl.html)
+> - [How To](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)
+> - [Doc](https://httpd.apache.org/docs/2.4/mod/mod_ssl.html)
 
 ```apache
 SSLVerifyClient require

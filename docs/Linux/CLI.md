@@ -60,6 +60,7 @@ vi-preserve-time () {
 ## Kernel
 
 ### Kernel info
+
 ```bash
 uname -a
 ```
@@ -79,77 +80,8 @@ uname -a
 | Add `install <module> /bin/false` to `/etc/modprobe.d/*.conf` | Blacklist module even other modules depend on it |
 
 
-## Jobs
-
-> [Reference](http://www.linuxnix.com/11-fc-bg-jobs-commands-know/)
-
-| Command | Description |
-| - | - |
-| <kbd>Ctrl</kbd>+<kbd>Z</kbd> | Suspend current process |
-| <kbd>Ctrl</kbd>+<kbd>C</kbd> | Terminate current process |
-| `jobs` | List job |
-| `<command> &` | Run command in background |
-| `%[<job spec>] &` <br/> `bg [%<job spec>]` | Resume job in background (default is current job) |
-| `%[<job spec>]` <br/> `fg [%<job spec>]` | Resume job in foreground (default is current job) |
-| `kill [%<job spec>]` | Kill job |
-| `disown [%<job spec>]` | Don't terminate job when terminal exit (default is all jobs) |
-| `nohup <command>` | Don't terminate command when terminal exit (no hangup) |
-
-## Trap
-
-Execute command when shell receives signal
-
-```bash
-trap "<command>" <signal>[ ...]
-```
-
-Execute on shell exit
-
-```bash
-trap "<command>" { EXIT | 0 }
-```
-
-Show associated commands
-
-```bash
-trap -p
-```
-
-Show signal list
-
-```bash
-trap -l
-```
-
 ## File system
 
-### `rsync`
-
-```bash
-# <source>, <destination> = [[<user>@]<host>:]<path>
-rsync <option> <source> <destination>
-```
-
-| Option | Description |
-| - | - |
-| `-a`, `--archive` | Archive mode, equals `-rlptgoD` (no `-H`, `-A`, `-X`) |
-| `-H`, `--hard-links` | Preserve hard links |
-| `-A`, `--acls` | Preserve ACLs (implies `-p`) |
-| `-X`, `--xattrs` | Preserve extended attributes |
-| `-v`, `--verbose` | Verbose |
-| `-z`, `--compress` | Compress during the transfer |
-| `--partial` | Keep partially transferred files |
-| `--progress` | Show progress |
-| `-P` | `--partial --progress` |
-| `-e "ssh [-p <port>]"` | Use SSH, default use `rsync` daemon |
-
-Trailing slash on `<source>`
-
-```bash
-rsync -av /src /dest
-# same as
-rsync -av /src/ /dest/src
-```
 
 ### ACL
 
@@ -234,42 +166,6 @@ sestatus [-v]
 setenforce { Enforcing | Permissive | 1 | 0 }
 ```
 
-## Service
-
-For [`systemd` (Ubuntu 16, Red Hat 7)](systemd.md)
-
-For System V
-
-### Add / Delete service
-```bash
-# Red Hat
-chkconfig { --add | --del } <service>
-```
-
-### Enable / Disable service auto start
-
-```bash
-# Ubuntu <= 14
-update-rc.d <service> { enable | disable }
-
-# Red Hat <= 6
-chkconfig <service> { on | off }
-```
-
-### Start / Stop service
-
-```bash
-# Ubuntu <= 14 and Red Hat <= 6
-service <service> { start | stop }
-```
-
-### Show service status
-
-```bash
-# Ubuntu <= 14 and Red Hat <= 6
-service <service> status
-```
-
 ## Manual / Help
 
 Show manual
@@ -284,24 +180,11 @@ Search manual
 apropos <keyword>
 ```
 
-
-## Time
-
-Force sync time
-
-```bash
-service ntpd stop
-ntpd -gq
-service ntpd start
-```
-
-
 ## DNS
 
 ```bash
 vi /etc/resolv.conf
 ```
-
 
 ## Sharing desktop
 
@@ -407,100 +290,6 @@ ionice
     { <command> | -p <PID> }
 ```
 
-### Disk benchmark
-
-#### Write speed
-
-```bash
-dd if=/dev/zero of=<file> bs=<size>[K|M|G] count=<count>[K|M|G] { conv=fsync | oflag={sync|dsync|direct} }
-```
-
-| Option | Description |
-| - | - |
-| `conv=fsync` | Synchronize before finishing |
-| `dsync` | Synchronized I/O for data |
-| `sync` | Synchronized I/O for data and meta data |
-| `direct` | Direct I/O |
-
-#### Read speed
-
-| Unit | Description |
-| - | - |
-| `c` | 1 |
-| `w` | 2 |
-| `b` | 512 |
-| `kB` | 1000 |
-| `K` | 1024 |
-| `MB` | 1000² |
-| `M` | 1024² |
-| `GB` | 1000³ |
-| `G` | 1024³ |
-| `T` | 1024⁴ |
-| `P` | 1024⁵ |
-| `E` | 1024⁶ |
-| `Z` | 1024⁷ |
-| `Y` | 1024⁸ |
-
-```bash
-dd
-    if=<file>
-    of=/dev/null
-    bs=<size>[<unit>]
-    [count=<count>[<unit>]]
-    iflag=direct
-```
-
-> [drop_caches reference](https://www.kernel.org/doc/Documentation/sysctl/vm.txt)
-
-```bash
-# Synchronize cached writes to persistent storage
-sync
-
-# Free cache
-echo 3 > /proc/sys/vm/drop_caches
-
-dd if=<file> of=/dev/null bs=<size>[K|M|G] [count=<count>[K|M|G]]
-```
-
-Read speed test without prior cache
-
-```bash
-hdparm -t /dev/<device>
-```
-
-Read speed test with buffer
-
-```bash
-hdparm -T /dev/<device>
-```
-
-### Partition
-
-#### Partition table / Disk label
-
-- MBR (Master Boot Record) / DOS
-  - Max size 2 TiB (2³² sectors × 2⁹ bytes per sector)
-  - Max 4 primary partition
-- GPT (GUID Partition Table)
-  - Max size 8 ZiB (2⁶⁴ sectors × 2⁹ bytes per sector)
-  - Unlimited partition (Windows support 128 partitions)
-
-#### Reload partition table
-
-```bash
-partprobe /dev/<device>
-```
-
-#### Partition command
-
-- `fdisk` ([Reference](https://wiki.archlinux.org/index.php/Fdisk))
-  - Common
-  - Not support GPT before `util-linux` 2.23
-- `parted`
-  - Support GPT
-- `gdisk` (GPT fdisk)
-  - Support GPT
-
 ### File system
 
 #### Resize file system
@@ -539,141 +328,6 @@ pvcreate -vvv <device> |& grep <device>
 wipefs --all <device>
 ```
 
-## Find
-
-Run command in `find` result, `{}` is result path
-
-```bash
-find [<path>] [[!] <expression>] -exec <command> {} +
-```
-
-`<command> {} +` will expand to `<command> <path> <path> ...`
-
-```bash
-find [<path>] [[!] <expression>] -exec <command> {} \;
-```
-
-`<command> {} \;` will expand to `<command> <path>; <command> <path>; ...`
-
-| Expression | Description |
-| - | - |
-| `-name "<glob pattern>"` | Match file name |
-| `-iname "<glob pattern>"` | Match file name with case insensitive |
-| `-type { f \| d }` | File / Directory |
-| `-mtime [+\|-]<days>` | Last modified time |
-| `-atime [+\|-]<days>` | Last accessed time |
-| `-size [+\|-]<size>[k\|M\|G]` | File size |
-
-| Time Expression | Description |
-| - | - |
-| | `diff = int(day(current_time - file_time))` |
-| `+<days>` | `diff > <days>` |
-| `-<days>` | `diff < <days>` |
-| `<days>` | `diff == <days>` |
-
-
-## Directory Stack
-
-> [Reference](https://unix.stackexchange.com/a/270437/104608)
-
-### Push directory
-```bash
-pushd <directory>
-```
-
-### Pop and change to the directory
-```bash
-popd
-```
-
-### List directory stack
-```bash
-dirs [-v]
-```
-
-
-## `cron` / `crontab`
-
-> [Reference](https://www.computerhope.com/unix/ucrontab.htm)
-
-User `crontab` file
-
-```
-/var/spool/cron/crontabs/<user>
-```
-
-`crontab` file
-
-```bash
-/etc/crontab
-
-# Debian only
-/etc/cron.d/
-```
-
-## `at`
-
-Check if `atd` is running
-
-```bash
-systemctl status atd.service
-```
-
-Run command at a time
-
-```bash
-at <time spec>
-<command>
-[...]
-<Ctrl + D>
-```
-
-```bash
-at <time spec> <<END
-<command>
-[...]
-END
-```
-
-```bash
-echo "<command>" | at <time spec>
-```
-
-| | |
-|-|-|
-| `<time spec>` | `{ NOW \| <time> \| <date> \| <time> <date> } [{+\|-} <period> <unit>]` |
-| `<time>` | `{ <HH>:<MM> [AM\|PM] } [UTC]` |
-| `<date>` | `<month name> <day> [<year>] \| MM/DD/[YY]YY \| [YY]YY-MM-DD \| [NEXT] <day of week> \| TODAY \| TOMORROW `
-| `<month name>` | `JAN \| FEB \| MAR \| APR \| MAY \| JUN \| JUL \| AUG \| SEP \| OCT \| NOV \| DEC` |
-| `<day of week>` | `SUN \| MON \| TUE \| WED \| THU \| FRI \| SAT` |
-| `<unit>` | `MINUTE \| HOUR \| DAY \| WEEK \| MONTH \| YEAR` |
-
-List job
-
-```bash
-atq
-```
-
-```bash
-at -l
-```
-
-Remove job
-
-```bash
-atrm <job ID>
-```
-
-```bash
-at {-r|-d} <job ID>
-```
-
-View job
-
-```bash
-at -c <job ID>
-```
-
 ## OpenJDK (Java)
 
 ### List installed JVM
@@ -701,42 +355,6 @@ hostnamectl
 lsb_release -a
 ```
 
-
-## Mount
-
-```bash
-mount [-t <type>] { <source> | <device> } <directory>
-```
-
-### Remount mount point in fstab
-```bash
-# rw: read-write
-mount -o remount[,rw] <directory>
-```
-
-### Lists all mounted filesystems
-```bash
-# -l: lable
-mount [-l] [-t type]
-```
-
-### Mount CIFS / SMB / Windows Shared Folder
-
-| Option | Description |
-| - | - |
-| `username=<username>` | Username |
-| `password=<password>` | Password |
-| `domain=<domain>` | Domain |
-| `vers=1.0` | SMBv1 (Default) |
-| `vers=2.0` | SMBv2.002 for Windows Vista SP1 and 2008 |
-| `vers=2.1` | SMBv2.1 for Windows 7 and 2008R2 |
-| `vers=3.0` | SMBv3.0 for Windows 8 and 2012 |
-| `noperm` | Client bypass permission checks |
-
-```bash
-# mount.cifs = mount -t cifs
-mount.cifs -o <option>[,...]] //<host>/<share name> <directory>
-```
 
 ## Package management
 
@@ -842,44 +460,6 @@ Execute command periodically
 
 ```bash
 watch [-n <seconds>] <command>
-```
-
-## SSH
-
-### SSH tunnel (port forward)
-
-> [Link](SSH-Tunnel.md)
-
-### Copy SSH public key to remote host
-
-```bash
-ssh-copy-id [<options>] <host>
-```
-
-| Option | Description |
-| - | - |
-| `-i <id_rsa.pub>` | The public key file to be copy, default is `~/.ssh/id*.pub`
-| `-p <port>` | TCP port |
-| `"-o IdentityFile <id_rsa>"` | Use `<id_rsa>` key file to connect remote host |
-
-### SSH agent
-
-For `sh` / `bash`
-
-```bash
-eval $(ssh-agent -s)
-```
-
-For `csh` / `fish`
-
-```bash
-eval (ssh-agent -c)
-```
-
-Add SSH private key
-
-```bash
-ssh-add <private key path>
 ```
 
 ## Auto start
