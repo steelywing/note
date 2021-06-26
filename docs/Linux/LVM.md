@@ -178,3 +178,18 @@ Reduce LV
       ```bash
       resize2fs <LV> <size>[s|K|M|G]
       ```
+
+## Troubleshooting
+
+### Device &lt;device&gt; excluded by a filter.
+
+```bash
+pvcreate -vvv <device> |& grep <device>
+```
+
+### Skipping: Partition table signature found
+
+```bash
+# Wipe all magic strings (BE CAREFUL!)
+wipefs --all <device>
+```

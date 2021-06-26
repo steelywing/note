@@ -40,7 +40,7 @@ title: C#
 
 命名空間，用來組織/分隔命名，如果有很多 class，別人寫的 class 名稱也可能和你的 class 一樣，可以防止名稱 conflict
 
-```c#
+```csharp
 namespace NameSpace
 {
     // ...
@@ -48,7 +48,7 @@ namespace NameSpace
 ```
 
 直接使用 `namespace` 命名空間裡的 class
-```c#
+```csharp
 using System;
 Console.WriteLine("Hello, World!");
 // same as
@@ -56,20 +56,20 @@ System.Console.WriteLine("Hello, World!");
 ```
 
 用 `Generic` (Alias) 來存取 `System.Collections.Generic` 命名空間
-```c#
+```csharp
 using Generic = System.Collections.Generic;
 new Generic::Dictionary<string, int>();
 ```
 
 全域命名空間 (Global / Top Level Name Space)
 
-```c#
+```csharp
 global::
 ```
 
 巢狀
 
-```c#
+```csharp
 // N1
 namespace N1
 {
@@ -96,7 +96,7 @@ namespace N1
 
 > [Reference](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/type-testing-and-cast#cast-expression)
 
-```c#
+```csharp
 public class Animal { }
 
 public class Cat : Animal { }
@@ -119,7 +119,7 @@ public static class TypeOfExample
 
 > [Reference](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/type-testing-and-cast#cast-expression)
 
-```c#
+```csharp
 // Cast, convert E to type T
 (T) E
 
@@ -133,7 +133,7 @@ E is T ? (T)(E) : (T)null
 
 ## String format
 
-```c#
+```csharp
 string.format("{0} is a {1}", "Cat", "animal");
 // Cat is a animal
 
@@ -147,7 +147,7 @@ $"{a} is a {b}";
 
 > [Reference](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/how-to-define-value-equality-for-a-type)
 
-```c#
+```csharp
 public class DictKey
 {
     public int key;
@@ -173,14 +173,14 @@ Visual Studio has **Quick Action** to **Generate Equals and GetHashCode**
 
 ## Implement `GetHashCode()`
 
-```c#
+```csharp
 // .NET Core
 HashCode.Combine(value, ...);
 ```
 
 For Collection
 
-```c#
+```csharp
 public class Hash
 {
     public List<int> list;
@@ -201,13 +201,13 @@ public class Hash
 
 > [Reference](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/member-access-operators#null-conditional-operators--and-)
 
-```c#
+```csharp
 a?.x
 ```
 
 If a is null, the result is null, otherwise the result is a.x
 
-```c#
+```csharp
 a?.x()
 a?.b?.c(d);
 a?.b?[c];
@@ -217,7 +217,7 @@ If a is null, the result is null, and will not execute a.x(), otherwise the resu
 
 > The null-conditional operators are short-circuiting. That is, if one operation in a chain of conditional member or element access operations returns null, the rest of the chain doesn't execute. 
 
-```c#
+```csharp
 a?[x]
 ```
 
@@ -227,7 +227,7 @@ If a is null, the result is null, otherwise the result is a[x]
 
 `byte[]` to `string`
 
-```c#
+```csharp
 // .NET Framework
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
@@ -236,7 +236,7 @@ new SoapHexBinary(new byte[] { }).ToString();
 
 Pure C# implement
 
-```c#
+```csharp
 private static readonly uint[] lookup = CreateLookupTable();
 
 private static uint[] CreateLookupTable()
@@ -265,14 +265,14 @@ public static string ToHex(byte[] bytes)
 
 `string` to `byte[]`
 
-```c#
+```csharp
 // .NET Framework
 SoapHexBinary.Parse("00aabbEEFF").Value;
 ```
 
 ## Compute `string` hash
 
-```c#
+```csharp
 using System.Security.Cryptography;
 
 public byte[] ComputeSHA1(string s)
@@ -290,7 +290,7 @@ public byte[] ComputeSHA1(string s)
 
 A delegate is a type that represents references to methods with a particular parameter list and return type.
 
-```c#
+```csharp
 class Program
 {
     // Declaration
@@ -329,7 +329,7 @@ class Program
 - If the delegate has a return value and/or out parameters, it returns the return value and parameters of the last method invoked. 
 - Delegate can bind to instance
 
-```c#
+```csharp
 class Counter
 {
     public int count = 0;
@@ -368,7 +368,7 @@ class Program
 
 Anonymous
 
-```c#
+```csharp
 var delegateFunction = delegate()
 {
     // ...
@@ -378,7 +378,7 @@ var delegateFunction = delegate()
 
 C# defined delegate
 
-```c#
+```csharp
 public delegate void Action();
 public delegate void Action<in T>(T obj);
 // ...
@@ -392,7 +392,7 @@ public delegate TResult Func<in T, out TResult>(T arg);
 
 With return value
 
-```c#
+```csharp
 Func<int, int> Add1 = (n) => n + 1;
 // same as
 Func<int, int> Add1 = (n) => { return n + 1; };
@@ -400,7 +400,7 @@ Func<int, int> Add1 = (n) => { return n + 1; };
 
 Without return value
 
-```c#
+```csharp
 Action<string> Hi = (name) =>
 {
     Console.WriteLine($"Hi, {name}");
@@ -417,7 +417,7 @@ Action<string> Hi = (name) =>
 
 `using` static type
 
-```c#
+```csharp
 using static System.Console;
 
 class Program
@@ -431,7 +431,7 @@ class Program
 
 `using` alias
 
-```c#
+```csharp
 using SysCon = System.Console;
 using ListOfString = System.Collections.Generic.List<string>;
 ```
@@ -450,7 +450,7 @@ using ListOfString = System.Collections.Generic.List<string>;
 
 ## Extension
 
-```c#
+```csharp
 namespace MathExtensionMethods
 {
     public static class MathExtensions

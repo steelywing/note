@@ -1,3 +1,5 @@
+# `bash`
+
 | Command | Description |
 | - | - |
 | `Tab` | Complete command |

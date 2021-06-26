@@ -10,6 +10,12 @@ module.exports = {
   organizationName: 'steelywing', // Usually your GitHub org/user name.
   projectName: 'note', // Usually your repo name.
   themeConfig: {
+    prism: {
+      additionalLanguages: [
+        'csharp',
+        'powershell',
+      ],
+    },
     colorMode: {
       defaultMode: 'dark',
     },
@@ -20,27 +26,38 @@ module.exports = {
         src: 'img/logo.svg',
       },
       items: [
-        {
-          type: 'doc',
-          docId: 'Note/index',
+        /*{
+          // type: 'doc',
+          // docId: 'Note/index',
+          to: '',
           position: 'left',
           label: 'Note',
-        },
+        },*/
         {
-          type: 'doc',
-          docId: 'Linux/Bash',
+          // type: 'doc',
+          // docId: 'Linux/README',
+          to: 'Linux',
           position: 'left',
           label: 'Linux',
         },
         {
-          type: 'doc',
-          docId: 'Network/index',
+          // type: 'doc',
+          // docId: 'Linux/README',
+          to: 'Windows',
+          position: 'left',
+          label: 'Windows',
+        },
+        {
+          // type: 'doc',
+          // docId: 'Network/README',
+          to: 'Network',
           position: 'left',
           label: 'Network',
         },
         {
-          type: 'doc',
-          docId: 'Programming/C-Sharp',
+          // type: 'doc',
+          // docId: 'Programming/README',
+          to: 'Programming',
           position: 'left',
           label: 'Programming',
         },
@@ -90,7 +107,7 @@ module.exports = {
   ],
   plugins: [
     [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
+      "@easyops-cn/docusaurus-search-local",
       {
         // `hashed` is recommended as long-term-cache of index file is possible.
         hashed: true,

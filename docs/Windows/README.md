@@ -1,3 +1,11 @@
+---
+id: index
+slug: .
+sidebar_position: 0
+---
+
+# Windows
+
 ## Recovery
 
 ### WinRE (Windows Recovery Environment)

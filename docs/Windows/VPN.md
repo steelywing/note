@@ -4,11 +4,14 @@ Enable IPsec service
 
 - Run `services.msc`
 - Set `IKE and AuthIP IPsec Keying Modules` to `Automatic` / `Manual`
+  
   ```powershell
   # PowerShell
   Set-Service -Name IKEEXT -StartupType Manual
   ```
+
 - Set `IPsec Policy Agent` to `Automatic` / `Manual`
+  
   ```powershell
   # PowerShell
   Set-Service -Name PolicyAgent -StartupType Manual

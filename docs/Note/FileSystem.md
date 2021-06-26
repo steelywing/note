@@ -48,3 +48,25 @@ Prevent being corrupted
 - Copy-on-Write
 - Snapshot
 - RAID
+
+## Resize file system
+
+Resize `ext2` / `ext3` / `ext4` file system
+
+```bash
+# Force check file system
+e2fsck -f <device>
+
+resize2fs [-M] <device> [<size>[<unit>]]
+```
+
+| Unit | Description |
+| - | - |
+| `-M` | Minimize size |
+
+| Unit | Description |
+| - | - |
+| `s` | 512 byte sectors |
+| `K` | 1024 |
+| `M` | 1024² |
+| `G` | 1024³ |
