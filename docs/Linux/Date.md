@@ -15,7 +15,7 @@ timedatectl set-time [<YYYY>-<MM>-<DD>] [<HH>:<MM>:<SS>]
 ```
 
 ```bash
-date [-u|--utc] [MMDDhhmm[YYYY][.ss]]
+date [-u|--utc] <MMDDhhmm[YYYY][.ss]>
 ```
 
 ```bash
@@ -48,13 +48,13 @@ timedatectl set-timezone <timezone>
 
 Real-Time Clock
 
-RTC as the local time
+Set RTC as the local time
 
 ```bash
 timedatectl set-local-rtc { true | t | yes | y | 1 }
 ```
 
-RTC (Real-Time Clock) as the UTC (Coordinated Universal Time)
+Set RTC as the UTC (Coordinated Universal Time)
 
 ```bash
 timedatectl set-local-rtc { false | f | no | n | 0 }

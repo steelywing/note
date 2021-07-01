@@ -1,6 +1,8 @@
-## HPE Smart Storage Administrator CLI
+# `ssacli`
 
-[Reference](https://wiki.phoenixlzx.com/page/ssacli/)
+HPE Smart Storage Administrator CLI
+
+> [Reference](https://wiki.phoenixlzx.com/page/ssacli/)
 
 ## Help
 ```bash

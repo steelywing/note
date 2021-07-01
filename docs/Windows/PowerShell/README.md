@@ -1,3 +1,9 @@
+---
+title: Basic
+slug: .
+sidebar_position: 0
+---
+
 ## Help
 
  `help` equal `Get-Help | more`
@@ -78,42 +84,6 @@ Create property
 # 2 4 6
 ```
 > Alias: `?`
-
-## Network profile
-
-```powershell
-Get-NetConnectionProfile
-
-Set-NetConnectionProfile
-    { -InterfaceIndex <ID> | -Name <name> }
-    -NetworkCategory { Private | Public }
-```
-
-## Show TCP listening port
-
-```powershell
-Get-NetTCPConnection -State Listen [-LocalPort <port>]
-```
-
-## Firewall
-
-Allow ICMP echo request
-
-```powershell
-New-NetFirewallRule `
-    -DisplayName "ICMPv4 echo request" `
-    -Direction Inbound `
-    -Protocol ICMPv4 `
-    -IcmpType 8 `
-    -Action Allow
-
-New-NetFirewallRule `
-    -DisplayName "ICMPv6 echo request" `
-    -Direction Inbound `
-    -Protocol ICMPv6 `
-    -IcmpType 8 `
-    -Action Allow
-```
 
 ## PowerShell remoting
 
@@ -200,7 +170,9 @@ Get-ExecutionPolicy
 Set-ExecutionPolicy <policy>
 ```
 
-## Unblock script that it was downloaded from the Internet
+## Unblock script
+
+Unblock script that was downloaded from the Internet
 
 ```powershell
 Unblock-File <path>
@@ -260,87 +232,6 @@ Remove
 $hash.Remove(<key>)
 ```
 
-## Array
-
-> [Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_arrays)
-
-```powershell
-$array = <value>, <value>[, ...]
-$array = @([<value>[, ...]])
-```
-
-Range
-
-```powershell
-$array = <start>..<end>
-```
-
-Count
-
-```powershell
-$array.Count
-```
-
-Get element
-
-```powershell
-$array[<index>]
-```
-
-Set element
-
-```powershell
-$array[<index>] = <value>
-```
-
-Slice
-
-```powershell
-$array[<index>..<index>]
-```
-
-Iteration
-
-```powershell
-foreach ($element in $array) {
-    # $element
-}
-
-$array.ForEach({
-    # $PSItem == $_ == <current element>
-})
-```
-
-Filter
-
-```powershell
-$array.Where({
-    # $PSItem == $_ == <current element>
-})
-```
-
-## String
-
-Format string
-
-```powershell
-<format> -f <value>[, ...]
-
-"{0} is {1}" -f "Life", "great"
-```
-
-Filter string
-
-```powershell
-<command> | Select-String "<pattern>"
-```
-
-Concatenate string
-
-```powershell
-"$A $B"
-```
-
 ## Path
 
 Get script path
@@ -367,38 +258,6 @@ Join path
 Join-Path <path> <path> ...
 ```
 
-## VLAN
-
-### Create VLAN interface
-
-- Enable Hyper-V virtual switch
-  ```powershell
-  Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-Services
-  ```
-
-- Enable Hyper-V tools
-  ```powershell
-  Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-Tools-All
-  ```
-
-- Add external virtual switch
-  ```powershell
-  $ethernet = Get-NetAdapter -Name "Ethernet"
-  New-VMSwitch -Name "External Switch" -NetAdapterName $ethernet.Name -AllowManagementOS $true
-  ```
-
-- Add VLAN interface
-  ```powershell
-  Add-VMNetworkAdapter -ManagementOS -Name "<name>"
-  Set-VMNetworkAdapterVlan -ManagementOS -VMNetworkAdapterName "<name>" -Access -VlanId <VLAN ID>
-  ```
-
-### Remove VLAN interface
-
-```powershell
-Remove-VMNetworkAdapter -ManagementOS -Name "<name>"
-```
-
 ## Get system directory
 
 ```powershell
@@ -411,62 +270,9 @@ Remove-VMNetworkAdapter -ManagementOS -Name "<name>"
 Get-WindowsOptionalFeature -Online
 ```
 
-## Registry
+## Clear MRU
 
-```powershell
-cd Registry::
-cd HKCU:
-cd HKLM:
-```
-
-### Key
-
-> [Reference](https://docs.microsoft.com/en-us/powershell/scripting/samples/working-with-registry-keys?view=powershell-7)
-
-List keys
-
-```powershell
-ls [<key path>]
-```
-
-Create key
-
-```powershell
-ni <key path>
-```
-
-Delete key
-
-```powershell
-ri <key path>
-```
-
-### Value
-
-> [Reference](https://docs.microsoft.com/en-us/powershell/scripting/samples/working-with-registry-entries?view=powershell-7)
-
-Get values
-
-```powershell
-gp <key path> [-Name <name>]
-```
-
-Set value
-
-```powershell
-sp <key path>
-  -Name <name>
-  -Value <value>
-  [-Type { Binary | DWord | QWord | ExpandString | MultiString | String }]
-```
-
-Remove value
-
-```powershell
-rp <key path> -Name <name>
-```
-
-## Clear MRU (Most Recently Used)
+ MRU (Most Recently Used)
 
 ```powershell
 sp "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU\" -Name MRUList -Type String -Value ""
