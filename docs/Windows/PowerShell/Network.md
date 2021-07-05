@@ -1,3 +1,9 @@
+---
+sidebar_label: Network
+---
+
+# Network - PowerShell
+
 ## Network profile
 
 Get network profile

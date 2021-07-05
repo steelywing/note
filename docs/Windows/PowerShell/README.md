@@ -1,8 +1,10 @@
 ---
-title: Basic
 slug: .
+sidebar_label: Basic
 sidebar_position: 0
 ---
+
+# PowerShell
 
 ## Help
 
@@ -272,7 +274,7 @@ Get-WindowsOptionalFeature -Online
 
 ## Clear MRU
 
- MRU (Most Recently Used)
+MRU (Most Recently Used)
 
 ```powershell
 sp "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU\" -Name MRUList -Type String -Value ""

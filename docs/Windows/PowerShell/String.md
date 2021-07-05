@@ -1,4 +1,8 @@
-# String
+---
+sidebar_label: String
+---
+
+# String - PowerShell
 
 > [Reference](https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-string-substitutions?view=powershell-7.1)
 

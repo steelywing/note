@@ -1,4 +1,8 @@
-# Array
+---
+sidebar_label: Array
+---
+
+# Array - PowerShell
 
 > - [Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_arrays)
 > - `help about_Arrays`

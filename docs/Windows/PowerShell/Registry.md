@@ -1,4 +1,8 @@
-# Registry
+---
+sidebar_label: Registry
+---
+
+# Registry - PowerShell
 
 ## List available registry drive
 
