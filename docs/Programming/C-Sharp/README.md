@@ -1,5 +1,8 @@
 ---
 title: C#
+slug: .
+sidebar_label: Basic
+sidebar_position: 0
 ---
 
 ![.NET Platform](img/platforms-netstandard.png)
