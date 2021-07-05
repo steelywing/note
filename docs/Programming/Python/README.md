@@ -1,3 +1,11 @@
+---
+slug: .
+sidebar_label: Basic
+sidebar_position: 0
+---
+
+# Python
+
 ## Access attribute using string
 
 ```python

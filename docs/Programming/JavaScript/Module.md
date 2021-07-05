@@ -1,4 +1,8 @@
-## IIFE (Immediately Invoked Function Expression) - Browser
+## IIFE
+
+Immediately Invoked Function Expression
+
+> Used in Browser
 
 > [Reference](https://developer.mozilla.org/zh-TW/docs/Glossary/IIFE)
 
@@ -21,9 +25,13 @@ console.log(circle.pi);
 </script>
 ```
 
-## AMD (Asynchronous Module Definition) - RequireJS
+## AMD
 
-> uncommon
+Asynchronous Module Definition
+
+> Used in RequireJS
+
+> #uncommon
 
 > [Reference](https://requirejs.org/docs/api.html)
 
@@ -48,7 +56,9 @@ requirejs(['circle'], function(circle) {
 });
 ```
 
-## CommonJS - Node.js
+## CommonJS
+
+> Used in Node.js
 
 > [Reference](http://wiki.commonjs.org/wiki/Modules/1.1.1)
 
@@ -68,13 +78,23 @@ const circle = require('./circle.js');
 console.log(circle.pi);
 ```
 
-## UMD (Universal Module Definition) - Node.js, Browser
+## UMD
+
+Universal Module Definition
+
+> #uncommon
+
+> Used in Node.js, Browser
 
 > [Reference](https://github.com/umdjs/umd)
 
 Uses AMD as a base, with special-casing added to handle CommonJS compatibility.
 
-## ESM (ECMAScript Module) - Node.js, Browser
+## ESM
+
+ECMAScript Module
+
+> Used in Node.js, Browser
 
 > Reference: [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import), [`export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
 

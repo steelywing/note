@@ -17,7 +17,7 @@
 
 ## Network Profile
 
-[PowerShell](PowerShell.md#network-profile)
+[PowerShell](PowerShell/Network.md#network-profile)
 
 ## IP address conflict
 
@@ -31,7 +31,7 @@ Windows will use IP `169.254.0.0/16` if IP address conflict
 
 ## Show TCP / UDP connection
 
-[PowerShell](./PowerShell.md#show-tcp-listening-port)
+[PowerShell](PowerShell/Network.md#show-tcp-listening-port)
 
 ```cmd
 netstat <option>

@@ -260,3 +260,10 @@ or
 ```powershell
 Enable-WindowsOptionalFeature -Online -All -FeatureName Containers-DisposableClientVM
 ```
+
+## Windows 11 Processor Requirements
+
+> [Reference](https://docs.microsoft.com/en-us/windows-hardware/design/minimum/windows-processor-requirements)
+
+- [Supported Intel Processors](https://docs.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-supported-intel-processors)
+- [Supported AMD Processors](https://docs.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-supported-amd-processors)

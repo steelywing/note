@@ -9,6 +9,7 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'steelywing', // Usually your GitHub org/user name.
   projectName: 'note', // Usually your repo name.
+  trailingSlash: true,
   themeConfig: {
     prism: {
       additionalLanguages: [
@@ -114,7 +115,14 @@ module.exports = {
         language: ["en", "zh"],
         indexPages: true,
         indexBlog: false,
+        highlightSearchTermsOnTargetPage: true,
       },
     ],
+    /*[
+      require.resolve('@cmfcmf/docusaurus-search-local'), 
+      {
+        docsRouteBasePath: '/',
+      }
+    ]*/
   ],
 };

@@ -1,3 +1,11 @@
+---
+slug: .
+sidebar_label: Basic
+sidebar_position: 0
+---
+
+# JavaScript
+
 ## Remove URL query
 
 [Reference](https://developer.mozilla.org/en-US/docs/Web/API/Window/location#Example_5_Send_a_string_of_data_to_the_server_by_modifying_the_search_property)
