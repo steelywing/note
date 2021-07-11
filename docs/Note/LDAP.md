@@ -1,36 +1,37 @@
 # LDAP
 
-> [Reference](https://social.technet.microsoft.com/wiki/contents/articles/5392.active-directory-ldap-syntax-filters.aspx)
+> - [Reference](https://social.technet.microsoft.com/wiki/contents/articles/5392.active-directory-ldap-syntax-filters.aspx)
+> - [Reference](https://docs.microsoft.com/en-us/windows/win32/adsi/search-filter-syntax)
+> - [RFC 2254](https://www.ietf.org/rfc/rfc2254.txt)
 
 Lightweight Directory Access Protocol
 
-## Filter `<clauses>`
+## `<filter>`
 
 ```
-(<attribute><comparison operator><value>)
+(<attribute><operator><value>)
 ```
 
-## not `<clauses>`
+| `<operator>` | Meaning |
+| - | - |
+| = | Equality |
+| >= | Greater than or equal to (lexicographical) |
+| <= | Less than or equal to (lexicographical) |
+
+## not `<filter>`
 
 ```
-([!]<clauses>)
+(!<filter>)
 ```
 
-## or `<clauses>`
+## or `<filter>`
 ```
-(|<clauses><clauses>)
-```
-
-## and `<clauses>`
-```
-(&<clauses><clauses>)
+(|<filter><filter>...)
 ```
 
-## `<comparison operator>`
+## and `<filter>`
 ```
-=
->=
-<=
+(&<filter><filter>...)
 ```
 
 ## `<value>`
@@ -45,7 +46,7 @@ Wildcard
 <text>
 ```
 
-## `<attribute>` is not empty
+## Not empty `<attribute>`
 
 ```
 (<attribute>=*)
