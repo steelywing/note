@@ -13,6 +13,7 @@ module.exports = {
   themeConfig: {
     prism: {
       additionalLanguages: [
+        'ini',
         'csharp',
         'powershell',
       ],
@@ -115,6 +116,8 @@ module.exports = {
         language: ["en", "zh"],
         indexPages: true,
         indexBlog: false,
+        indexDocs: true,
+        // docsRouteBasePath: '/',
         highlightSearchTermsOnTargetPage: true,
       },
     ],

@@ -57,11 +57,13 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-Services
 ```
 
 Enable Hyper-V tools
+
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-Tools-All
 ```
 
 Add external virtual switch
+
 ```powershell
 $ethernet = Get-NetAdapter -Name "Ethernet"
 New-VMSwitch -Name "External Switch" -NetAdapterName $ethernet.Name -AllowManagementOS $true

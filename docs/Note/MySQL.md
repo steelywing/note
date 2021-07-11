@@ -120,9 +120,7 @@ optimize table <table> [, ...];
 
 > [Reference](https://dev.mysql.com/doc/refman/8.0/en/option-files.html)
 
-`/etc/my.cnf`
-
-```ini
+```ini title="/etc/my.cnf"
 # <comment>
 ; <comment>
 
@@ -163,20 +161,23 @@ mysql> { help | ? } [<command>];
 
 ## Slow query log
 
-> [Reference](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_slow_query_log)
+> [Doc](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)
 
 ```ini
 [mysqld]
 slow-query-log=ON
 log_output={ FILE | TABLE }
 
+# Log file
 # Default = <data directory>/<host name>-slow.log
 slow_query_log_file=<file>
 
-# Log query longer than <seconds>, default = 10
+# Log query longer than <seconds>
+# Default = 10
 long_query_time=<seconds>
 
 # Log query not using index
+# Default = OFF
 log-queries-not-using-indexes=ON
 ```
 
