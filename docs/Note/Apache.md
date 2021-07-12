@@ -111,13 +111,13 @@ a2enmod proxy_http
 
 Proxy request to backend server
 
-```apache
+```apacheconf
 ProxyPass "/" "http://<server>/"
 ```
 
 Proxy request that is start with `/api`
 
-```apache
+```apacheconf
 ProxyPass "/api" "http://<server>"
 ```
 
@@ -125,14 +125,14 @@ Modify the `Location` response header from the backend server to proxy server
 
 > Most often required
 
-```apache
+```apacheconf
 ProxyPass "/" "http://<server>/"
 ProxyPassReverse "/" "http://<server>/"
 ```
 
 `ProxyPass` to a HTTPS server
 
-```apache
+```apacheconf
 SSLProxyEngine on
 
 # Check if the host from request URI match the CN of the certificate
@@ -147,11 +147,11 @@ ProxyPassReverse "/" "https://<server>/"
 
 ## Load balancer
 
-> Reference
-> - [How To - Reverse Proxy](https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html)
-> - [Doc - Proxy Balancer](http://httpd.apache.org/docs/2.4/mod/mod_proxy_balancer.html)
+> [How To - Reverse Proxy](https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html)
 
-```apache
+> [Doc - Proxy Balancer](http://httpd.apache.org/docs/2.4/mod/mod_proxy_balancer.html)
+
+```apacheconf
 <Proxy "balancer://cluster">
     BalancerMember "http://<server 1>"
     BalancerMember "http://<server 2>"
@@ -162,7 +162,7 @@ ProxyPassReverse "/" "balancer://cluster/"
 
 Sticky session
 
-```apache
+```apacheconf
 Header add Set-Cookie "ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/" env=BALANCER_ROUTE_CHANGED
 <Proxy "balancer://cluster">
     BalancerMember "http://<server 1>" route=1
@@ -179,7 +179,7 @@ ProxyPassReverse "/" "balancer://cluster/"
 
 Use PCRE to rewrite URL
 
-```apache
+```apacheconf
 RewriteEngine { on | off }
 RewriteCond "<test string>" "[!]<RegExp condition>" [<flags>]
 RewriteCond "<test string>" "[!]=<string condition>" [<flags>]
@@ -194,7 +194,7 @@ RewriteRule "<RegExp pattern>" "<substitution>" [<flags>]
 
 Redirect HTTP to HTTPS
 
-```apache
+```apacheconf
 RewriteEngine on
 RewriteCond "%{HTTPS}" "=off"
 RewriteRule "^/?(.*)" "https://%{HTTP_HOST}/$1" [R,L]
@@ -202,7 +202,7 @@ RewriteRule "^/?(.*)" "https://%{HTTP_HOST}/$1" [R,L]
 
 Debug
 
-```apache
+```apacheconf
 LogLevel alert rewrite:trace3
 ```
 
@@ -210,10 +210,11 @@ LogLevel alert rewrite:trace3
 
 Using certificate
 
-> - [How To](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)
-> - [Doc](https://httpd.apache.org/docs/2.4/mod/mod_ssl.html)
+> [How To](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)
 
-```apache
+> [Doc](https://httpd.apache.org/docs/2.4/mod/mod_ssl.html)
+
+```apacheconf
 SSLVerifyClient require
 SSLVerifyDepth 1
 SSLCACertificateFile "<ca.crt>"

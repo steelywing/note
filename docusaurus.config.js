@@ -16,8 +16,10 @@ module.exports = {
         'ini',
         'csharp',
         'powershell',
+        'apacheconf',
       ],
     },
+    hideableSidebar: true,
     colorMode: {
       defaultMode: 'dark',
     },
@@ -43,25 +45,24 @@ module.exports = {
           label: 'Linux',
         },
         {
-          // type: 'doc',
-          // docId: 'Linux/README',
           to: 'Windows',
           position: 'left',
           label: 'Windows',
         },
         {
-          // type: 'doc',
-          // docId: 'Network/README',
           to: 'Network',
           position: 'left',
           label: 'Network',
         },
         {
-          // type: 'doc',
-          // docId: 'Programming/README',
           to: 'Programming',
           position: 'left',
           label: 'Programming',
+        },
+        {
+          to: 'Game',
+          position: 'left',
+          label: 'Game',
         },
         {
           href: 'https://github.com/steelywing/note',
