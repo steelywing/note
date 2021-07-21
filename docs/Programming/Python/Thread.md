@@ -92,3 +92,51 @@ Thread 3 end
 Thread 4 end
 Main end
 ```
+
+## Lock
+
+```py
+from time import sleep
+from threading import Lock, Thread
+
+
+def thread():
+    with lock:
+        print("Thread acquired lock")
+        sleep(4)
+    print("Thread released lock")
+
+
+lock = Lock()
+Thread(target=thread).start()
+
+print("Main waiting lock")
+with lock:
+    print("Main acquired lock")
+print("Main released lock")
+```
+
+```
+Thread acquired lock
+Main waiting lock
+Thread released lock
+Main acquired lock
+Main released lock
+```
+
+<hr/>
+
+```py
+with lock:
+    # ...
+```
+
+is equivalent to
+
+```py
+lock.acquire()
+try:
+    # ...
+finally:
+    lock.release()
+```
