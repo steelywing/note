@@ -55,7 +55,7 @@ vi-preserve-time () {
 | `lspci -nn` | List PCI devices and devices code |
 | `lspci -k` | List PCI devices and kernel driver |
 | `cat /proc/cpuinfo` | Show CPU info |
-| `cat /proc/meminfo` | Show CPU info |
+| `cat /proc/meminfo` | Show memory info |
 
 ## Kernel
 
@@ -111,7 +111,7 @@ Change file permission to `644`, directory to `755`
 | Option | Description |
 | - | - |
 | `-R` | Recursive |
-| `-h | --no-dereference` | Change symbolic links instead of referenced file |
+| `-h \| --no-dereference` | Change symbolic links instead of referenced file |
 
 ```bash
 chmod [-R] u=rw,go=r,a+X <path>
