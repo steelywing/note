@@ -28,13 +28,13 @@ Default prefix key: <kbd>Ctrl + b</kbd>
 
 Execute command
 - <kbd>&lt;prefix key&gt;</kbd>
-- Key / `:<command>`
+- `Key` or `:<command>`
 
 | Key | Command | Alias | Description |
 | - | - | - | - |
 | <kbd>:</kbd>`<command>` | `<command>` |  | Command |
-|  | `list-sessions` | `ls` | List session |
 | <kbd>?</kbd> | `list-keys` | `lsk` | List keys binding |
+|  | `list-sessions` | `ls` | List session |
 |  | `bind-key [-n] [-t <table>] <key> <command> [<arguments>]` | `bind` | Bind key |
 |  | `unbind-key [-n] [-t <table>] <key>` | `unbind` | Unbind key |
 | <kbd>c</kbd> | `new-window [-n<name>]` `<command>` | `neww` | New window |
@@ -61,6 +61,23 @@ Execute command
 | <kbd>]</kbd> | `paste-buffer` |  | Paste buffer |
 | <kbd>=</kbd> | `choose-buffer` |  | Choose buffer |
 
+## Config
+
+```bash title="~/.tmux.conf"
+# Comment
+<command>
+```
+
+## Mouse
+
+> [Reference](https://github.com/tmux/tmux/wiki/Getting-Started)
+
+Enable mouse
+
+```
+set -g mouse on
+```
+
 ## Tree mode
 
 | Key | Function |
@@ -86,6 +103,14 @@ Execute command
 | `q` | Exit tree mode |
 
 ## Copy mode
+
+Default: `emacs` key
+
+Use `vi` key
+
+```bash
+{VISUAL|EDITOR}={vi|vim|nvi}
+```
 
 | Command | `vi` Key | `emacs` Key |
 | - | - | - |
