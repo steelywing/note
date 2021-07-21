@@ -6,7 +6,7 @@
 sudo apachectl configtest
 ```
 
-## Order
+## `Order` of `Allow` and `Deny`
 
 > *Deprecated* by `Require`
 
@@ -54,11 +54,11 @@ function isAllow(match_allow, match_deny) {
 }
 ```
 
-## Sections order ( Priority / Precedence )
+## Sections order
 
 > [Doc](https://httpd.apache.org/docs/2.4/sections.html#merging)
 
-The order of merging is
+The order (Priority / Precedence) of merging is
 
 - `<Directory>`
   - Shortest to longest
@@ -69,32 +69,6 @@ The order of merging is
   - In the order in the configuration
 - `<If>`
   - in the order in the configuration
-
-```js
-// Pseudo code
-
-function getConfig(request) {
-    var config = {};
-    if (Directory.match(request)) {
-        Object.assign(config, Directory.config);
-    }
-    if (DirectoryMatch.match(request)) {
-        Object.assign(config, DirectoryMatch.config);
-    }
-    if (Files.match(request)) {
-        Object.assign(config, Files.config);
-    }
-    if (Location.match(request)) {
-        Object.assign(config, Location.config);
-    }
-    if (If.match(request)) {
-        Object.assign(config, If.config);
-    }
-    return config;
-}
-```
-
-[`Object.assign reference`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 
 Sections having same priority are processed in the configuration file order.
 
@@ -118,7 +92,7 @@ ProxyPass "/" "http://<server>/"
 Proxy request that is start with `/api`
 
 ```apacheconf
-ProxyPass "/api" "http://<server>"
+ProxyPass "/api" "http://<server>/"
 ```
 
 Modify the `Location` response header from the backend server to proxy server
@@ -135,7 +109,7 @@ ProxyPassReverse "/" "http://<server>/"
 ```apacheconf
 SSLProxyEngine on
 
-# Check if the host from request URI match the CN of the certificate
+# Check if the host from request URI match the CN of the server certificate
 SSLProxyCheckPeerName { on | off }
 
 # Checked if the remote server certificate is expired
@@ -174,8 +148,9 @@ ProxyPassReverse "/" "balancer://cluster/"
 
 ## mod_rewrite
 
-> - [Intro](https://httpd.apache.org/docs/2.4/rewrite/intro.html)
-> - [Doc](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)
+> [Intro](https://httpd.apache.org/docs/2.4/rewrite/intro.html)
+
+> [Doc](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)
 
 Use PCRE to rewrite URL
 
