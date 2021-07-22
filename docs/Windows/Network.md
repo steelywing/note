@@ -1,3 +1,9 @@
+---
+sidebar_label: Network
+---
+
+# Network - Windows
+
 ## Host name resolution order
 
 [Reference](https://support.microsoft.com/en-au/help/172218/microsoft-tcp-ip-host-name-resolution-order)

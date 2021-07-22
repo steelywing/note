@@ -1,3 +1,9 @@
+---
+sidebar_label: Module
+---
+
+# Module - JavaScript
+
 ## IIFE
 
 Immediately Invoked Function Expression

@@ -110,7 +110,7 @@ def thread():
 lock = Lock()
 Thread(target=thread).start()
 
-print("Main waiting lock")
+print("Main waiting lock release")
 with lock:
     print("Main acquired lock")
 print("Main released lock")

@@ -1,4 +1,8 @@
-# Credential
+---
+sidebar_label: Credential
+---
+
+# Credential - Windows
 
 ## Credential Manager
 

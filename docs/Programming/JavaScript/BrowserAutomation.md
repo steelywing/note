@@ -1,3 +1,9 @@
+---
+sidebar_label: Browser Automation
+---
+
+# Browser Automation - JavaScript
+
 ## Selenium
 
 - Driver API using REST JSON

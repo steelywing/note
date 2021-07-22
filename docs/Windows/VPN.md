@@ -1,3 +1,9 @@
+---
+sidebar_label: VPN
+---
+
+# VPN - Windows
+
 ## L2TP/IPsec
 
 Enable IPsec service

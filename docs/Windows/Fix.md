@@ -1,4 +1,10 @@
-# Fix / Troubleshoot
+---
+sidebar_label: Fix
+---
+
+# Fix - Windows
+
+Fix / Troubleshoot
 
 ## Microsoft.Windows.Photos with high CPU usage
 
