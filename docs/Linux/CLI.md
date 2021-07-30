@@ -58,6 +58,12 @@ vi-preserve-time () {
 | `cat /proc/cpuinfo` | Show CPU info |
 | `cat /proc/meminfo` | Show memory info |
 
+## Mount image
+
+```bash
+mount -o loop <image.iso> <directory>
+```
+
 ## File system
 
 ### ACL

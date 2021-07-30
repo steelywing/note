@@ -18,7 +18,7 @@ Logical Volume Management
 | VG | Volume Group |
 | LV | Logical Volume |
 
-![LVM](img/LVM.png)
+![LVM](img/LVM.svg)
 
 ## Scan for all available devices for LVM
 
