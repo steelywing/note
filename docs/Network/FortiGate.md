@@ -58,3 +58,7 @@ diagnose vpn ike log filter
 diagnose debug application ike 255
 diagnose debug enable
 ```
+
+## HA manual synchronization
+
+> [Reference](https://kb.fortinet.com/kb/documentLink.do?externalID=FD36494)

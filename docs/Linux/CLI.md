@@ -10,7 +10,7 @@ Command Line Interface
 cat /etc/shells
 ```
 
-### Chanage shell
+### Change shell
 
 ```bash
 chsh -s <shell> [<user>]
@@ -31,10 +31,11 @@ xdg-open <path>
 Type: `function`, `builtin`, or `file`
 
 ```bash
+# -a: display all locations
 type [-a] <command>
 ```
 
-Preserve file timestamp after edit (`bash`)
+## Preserve file timestamp after edit (`bash`)
 
 ```bash
 vi-preserve-time () {
@@ -57,31 +58,7 @@ vi-preserve-time () {
 | `cat /proc/cpuinfo` | Show CPU info |
 | `cat /proc/meminfo` | Show memory info |
 
-## Kernel
-
-### Kernel info
-
-```bash
-uname -a
-```
-
-### Kernel module
-
-> `module-name` is same as `module_name`
-
-| Command | Description |
-| - | - |
-| `lsmod` | List module |
-| `insmod <module>` | Add module |
-| `rmmod <module>` | Remove module |
-| `modprobe <module>` | Add module and dependencies |
-| `modprobe -r <module>` | Remove module and dependencies |
-| Add `blacklist <module>` to `/etc/modprobe.d/*.conf` | Blacklist module |
-| Add `install <module> /bin/false` to `/etc/modprobe.d/*.conf` | Blacklist module even other modules depend on it |
-
-
 ## File system
-
 
 ### ACL
 
@@ -153,18 +130,6 @@ chattr {+|-}<attribute> <file>
 lsof <path>
 ```
 
-
-## SELinux
-
-### Get SELinux status
-```bash
-sestatus [-v]
-```
-
-### Set SELinux status
-```bash
-setenforce { Enforcing | Permissive | 1 | 0 }
-```
 
 ## Manual / Help
 
@@ -277,22 +242,11 @@ fuser <option> <file>
 
 Execute command periodically
 
+
 ```bash
+# Default: 2 seconds
 watch [-n <seconds>] <command>
 ```
-
-## Auto start
-
-### LXDE
-
-> [Reference](https://wiki.archlinux.org/index.php/LXDE#Autostart)
-
-- `~/.config/lxsession/LXDE/`
-- `/etc/xdg/lxsession/LXDE/autostart`
-
-### `bash`
-
-`~/.bashrc`
 
 ## FHS (Filesystem Hierarchy Standard) / Filesystem Structure
 

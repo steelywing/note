@@ -6,9 +6,9 @@ Logical Volume Management
 
 > [Tutorial](https://www.digitalocean.com/community/tutorials/how-to-use-lvm-to-manage-storage-devices-on-ubuntu-16-04)
 
-Config file
+## Config file
 
-```bash
+```
 /etc/lvm/lvm.conf
 ```
 
@@ -20,7 +20,7 @@ Config file
 
 ![LVM](img/LVM.png)
 
-Scan for all available devices for LVM
+## Scan for all available devices for LVM
 
 ```bash
 lvmdiskscan
@@ -30,13 +30,15 @@ lvmdiskscan
 pvscan
 ```
 
-Change partition type ID to LVM (Optional)
+## Change partition type ID to LVM
+
+*Optional*
 
 ```bash
 gdisk <device>
 
 Command (? for help): t
-Partition number (1-3): <partition>
+Partition number (1-X): <partition>
 Hex code or GUID (L to show codes, Enter = 8300): 8e00
 Command (? for help): w
 ```
@@ -52,14 +54,14 @@ Command (m for help): w
 
 ## PV (Physical Volume)
 
-Create PV
+### Create PV
 
 ```bash
 # <device> = <disk> | <partition>
 pvcreate <device>[ ...]
 ```
 
-Remove PV
+### Remove PV
 
 ```bash
 pvmove <PV>
@@ -67,7 +69,7 @@ vgreduce <VG> <PV>
 pvremove <PV>
 ```
 
-Show PV information
+### Show PV information
 
 ```bash
 pvs
@@ -79,25 +81,25 @@ pvdisplay
 
 ## VG (Volume Group)
 
-Create VG
+### Create VG
 
 ```bash
 vgcreate <VG name> <PV> ...
 ```
 
-Add PV to VG
+### Add PV to VG
 
 ```bash
 vgextend <VG name> <PV> ...
 ```
 
-Remove VG
+### Remove VG
 
 ```bash
 vgremove <VG name>
 ```
 
-Show VG information
+### Show VG information
 
 ```bash
 vgs
@@ -109,7 +111,7 @@ vgdisplay
 
 ## LV (Logical Volume)
 
-Create LV
+### Create LV
 
 ```bash
 lvcreate 
@@ -122,7 +124,7 @@ lvcreate
     <VG name>
 ```
 
-Show LV information
+### Show LV information
 
 ```bash
 lvs
@@ -132,12 +134,13 @@ lvs
 lvdisplay
 ```
 
-Remove LV
+### Remove LV
+
 ```bash
 lvremove <LV>
 ```
 
-Resize LV
+### Resize LV
 
 ```bash
 lvresize 
@@ -150,11 +153,11 @@ lvresize
     <LV>
 ```
 
-Extent LV
+### Extent LV
 
 `lvextend <size>` = `lvresize +<size>`
 
-Reduce LV
+### Reduce LV
 
 `lvreduce <size>` = `lvresize -<size>`
 
@@ -170,7 +173,7 @@ Reduce LV
     <LV>
   ```
 
-  - `--resizefs` similar to do the following
+  - `--resizefs` is similar to do the following
     - Check file system
       ```bash
       fsck -f <LV>
@@ -182,7 +185,7 @@ Reduce LV
 
 ## Troubleshooting
 
-### Device &lt;device&gt; excluded by a filter.
+### Device `<device>` excluded by a filter.
 
 ```bash
 pvcreate -vvv <device> |& grep <device>

@@ -12,3 +12,9 @@ Windows Subsystem for Linux
 ```
 \\wsl$
 ```
+
+## List distributions
+
+```powershell
+wsl { --list | -l } [--verbose | -v]
+```
