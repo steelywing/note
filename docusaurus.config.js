@@ -24,19 +24,20 @@ module.exports = {
       defaultMode: 'dark',
     },
     navbar: {
-      title: 'Steely Wing Note',
-      logo: {
+      title: 'Steely Wing',
+      /*logo: {
         alt: 'Steely Wing Note',
         src: 'img/logo.svg',
-      },
+      },*/
       items: [
-        /*{
+        {
           // type: 'doc',
-          // docId: 'Note/index',
-          to: '',
+          // docId: 'Note/README',
+          to: '/',
           position: 'left',
           label: 'Note',
-        },*/
+          activeBasePath: 'Note',
+        },
         {
           // type: 'doc',
           // docId: 'Linux/README',
