@@ -67,3 +67,14 @@ avoid_warnings=1
 # Disable warning and allows turbo mode even when low-voltage
 avoid_warnings=2
 ```
+
+## Raspberry Pi 4 USB-C issue
+
+> - [Ref](https://www.scorpia.co.uk/2019/06/28/pi4-not-working-with-some-chargers-or-why-you-need-two-cc-resistors/)
+> - [Revision](https://elinux.org/RPi_HardwareHistory)
+
+```sh
+cat /proc/cpuinfo | grep Revision
+```
+
+If the revision is `{a|b|c|d}03111` (Revision 1.1), it has USB-C power issue
