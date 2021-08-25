@@ -176,3 +176,35 @@ def power(self, exp):
 power2 = types.MethodType(power, 2)
 print(power2(8)) # 256
 ```
+
+## Follow file
+
+Follow file changed / appended data
+
+```py
+from io import SEEK_CUR, SEEK_END, SEEK_SET
+from typing import Iterator, TextIO
+import sys
+
+
+def follow(file: TextIO, interval: float = 0.2) -> Iterator[str]:
+    from time import sleep
+    line = ''
+    while True:
+        new = file.readline()
+        if new == "":
+            sleep(interval)
+            continue
+        line += new
+        if not line.endswith("\n"):
+            continue
+        yield line[:-1]
+        line = ''
+
+
+if __name__ == '__main__':
+    with open("access.log", 'r') as file:
+        file.seek(0, SEEK_END)
+        for line in follow(file):
+            print(line)
+```
