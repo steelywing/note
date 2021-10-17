@@ -4,9 +4,11 @@
 
 > [Reference](https://wiki.archlinux.org/index.php/LXDE#Autostart)
 
-`~/.config/lxsession/LXDE/autostart`
+加入要自動執行的指令到以下 File
 
-`/etc/xdg/lxsession/LXDE/autostart`
+For user: `~/.config/lxsession/LXDE/autostart`
+
+For all: `/etc/xdg/lxsession/LXDE/autostart`
 
 ```bash
 <command>
@@ -14,6 +16,8 @@
 ```
 
 ## `bash`
+
+加入要自動執行的指令到以下 File
 
 `~/.bashrc`
 
