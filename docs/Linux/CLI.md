@@ -270,3 +270,15 @@ man hier
 
 - Redirection from `stdin` / to `stdout`
 - `cd -` change to previous working directory
+
+## `true`
+
+```bash
+:
+```
+
+is equivalent to
+
+```bash
+true
+```
