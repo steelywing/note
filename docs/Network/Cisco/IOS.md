@@ -45,6 +45,12 @@ Switch(config)# exit
 Switch# 
 ```
 
+## Show configuration
+
+```
+Switch# s[how] config[uration]
+```
+
 ## Save / Reset
 
 Save config
