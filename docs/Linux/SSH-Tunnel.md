@@ -24,7 +24,7 @@ ssh [<option>] [<user>@]<SSH remote server host>
 
 ---
 
-SSH client ➡ SSH server
+## SSH client ➡ SSH server
 
 ```sh
 -L [<SSH client bind address>:]<SSH client port>:<remote server host>:<remote server port>
@@ -32,9 +32,9 @@ SSH client ➡ SSH server
 
 Port forward from `<SSH client port>` to `<remote server host>:<remote server port>`
 
----
+- If bind address is empty or `*` (`[*]:<port>:<host>:<port>`), will bind to all interfaces.
 
-SSH server ➡ SSH client
+## SSH server ➡ SSH client
 
 ```sh
 -R [<SSH server bind address>:]<SSH server port>:<local server host>:<local server port>
@@ -42,11 +42,17 @@ SSH server ➡ SSH client
 
 Port forward from `<SSH server port>` to `<local server host>:<local server port>`
 
----
-
-- If bind address is empty (`:<port>:<host>:<port>`), will bind to all interfaces.
+- If bind address is empty or `*` (`[*]:<port>:<host>:<port>`), will bind to all interfaces.
 
 - If no bind address colon (`<port>:<host>:<port>`), will bind to loopback interface.
+
+## SOCKS
+
+Dynamic forward from local to remote
+
+```bash
+ssh -D [<local bind address>:]<local port> <user>@<SSH server>
+```
 
 ## Example
 
@@ -89,3 +95,4 @@ Forward *SSH Server TCP port* ➡ *SSH Client* (NAT) ➡ *Destination address po
   ```
 
 - On *SSH Server*, open `http://127.0.0.1:8000/` or `http://10.0.1.2:80/`, will port forward to *Server* `http://10.0.2.2:80/`
+
