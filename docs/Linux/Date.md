@@ -63,6 +63,7 @@ timedatectl set-local-rtc { false | f | no | n | 0 }
 ## Convert timestamp to date time
 
 ```bash
+# -d <string>  顯示 <string> 所描述的時間
 date -d @<timestamp>
 ```
 

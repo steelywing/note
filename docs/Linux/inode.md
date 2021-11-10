@@ -7,12 +7,12 @@
 - 每個 inode 都有一個 i-number (inode number)，在同一個 file system 中是唯一的
 - 存取檔案：找到 file name 所指的 inode
 - Kernal 打開檔案後，就不會記住 file name，而是用 inode 存取檔案
-- inode 不包含檔案名
+- inode 不包含檔案名 (file name 保存在 dirent)
 - defrag 時 i-number 不變，只會改變 inode meta data
 
 ## inode meta data
 
-- inode number
+- inode number (i-number)
 - Type
   - Regular / file
   - Directory
@@ -46,18 +46,18 @@ df -i
 directory entry
 
 - directory 也是一個 "檔案"，"檔案" 內容是一個 dirent list
-  - [dirent](https://www.kernel.org/doc/html/v5.12/filesystems/ext4/dynamic.html#linear-classic-directories) struct:
+  - [dirent struct](https://www.kernel.org/doc/html/v5.12/filesystems/ext4/dynamic.html#linear-classic-directories):
     - i-number
-    - file name （file name 就像是 inode 的別名）
+    - file name ( inode 的 alias / 別名 )
   - 檔案內容包含：
     - 自己的 dirent (`.`)
     - parent 的 dirent (`..`)
     - children 的 dirent
-- 刪除檔案是刪除 dirent，hard link 數量會減 1
+- 刪除檔案是刪除 dirent，hard link 數量減少 1
 - 檔案被開啟時也可以刪除，因為刪除檔案只是刪除 dirent，不影響 inode
-- Unused dirent 的 i-number = 0 ([Ref](https://www.kernel.org/doc/html/v5.12/filesystems/ext4/dynamic.html#linear-classic-directories))
+- unused dirent 的 i-number = 0 ([Ref](https://www.kernel.org/doc/html/v5.12/filesystems/ext4/dynamic.html#linear-classic-directories))
 - root 的 i-number = 2
-- hard link 是指 dirent 指向 inode，它們之前的連結關係
+- hard link 是指 dirent 指向 inode，它們之間的連結關係
 - symbolic link 是一個 type 為 symbolic link 的檔案，檔案內容是所指 file 的 path (file name)
 
 ## Block size

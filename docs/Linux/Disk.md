@@ -27,13 +27,13 @@ df <option>
 | - | - |
 | `-h` | Disk free space in human readable format |
 
-## List block devices / disk
+## List block devices
 
 ```bash
 lsblk
 ```
 
-## Show devices UUID (GUID)
+## List devices UUID (GUID)
 
 ```bash
 lsblk { -f | --fs }
@@ -49,15 +49,15 @@ ls /dev/disk/by-uuid/
 
 ## `ionice`
 
-`ionice` (I/O nice) / I/O priority
+I/O nice / priority
 
-Get I/O priority
+Get I/O priority of process
 
 ```bash
 ionice [-p <PID>]
 ```
 
-Set I/O priority
+Set I/O priority of process
 
 | Class | Description |
 | - | - |
