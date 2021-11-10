@@ -102,9 +102,13 @@ module.exports = {
           // Please change this to your repo.
           editUrl:
             'https://github.com/steelywing/note/edit/master/',
+          remarkPlugins: [require('remark-math')],
+          rehypePlugins: [require('rehype-katex')],
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: [
+            require.resolve('./node_modules/katex/dist/katex.min.css'),
+          ]
         },
       },
     ],
