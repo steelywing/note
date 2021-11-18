@@ -263,6 +263,18 @@ openssl req -noout -modulus -in <csr.pem> | openssl md5
 cat <cert.crt> <chain.crt> > <fullchain.crt>
 ```
 
+```
+ -----BEGIN CERTIFICATE-----
+cert.crt
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+CA.crt
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+TrustedRoot.crt
+-----END CERTIFICATE----- 
+```
+
 ## Test SSL/TLS connection
 
 ```bash
