@@ -241,8 +241,12 @@ openssl x509
 
 Display the contents of certificate (`.crt`)
 
+| Option | Description |
+| - | - |
+| `-dates` | Print the start and expiry dates |
+
 ```bash
-openssl x509 -in <cert.{crt|pem}> -text -noout
+openssl x509 -in <cert.{crt|pem}> [-dates] -text -noout
 ```
 
 Verify if a private key matches a certificate
@@ -277,14 +281,33 @@ TrustedRoot.crt
 
 ## Test SSL/TLS connection
 
+| Protocol | Port |
+| - | - |
+| HTTPS | 443 |
+| IMAPS | 993 |
+| IMAP STARTTLS | 143 |
+| POP3S | 995 |
+| SMTPS | 465 |
+| SMTP STARTTLS | 587 |
+
+| Option | Description |
+| - | - |
+| `-showcerts` | Show full chain certificate |
+
 ```bash
-openssl s_client -connect <host>:<port>
+openssl s_client [-showcerts] -connect <host>:<port>
 ```
 
-## Test SMTP StartTLS
+Show SSL certificate
 
 ```bash
-openssl s_client -starttls smtp -showcerts -connect <host>:<port> -servername <domain>
+openssl s_client -connect <host>:<port> | openssl x509 [-noout] [-text]
+```
+
+## Test SMTP / IMAP StartTLS
+
+```bash
+openssl s_client -starttls { smtp | imap | pop3 } -showcerts -connect <host>:<port> -servername <domain>
 ```
 
 ## CA (Certificate Authority)
