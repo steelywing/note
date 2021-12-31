@@ -18,3 +18,7 @@ fbinst GUI
 ## [Grub4DOS](https://github.com/chenall/grub4dos)
 
 Extended grub bootloader
+
+## [Ventoy](https://github.com/ventoy/Ventoy)
+
+Boot from USB ISO directly
