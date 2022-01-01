@@ -21,6 +21,14 @@
 
 ## Joint
 
+- Will use `node.GlobalTransform.origin` - `joint.GlobalTransform.origin` as anchor point
+
+```
+# Reference: bullet\BulletDynamics\ConstraintSolver\btGeneric6DofConstraint.cpp
+
+Impulse = LimitSoftness * (Restitution * Depth / TimeStep - Damping * RelativeVelocity) * jacDiagABInv;
+```
+
 ### Pin Joint
 
 - 保持 **固定距離**，**固定距離** = 建立 Pin Joint 時的距離
@@ -61,3 +69,50 @@ public class Global : Godot.Node
   - <kbd>E</kbd> <kbd>Q</kbd> to move up / down
   - <kbd>Shift</kbd> <kbd>Alt</kbd> to speed up / down
 - `MMB` to rotate
+
+## Unhandled Exception Policy
+
+Do not terminate application on unhandled exception
+
+- **Project Settings**
+  - **Mono**
+    - **Unhandled Exception Policy**
+
+## Dot Product
+
+- `Dot(A, B)` 可用於計算 A, B 的角度
+  - &gt; 0 時角度 &lt; 90
+  - = 0 時角度 = 90
+  - &lt; 0 時角度 &gt; 90
+- `Dot(A, B) = A.X * B.X + A.Y * B.Y + A.Z * B.Z`
+
+## Cross Product
+
+- `Cross(A, B)` 垂直於 A, B 這個平面
+- `Cross(A, B)` = `-Cross(B, A)`
+- 可用於計算 Torque (扭力)
+
+## `Mathf`
+
+```cs
+// Pseudo Code
+float Clamp(float value, float min, float max)
+{
+  if (value < min) return min;
+  if (value > max) return max;
+  return value;
+}
+```
+
+```cs
+// Pseudo Code
+float Wrap(float value, float min, float max)
+{
+  float range = (max - min);
+  if (value >= max) 
+    return Wrap(value - range, min, max);
+  if (value <= min)
+    return Wrap(value + range, min, max);
+  return value;
+}
+```
