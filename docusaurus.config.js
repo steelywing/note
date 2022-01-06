@@ -114,7 +114,7 @@ module.exports = {
     ],
   ],
   plugins: [
-/*     [
+    [
       "@easyops-cn/docusaurus-search-local",
       {
         // `hashed` is recommended as long-term-cache of index file is possible.
@@ -126,8 +126,8 @@ module.exports = {
         // docsRouteBasePath: '/',
         highlightSearchTermsOnTargetPage: true,
       },
-    ], */
-    [
+    ],
+    /*[
       // require.resolve('../docusaurus-search-local'),
       require.resolve('@cmfcmf/docusaurus-search-local'),
       {
@@ -135,6 +135,6 @@ module.exports = {
         // style: "none",
         docsRouteBasePath: '/',
       }
-    ]
+    ]*/
   ],
 };
