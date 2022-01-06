@@ -39,11 +39,50 @@ sidebar_position: 0
 - For Unity
 - Included HarmonyX
 
+## Auto `using`
+
+Auto `using` / import / include
+
+Visual Studio 2019
+
+- **Tools**
+- **Options**
+- **Text Editor**
+- **C#**
+- **IntelliSense**
+- Enable **Show items from unimported namespaces**
+
+VS Code
+
+- Enable [**C# Extension**](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+- **Setting**
+  - **Extension**
+  - **C# configuration**
+  - Enable **Enable Import Completion**
+
+## Enable `override`, `method` auto completion
+
+VS Code
+
+- Enable [**C# Extension**](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+- **Setting**
+  - **Extension**
+  - **C# configuration**
+  - **Enable Async Completion**
+
+## @ Variable
+
+Use KeyWord as identifier
+
+```cs
+var @is = true;
+```
+
 ## NameSpace
 
 命名空間，用來組織/分隔命名，如果有很多 class，別人寫的 class 名稱也可能和你的 class 一樣，可以防止名稱 conflict
 
-```csharp
+```cs
 namespace NameSpace
 {
     // ...
@@ -51,7 +90,7 @@ namespace NameSpace
 ```
 
 直接使用 `namespace` 命名空間裡的 class
-```csharp
+```cs
 using System;
 Console.WriteLine("Hello, World!");
 // same as
@@ -59,20 +98,20 @@ System.Console.WriteLine("Hello, World!");
 ```
 
 用 `Generic` (Alias) 來存取 `System.Collections.Generic` 命名空間
-```csharp
+```cs
 using Generic = System.Collections.Generic;
 new Generic::Dictionary<string, int>();
 ```
 
 全域命名空間 (Global / Top Level Name Space)
 
-```csharp
+```cs
 global::
 ```
 
 巢狀
 
-```csharp
+```cs
 // N1
 namespace N1
 {
@@ -99,7 +138,7 @@ namespace N1
 
 > [Reference](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/type-testing-and-cast#cast-expression)
 
-```csharp
+```cs
 public class Animal { }
 
 public class Cat : Animal { }
@@ -122,7 +161,7 @@ public static class TypeOfExample
 
 > [Reference](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/type-testing-and-cast#cast-expression)
 
-```csharp
+```cs
 // Cast, convert E to type T
 (T) E
 
@@ -136,7 +175,7 @@ E is T ? (T)(E) : (T)null
 
 ## String format
 
-```csharp
+```cs
 string.format("{0} is a {1}", "Cat", "animal");
 // Cat is a animal
 
@@ -150,7 +189,7 @@ $"{a} is a {b}";
 
 > [Reference](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/how-to-define-value-equality-for-a-type)
 
-```csharp
+```cs
 public class DictKey
 {
     public int key;
@@ -176,14 +215,14 @@ Visual Studio has **Quick Action** to **Generate Equals and GetHashCode**
 
 ## Implement `GetHashCode()`
 
-```csharp
+```cs
 // .NET Core
 HashCode.Combine(value, ...);
 ```
 
 For Collection
 
-```csharp
+```cs
 public class Hash
 {
     public List<int> list;
@@ -204,13 +243,13 @@ public class Hash
 
 > [Reference](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/member-access-operators#null-conditional-operators--and-)
 
-```csharp
+```cs
 a?.x
 ```
 
 If a is null, the result is null, otherwise the result is a.x
 
-```csharp
+```cs
 a?.x()
 a?.b?.c(d);
 a?.b?[c];
@@ -220,7 +259,7 @@ If a is null, the result is null, and will not execute a.x(), otherwise the resu
 
 > The null-conditional operators are short-circuiting. That is, if one operation in a chain of conditional member or element access operations returns null, the rest of the chain doesn't execute. 
 
-```csharp
+```cs
 a?[x]
 ```
 
@@ -230,7 +269,7 @@ If a is null, the result is null, otherwise the result is a[x]
 
 `byte[]` to `string`
 
-```csharp
+```cs
 // .NET Framework
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
@@ -239,7 +278,7 @@ new SoapHexBinary(new byte[] { }).ToString();
 
 Pure C# implement
 
-```csharp
+```cs
 private static readonly uint[] lookup = CreateLookupTable();
 
 private static uint[] CreateLookupTable()
@@ -268,14 +307,14 @@ public static string ToHex(byte[] bytes)
 
 `string` to `byte[]`
 
-```csharp
+```cs
 // .NET Framework
 SoapHexBinary.Parse("00aabbEEFF").Value;
 ```
 
 ## Compute `string` hash
 
-```csharp
+```cs
 using System.Security.Cryptography;
 
 public byte[] ComputeSHA1(string s)
@@ -289,127 +328,6 @@ public byte[] ComputeSHA1(string s)
 }
 ```
 
-## Delegate
-
-A delegate is a type that represents references to methods with a particular parameter list and return type.
-
-```csharp
-class Program
-{
-    // Declaration
-    public delegate int DelegateMethod(ref int x);
-
-    public static int Add1(ref int x)
-    {
-        x += 1;
-        return x;
-    }
-
-    public static int Multiple2(ref int x)
-    {
-        x *= 2;
-        return x;
-    }
-
-    static void Main(string[] args)
-    {
-        DelegateMethod calculate;
-        int x;
-
-        x = 1;
-        calculate = Add1;
-        calculate(ref x); // 1 + 1 = 2
-        Console.WriteLine(x); // 2
-
-        x = 1;
-        calculate += Multiple2; // Add other method
-        calculate(ref x); // (1 + 1) * 2 = 4
-        Console.WriteLine(x); // 4
-    }
-}
-```
-
-- If the delegate has a return value and/or out parameters, it returns the return value and parameters of the last method invoked. 
-- Delegate can bind to instance
-
-```csharp
-class Counter
-{
-    public int count = 0;
-
-    public void Add()
-    {
-        count += 1;
-    }
-}
-
-class Program
-{
-
-    // Declaration
-    public delegate void DelegateMethod();
-
-    static void Main(string[] args)
-    {
-        var a = new Counter();
-        var b = new Counter();
-
-        DelegateMethod method = null;
-
-        method = a.Add;
-        // This also works
-        // method += a.Add;
-        method();
-        Console.WriteLine(a.count); // 1
-
-        method += b.Add;
-        method();
-        Console.WriteLine($"{a.count} {b.count}"); // 2 1
-    }
-}
-```
-
-Anonymous
-
-```csharp
-var delegateFunction = delegate()
-{
-    // ...
-    // return ...;
-};
-```
-
-C# defined delegate
-
-```csharp
-public delegate void Action();
-public delegate void Action<in T>(T obj);
-// ...
-
-public delegate TResult Func<out TResult>();
-public delegate TResult Func<in T, out TResult>(T arg);
-// ...
-```
-
-## Lambda
-
-With return value
-
-```csharp
-Func<int, int> Add1 = (n) => n + 1;
-// same as
-Func<int, int> Add1 = (n) => { return n + 1; };
-```
-
-Without return value
-
-```csharp
-Action<string> Hi = (name) =>
-{
-    Console.WriteLine($"Hi, {name}");
-};
-```
-
 ## Event
 
 > [Reference](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/events/how-to-publish-events-that-conform-to-net-framework-guidelines)
@@ -420,7 +338,7 @@ Action<string> Hi = (name) =>
 
 `using` static type
 
-```csharp
+```cs
 using static System.Console;
 
 class Program
@@ -434,7 +352,7 @@ class Program
 
 `using` alias
 
-```csharp
+```cs
 using SysCon = System.Console;
 using ListOfString = System.Collections.Generic.List<string>;
 ```
@@ -446,14 +364,16 @@ using ListOfString = System.Collections.Generic.List<string>;
 ```xml
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Target Name="CopyFiles" AfterTargets="AfterBuild">
-    <Copy SourceFiles="<file>[;<file>...]" DestinationFolder="<folder>" />
+    <!-- Copy DLL/EXE to destination folder -->
+    <Copy SourceFiles="$(TargetDir)$(TargetFileName)" DestinationFolder="<folder>" />
+    <!-- <Copy SourceFiles="<file>[;<file>...]" DestinationFolder="<folder>" /> -->
   </Target>
 </Project>
 ```
 
 ## Extension
 
-```csharp
+```cs
 namespace MathExtensionMethods
 {
     public static class MathExtensions
