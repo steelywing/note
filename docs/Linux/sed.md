@@ -1,5 +1,7 @@
 # sed
 
+> [Ref](https://www.gnu.org/software/sed/manual/sed.html)
+
 ## CLI Option
 
 ```bash
@@ -14,7 +16,7 @@ sed [<option>] '<script>' <input file> <input file> ...
 ## `<script>`
 
 ```sed
-[<address>] <command>
+[<address>]<command> [; [<address>]<command> ...]
 ```
 
 `hold space` ≈ `clipboard`
