@@ -80,3 +80,13 @@ dd if=<partition> of=/sdcard/<partition>.img
     - `1 - Edit device fingerprint`
     - `f - Pick a certified fingerprint`
     - Select a fingerprint
+
+## WeChat emoji folder
+
+```
+/storage/emulated/0/Android/data/com.tencent.mm/MicroMsg/<hash>/emoji
+```
+
+## Force media scan
+
+Clear **Media Storage** app data
