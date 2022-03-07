@@ -111,12 +111,28 @@ VS Code
   - **C# configuration**
   - **Enable Async Completion**
 
-## @ Variable
+## `@` Variable
 
 Use KeyWord as identifier
 
 ```cs
 var @is = true;
+```
+
+## `var`
+
+> [Ref](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/var)
+
+Implicitly type
+
+```cs
+var i = 0;
+// same as
+int i = 0;
+
+var f = 1.0f;
+// same as
+float f = 1.0f;
 ```
 
 ## `typeof` / `GetType()` / `is`
@@ -264,29 +280,32 @@ new SoapHexBinary(new byte[] { }).ToString();
 Pure C# implement
 
 ```cs
-private static readonly uint[] lookup = CreateLookupTable();
-
-private static uint[] CreateLookupTable()
+public class Hex
 {
-    var result = new uint[256];
-    for (int i = 0; i < 256; i++)
-    {
-        string s = i.ToString("X2");
-        result[i] = ((uint)s[0]) + ((uint)s[1] << 16);
-    }
-    return result;
-}
+    private static readonly char[][] lookup = CreateLookupTable();
 
-public static string ToHex(byte[] bytes)
-{
-    var result = new char[bytes.Length * 2];
-    for (int i = 0; i < bytes.Length; i++)
+    private static char[][] CreateLookupTable()
     {
-        var val = lookup[bytes[i]];
-        result[2 * i] = (char)val;
-        result[2 * i + 1] = (char)(val >> 16);
+        var table = new char[256][];
+        for (int i = 0; i < table.Length; i++)
+        {
+            string s = i.ToString("X2");
+            table[i] = new char[2] { s[0], s[1] };
+        }
+        return table;
     }
-    return new string(result);
+
+    public static string ToHex(byte[] bytes)
+    {
+        var result = new char[bytes.Length * 2];
+        for (int i = 0; i < bytes.Length; i++)
+        {
+            var val = lookup[bytes[i]];
+            result[2 * i] = val[0];
+            result[2 * i + 1] = val[1];
+        }
+        return new string(result);
+    }
 }
 ```
 
@@ -311,6 +330,23 @@ public byte[] ComputeSHA1(string s)
         );
     }
 }
+```
+
+## Overflow Check
+
+[Ref](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/expressions#the-checked-and-unchecked-operators)
+
+```cs
+checked(/* expression */);
+unchecked(/* expression */);
+
+int i = int.MaxValue;
+// Overflow, throw System.OverflowException()
+i = checked(i + 1);
+
+int i = int.MaxValue;
+// i = int.MinValue
+i = unchecked(i + 1);
 ```
 
 ## Event
@@ -372,3 +408,89 @@ namespace MathExtensionMethods
 
 (2.0).Power(16)
 ```
+
+## Single file app
+
+> - [Single File deployment](https://docs.microsoft.com/en-us/dotnet/core/deploying/single-file)
+> - [`dotnet publish`](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish)
+
+Single execute file
+
+```xml title=".csproj"
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishReadyToRun>true</PublishReadyToRun>
+  </PropertyGroup>
+
+</Project>
+```
+
+| Option | CLI parameter | Description |
+|-|-|-|
+| `PublishSingleFile` |  | Publish single file |
+| `SelfContained` | `--self-contained [true\|false]` | Contain .NET libraries and target runtime (&gt; 60MB) |
+| `RuntimeIdentifier` | `-r\|--runtime` | Specifies the [OS and CPU type](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog) (`win-x86`, `win-x64`, `win-arm`, `win-arm64`, ...)
+| `PublishReadyToRun` |  | Enables ahead-of-time (AOT) compilation |
+
+- Run `dotnet publish`
+- VS Code ▶ **Run Task** ▶ **publish**
+
+## Reference DLL
+
+Add [Steamworks.NET](https://steamworks.github.io/installation/) reference
+
+- Add to `.csproj`
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <Reference Include="Steamworks.NET">
+      <HintPath>Steamworks.NET.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion> 
+      <!-- Copy DLL to Output folder -->
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
+```
+
+- Copy `Steamworks.NET.dll` file to `root` folder
+- Run `dotnet restore [<project.csproj>]`
+- Run `dotnet run`
+
+## Base Class
+
+- C# will auto call base constructor
+- Cannot have multiple base classes (Even abstract)
+
+```cs
+class BaseClass
+{
+    public BaseClass() { }
+    public BaseClass(int i) { }
+}
+
+class ClassA : BaseClass
+{
+    // Specify base class constructor
+    ClassA(int i) : base() {}
+    // or
+    ClassA(int i) : base(i) {}
+}
+```
+
+## Serialize
+
+### MessagePack
+
+> [MessagePack](https://github.com/neuecc/MessagePack-CSharp)
+
+
+
+## Attribute
