@@ -60,9 +60,11 @@ s = (gᵃ mod p)ᵇ mod p = (gᵇ mod p)ᵃ mod p
 
 ## DH group
 
-MODP (Modular exponentiation)
+DH 位數、算法的 Standard
 
-EC2N (Elliptic Curve over GF[2^N])
+- MODP (Modular exponentiation)
+- EC2N (Elliptic Curve over GF[2^N])
+  - *uncommon*
 
 | DH Group | Algorithm |
 |-|-|

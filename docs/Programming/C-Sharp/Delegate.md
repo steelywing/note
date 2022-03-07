@@ -1,4 +1,4 @@
-## Delegate
+# Delegate
 
 A delegate is a type that represents references to methods with a particular parameter list and return type.
 
@@ -67,8 +67,8 @@ class Program
         DelegateMethod method = null;
 
         method = a.Add;
-        // Still can use += even delegate is null
         // method += a.Add;
+        // += can be use even delegate is null
 
         // Use ?.Invoke() will check if delegate is null, call null delegate() will throw error
         method?.Invoke();
@@ -103,7 +103,9 @@ public delegate TResult Func<in T, out TResult>(T arg);
 // ...
 ```
 
-## Lambda
+## Lambda / Anonymous
+
+> [Lambda expression](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions)
 
 With return value
 
@@ -120,4 +122,15 @@ Action<string> Hi = (name) =>
 {
     Console.WriteLine($"Hi, {name}");
 };
+```
+
+- Lambda is closure, that can access outer scope
+
+```cs
+int x = 1;
+var doubleX = () =>
+{
+    return x * 2;
+};
+Console.WriteLine(doubleX());
 ```
