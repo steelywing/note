@@ -8,6 +8,7 @@
 | Mesh / Polygon | 多面體，Vertex / Edge / Face 的集 |
 | Concave | 由 Face 組成的多面體 |
 | Convex | 由 Vertex 組成的多面體 |
+| Magnitude | Vector Length / 向量的長度 |
 
 ## Cons
 
@@ -85,6 +86,10 @@ Do not terminate application on unhandled exception
   - = 0 時角度 = 90
   - &lt; 0 時角度 &gt; 90
 - `Dot(A, B) = A.X * B.X + A.Y * B.Y + A.Z * B.Z`
+- `Dot(A, B) = (A.Length * B.Length) * Cos(A.AngleTo(B))`
+- `A.AngleTo(B) = ACos(Dot(A, B) / (A.Length * B.Length))`
+  - If `A` and `B` normalized
+    - `A.AngleTo(B) = ACos(Dot(A, B))`
 
 ## Cross Product
 
@@ -115,4 +120,21 @@ float Wrap(float value, float min, float max)
     return Wrap(value + range, min, max);
   return value;
 }
+```
+
+## Physics
+
+- Only change physics related properties (Velocity) in `_integrate_forces()`
+  - [Reference](https://docs.godotengine.org/en/stable/tutorials/physics/physics_introduction.html)
+  - Use `PhysicsDirectBodyState.step` to get `delta`
+  - `GetCollidingBodies()` use much CPU
+
+## FPS
+
+```cs
+// FPS
+Engine.TargetFps
+
+// Physics FPS
+Engine.IterationsPerSecond
 ```
