@@ -73,7 +73,7 @@ avoid_warnings=2
 > - [Ref](https://www.scorpia.co.uk/2019/06/28/pi4-not-working-with-some-chargers-or-why-you-need-two-cc-resistors/)
 > - [Revision](https://elinux.org/RPi_HardwareHistory)
 
-```sh
+```bash
 cat /proc/cpuinfo | grep Revision
 ```
 

@@ -21,7 +21,7 @@ client-config-dir <path>
 
 ### Server side
 
-```sh
+```bash
 # server.ovpn
 
 # ...
@@ -47,13 +47,13 @@ client-config-dir ccd
 - `iroute` must be in CDC context, OpenVPN need to know which client own the network
 - If `iroute x.x.x.x` match `push "route x.x.x.x"`, OpenVPN will not push the route
 
-```sh
+```bash
 # ./ccd/<Client 1 X509 common name>
 
 iroute 10.10.2.0 255.255.255.0
 ```
 
-```sh
+```bash
 # ./ccd/<Client 2 X509 common name>
 
 iroute 10.10.3.0 255.255.255.0

@@ -100,7 +100,7 @@ NVIDIA NVENC HEVC encoder
 
 Show pixel format
 
-```sh
+```bash
 ffmpeg -pix_fmts
 ```
 

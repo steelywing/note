@@ -25,7 +25,7 @@ Console.WriteLine("Main");
 Console.WriteLine("Result = " + await task);
 ```
 
-```sh
+```bash
 Task Start
 # ~ 1000ms
 Main
@@ -53,7 +53,7 @@ Console.WriteLine("Waiting Task");
 Console.WriteLine(await task);
 ```
 
-```sh
+```bash
 Start
 # ~ 1000ms
 Waiting Task
@@ -110,7 +110,7 @@ Thread.Sleep(10 * 1000);
 cts.Cancel();
 ```
 
-```sh
+```bash
 Loop 0
 Loop 1
 Loop 2

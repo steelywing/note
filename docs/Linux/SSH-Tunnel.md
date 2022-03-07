@@ -26,7 +26,7 @@ ssh [<option>] [<user>@]<SSH remote server host>
 
 ## SSH client ➡ SSH server
 
-```sh
+```bash
 -L [<SSH client bind address>:]<SSH client port>:<remote server host>:<remote server port>
 ```
 
@@ -36,7 +36,7 @@ Port forward from `<SSH client port>` to `<remote server host>:<remote server po
 
 ## SSH server ➡ SSH client
 
-```sh
+```bash
 -R [<SSH server bind address>:]<SSH server port>:<local server host>:<local server port>
 ```
 
