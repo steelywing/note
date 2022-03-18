@@ -181,3 +181,70 @@ https://<IP>/admin/capture/<capture ID>/pcap
 ```
 ASA# copy /pcap capture:<capture ID> {tftp|scp}://<IP>
 ```
+
+## Failover / HA
+
+> [Ref](https://www.cisco.com/c/en/us/td/docs/security/asa/asa98/configuration/general/asa-98-general-config/ha-failover.html)
+
+Failover / High Availability
+
+```
+! Designate this unit as the primary / secondary unit
+asa(config)# failover lan unit { primary | secondary }
+
+! failover link
+asa(config)# failover lan interface folink <interface>
+asa(config)# failover interface ip folink 10.0.0.1 255.255.255.0 standby 10.0.0.2
+asa(config)# interface <interface>
+asa(config-if)# no shutdown
+
+! [Optional] Specify interface as state link
+! failover link and state link can be shared
+asa(config)# failover link folink <interface>
+! if failover link and state link are separated, need to assign IP address
+asa(config)# failover interface ip statelink 10.0.1.1 255.255.255.0 standby 10.0.1.2
+
+! Enable failover
+asa(config)# failover
+```
+
+### Setup Interface Monitoring
+
+```
+asa(config)# [no] monitor-interface <interface>
+```
+
+### Force failover
+
+On active unit
+
+```
+asa# no failover active
+```
+
+Or, on standby unit
+
+```
+asa# failover active
+```
+
+### Re-Sync the Config
+
+On active unit
+
+```
+asa# write standby
+```
+
+### Show failover state
+
+```
+asa# show failover
+asa# show failover state
+```
+
+### Debug failover failed
+
+```
+asa# show failover history
+```
