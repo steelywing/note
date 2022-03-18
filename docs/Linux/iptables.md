@@ -1,6 +1,6 @@
 # iptables
 
-[Reference](https://wiki.archlinux.org/index.php/iptables)
+> [Reference](https://wiki.archlinux.org/index.php/iptables)
 
 | Description | Command |
 | - | - |
@@ -9,6 +9,7 @@
 | Dump iptables to file | `iptables-save > <file>` |
 | Restore iptables from file | `iptables-restore < <file>` |
 | Save iptables (Red Hat <= 6) | `service iptables save` |
+| Create new chain (User-defined) | `iptables -N <chain>` |
 
 ## Flow
 
@@ -18,9 +19,20 @@
 | Tables | `raw` / `filter` / `nat` / `mangle` / `security` (Default is `filter`) |
 | Targets | `ACCEPT` / `DROP` / `QUEUE` / `RETURN` / `REJECT` / `LOG` |
 
-[Reference](https://stuffphilwrites.com/2014/09/iptables-processing-flowchart/)
+> [Ref](https://www.netfilter.org/documentation/HOWTO/packet-filtering-HOWTO-6.html)
 
-![iptables flow chart](img/iptables.svg ':class=stroke')
+:::info
+
+- If any chain says `DROP`, it is killed there
+- If chain says `ACCEPT`, it continue process
+- User-defined chains can not have a default policy
+- If no rule is matched in a User-defined chain, the default behaviour is to jump back to the originating chain
+
+:::
+
+> [Diagram Reference](https://stuffphilwrites.com/2014/09/iptables-processing-flowchart/)
+
+![iptables flow chart](img/iptables.svg)
 
 ## Policy
 
@@ -32,7 +44,16 @@ iptables -P <chain> <target>
 
 ## Rule
 
-[Reference](https://www.netfilter.org/documentation/HOWTO/packet-filtering-HOWTO-7.html)
+> [Reference](https://www.netfilter.org/documentation/HOWTO/packet-filtering-HOWTO-7.html)
+
+| Option | Description |
+| - | - |
+| `-A` | Append rule to chain |
+| `-I` | Insert rule to `rule number` position |
+| `-D` | Delete rule `rule number` |
+| `-p` | Protocol |
+| Address | `10.0.0.1`, `0.0.0.0/0`, `10.0.0.0/24` |
+| `!` | Not |
 
 ```bash
 iptables 
@@ -49,7 +70,7 @@ iptables
 
 ## Extension
 
-[Reference](http://ipset.netfilter.org/iptables-extensions.man.html)
+> [Reference](http://ipset.netfilter.org/iptables-extensions.man.html)
 
 ```bash
 iptables <rule>
@@ -62,18 +83,37 @@ iptables <rule>
 
 ## Redirect input to other port
 
-[Reference](https://www.netfilter.org/documentation/HOWTO/NAT-HOWTO-6.html)
+> [Reference](https://www.netfilter.org/documentation/HOWTO/NAT-HOWTO-6.html)
 
 ```bash
 iptables -t nat -A PREROUTING [-i <interface>] -p tcp --dport <from port> -j REDIRECT --to-port <to port>
 ```
 
-## Masquerading (Source NAT)
+## Masquerading
 
-[Reference](https://www.netfilter.org/documentation/HOWTO/NAT-HOWTO-6.html)
+> [Reference](https://www.netfilter.org/documentation/HOWTO/NAT-HOWTO-6.html)
+
+Source NAT
 
 Use the address of the interface the packet is going out as source address
 
 ```bash
 iptables -t nat -A POSTROUTING -o <interface> -j MASQUERADE
 ```
+
+## Rule
+
+Example rule
+
+Allow all established packet
+
+```sh
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+```
+
+Allow TCP port 22 (SSH) connect
+
+```
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+```
+
