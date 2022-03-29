@@ -45,6 +45,13 @@ Switch(config)# exit
 Switch# 
 ```
 
+## Web UI
+
+```
+Switch(config)# [no] ip http server
+Switch(config)# ip http authentication { aaa | enable | local }
+```
+
 ## Show configuration
 
 ```
