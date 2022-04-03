@@ -99,7 +99,6 @@ module.exports = {
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
           editUrl:
             'https://github.com/steelywing/note/edit/master/',
           remarkPlugins: [require('remark-math')],
@@ -108,6 +107,7 @@ module.exports = {
         theme: {
           customCss: [
             require.resolve('./node_modules/katex/dist/katex.min.css'),
+            require.resolve('./src/css/custom.css'),
           ]
         },
       },
