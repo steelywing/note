@@ -5,6 +5,14 @@
  * work well for content-centric websites.
  */
 
+@font-face {
+  font-family: "Noto Sans TC";
+  font-weight: 100;
+  src: url('/static/NotoSansTC-Regular.woff') format('woff');
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap'); */
+
 /* You can override the default Infima variables here. */
 :root {
   /* --ifm-color-primary: #25c2a0;
@@ -21,7 +29,9 @@
   --ifm-color-primary-light: #08be77;
   --ifm-color-primary-lighter: #08c77c;
   --ifm-color-primary-lightest: #09e18c;
-  --ifm-code-font-size: 95%;
+  /* --ifm-code-font-size: 95%; */
+  /* --ifm-font-family-monospace: "Noto Sans TC"; */
+  --ifm-font-family-base: "Noto Sans TC"
 }
 
 .docusaurus-highlight-code-line {
