@@ -132,11 +132,13 @@ powercfg { /hibernate | /h } /type { reduced | full }
 ## `.cab` file
 
 Extract `.cab`
+
 ```cmd
 expand <file.cab>
 ```
 
 Create `.cab`
+
 ```cmd
 makecab <file> <file.cab>
 ```
@@ -144,6 +146,7 @@ makecab <file> <file.cab>
 ## Cortana
 
 Disable Cortana in Windows 10
+
 ```cmd
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /t REG_DWORD /d 0 /f
 ```
@@ -154,6 +157,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search
 ```
 
 Enable Cortana in Windows 10
+
 ```cmd
 reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /f
 ```
@@ -173,13 +177,15 @@ reg add "HKCU\Control Panel\Input Method" /v "EnableHexNumpad" /t REG_SZ /d 1 /f
 ## Enable / Disable the Local Built-In Administrator Account
 
 - [Reference](https://social.technet.microsoft.com/wiki/contents/articles/3040.windows-7-enable-disable-the-local-built-in-administrator-account.aspx)
-```
+
+```cmd
 net user administrator /active:{yes|no}
 ```
 
 ## Get OS Architecture (32-bit / 64-bit)
 
 - [Reference](https://www.lisenet.com/2014/get-windows-system-information-via-wmi-command-line-wmic/)
+
 ```cmd
 wmic OS get OSArchitecture
 ```
@@ -267,3 +273,10 @@ Enable-WindowsOptionalFeature -Online -All -FeatureName Containers-DisposableCli
 
 - [Supported Intel Processors](https://docs.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-supported-intel-processors)
 - [Supported AMD Processors](https://docs.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-supported-amd-processors)
+
+## "Print to PDF" printer
+
+For Windows 10
+
+![Add print to PDF printer](img/print-to-pdf.png)
+
