@@ -111,3 +111,13 @@ Common format
 | `-vf format=<format>` | set pixel format |
 | `yuv420p` | 8-bit 4:2:0 |
 | `yuv420p10le` | 10-bit 4:2:0 |
+
+## Extract subtitle
+
+```bash
+# -an -vn: no audio, no video (faster)
+# -map 0: the first input file
+# s:0: the first subtitle
+# s:1: the second subtitle
+ffmpeg -an -vn -i <video.mkv> -map 0:s:0 <sub.srt>
+```
