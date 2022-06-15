@@ -10,7 +10,7 @@ sidebar_position: 0
 
 ### Path selection
 
-[Reference](https://en.wikipedia.org/wiki/Routing#Path_selection)
+> [Reference](https://en.wikipedia.org/wiki/Routing#Path_selection)
 
 Priority
 
@@ -46,3 +46,13 @@ Include
 - IGRP
 - OSPF
 - IS-IS
+
+## CPE
+
+Customer Premises Equipment
+
+用戶端設備
+
+- 位於 User 端
+- 用於 User 與 ISP 連接的裝置
+- 例如 ISP 的 Router，電話…
