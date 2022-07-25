@@ -280,3 +280,35 @@ For Windows 10
 
 ![Add print to PDF printer](img/print-to-pdf.png)
 
+## Mount a drive in a folder
+
+- **Disk Management** `diskmgmt.msc`
+- **Change Drive Letter and Paths**
+- **Add**
+- **Mount in the following empty NTFS folder**
+
+```ps1
+diskpart
+list volume
+select volume <number>
+assign [mount=<path>]
+```
+
+## Mount a folder as a drive
+
+```ps1
+subst X: <path>
+```
+
+Remove substituted
+
+```ps1
+subst X: /D
+```
+
+## Event
+
+| Event | ID |
+|-|-|
+| Power On | 6005 |
+| Power Off | 6006 |
