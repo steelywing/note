@@ -208,3 +208,11 @@ if __name__ == '__main__':
         for line in follow(file):
             print(line)
 ```
+
+## Is iterable ?
+
+```py
+from collections.abc import Iterable
+
+isinstance(e, Iterable):
+```
