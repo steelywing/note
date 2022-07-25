@@ -18,7 +18,8 @@ rsync <option> <source> <destination>
 | `--partial` | Keep partially transferred files |
 | `--progress` | Show progress |
 | `-P` | `--partial --progress` |
-| `-e "ssh [-p <port>]"` | Use SSH, default use `rsync` daemon |
+| `-e "ssh [-p <port>]"` | Use SSH as remote shell |
+| `-s`, `--protect-args` | No space-splitting (If file name has space) |
 
 ## Trailing slash on `<source>`
 

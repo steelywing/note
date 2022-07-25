@@ -268,7 +268,7 @@ Switch(config)# monitor session <session number>
 
 - Monitor specific VLAN
 ```
-! <VLAN list> = <VLAN ID>[{,|-}...]
+! <VLAN list> = <VLAN ID>[{,|-}<VLAN ID>...]
 Switch(config)# monitor session <session number> 
     filter <VLAN list>
 ```

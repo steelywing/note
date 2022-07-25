@@ -35,5 +35,5 @@ The most common `type` are `ext2 | ext3 | ext4 | xfs | btrfs | vfat | sysfs | pr
 
 ```bash
 # mount.cifs = mount -t cifs
-mount.cifs -o <option>[,...]] //<host>/<share name> <directory>
+mount.cifs -o <option>[,...] //<host>/<share name> <directory>
 ```
