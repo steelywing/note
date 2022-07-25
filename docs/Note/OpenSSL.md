@@ -1,8 +1,10 @@
+# OpenSSL
+
 ## File format
 
 ### PEM (Privacy-Enhanced Mail)
 
-[RFC 1421](https://tools.ietf.org/html/rfc1421)
+> [RFC 1421](https://tools.ietf.org/html/rfc1421)
 
 Use to store
 
@@ -12,7 +14,7 @@ Use to store
 
 ### PKCS #12 (`.p12`)
 
-[RFC 7292](https://tools.ietf.org/html/rfc7292)
+> [RFC 7292](https://tools.ietf.org/html/rfc7292)
 
 Bundle X509 full chain certificate, private key
 
@@ -37,8 +39,8 @@ Certificate content
 - Owner DN
 - Owner public key
 - CA DN
-- CA signature (Append after signed)
 - Certificate extensions
+- CA signature (Append after signed)
 
 ```js
 // Pseudo code
@@ -109,18 +111,20 @@ openssl req \
 
 ```bash
 openssl req -new 
-  {
+  [
     # Create new private key, bits = 2048 / 4096
     -newkey rsa[:<bits>]
-      # Don't encrypt private key (no password)
-      [-nodes]
-      # The new created private key
-      [-keyout <key.pem>] |
-    # Use specified private key
-    -key <key.pem>
-  }
+    # Don't encrypt private key (no password)
+    [-nodes]
+    # The new created private key file
+    [-keyout <key.pem>]
+  ]
+
+  # Use specified private key file
+  [-key <key.pem>]
+
   [
-    # Output a CRT (certificate) instead of CSR
+    # Output a self signed CRT (certificate) instead of CSR
     -x509
     # See X509
     [<X509 options>]
@@ -128,7 +132,9 @@ openssl req -new
     [-days <days>]
     [...]
   ]
-  -out <request.csr>
+
+  [-out <request.csr>]
+
   # <subject> = "/C=<country>/ST=<state>/L=<city>/O=<organization>/OU=<section>/CN=<domain>/emailAddress=<email>"
   [-subj <subject>]
   [-config <config.ini>]
@@ -190,6 +196,16 @@ DNS.2 = <domain>
 # ...
 ```
 
+Generate CSR from an existing certificate
+
+```bash
+openssl x509
+  -in <cert.crt>
+  -signkey <key.pem>
+  -x509toreq
+  -out <cert.csr>
+```
+
 Verify CSR signature
 
 ```bash
@@ -228,14 +244,18 @@ openssl x509
     -CA <ca.crt> 
     # CA private key
     -CAkey <ca.key> 
-    {
-      # Create new serial number file
-      -CAcreateserial |
-      # Specify serial number file, `$(basename <ca.crt> .crt).srl` by default
-      -CAserial <filename> |
-      # Specify serial number, Decimal 01 02..., Hex 0x1 0x2...
-      -set_serial <serial>
-    } 
+
+    # Create new serial number file
+    # Recommended practice
+    # If the serial number file does not exist, random number is generated
+    [-CAcreateserial]
+
+    # Specify serial number, Decimal 01 02..., Hex 0x1 0x2...
+    [-set_serial <serial>]
+
+    # Specify serial number file, `$(basename <ca.crt> .crt).srl` by default
+    [-CAserial <filename>]
+
     -out <cert.{crt|pem}>
 ```
 
