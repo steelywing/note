@@ -19,7 +19,11 @@ module.exports = {
         'apacheconf',
       ],
     },
-    hideableSidebar: true,
+    docs: {
+      sidebar: {
+        hideable: true,
+      }
+    },
     colorMode: {
       defaultMode: 'dark',
     },
@@ -87,10 +91,6 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Steely Wing 夜羽`,
     },
-    googleAnalytics: {
-      trackingID: 'G-0KG7P5XKJP',
-      // anonymizeIP: true, // Should IPs be anonymized?
-    },
   },
   presets: [
     [
@@ -110,16 +110,21 @@ module.exports = {
             require.resolve('./src/css/custom.css'),
           ]
         },
+        googleAnalytics: {
+          trackingID: 'G-0KG7P5XKJP',
+          // anonymizeIP: true, // Should IPs be anonymized?
+        },
       },
     ],
   ],
-  plugins: [
+  themes: [
     [
       "@easyops-cn/docusaurus-search-local",
       {
         // `hashed` is recommended as long-term-cache of index file is possible.
         hashed: true,
         language: ["en", "zh"],
+        // language: ["en"],
         indexPages: true,
         indexBlog: false,
         indexDocs: true,
@@ -127,6 +132,8 @@ module.exports = {
         highlightSearchTermsOnTargetPage: true,
       },
     ],
+  ],
+  plugins: [
     /*[
       // require.resolve('../docusaurus-search-local'),
       require.resolve('@cmfcmf/docusaurus-search-local'),
