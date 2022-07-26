@@ -10,17 +10,19 @@ on:
 
 jobs:
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: 14.x
+          node-version: 18
           cache: yarn
-      - name: Build website
-        run: |
-          yarn install --frozen-lockfile
-          yarn build
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build
+        run: yarn build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
