@@ -2,7 +2,8 @@ name: Test deployment
 
 on:
   pull_request:
-    branches: [master]
+    branches:
+      - master
 
 jobs:
   test-deploy:
@@ -10,11 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: 14.x
+          node-version: 18
           cache: yarn
-      - name: Test build
-        run: |
-          yarn install --frozen-lockfile
-          yarn build
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Test build website
+        run: yarn build
