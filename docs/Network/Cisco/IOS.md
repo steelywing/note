@@ -939,6 +939,22 @@ Switch(config-if)# shutdown
 Switch(config-if)# no shutdown
 ```
 
+### PoE
+
+Power over Ethernet
+
+Default (All) max consumption
+
+```
+Switch(config)# power inline consumption default <milli-watts>
+```
+
+On specify interface
+
+```
+Switch(config-if)# power inline consumption <milli-watts>
+```
+
 ### Disable (non Cisco) GBIC module checking
 
 > [Reference](https://www.cisco.com/c/en/us/support/docs/interfaces-modules/gbics/200296-Unsupported-GBIC-SFP-in-sub-module-of.html)
