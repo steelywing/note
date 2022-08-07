@@ -134,3 +134,32 @@ server {
     }
 }
 ```
+
+## WebSocket
+
+> [Ref](https://www.nginx.com/blog/websocket-nginx/)
+
+Proxy `ws://example.com/ws/` to `ws://localhost:7890/`
+
+:::note
+
+`[Go Access](https://goaccess.io/)` config
+
+:::
+
+```nginx
+server {
+    listen 80;
+    server_name example.com;
+
+    location / {
+        # ...
+    }
+
+    location /ws/ {
+        proxy_pass http://localhost:7890/;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_set_header Host $host;
+    }
+```
