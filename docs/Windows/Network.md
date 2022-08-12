@@ -35,6 +35,13 @@ Windows will use IP `169.254.0.0/16` if IP address conflict
 - [WireShark](https://www.wireshark.org/)
 - [WinDump](https://www.winpcap.org/windump/)
 
+## Network emulator
+
+Delay / Drop / Bandwidth ...
+
+- [clumsy](https://github.com/jagt/clumsy)
+- [WinDivert](https://github.com/basil00/Divert)
+
 ## Show TCP / UDP connection
 
 [PowerShell](PowerShell/Network.md#show-tcp-listening-port)
@@ -68,11 +75,11 @@ Add / Delete reserved port
 
 ```cmd
 netsh int[erface] ipv4 `
-    { add | delete } excludedportrange `
-    { tcp | udp } `
+    { add | delete } ex[cludedportrange] `
+    { [protocol=] tcp | udp } `
     <start port> `
     <number of ports> `
-    [ active | persistent ]
+    [ [store=] active | persistent ]
 ```
 
 Show reserved port
@@ -80,4 +87,23 @@ Show reserved port
 ```cmd
 netsh int[erface] ipv4 `
     show excludedportrange { tcp | udp }
+```
+
+## TCP/IP time-out
+
+TCP/IP re-transmission time-out
+
+> - [Reference](https://support.microsoft.com/en-us/topic/how-to-modify-the-tcp-ip-maximum-retransmission-time-out-7ae0982a-4963-fa7e-ee79-ff6d0da73db8)
+> - [Reference](https://support.microsoft.com/en-us/topic/you-cannot-customize-some-tcp-configurations-by-using-the-netsh-command-in-windows-server-2008-r2-c1feebea-82a8-cb05-83c7-46ffb5fd9cec)
+
+Get
+
+```cmd
+netsh interface tcp show global
+```
+
+Set
+
+```cmd
+netsh interface tcp set global initialrto=<ms>
 ```
