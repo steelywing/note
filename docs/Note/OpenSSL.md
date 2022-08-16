@@ -100,43 +100,47 @@ openssl rsa -in <file.key> -pubout -out <public.key>
 Creating CSR
 
 ```bash
-openssl req \
-  -x509 \
-  -new \
-  # The new created private key
-  -keyout <key.pem>
-  -days <days>
-  -out <cert.{crt|pem}>
-```
-
-```bash
-openssl req -new 
-  [
+openssl req
+  # Key
+  {
     # Create new private key, bits = 2048 / 4096
     -newkey rsa[:<bits>]
     # Don't encrypt private key (no password)
     [-nodes]
     # The new created private key file
     [-keyout <key.pem>]
-  ]
 
-  # Use specified private key file
-  [-key <key.pem>]
+    | # or
 
-  [
-    # Output a self signed CRT (certificate) instead of CSR
+    # Use specified private key file
+    -key <key.pem>
+  }
+
+  {
+    # Create new CSR
+    -new
+    -out <request.csr>
+
+    | # or
+
+    # Create self signed CRT (certificate) instead of CSR
     -x509
     # See X509
     [<X509 options>]
     [-set_serial <number>]
     [-days <days>]
     [...]
-  ]
+    -out <cert.pem>
+  }
 
-  [-out <request.csr>]
+  # <subject> = /C=<country>/ST=<state>/L=<city>/O=<organization>/OU=<section>/CN=<domain>/emailAddress=<email>
+  [-subj "<subject>"]
+  # <subjectAltName> = <DNS>|<IP>[,...]
+  # <DNS> = DNS:example.com
+  # <IP> = IP:10.0.0.1
+  [-addext "subjectAltName=<subjectAltName>"]
 
-  # <subject> = "/C=<country>/ST=<state>/L=<city>/O=<organization>/OU=<section>/CN=<domain>/emailAddress=<email>"
-  [-subj <subject>]
+  # Using config file
   [-config <config.ini>]
 ```
 
@@ -288,7 +292,7 @@ cat <cert.crt> <chain.crt> > <fullchain.crt>
 ```
 
 ```
- -----BEGIN CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
 cert.crt
 -----END CERTIFICATE-----
 -----BEGIN CERTIFICATE-----
@@ -432,4 +436,30 @@ Same as
 
 ```bash
 openssl ... -config <openssl.cnf>
+```
+
+## Build from source
+
+CentOS
+
+```bash
+# Install dependency
+sudo yum -y install epel-release
+sudo yum install -y make gcc perl-core perl-Text-Template zlib-devel wget
+
+wget https://www.openssl.org/source/openssl-1.1.1q.tar.gz
+
+tar -zxf openssl-1.1.1q.tar.gz
+cd openssl-1.1.1q
+
+./config --prefix=/usr/local/ --openssldir=/etc/ssl --libdir=lib shared zlib-dynamic
+make
+make test
+make install
+```
+
+## Show version
+
+```bash
+openssl version
 ```
