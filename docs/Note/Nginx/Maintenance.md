@@ -1,8 +1,11 @@
 # Maintenance mode
 
-For HTML only (no CSS, JS, ...)
+## HTML only
+
+No CSS, JS, ...
 
 Flow:
+
 - `return 503`
 - Match `error_page 503 <URI>`
 - Internal redirect to `<URI>`
@@ -21,9 +24,10 @@ Flow:
     }
 ```
 
-For HTML only, without `if`
+## For HTML only, without `if`
 
 Flow:
+
 - `return 503`
 - Match `error_page 503 @503`, `@503` is named location
 - Internal redirect to `@503`
@@ -31,6 +35,8 @@ Flow:
 ```nginx
     location @503 {
         root /usr/share/nginx/html/maintenance/;
+
+        # `break` will stop internal redirect, just return the "/503.html"
         rewrite ^ "/503.html" break;
     }
 
@@ -43,7 +49,35 @@ Flow:
     }
 ```
 
-For HTML page with CSS, JS, ...
+### Allow specify IP address bypass
+
+```nginx
+geo $bypass_maintenance {
+    default         0;
+    10.0.0.0/24     1;
+}
+
+server {
+    location @503 {
+        root /usr/share/nginx/html/maintenance/;
+        rewrite ^ "/503.html" break;
+    }
+
+    location / {
+        root /usr/share/nginx/html/;
+        error_page 503 @503;
+
+        # if client IP not allow bypass, return 503 page
+        if ($bypass_maintenance = 0) {
+            return 503;
+        }
+    }
+}
+```
+
+## For web page with static conten
+
+HTML page with CSS, JS, ...
 
 Flow:
 - If URI is `/`, `return 503`
@@ -75,4 +109,45 @@ Flow:
         # static contents still return status 200
         try_files $uri @index;
     }
+```
+
+### Allow specify IP address bypass
+
+```nginx
+geo $bypass_maintenance {
+    default         0;
+    10.0.0.0/24     1;
+}
+
+server {
+    listen 80;
+    location / {
+        if ($bypass_maintenance = 0) {
+            proxy_pass http://unix:/var/run/maintenance.nginx.sock:;
+            # proxy_pass http://127.0.0.1:8000;
+        }
+
+        # ...
+    }
+}
+
+server {
+    listen unix:/var/run/maintenance.nginx.sock;
+    # listen 127.0.0.1:8000;
+
+    location @index {
+        rewrite ^ "/" redirect;
+    }
+
+    location / {
+        root /usr/share/nginx/html/maintenance/;
+
+        error_page 503 /503.html;
+        if ($uri = "/") {
+            return 503;
+        }
+
+        try_files $uri @index;
+    }
+}
 ```
