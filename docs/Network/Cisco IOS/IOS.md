@@ -84,59 +84,13 @@ Switch# write erase
 Switch# delete flash:/vlan.dat
 ```
 
-## Diagnostic
-
-Get CPU usage
-
-```
-Switch# show processes cpu [ sorted | history ]
-```
-
-Get temperature, fan, power status
-
-```
-Switch# show env all
-```
-
-Get version, up time
-
-```
-Switch# show version
-```
-
-Get PID, serial number
-
-```
-Switch# show inventory
-```
-
-Get IP traffic info
-
-```
-Switch# show ip traffic 
-```
-
-Interface capabilities (type, POE, ...)
-
-```
-Switch# show interfaces [<interface>] capabilities
-```
-
-Tech Support
-
-> [Reference](https://www.cisco.com/c/en/us/td/docs/routers/crs/software/crs_r4-2/adv_system/command/reference/b_advsys_cr42crs/b_advsys_cr42crs_chapter_0100.html)
-
-```
-Switch# show tech-support
-```
-
-### CDP (Cisco Discovery Protocol)
+## CDP (Cisco Discovery Protocol)
 
 ```
 Switch# show cdp neighbors [<interface>] [detail]
 ```
 
-### LLDP (Link Layer Discovery Protocol)
+## LLDP (Link Layer Discovery Protocol)
 
 > [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst4500/12-2/46sg/configuration/guide/Wrapper-46SG/swlldp.html)
 
@@ -161,7 +115,7 @@ Show LLDP neighbor
 Switch# show lldp neighbors
 ```
 
-### SPAN (Switched Port Analyzer) / Port mirror
+## SPAN (Switched Port Analyzer) / Port mirror
 
 > [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-1_19_ea1/configuration/guide/3750scg/swspan.html)
 
@@ -242,102 +196,6 @@ Switch# show interfaces trunk
 Switch(config)# vtp mode { off | transparent | server | client }
 Switch(config)# vtp domain <name>
 Switch(config)# vtp password <password>
-```
-
-## Routing
-
-### Gateway
-
-For `no ip routing`
-
-```
-Switch(config)# ip default-gateway <gateway>
-```
-
-For `ip routing`
-
-```
-Switch(config)# ip route 0.0.0.0 0.0.0.0 <gateway>
-```
-
-### Change to routing mode
-
-```
-Switch(config)# ip routing
-```
-
-### Policy-based routing
-
-> [Reference](https://www.cisco.com/c/en/us/td/docs/ios/12_2/qos/configuration/guide/fqos_c/qcfpbr.html)
-
-| ACL | Description |
-| - | - |
-| `permit` | `route-map` is applied, the next `route-map` clause is not evaluated |
-| `deny` | `route-map` is not applied, the next `route-map` clause is evaluated |
-
-| `route-map` | Description |
-| - | - |
-| `permit` | route is redistributed |
-| `deny` | route is not redistributed |
-
-- `route-map` default is permit
-
-```
-Switch(config)# route-map <route-map name> [permit|deny] [<sequence number>]
-
-! Default (no configured match) match all
-Switch(config-route-map)# match ip address <ACL>
-Switch(config-route-map)# set ip next-hop <IP>
-
-Switch(config-if)# ip policy route-map <route-map name>
-```
-
-### OSPF
-
-```
-Switch(config)# router ospf <process ID>
-Switch(config-router)# network <IP> <netmask> area <area ID>
-```
-
-```
-Switch(config-if)# ip ospf <process ID> area <area ID>
-```
-
-List LSAs (Link State Advertisements)
-```
-Switch# show ip ospf database
-```
-
-List OSPF neighbor
-```
-Switch# show ip ospf neighbor
-```
-
-List OSPF routes
-```
-Switch# show ip route ospf
-```
-
-Redistributing connected networks into OSPF
-
-> [Reference](https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/18722-redist-conn.html)
-
-```
-Switch(config-router)# redistribute connected subnets
-```
-
-Redistributing static routes into OSPF
-
-```
-Switch(config-router)# redistribute static subnets
-```
-
-Redistributing default route into OSPF
-
-> [Reference](https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/47868-ospfdb9.html)
-
-```
-Switch(config-router)# default-information originate
 ```
 
 ## SNMP
