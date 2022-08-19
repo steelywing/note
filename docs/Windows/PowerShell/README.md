@@ -1,9 +1,3 @@
----
-slug: .
-sidebar_label: Basic
-sidebar_position: 0
----
-
 # PowerShell
 
 ## Help
@@ -86,6 +80,14 @@ Create property
 # 2 4 6
 ```
 > Alias: `?`
+
+### Filter with file size
+
+List file with file size > 2GB
+
+```powershell
+ls | ? { $_.Length -gt 2gb }
+```
 
 ## PowerShell remoting
 
@@ -284,4 +286,40 @@ sp "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU\" -Name MRUL
 
 ```powershell
 Find-NetRoute -RemoteIPAddress <IP address>
+```
+
+## Multi-Line
+
+```powershell
+<command> `
+    <parameter> ...
+```
+
+## Run without / hide console
+
+```powershell
+powershell.exe -WindowStyle Hidden -Command "<command>"
+```
+
+## Function
+
+### Parameter
+
+```powershell
+function <name> [([type]$param1 [,[type]$param2])]
+{
+    <statement list>
+}
+
+function <name>
+{
+    param([type]$param1 [,[type]$param2])
+    <statement list>
+}
+```
+
+```powershell
+function Add([int]$a, [int]$b) {
+    return $a + $b
+}
 ```
