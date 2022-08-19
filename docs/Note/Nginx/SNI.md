@@ -79,6 +79,8 @@ openssl req -x509 -newkey rsa -nodes -keyout b.key -days 36500 -out b.crt -subj 
 Test SNI
 
 ```bash
+# Use -v to see the certificate
+
 $ curl --insecure --resolve "a.example.org:443:127.0.0.1" https://a.example.org
 
 a.example.org page

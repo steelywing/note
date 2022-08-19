@@ -1,6 +1,6 @@
 # Access control
 
-> [Ref](https://nginx.org/en/docs/stream/ngx_stream_access_module.html)
+Nginx use the first match
 
 ```nginx
 server {
@@ -13,4 +13,4 @@ server {
 }
 ```
 
-Nginx will use the first match
+> Ref: [ngx_stream_access_module](https://nginx.org/en/docs/stream/ngx_stream_access_module.html)
