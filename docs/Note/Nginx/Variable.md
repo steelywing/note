@@ -23,4 +23,4 @@ In this order of precedence (from high to low)
 - `Host` request header field
 - The server name matching a request
 
-> [Validation]($host.md)
+> [Validation](host.md#validation)
