@@ -1,10 +1,10 @@
 # Proxy
 
-> [Ref](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
-
 ```nginx
 proxy_pass <scheme>://<host>[:port][/<URI>];
 ```
+
+> Ref: [Nginx reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
 
 ## `proxy_pass` with URI
 
@@ -137,15 +137,7 @@ server {
 
 ## WebSocket
 
-> [Ref](https://www.nginx.com/blog/websocket-nginx/)
-
 Proxy `ws://example.com/ws/` to `ws://localhost:7890/`
-
-:::note
-
-`[Go Access](https://goaccess.io/)` config
-
-:::
 
 ```nginx
 server {
@@ -153,13 +145,37 @@ server {
     server_name example.com;
 
     location / {
+        root /usr/share/nginx/html/;
         # ...
     }
 
     location /ws/ {
         proxy_pass http://localhost:7890/;
+        proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "Upgrade";
+        proxy_set_header Connection "upgrade";
         proxy_set_header Host $host;
     }
+}
 ```
+
+> Ref: [Nginx WebSocket](https://www.nginx.com/blog/websocket-nginx/)
+
+## Real IP address
+
+Set `$remote_addr` and `$remote_port` using header
+
+```nginx
+# set_real_ip_from  <proxy server IP address>[/<CIDR>];
+# Trusted address
+set_real_ip_from  10.0.0.1;
+
+# Use X-Forwarded-For header
+real_ip_header    X-Forwarded-For;
+real_ip_recursive on;
+
+# Use X-Real-IP (Default)
+real_ip_header    X-Real-IP;
+```
+
+> Ref: [ngx_http_realip_module](https://nginx.org/en/docs/http/ngx_http_realip_module.html)
