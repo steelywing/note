@@ -26,3 +26,20 @@ server {
     return 301 $scheme://www.example.com;
 }
 ```
+
+## Internal request / Internal redirect
+
+- only allow access for internal requests
+- return error `404` for external requests
+
+```nginx
+location ... {
+    internal;
+}
+```
+
+Internal requests are requests by:
+- `rewrite` directive
+- `error_page`, `index`, `random_index`, and `try_files` directives
+- `X-Accel-Redirect` response header field from an upstream server
+- “include virtual” command of the `ngx_http_ssi_module` module, by the `ngx_http_addition_module` module directives, and by `auth_request` and `mirror` directives;
