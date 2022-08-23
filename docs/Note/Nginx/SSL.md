@@ -14,6 +14,24 @@ server {
 }
 ```
 
+## DH param
+
+Generate DH param file
+
+```bash
+openssl dhparam 4096 -out /etc/nginx/dhparam.pem
+```
+
+```bash
+server {
+    ssl_dhparam /etc/nginx/dhparam.pem;
+}
+```
+
 ## SSL offloading
 
 [SSL offloading](Proxy.md#ssltls-offloading)
+
+## SSL recommend config
+
+[Mozilla SSL Configuration Generator](https://ssl-config.mozilla.org/) ([GitHub](https://github.com/mozilla/ssl-config-generator))
