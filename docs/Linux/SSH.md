@@ -33,3 +33,23 @@ eval (ssh-agent -c)
 ```bash
 ssh-add <private key path>
 ```
+
+## Troubleshoot
+
+```
+Unable to negotiate with XXX.XXX.XXX.XXX port XX: no matching host key type found. Their offer: ssh-rsa,ssh-dss
+```
+
+Method 1
+
+```config title="/etc/ssh/ssh_config"
+HostKeyAlgorithms +ssh-rsa,ssh-dss
+```
+
+Method 2
+
+```config title="~/.ssh/config"
+Host { <host IP address / host name> | * }
+    PubkeyAcceptedAlgorithms +ssh-rsa
+    HostkeyAlgorithms +ssh-rsa
+```
