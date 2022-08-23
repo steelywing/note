@@ -55,3 +55,11 @@ In `/etc/modprobe.d/*.conf`
 ```apacheconf
 install <module> /bin/false
 ```
+
+## Process
+
+Get process file path
+
+```bash
+ls -l /proc/<pid>/exe
+```
