@@ -44,14 +44,14 @@ In this order of precedence (from high to low)
 Method 1
 
 ```nginx
-$and = 1
+set $and 1;
 
 if (<not condition>) {
-    $and = 0;
+    set $and 0;
 }
 
 if (<not condition>) {
-    $and = 0;
+    set $and 0;
 }
 
 if ($and) {
@@ -62,14 +62,14 @@ if ($and) {
 Method 2
 
 ```nginx
-$and = ""
+set $and ""
 
 if (<condition>) {
-    $and = "0";
+    set $and "0";
 }
 
 if (<condition>) {
-    $and = "${and}1";
+    set $and "${and}1";
 }
 
 if ($and = "01") {
