@@ -24,3 +24,55 @@ In this order of precedence (from high to low)
 - The server name matching a request
 
 > [Validation](host.md#validation)
+
+## `if`
+
+| Operator | Description |
+|-|-|
+| | `''` == `""` |
+| | `""` == `false` |
+| | `"0"` == `false` |
+| `=` | equal |
+| `!=` | not equal |
+| `~` | match RegExp (case-sensitive) |
+| `~*` | match RegExp (case-insensitive) |
+| `!~` | not match RegExp (case-sensitive) |
+| `!~*` | not match RegExp (case-insensitive) |
+
+## Operator `and`
+
+Method 1
+
+```nginx
+$and = 1
+
+if (<not condition>) {
+    $and = 0;
+}
+
+if (<not condition>) {
+    $and = 0;
+}
+
+if ($and) {
+    # ...
+}
+```
+
+Method 2
+
+```nginx
+$and = ""
+
+if (<condition>) {
+    $and = "0";
+}
+
+if (<condition>) {
+    $and = "${and}1";
+}
+
+if ($and = "01") {
+    # ...
+}
+```
