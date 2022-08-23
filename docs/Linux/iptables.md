@@ -63,8 +63,8 @@ iptables
     [[!] -s <src IP address>[/<prefix length>]]
     [[!] -d <dest IP address>[/<prefix length>]]
     [[!] -p {icmp|tcp|udp}]
-    [[!] --sport <src port>]
-    [[!] --dport <dest port>]
+    [[!] --sport <src port>[,...]]
+    [[!] --dport <dest port>[,...]]
     -j <target>
 ```
 
@@ -114,6 +114,6 @@ iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 Allow TCP port 22 (SSH) connect
 
 ```
-iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --sport 22 -m conntrack --ctstate ESTABLISHED -j ACCEPT
 ```
-
