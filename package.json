@@ -14,15 +14,15 @@
     "write-heading-ids": "docusaurus write-heading-ids"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.1",
-    "@docusaurus/plugin-google-analytics": "^2.0.1",
-    "@docusaurus/preset-classic": "^2.0.1",
-    "@easyops-cn/docusaurus-search-local": "^0.30.2",
-    "file-loader": "^6.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rehype-katex": "5",
-    "remark-math": "3"
+    "@docusaurus/core": "^2.1",
+    "@docusaurus/plugin-google-analytics": "^2.1",
+    "@docusaurus/preset-classic": "^2.1",
+    "@easyops-cn/docusaurus-search-local": "0.x",
+    "@mdx-js/react": "^1.6",
+    "react": "^17",
+    "react-dom": "^17",
+    "rehype-katex": "^5",
+    "remark-math": "^3"
   },
   "browserslist": {
     "production": [
