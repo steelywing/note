@@ -32,8 +32,8 @@ mysql [-u <user>] [-p] <database> < <file.sql>
 or
 
 ```sql
-mysql> use <database>;
-mysql> source <file>;
+use <database>;
+source <file>;
 ```
 
 ## Show tables size
@@ -156,7 +156,7 @@ password=<password>
 ## Help
 
 ```sql
-mysql> { help | ? } [<command>];
+{ help | ? } [<command>];
 ```
 
 ## Slow query log
@@ -184,13 +184,16 @@ log-queries-not-using-indexes=ON
 Set on runtime
 
 ```sql
-mysql> set global slow_query_log = 'ON';
+set global slow_query_log = 'ON';
 ```
 
 Show slow query status
 
 ```sql
-mysql> show global variables like 'slow_query%';
+show global variables like 'slow_query%';
+```
+
+```
 +---------------------+-------------------------------------+
 | Variable_name       | Value                               |
 +---------------------+-------------------------------------+
@@ -207,19 +210,19 @@ mysql> show global variables like 'slow_query%';
 Optimizing query
 
 ```sql
-mysql> explain { select ... | delete ... | ... }
+explain { select ... | delete ... | ... }
 ```
 
 ## Create database
 
 ```sql
-mysql> create database <database>;
+create database <database>;
 ```
 
 ## Drop database
 
 ```sql
-mysql> drop database <database>;
+drop database <database>;
 ```
 
 ## User
@@ -230,11 +233,26 @@ mysql> drop database <database>;
 create user '<user>'@'{localhost|<IP address>|*}' identified by '<password>';
 ```
 
+### Show user
+
+```sql
+SELECT user, host FROM mysql.user;
+```
+
+## Permission / Privilege
+
 ### Grant permission
+
 ```sql
 grant all
   on {*|<database>}.{*|<table>}
   to '<user>'@'{localhost|<IP address>|*};
 
 flush privileges;
+```
+
+### Show permission
+
+```sql
+show grants [for <user>];
 ```
