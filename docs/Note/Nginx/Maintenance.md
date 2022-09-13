@@ -90,6 +90,7 @@ Flow:
     location @index {
         # use redirect because if URI has sub-folder ($uri == /path/path/),
         # the relative path for static contents (CSS, JS, ...) will be incorrect
+        absolute_redirect off;
         rewrite ^ "/" redirect;
     }
 
@@ -136,6 +137,7 @@ server {
     # listen 127.0.0.1:8000;
 
     location @index {
+        absolute_redirect off;
         rewrite ^ "/" redirect;
     }
 
