@@ -21,6 +21,8 @@ ls Registry::
 cd Registry:: # Tab / Ctrl + Space
 ```
 
+> Alias: `ls` ▶ `Get-ChildItem`
+
 ## Key
 
 > [Reference](https://docs.microsoft.com/en-us/powershell/scripting/samples/working-with-registry-keys?view=powershell-7)
@@ -31,17 +33,23 @@ cd Registry:: # Tab / Ctrl + Space
 ls [<key path>]
 ```
 
+> Alias: `ls` ▶ `Get-ChildItem`
+
 ### Create key
 
 ```powershell
 ni <key path>
 ```
 
+> Alias: `ni` ▶ `New-Item`
+
 ### Delete key
 
 ```powershell
 ri <key path>
 ```
+
+> Alias: `ri` ▶ `Remove-Item`
 
 ## Value
 
@@ -53,6 +61,8 @@ ri <key path>
 gp <key path> [-Name <name>]
 ```
 
+> Alias: `gp` ▶ `Get-ItemProperty`
+
 ### Set value
 
 ```powershell
@@ -62,8 +72,12 @@ sp <key path>
   [-Type { Binary | DWord | QWord | ExpandString | MultiString | String }]
 ```
 
+> Alias: `sp` ▶ `Set-ItemProperty`
+
 ### Remove value
 
 ```powershell
 rp <key path> -Name <name>
 ```
+
+> Alias: `rp` ▶ `Remove-ItemProperty`
