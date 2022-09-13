@@ -20,6 +20,31 @@ Set-NetConnectionProfile
     -NetworkCategory { Private | Public }
 ```
 
+## Show UDP listening port
+
+```powershell
+Get-NetUDPEndpoint -LocalAddress 0.0.0.0,::1
+```
+
+View owning process ID
+
+```powershell
+Get-NetUDPEndpoint -LocalAddress 0.0.0.0,::1 | 
+    select OwningProcess,LocalPort
+```
+
+View owning process name
+
+```powershell
+Get-NetUDPEndpoint -LocalAddress 0.0.0.0,::1 | 
+    select LocalPort,
+    @{
+        L="Process";
+        E={(Get-Process -Id $_.OwningProcess)
+            .ProcessName}
+    }
+```
+
 ## Show TCP listening port
 
 ```powershell
