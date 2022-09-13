@@ -6,20 +6,20 @@ sidebar_label: Network
 
 ## Host name resolution order
 
-[Reference](https://support.microsoft.com/en-au/help/172218/microsoft-tcp-ip-host-name-resolution-order)
-
 1. Self host name
 2. `hosts` file (`%SystemRoot%\System32\drivers\etc\hosts`)
 3. DNS
 4. NBNS (NetBIOS Name Service) / LLMNR (Link-local Multicast Name Resolution)
 
+> Ref: [Microsoft TCP/IP Host Name Resolution Order](https://support.microsoft.com/en-au/help/172218/microsoft-tcp-ip-host-name-resolution-order)
+
 ## Firewall
 
 ### Change default to block
 
-- [Reference](https://www.howtogeek.com/112564/how-to-create-advanced-firewall-rules-in-the-windows-firewall/)
-
 ![Windows Firewall](img/windows-firewall.png)
+
+> Ref: [How to Create Advanced Firewall Rules in the Windows Firewall](https://www.howtogeek.com/112564/how-to-create-advanced-firewall-rules-in-the-windows-firewall/)
 
 ## Network Profile
 
@@ -57,9 +57,6 @@ netstat <option>
 
 ## Reset (Repair) TCP/IP stack
 
-- [Reference](https://support.microsoft.com/en-us/help/299357/how-to-reset-tcp-ip-by-using-the-netshell-utility)
-- [Reference](https://support.microsoft.com/en-us/help/10741/windows-fix-network-connection-issues)
-
 ```cmd
 netsh winsock reset
 netsh int[erface] ip[v4] reset
@@ -67,9 +64,11 @@ netsh int[erface] ipv6 reset
 ipconfig /flushdns
 ```
 
-## Reserve TCP/UDP port
+> Ref: 
+> - [How to reset TCP/IP by using the NetShell utility](https://support.microsoft.com/en-us/help/299357/how-to-reset-tcp-ip-by-using-the-netshell-utility)
+> - [Network troubleshooting](https://support.microsoft.com/en-us/help/10741/windows-fix-network-connection-issues)
 
-[Reference](https://support.microsoft.com/en-us/help/2665809/you-cannot-exclude-ports-by-using-the-reservedports-registry-key-in-wi)
+## Reserve TCP/UDP port
 
 Add / Delete reserved port
 
@@ -82,6 +81,8 @@ netsh int[erface] ipv4 `
     [ [store=] active | persistent ]
 ```
 
+> Ref: [You cannot exclude ports by using the ReservedPorts registry key](https://support.microsoft.com/en-us/help/2665809/you-cannot-exclude-ports-by-using-the-reservedports-registry-key-in-wi)
+
 Show reserved port
 
 ```cmd
@@ -89,12 +90,27 @@ netsh int[erface] ipv4 `
     show excludedportrange { tcp | udp }
 ```
 
+## Clear Hyper-V / WSL binding port
+
+```powershell
+# show reserved port
+netsh interface ipv4 show excludedportrange protocol=tcp
+
+# stop `winnat` service if the port is reserved
+net stop winnat
+
+# reserve the port
+netsh int ipv4 add excludedportrange protocol=tcp startport=5000 numberofports=1
+
+# restart `winnat` service
+net start winnat
+```
+
+> Ref: [Docker issue #3171](https://github.com/docker/for-win/issues/3171)
+
 ## TCP/IP time-out
 
 TCP/IP re-transmission time-out
-
-> - [Reference](https://support.microsoft.com/en-us/topic/how-to-modify-the-tcp-ip-maximum-retransmission-time-out-7ae0982a-4963-fa7e-ee79-ff6d0da73db8)
-> - [Reference](https://support.microsoft.com/en-us/topic/you-cannot-customize-some-tcp-configurations-by-using-the-netsh-command-in-windows-server-2008-r2-c1feebea-82a8-cb05-83c7-46ffb5fd9cec)
 
 Get
 
@@ -107,3 +123,7 @@ Set
 ```cmd
 netsh interface tcp set global initialrto=<ms>
 ```
+
+> Ref: 
+> - [You cannot customize some TCP configurations by using the netsh command](https://support.microsoft.com/en-us/topic/you-cannot-customize-some-tcp-configurations-by-using-the-netsh-command-in-windows-server-2008-r2-c1feebea-82a8-cb05-83c7-46ffb5fd9cec)
+> - [How to modify the TCP/IP maximum retransmission time-out](https://support.microsoft.com/en-us/topic/how-to-modify-the-tcp-ip-maximum-retransmission-time-out-7ae0982a-4963-fa7e-ee79-ff6d0da73db8)
