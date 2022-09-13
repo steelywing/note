@@ -14,6 +14,7 @@ module.exports = {
     prism: {
       additionalLanguages: [
         'ini',
+        'nginx',
         'csharp',
         'powershell',
         'apacheconf',
@@ -38,36 +39,36 @@ module.exports = {
           // type: 'doc',
           // docId: 'Note/README',
           to: '/',
-          position: 'left',
           label: 'Note',
+          position: 'left',
           activeBasePath: 'Note',
         },
         {
           // type: 'doc',
           // docId: 'Linux/README',
           to: 'Linux',
-          position: 'left',
           label: 'Linux',
+          position: 'left',
         },
         {
           to: 'Windows',
-          position: 'left',
           label: 'Windows',
+          position: 'left',
         },
         {
           to: 'Network',
-          position: 'left',
           label: 'Network',
+          position: 'left',
         },
         {
           to: 'Programming',
-          position: 'left',
           label: 'Programming',
+          position: 'left',
         },
         {
           to: 'Game',
-          position: 'left',
           label: 'Game',
+          position: 'left',
         },
         {
           href: 'https://github.com/steelywing/note',
