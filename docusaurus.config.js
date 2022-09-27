@@ -13,6 +13,7 @@ module.exports = {
   themeConfig: {
     prism: {
       additionalLanguages: [
+        'php',
         'ini',
         'nginx',
         'csharp',
@@ -107,7 +108,7 @@ module.exports = {
         },
         theme: {
           customCss: [
-            require.resolve('./node_modules/katex/dist/katex.min.css'),
+            require.resolve('./src/css/katex.css'),
             require.resolve('./src/css/custom.css'),
           ]
         },
