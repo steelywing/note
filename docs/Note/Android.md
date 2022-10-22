@@ -17,9 +17,7 @@ settings delete global <key>
 
 #### Connect to WiFi but no internet
 
-```bash
-# ADB shell
-
+```bash title="ADB shell"
 # < Android 7.1.2
 settings put global captive_portal_detection_enabled 0
 
@@ -29,9 +27,7 @@ settings put global captive_portal_mode 0
 
 #### Captive portal server
 
-```bash
-# ADB shell
-
+```bash title="ADB shell"
 # < Android 7.0
 settings put global captive_portal_server "<URL>"
 

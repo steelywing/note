@@ -1,4 +1,6 @@
-# CSR (Certificate Signing Request)
+# CSR
+
+Certificate Signing Request
 
 > - [Reference](https://www.digicert.com/ssl-support/openssl-quick-reference-guide.htm)
 > - [openssl req](https://www.openssl.org/docs/manmaster/man1/openssl-req.html)

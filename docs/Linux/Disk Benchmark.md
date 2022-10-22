@@ -34,6 +34,8 @@ dd if=/dev/zero of=<file> bs=<size>[K|M|G] count=<count>[K|M|G] { conv=fsync | o
 | `Z` | 1024⁷ |
 | `Y` | 1024⁸ |
 
+Using `dd iflag=direct`
+
 ```bash
 dd
     if=<file>
@@ -43,7 +45,7 @@ dd
     iflag=direct
 ```
 
-> [`drop_caches` Doc](https://www.kernel.org/doc/Documentation/sysctl/vm.txt)
+Using `drop_caches`
 
 ```bash
 # Synchronize cached writes to persistent storage
@@ -54,6 +56,9 @@ echo 3 > /proc/sys/vm/drop_caches
 
 dd if=<file> of=/dev/null bs=<size>[K|M|G] [count=<count>[K|M|G]]
 ```
+
+> [`drop_caches` doc](https://www.kernel.org/doc/Documentation/sysctl/vm.txt)
+
 
 Read speed test without prior cache
 

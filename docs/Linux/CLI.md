@@ -16,6 +16,8 @@ cat /etc/shells
 chsh -s <shell> [<user>]
 ```
 
+or
+
 ```bash
 usermod -s <shell> <user>
 ```
@@ -99,6 +101,8 @@ Change file permission to `644`, directory to `755`
 ```bash
 chmod [-R] u=rw,go=r,a+X <path>
 ```
+
+or
 
 ```bash
 chmod [-R] a=r+X,u+w <path>

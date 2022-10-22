@@ -266,7 +266,7 @@ a?[x]
 
 If a is null, the result is null, otherwise the result is a[x]
 
-## `byte[]` <-> `string`
+## `byte[]` <-> Hex `string`
 
 `byte[]` to `string`
 
@@ -275,6 +275,10 @@ If a is null, the result is null, otherwise the result is a[x]
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
 new SoapHexBinary(new byte[] { }).ToString();
+```
+
+```cs
+BitConverter.ToString(new byte[] {});
 ```
 
 Pure C# implement
@@ -490,7 +494,5 @@ class ClassA : BaseClass
 ### MessagePack
 
 > [MessagePack](https://github.com/neuecc/MessagePack-CSharp)
-
-
 
 ## Attribute
