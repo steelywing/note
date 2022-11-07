@@ -439,7 +439,7 @@ Single execute file
 |-|-|-|
 | `PublishSingleFile` |  | Publish single file |
 | `SelfContained` | `--self-contained [true\|false]` | Contain .NET libraries and target runtime (&gt; 60MB) |
-| `RuntimeIdentifier` | `-r\|--runtime` | Specifies the [OS and CPU type](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog) (`win-x86`, `win-x64`, `win-arm`, `win-arm64`, ...)
+| `RuntimeIdentifier` | `-r` \| `--runtime` | Specifies the [OS and CPU type](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog) (`win-x86`, `win-x64`, `win-arm`, `win-arm64`, ...)
 | `PublishReadyToRun` |  | Enables ahead-of-time (AOT) compilation |
 
 - Run `dotnet publish`

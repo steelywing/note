@@ -115,9 +115,11 @@ Common format
 ## Extract subtitle
 
 ```bash
-# -an -vn: no audio, no video (faster)
-# -map 0: the first input file
-# s:0: the first subtitle
-# s:1: the second subtitle
 ffmpeg -an -vn -i <video.mkv> -map 0:s:0 <sub.srt>
 ```
+
+| Option | Description |
+|-|-|
+| `-an -vn` | no audio, no video (faster) |
+| `-map 0` | the first input |
+| `:s:0` | the first subtitle |

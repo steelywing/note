@@ -3,9 +3,9 @@
 | Command | Description |
 | - | - |
 | `Tab` | Complete command |
-| `Ctrl`+`D` | Exit |
-| `Ctrl`+`L` | Clear screen |
-| `Ctrl`+`R` | Search history |
+| <kbd>Ctrl</kbd>+<kbd>D</kbd> | Exit |
+| <kbd>Ctrl</kbd>+<kbd>L</kbd> | Clear screen |
+| <kbd>Ctrl</kbd>+<kbd>R</kbd> | Search history |
 | `!!` | Previous command |
 | `!<string>` | Most recent command starting with `<string>` |
 

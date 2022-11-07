@@ -72,12 +72,12 @@
 ### Armature Weight Paint
 
 - Select armature
-- <kbd>Shift + `Select mesh`</kbd>
+- <kbd>Shift</kbd> + <code>select mesh</code>
 - <kbd>Ctrl + Tab</kbd> Weight Paint
-- <kbd>Ctrl + `Select bone`</kbd> 
+- <kbd>Ctrl</kbd> + <code>select bone</code>
 
 ### Recalculate Weight
 
 - In weight paint
-- <kbd>Ctrl + `Select bone`</kbd>
-- <kbd>F3</kbd> `Assign from Bone Envelopes` / `Assign Automatic from Bones`
+- <kbd>Ctrl</kbd> + <code>select bone</code>
+- <kbd>F3</kbd> <code>Assign from Bone Envelopes</code> / <code>Assign Automatic from Bones</code>
