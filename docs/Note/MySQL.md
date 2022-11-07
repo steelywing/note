@@ -1,8 +1,5 @@
 ## Export / Dump
 
-> - [Doc](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)
-> - [Doc](https://dev.mysql.com/doc/refman/8.0/en/mysqldump-stored-programs.html)
-
 :::caution
 PowerShell output redirect ( `mysqldump > file.sql` ) will use UTF-16, MySQL cannot import UTF-16
 :::
@@ -10,6 +7,7 @@ PowerShell output redirect ( `mysqldump > file.sql` ) will use UTF-16, MySQL can
 ```bash
 mysqldump [-u <user>] [-p]
     { --all-databases | <database> [<table> [...]] }
+    [ --where="<where clause>" ]
     [ --events | --skip-events ]
     [ --routines | --skip-routines ]
     [ --triggers | --skip-triggers ]
@@ -21,9 +19,11 @@ Export with `gzip`
 mysqldump <database> | gzip [-9] > <file.sql.gz>
 ```
 
-## Import
+> Ref: [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)
 
-> [Doc](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)
+> Ref: [Dumping Stored Programs](https://dev.mysql.com/doc/refman/8.0/en/mysqldump-stored-programs.html)
+
+## Import
 
 ```bash
 mysql [-u <user>] [-p] <database> < <file.sql>
@@ -213,16 +213,38 @@ Optimizing query
 explain { select ... | delete ... | ... }
 ```
 
-## Create database
+## Database
+
+### create database
 
 ```sql
 create database <database>;
 ```
 
-## Drop database
+### drop database
 
 ```sql
 drop database <database>;
+```
+
+## Table
+
+### list tables
+
+```sql
+show tables;
+```
+
+### show table structure
+
+```sql
+describe <table>;
+```
+
+### show create table statement
+
+```sql
+show create table <table>;
 ```
 
 ## User
@@ -256,3 +278,7 @@ flush privileges;
 ```sql
 show grants [for <user>];
 ```
+
+## Display results vertically
+
+Use `\G` instead of `;` semicolon
