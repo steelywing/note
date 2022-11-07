@@ -96,7 +96,7 @@ Change file permission to `644`, directory to `755`
 | Option | Description |
 | - | - |
 | `-R` | Recursive |
-| `-h \| --no-dereference` | Change symbolic links instead of referenced file |
+| `-h` \| `--no-dereference` | Change symbolic links instead of referenced file |
 
 ```bash
 chmod [-R] u=rw,go=r,a+X <path>
@@ -186,8 +186,8 @@ cp [<option>] <source> <destination>
 
 | Option | Description |
 | - | - |
-| `-p \| --preserve[=<attributes>]` | Preserve mode, ownership, timestamps |
-| `-R \| -r \| --recursive` | Copy directories recursively |
+| `-p` \| `--preserve[=<attributes>]` | Preserve mode, ownership, timestamps |
+| `-R` \| `-r` \| `--recursive` | Copy directories recursively |
 
 ## OpenJDK (Java)
 
@@ -246,7 +246,7 @@ fuser <option> <file>
 | - | - |
 | `-v`, `--verbose` | Verbose |
 | `-k`, `--kill` | Kill processes accessing the file |
-| `{ -c \| -m \| --mount } { <mount point> \| <device> }` | Mount point or device |
+| { `-c` \| `-m` \| `--mount` } { `<mount point>` \| `<device>` } | Mount point or device |
 
 ## Watch
 

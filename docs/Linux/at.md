@@ -33,9 +33,9 @@ echo "<command>" | at <time spec>
 | `<time spec>` | `{ NOW \| <time> \| <date> \| <time> <date> } [{+\|-} <period> <unit>]` |
 | `<time>` | `{ <HH>:<MM> [AM\|PM] } [UTC]` |
 | `<date>` | `<month name> <day> [<year>] \| MM/DD/[YY]YY \| [YY]YY-MM-DD \| [NEXT] <day of week> \| TODAY \| TOMORROW` |
-| `<month name>` | `JAN \| FEB \| MAR \| APR \| MAY \| JUN \| JUL \| AUG \| SEP \| OCT \| NOV \| DEC` |
-| `<day of week>` | `SUN \| MON \| TUE \| WED \| THU \| FRI \| SAT` |
-| `<unit>` | `MINUTE \| HOUR \| DAY \| WEEK \| MONTH \| YEAR` |
+| `<month name>` | `JAN` \| `FEB` \| `MAR` \| `APR` \| `MAY` \| `JUN` \| `JUL` \| `AUG` \| `SEP` \| `OCT` \| `NOV` \| `DEC` |
+| `<day of week>` | `SUN` \| `MON` \| `TUE` \| `WED` \| `THU` \| `FRI` \| `SAT` |
+| `<unit>` | `MINUTE` \| `HOUR` \| `DAY` \| `WEEK` \| `MONTH` \| `YEAR` |
 
 ## Remove job
 

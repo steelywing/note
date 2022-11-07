@@ -22,7 +22,7 @@ ps [-ef]
 
 | Option | Description |
 | - | - |
-| `-e\|-A` | Entire / All processes |
+| `-e` \| `-A` | Entire / All processes |
 | `-f` | Full format / Detail |
 
 ```bash
