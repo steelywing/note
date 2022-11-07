@@ -187,6 +187,16 @@ ip r add { default | <IP-address>/<prefix length> } [metric <metric>] [via <next
 route add -net <IP address>/<prefix length> gw <next hop IP address> [dev <device>] [metric <metric>]
 ```
 
+Set / Replace default gateway
+
+```bash
+ip r r[eplace] default via <gateway IP address> [dev <device>]
+```
+
+```bash
+ip r r default via 10.0.0.1
+```
+
 Delete route
 
 ```bash
