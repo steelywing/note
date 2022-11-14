@@ -1,3 +1,7 @@
+# DNS
+
+Domain Name System
+
 ## [BIND 9](https://www.isc.org/bind/)
 
 - Stable
