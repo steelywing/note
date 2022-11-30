@@ -1,8 +1,10 @@
 ## Copper
 
+> Ref: [Ethernet Media Standards and Distances](https://kb.wisc.edu/ns/page.php?id=7829)
+
 ### 10BASE-T
 
-Usually use in WOL (Wake On LAN)
+- Usually use in WOL (Wake On LAN)
 
 |  |  |
 | - | - |
@@ -28,8 +30,6 @@ Usually use in WOL (Wake On LAN)
 | Distance | 100m |
 | Cable | Cat 5, Cat 5e, Cat 6 |
 | Connector | 8P8C |
-
-[Auto MDI-X](https://en.wikipedia.org/wiki/Medium-dependent_interface) (Medium Dependent Interface, X = Crossover)
 
 ### 10GBASE-T
 
@@ -82,9 +82,15 @@ TIA/EIA-568B
 | 7 | - | - | DC- |
 | 8 | - | - | DC- |
 
+## Auto MDI-X
+
+Medium Dependent Interface, X = Crossover
+
+> Ref: [Auto MDI-X](https://en.wikipedia.org/wiki/Medium-dependent_interface)
+
 ## Fiber
 
-> [Reference](https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/gigabit-ethernet-gbic-sfp-modules/datasheet-c78-366584.html)
+> Ref: [Cisco SFP Modules for Gigabit Ethernet Applications Data Sheet](https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/gigabit-ethernet-gbic-sfp-modules/datasheet-c78-366584.html)
 
 ### 1000BASE‑LX/LH
 
@@ -105,6 +111,12 @@ TIA/EIA-568B
 | Wavelength | 770 - 860 nm |
 | Slot | GBIC, SFP |
 | Connector | SC, LC |
+
+### Optical Fiber
+
+![Cladding](img/Cladding.jpg)
+
+> Ref: [The FOA Reference For Fiber Optics - Optical Fiber](https://www.thefoa.org/tech/ref/basic/fiber.html)
 
 ### SMF (Single Mode Fiber)
 
