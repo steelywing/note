@@ -37,6 +37,11 @@ module.exports = {
       },*/
       items: [
         {
+          to: 'blog',
+          label: 'Blog',
+          position: 'left',
+        },
+        {
           // type: 'doc',
           // docId: 'Note/README',
           to: '/',

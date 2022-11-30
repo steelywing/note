@@ -6,12 +6,6 @@ sidebar_label: Fix
 
 Fix / Troubleshoot
 
-## Microsoft.Windows.Photos with high CPU usage
-
-- `Default apps`
-  - Disable `Photos` app
-- Reset `Photos` app
-
 ## Get service of `svchost.exe`
 
 - Right click `svchost.exe` process in Task Manager
@@ -26,15 +20,6 @@ Windows Loader does not work on UEFI
 [BlueScreenView](https://www.nirsoft.net/utils/blue_screen_view.html)
 
 ![BSOD Dump](img/bsod-dump.png)
-
-## Steam Client WebHelper
-
-Use high CPU
-
-- *Friends List*
-  - *Settings*
-    - *Friends List*
-      - Disable *Enable Animated Avatars & Animated Avatar Frames in your Friends List and Chat*
 
 ## Windows 7 update stuck at 35% after Disk Cleanup
 
