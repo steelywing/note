@@ -1,8 +1,8 @@
 ---
 title: 7z max compression
 # description: 
-slug: 7z-max-compression
-tags: [7z, compress]
+# slug: 
+tags: [7z, Compress]
 # image: 
 # hide_table_of_contents: false
 ---
