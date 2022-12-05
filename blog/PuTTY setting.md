@@ -1,11 +1,8 @@
 ---
-title: PuTTY import / export setting
-# description: 
-# slug: url-link
 tags: [PuTTY]
-# image: 
-# hide_table_of_contents: false
 ---
+
+# PuTTY import / export setting
 
 > [PuTTY Official](https://www.chiark.greenend.org.uk/~sgtatham/putty/)
 

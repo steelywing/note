@@ -1,11 +1,8 @@
 ---
-title: 7z max compression
-# description: 
-# slug: 
 tags: [7z, Compress]
-# image: 
-# hide_table_of_contents: false
 ---
+
+# 7z max compression
 
 `7z` max compression ratio
 

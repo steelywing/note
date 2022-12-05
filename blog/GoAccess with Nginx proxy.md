@@ -1,11 +1,8 @@
 ---
-title: GoAccess with Nginx proxy
-# description: 
-# slug: url-link
 tags: [GoAccess, Nginx, Log, Proxy, WebSocket]
-# image: 
-# hide_table_of_contents: false
 ---
+
+# GoAccess with Nginx proxy
 
 Setup GoAccess WebSocket with Nginx proxy
 
