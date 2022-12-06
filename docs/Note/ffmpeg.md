@@ -9,7 +9,7 @@
 
 ## Input
 
-- Option before `-i`
+- place option before `-i`
 
 | Option | Description |
 |-|-|
@@ -18,7 +18,7 @@
 
 ## Output
 
-- Option before `<output URL>`
+- place option before `<output URL>`
 
 | Option | Description |
 |-|-|
@@ -122,4 +122,5 @@ ffmpeg -an -vn -i <video.mkv> -map 0:s:0 <sub.srt>
 |-|-|
 | `-an -vn` | no audio, no video (faster) |
 | `-map 0` | the first input |
+| `:s` | subtitle |
 | `:s:0` | the first subtitle |

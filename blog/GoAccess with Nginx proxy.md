@@ -8,7 +8,7 @@ Setup GoAccess WebSocket with Nginx proxy
 
 <!--truncate-->
 
-# GoAccess
+## GoAccess
 
 Web log analyzer
 
@@ -52,6 +52,8 @@ goaccess
 
 Nginx proxy
 
+> Ref: [Nginx WebSocket](https://www.nginx.com/blog/websocket-nginx/)
+
 ```nginx
 server {
     listen 80;
@@ -71,5 +73,3 @@ server {
     }
 }
 ```
-
-> Ref: [Nginx WebSocket](https://www.nginx.com/blog/websocket-nginx/)

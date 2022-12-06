@@ -2,17 +2,17 @@
 
 ## WebPack
 
-- JS, CSS, HTML
+- For JS, CSS, HTML
 - Popular
 
 ## Parcel
 
-- JS, CSS, HTML
+- For JS, CSS, HTML
 - Zero configuration
 
 ## Rollup
 
-- JS
+- For JS
 - Plugin for JSX
 - Faster
 - Support `import` ES6, CommonJS, ...
@@ -20,13 +20,13 @@
 
 ## ESBuild
 
-- JS, JSX
+- For JS, JSX
 - Extremely fast
 - Written in Go
 
 ## Vite
 
-- JS, CSS, HTML
+- For JS, CSS, HTML
 - Faster
 - Using Rollup for Production
 - Using esbuild for Dev

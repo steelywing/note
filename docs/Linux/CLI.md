@@ -252,7 +252,6 @@ fuser <option> <file>
 
 Execute command periodically
 
-
 ```bash
 # Default: 2 seconds
 watch [-n <seconds>] <command>

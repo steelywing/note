@@ -1,6 +1,6 @@
 # Reset password
 
-Cisco IOS Password
+Reset Cisco IOS Password
 
 - Serial setting
   - 9600 baud rate
@@ -8,7 +8,9 @@ Cisco IOS Password
   - 8 data bits
   - 1 stop bit
   - No flow control 
-- Send **Break** key in 15 seconds while reboot
+- Hold the **Mode** button while power up the switch
+- If the switch no **Mode** button...
+  - Send **Break** key in 15 seconds while power up
 
 USB to Serial (RS232) cable may be not working
 

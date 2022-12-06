@@ -44,7 +44,7 @@ Certificate content
 
 ```js
 // Pseudo code
-// Content is excluded signature
+// Content exclude signature
 CASignature = encrypt(hash(Content), CAPrivateKey)
 ```
 
@@ -52,7 +52,7 @@ Verify signature
 
 ```js
 // Pseudo code
-// Content is excluded signature
+// Content exclude signature
 decrypt(CASignature, CAPublicKey) == hash(Content)
 ```
 
