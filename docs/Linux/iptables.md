@@ -1,6 +1,10 @@
 # iptables
 
-> [Reference](https://wiki.archlinux.org/index.php/iptables)
+:::note Reference
+
+[Arch Linux iptables](https://wiki.archlinux.org/index.php/iptables)
+
+:::
 
 | Description | Command |
 | - | - |
@@ -30,7 +34,11 @@
 
 :::
 
-> [Diagram Reference](https://stuffphilwrites.com/2014/09/iptables-processing-flowchart/)
+:::note Reference
+
+[iptables Processing Flowchart](https://stuffphilwrites.com/2014/09/iptables-processing-flowchart/)
+
+:::
 
 ![iptables flow chart](img/iptables.svg)
 
@@ -44,7 +52,11 @@ iptables -P <chain> <target>
 
 ## Rule
 
-> [Reference](https://www.netfilter.org/documentation/HOWTO/packet-filtering-HOWTO-7.html)
+:::note Reference
+
+[netfilter documentation](https://www.netfilter.org/documentation/HOWTO/packet-filtering-HOWTO-7.html)
+
+:::
 
 | Option | Description |
 | - | - |
@@ -70,7 +82,11 @@ iptables
 
 ## Extension
 
-> [Reference](http://ipset.netfilter.org/iptables-extensions.man.html)
+:::note Reference
+
+[iptables-extensions](http://ipset.netfilter.org/iptables-extensions.man.html)
+
+:::
 
 ```bash
 iptables <rule>
@@ -83,7 +99,11 @@ iptables <rule>
 
 ## Redirect input to other port
 
-> [Reference](https://www.netfilter.org/documentation/HOWTO/NAT-HOWTO-6.html)
+:::note Reference
+
+[How To Mangle The Packets](https://www.netfilter.org/documentation/HOWTO/NAT-HOWTO-6.html)
+
+:::
 
 ```bash
 iptables -t nat -A PREROUTING [-i <interface>] -p tcp --dport <from port> -j REDIRECT --to-port <to port>
@@ -91,7 +111,11 @@ iptables -t nat -A PREROUTING [-i <interface>] -p tcp --dport <from port> -j RED
 
 ## Masquerading
 
-> [Reference](https://www.netfilter.org/documentation/HOWTO/NAT-HOWTO-6.html)
+:::note Reference
+
+[Masquerading](https://www.netfilter.org/documentation/HOWTO/NAT-HOWTO-6.html)
+
+:::
 
 Source NAT
 

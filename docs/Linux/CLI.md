@@ -70,7 +70,11 @@ mount -o loop <image.iso> <directory>
 
 ### ACL
 
-> [Reference](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/acls-setting)
+:::note Reference
+
+[Red Hat - Setting Access ACLs](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/acls-setting)
+
+:::
 
 ### File permission
 
@@ -110,7 +114,11 @@ chmod [-R] a=r+X,u+w <path>
 
 ### File attribute
 
-> [Reference](http://man7.org/linux/man-pages/man1/chattr.1.html)
+:::note Reference
+
+[chattr manual](http://man7.org/linux/man-pages/man1/chattr.1.html)
+
+:::
 
 | Attribute | Description |
 | - | - |
@@ -165,7 +173,11 @@ vi /etc/resolv.conf
 
 ### Disable sharing desktop encryption (Ubuntu)
 
-> [Reference](https://askubuntu.com/a/487267/235264)
+:::note Reference
+
+[Ask Ubuntu](https://askubuntu.com/a/487267/235264)
+
+:::
 
 ```bash
 dconf-editor
@@ -219,7 +231,11 @@ lsb_release -a
 
 ## Last login
 
-> [Reference](https://linuxconfig.org/how-to-disable-last-login-message-on-rhel-linux)
+:::note Reference
+
+[Enable/Disable Last Login Message](https://linuxconfig.org/how-to-disable-last-login-message-on-rhel-linux)
+
+:::
 
 ### Suppress `Last Login` message
 ```bash
@@ -259,7 +275,11 @@ watch [-n <seconds>] <command>
 
 ## FHS (Filesystem Hierarchy Standard) / Filesystem Structure
 
-> [Reference](http://refspecs.linuxfoundation.org/fhs.shtml)
+:::note Reference
+
+> [The FHS 3.0 Specification](http://refspecs.linuxfoundation.org/fhs.shtml)
+
+:::
 
 ```bash
 man hier
@@ -267,7 +287,11 @@ man hier
 
 ## Using dash "`-`" as path argument
 
-> [Reference](http://tldp.org/LDP/abs/html/special-chars.html#DASHREF2)
+:::note Reference
+
+[TLDP Advanced Bash-Scripting Guide](http://tldp.org/LDP/abs/html/special-chars.html#DASHREF2)
+
+:::
 
 使用 "`-`" 做為檔案路徑參數時，一般有以下用途
 

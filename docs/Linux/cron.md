@@ -1,6 +1,10 @@
 # cron
 
-> [Reference](https://www.computerhope.com/unix/ucrontab.htm)
+:::note Reference
+
+[Linux crontab command](https://www.computerhope.com/unix/ucrontab.htm)
+
+:::
 
 `cron` / `crontab`
 
