@@ -25,7 +25,11 @@ Enable IPsec service
 
 ## NAT-T
 
-> [Reference](https://docs.microsoft.com/en-us/troubleshoot/windows-server/networking/configure-l2tp-ipsec-server-behind-nat-t-device)
+:::note Reference
+
+[Configure a L2TP/IPsec server behind a NAT-T device](https://docs.microsoft.com/en-us/troubleshoot/windows-server/networking/configure-l2tp-ipsec-server-behind-nat-t-device)
+
+:::
 
 In Registry
 ```

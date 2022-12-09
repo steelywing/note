@@ -10,7 +10,11 @@ sidebar_position: 0
 
 ### WinRE (Windows Recovery Environment)
 
-- [Reference](https://support.microsoft.com/en-us/help/12415)
+:::note Reference
+
+- [Recovery options in Windows](https://support.microsoft.com/en-us/help/12415)
+
+:::
 
 <kbd>Shift</kbd> + Restart
 
@@ -27,7 +31,11 @@ Use to backup / restore OS
 
 ## Startup
 
-- [Reference](https://support.microsoft.com/en-us/help/4026268/windows-10-change-startup-apps)
+:::note Reference
+
+[Change which apps run automatically at startup in Windows](https://support.microsoft.com/en-us/help/4026268/windows-10-change-startup-apps)
+
+:::
 
 ### User Startup folder
 
@@ -119,7 +127,12 @@ gpedit.msc
 
 ## Hibernate
 
-> [Reference](https://support.microsoft.com/en-us/help/920730/how-to-disable-and-re-enable-hibernation-on-a-computer-that-is-running), [Reference](https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/powercfg-command-line-options)
+:::note Reference
+
+- [How to disable and re-enable hibernation on a computer that is running Windows](https://support.microsoft.com/en-us/help/920730/how-to-disable-and-re-enable-hibernation-on-a-computer-that-is-running)
+- [Powercfg command-line options](https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/powercfg-command-line-options)
+
+:::
 
 Enable / Disable hibernate (remove `hiberfil.sys` file)
 
@@ -169,14 +182,23 @@ Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Sea
 
 ## Allow input unicode with <kbd>Alt</kbd> + <kbd>+\<Code\></kbd>
 
-- [Reference](http://www.fileformat.info/tip/microsoft/enter_unicode.htm)
+:::note Reference
+
+[How to enter Unicode characters in Microsoft Windows](http://www.fileformat.info/tip/microsoft/enter_unicode.htm)
+
+:::
+
 ```cmd
 reg add "HKCU\Control Panel\Input Method" /v "EnableHexNumpad" /t REG_SZ /d 1 /f
 ```
 
 ## Enable / Disable the Local Built-In Administrator Account
 
-- [Reference](https://social.technet.microsoft.com/wiki/contents/articles/3040.windows-7-enable-disable-the-local-built-in-administrator-account.aspx)
+:::note Reference
+
+- [Windows 7: Enable / Disable the Local Built-In Administrator Account](https://social.technet.microsoft.com/wiki/contents/articles/3040.windows-7-enable-disable-the-local-built-in-administrator-account.aspx)
+
+:::
 
 ```cmd
 net user administrator /active:{yes|no}
@@ -184,7 +206,11 @@ net user administrator /active:{yes|no}
 
 ## Get OS Architecture (32-bit / 64-bit)
 
-- [Reference](https://www.lisenet.com/2014/get-windows-system-information-via-wmi-command-line-wmic/)
+:::note Reference
+
+[Get Windows System Information via WMI Command-line](https://www.lisenet.com/2014/get-windows-system-information-via-wmi-command-line-wmic/)
+
+:::
 
 ```cmd
 wmic OS get OSArchitecture
@@ -211,7 +237,11 @@ slmgr.vbs -ipk <product key>
 
 ## Code page
 
-- [Reference](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/chcp)
+:::note Reference
+
+[chcp](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/chcp)
+
+:::
 
 ```cmd
 chcp <code page>
@@ -226,7 +256,11 @@ chcp 65001
 
 ### Cleanup WinSxS
 
-- [Reference](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/clean-up-the-winsxs-folder)
+:::note Reference
+
+[Clean Up the WinSxS Folder](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/clean-up-the-winsxs-folder)
+
+:::
 
 ```cmd
 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
@@ -237,7 +271,11 @@ Dism.exe /online /Cleanup-Image /SPSuperseded
 
 ## Disable USB storage
 
-[Reference](https://support.microsoft.com/en-ie/help/823732/how-can-i-prevent-users-from-connecting-to-a-usb-storage-device)
+:::note Reference
+
+[How can I prevent users from connecting to a USB storage device?](https://support.microsoft.com/en-ie/help/823732/how-can-i-prevent-users-from-connecting-to-a-usb-storage-device)
+
+:::
 
 ```powershell
 Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\USBSTOR\ -Name Start -Value 4
@@ -269,7 +307,11 @@ Enable-WindowsOptionalFeature -Online -All -FeatureName Containers-DisposableCli
 
 ## Windows 11 Processor Requirements
 
-> [Reference](https://docs.microsoft.com/en-us/windows-hardware/design/minimum/windows-processor-requirements)
+:::note Reference
+
+[Windows Processor Requirements](https://docs.microsoft.com/en-us/windows-hardware/design/minimum/windows-processor-requirements)
+
+:::
 
 - [Supported Intel Processors](https://docs.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-supported-intel-processors)
 - [Supported AMD Processors](https://docs.microsoft.com/en-us/windows-hardware/design/minimum/supported/windows-11-supported-amd-processors)
