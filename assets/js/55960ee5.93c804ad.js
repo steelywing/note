@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[4121],{8070:e=>{e.exports=JSON.parse('[{"label":"Windows","permalink":"/note/tags/windows","count":1},{"label":"Network","permalink":"/note/tags/network","count":1}]')}}]);
