@@ -50,11 +50,13 @@ allow-update {
 };
 ```
 
-> Ref: [Address Match List](https://bind9.readthedocs.io/en/v9_18/reference.html#address-match-lists)
+:::note Reference
 
-> Ref: [Dynamic Update](https://bind9.readthedocs.io/en/v9_18/chapter6.html#dynamic-update)
+- [Address Match List](https://bind9.readthedocs.io/en/v9_18/reference.html#address-match-lists)
+- [Dynamic Update](https://bind9.readthedocs.io/en/v9_18/chapter6.html#dynamic-update)
+- [RFC 2136](https://datatracker.ietf.org/doc/html/rfc2136.html)
 
-> Ref: [RFC 2136](https://datatracker.ietf.org/doc/html/rfc2136.html)
+:::
 
 ## `nsupdate`
 

@@ -84,13 +84,21 @@ TIA/EIA-568B
 
 ## Auto MDI-X
 
-Medium Dependent Interface, X = Crossover
+:::note Reference
 
-> Ref: [Auto MDI-X](https://en.wikipedia.org/wiki/Medium-dependent_interface)
+[Auto MDI-X](https://en.wikipedia.org/wiki/Medium-dependent_interface)
+
+:::
+
+Medium Dependent Interface, X = Crossover
 
 ## Fiber
 
-> Ref: [Cisco SFP Modules for Gigabit Ethernet Applications Data Sheet](https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/gigabit-ethernet-gbic-sfp-modules/datasheet-c78-366584.html)
+:::note Reference
+
+[Cisco SFP Modules for Gigabit Ethernet Applications Data Sheet](https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/gigabit-ethernet-gbic-sfp-modules/datasheet-c78-366584.html)
+
+:::
 
 ### 1000BASE‑LX/LH
 
@@ -116,7 +124,11 @@ Medium Dependent Interface, X = Crossover
 
 ![Cladding](img/Cladding.jpg)
 
-> Ref: [The FOA Reference For Fiber Optics - Optical Fiber](https://www.thefoa.org/tech/ref/basic/fiber.html)
+:::note Reference
+
+[The FOA Reference For Fiber Optics - Optical Fiber](https://www.thefoa.org/tech/ref/basic/fiber.html)
+
+:::
 
 ### SMF (Single Mode Fiber)
 

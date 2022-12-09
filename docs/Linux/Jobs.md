@@ -1,6 +1,10 @@
 # Jobs
 
-> Ref: `man bash`
+:::note Reference
+
+`man bash`
+
+:::
 
 ## Suspend current process
 

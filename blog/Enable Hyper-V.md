@@ -6,7 +6,13 @@ tags: [VM, Hyper-V, Windows]
 
 <!--truncate-->
 
-> Ref: [Enable Hyper-V](https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)
+:::note Reference
+
+[Enable Hyper-V](https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)
+
+:::
+
+## Using GUI
 
 - Open **Turn Windows features on or off**
 - Enable **Hyper-V**
