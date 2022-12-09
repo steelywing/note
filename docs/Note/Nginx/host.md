@@ -139,4 +139,8 @@ curl http://127.0.0.1/test/ -v -H "Host:" -0
 [host] = *.example.org
 ```
 
-Ref: [ngx_http_core_module](http://nginx.org/en/docs/http/ngx_http_core_module.html#var_host)
+:::note Reference
+
+[ngx_http_core_module](http://nginx.org/en/docs/http/ngx_http_core_module.html#var_host)
+
+:::

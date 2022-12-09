@@ -34,7 +34,11 @@ Restart
 sudo systemctl restart suricata
 ```
 
-> Ref: [Installation](https://suricata.readthedocs.io/en/latest/install.html)
+:::note Reference
+
+[Installation](https://suricata.readthedocs.io/en/latest/install.html)
+
+:::
 
 ## Alerting
 

@@ -4,7 +4,11 @@
 proxy_pass <scheme>://<host>[:port][/<URI>];
 ```
 
-> Ref: [Nginx reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
+:::note Reference
+
+[Nginx reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
+
+:::
 
 ## `proxy_pass` with URI
 
@@ -161,7 +165,11 @@ server {
 }
 ```
 
-> Ref: [Nginx WebSocket](https://www.nginx.com/blog/websocket-nginx/)
+:::note Reference
+
+[Nginx WebSocket](https://www.nginx.com/blog/websocket-nginx/)
+
+:::
 
 Proxy all WebSocket traffic
 
@@ -219,4 +227,8 @@ real_ip_recursive on;
 real_ip_header    X-Real-IP;
 ```
 
-> Ref: [ngx_http_realip_module](https://nginx.org/en/docs/http/ngx_http_realip_module.html)
+:::note Reference
+
+[ngx_http_realip_module](https://nginx.org/en/docs/http/ngx_http_realip_module.html)
+
+:::

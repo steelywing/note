@@ -50,9 +50,12 @@ Restart Apache
 systemctl restart httpd
 ```
 
-> Ref: [CentOS WiKi](https://wiki.centos.org/HowTos/php7)
+:::note Reference
 
-> Ref: [NextCloud manual](https://docs.nextcloud.com/server/13.0.0/admin_manual/installation/php_70_installation.html)
+- [CentOS WiKi](https://wiki.centos.org/HowTos/php7)
+- [NextCloud manual](https://docs.nextcloud.com/server/13.0.0/admin_manual/installation/php_70_installation.html)
+
+:::
 
 ### Using PHP FPM
 

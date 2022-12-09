@@ -1,6 +1,10 @@
 ## Copper
 
-> Ref: [Ethernet Media Standards and Distances](https://kb.wisc.edu/ns/page.php?id=7829)
+:::note Reference
+
+[Ethernet Media Standards and Distances](https://kb.wisc.edu/ns/page.php?id=7829)
+
+:::
 
 ### 10BASE-T
 

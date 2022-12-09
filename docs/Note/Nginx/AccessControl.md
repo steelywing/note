@@ -13,4 +13,8 @@ server {
 }
 ```
 
-> Ref: [ngx_stream_access_module](https://nginx.org/en/docs/stream/ngx_stream_access_module.html)
+:::note Reference
+
+[ngx_stream_access_module](https://nginx.org/en/docs/stream/ngx_stream_access_module.html)
+
+:::
