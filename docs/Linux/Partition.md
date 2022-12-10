@@ -19,7 +19,7 @@ partprobe /dev/<device>
 
 ## Partition command
 
-- `fdisk` ([Reference](https://wiki.archlinux.org/index.php/Fdisk))
+- [`fdisk`](https://wiki.archlinux.org/index.php/Fdisk)
   - Common
   - Not support GPT before `util-linux` 2.23
 - `parted`

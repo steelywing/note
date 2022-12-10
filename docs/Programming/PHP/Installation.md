@@ -76,4 +76,8 @@ systemctl enable rh-php70-php-fpm
 systemctl start rh-php70-php-fpm
 ```
 
-> Ref: [Apache PHP FPM](https://cwiki.apache.org/confluence/display/HTTPD/PHP-FPM)
+:::note Reference
+
+[Apache PHP FPM](https://cwiki.apache.org/confluence/display/HTTPD/PHP-FPM)
+
+:::

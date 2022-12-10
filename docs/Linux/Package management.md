@@ -40,7 +40,11 @@ sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noa
 
 For Debian
 
-> [Reference](https://stackoverflow.com/a/41428445/1877620)
+:::note Reference
+
+[Stack Overflow](https://stackoverflow.com/a/41428445/1877620)
+
+:::
 
 ```bash
 # -i = --important : Show only Depends and Pre-Depends
