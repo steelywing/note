@@ -11,6 +11,8 @@ Access Control List
 
 Standard ACL
 
+- Filter by source address 
+
 ```
 ! <address> = { any | <IP address> <inverse mask> | host <IP> }
 
@@ -23,6 +25,9 @@ Switch(config-std-nacl)# [<sequence number>]
 ```
 
 Extended ACL
+
+- Filter by source and destination address
+- Filter by ICMP type / UDP port / TCP port
 
 ```
 ! <port> = { eq | neq | lt | gt } <port> | range <first port> <last port>
@@ -56,7 +61,7 @@ Switch(config-if)# ip access-group { <ACL ID> | <ACL name> } { in | out }
 
 ## MAC ACL
 
-ACL default (No match) is `drop`
+ACL default (no match) is `drop`
 
 ```
 Switch(config)# mac access-list extended <name>
@@ -78,7 +83,7 @@ VLAN ACL
 
 ![Flow](img/VACL.svg)
 
-By default VACL `drop` (If no match and at least has 1 ACL)
+By default VACL `drop` (if no match and at least has 1 ACL)
 
 ```cisco
 Switch(config)# vlan access-map <access-map name> [<sequence number>]
