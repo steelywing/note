@@ -72,14 +72,20 @@ Switch# write
 
 Reset to Factory Default
 
-> [Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-2900-xl-series-switches/24328-156.html)
+:::note Reference
+
+[Resetting Catalyst Switches to Factory Defaults](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-2900-xl-series-switches/24328-156.html)
+
+:::
 
 - Erase startup config
+
 ```
 Switch# write erase
 ```
 
 - Delete VLAN config
+
 ```
 Switch# delete flash:/vlan.dat
 ```

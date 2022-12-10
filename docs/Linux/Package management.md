@@ -26,7 +26,11 @@ pacman -S base-devel
 
 ## Add EPEL repository to CentOS / RHEL
 
-> [Reference](https://fedoraproject.org/wiki/EPEL)
+:::note Reference
+
+[Extra Packages for Enterprise Linux (EPEL)](https://fedoraproject.org/wiki/EPEL)
+
+:::
 
 ```bash
 sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
