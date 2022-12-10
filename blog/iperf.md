@@ -16,6 +16,16 @@ Use `iperf` to test / measure network speed / bandwidth / throughput
 - Support multi-cast
 - Official support Windows
 
+## `iperf3`
+
+[Download](https://github.com/esnet/iperf)
+
+- Single-thread
+
+## Comparison
+
+> [`iperf2` / `iperf3` comparison](https://fasterdata.es.net/performance-testing/network-troubleshooting-tools/iperf/)
+
 ## Test using TCP
 
 ```bash title="Server"
@@ -55,13 +65,3 @@ Option | Description
 `-d` ¦ `--dualtest` | bi-directional test
 `-t <second>` | run `<second>` test
 `--reverse` | reverse test (client receive, server send)
-
-## `iperf3`
-
-[Download](https://github.com/esnet/iperf)
-
-- Single-thread
-
-## Comparison
-
-> [`iperf2` / `iperf3` comparison](https://fasterdata.es.net/performance-testing/network-troubleshooting-tools/iperf/)
