@@ -1,3 +1,7 @@
+---
+tags: [Nginx, Proxy]
+---
+
 # Proxy
 
 ```nginx
@@ -83,30 +87,6 @@ location / {
 }
 ```
 
-## Load balancing
-
-> [Ref](http://nginx.org/en/docs/http/load_balancing.html)
-
-```nginx
-upstream backends {
-    # Method 1 (Default)
-    # round-robin
-
-    # Method 2
-    # request is assigned to least-connected server
-    least_conn;
-
-    # Method 3
-    # based on the client IP address
-    ip_hash;
-
-    # default <weight> = 1
-    # server <host> [weight=<weight>]
-    server 10.0.0.1:80 weight=4;
-    server 10.0.0.2:80;
-    # ...
-}
-
 server {
     listen 80;
     server_name www.example.com;
@@ -141,76 +121,13 @@ server {
 
 ## WebSocket
 
-Proxy `ws://example.com/ws/` to `ws://localhost:7890/`
+[WebSocket Proxy](WebSocket.md)
 
-```nginx
-map $http_upgrade $connection_upgrade {
-    default upgrade;
-    ''      close;
-}
+## Load balancing
 
-server {
-    listen 80;
-    server_name example.com;
+[Load balancing](LoadBalancing.md)
 
-    # ...
-
-    location /ws/ {
-        proxy_pass http://localhost:7890/;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection $connection_upgrade;
-        proxy_set_header Host $host;
-    }
-}
-```
-
-:::note Reference
-
-[Nginx WebSocket](https://www.nginx.com/blog/websocket-nginx/)
-
-:::
-
-Proxy all WebSocket traffic
-
-```nginx
-map $http_upgrade $connection_upgrade {
-    default upgrade;
-    ''      close;
-}
-
-server {
-    listen 80;
-    server_name example.com;
-
-    location /websocket/ {
-        internal;
-
-        proxy_pass http://localhost:7890/;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection $connection_upgrade;
-        proxy_set_header Host $host;
-    }
-
-    location / {
-        set $websocket 1;
-        if ($http_connection !~* "upgrade") {
-            set $websocket 0;
-        }
-        if ($http_upgrade !~* "websocket") {
-            set $websocket 0;
-        }
-        if ($websocket) {
-            rewrite ^ /websocket$uri last;
-        }
-
-        # ...
-    }
-}
-```
-
-## Real IP address
+## Real (Client) IP address
 
 Set `$remote_addr` and `$remote_port` using header
 
@@ -219,11 +136,13 @@ Set `$remote_addr` and `$remote_port` using header
 # Trusted address
 set_real_ip_from  10.0.0.1;
 
-# Use X-Forwarded-For header
+# by default, Nginx use X-Real-IP header to set $remote_addr
+
+# Use X-Forwarded-For header to set $remote_addr
 real_ip_header    X-Forwarded-For;
 real_ip_recursive on;
 
-# Use X-Real-IP (Default)
+# Use X-Real-IP header to set $remote_addr
 real_ip_header    X-Real-IP;
 ```
 
