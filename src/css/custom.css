@@ -5,33 +5,58 @@
  * work well for content-centric websites.
  */
 
-@font-face {
+/* @font-face {
   font-family: "Noto Sans TC";
   font-weight: 100;
   src: url('/static/NotoSansTC-Regular.woff') format('woff');
+} */
+
+/* noto-sans-tc-regular - latin_chinese-traditional */
+@font-face {
+  font-family: 'Noto Sans TC';
+  /* font-style: normal; */
+  font-weight: 100;
+  src: local('Noto Sans TC'),
+    url('/static/noto-sans-tc-v26-latin_chinese-traditional-regular.woff2') format('woff2'),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('/static/noto-sans-tc-v26-latin_chinese-traditional-regular.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap'); */
 
-/* You can override the default Infima variables here. */
 :root {
-  /* --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208); */
-  --ifm-color-primary: #07ad6c;
-  --ifm-color-primary-dark: #069c61;
-  --ifm-color-primary-darker: #06935c;
-  --ifm-color-primary-darkest: #05794c;
-  --ifm-color-primary-light: #08be77;
-  --ifm-color-primary-lighter: #08c77c;
-  --ifm-color-primary-lightest: #09e18c;
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+
+  --ifm-blockquote-padding-vertical: 0.4em;
+  --ifm-blockquote-padding-horizontal: 1em;
+  --ifm-blockquote-border-left-width: 4px;
+  --ifm-blockquote-border-color: var(--ifm-color-primary-darker);
+
   /* --ifm-code-font-size: 95%; */
   /* --ifm-font-family-monospace: "Noto Sans TC"; */
-  --ifm-font-family-base: "Noto Sans TC"
+  --ifm-font-family-base: "Noto Sans TC";
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+}
+
+blockquote {
+  background-color: #00000040;
+  font-size: 80%;
 }
 
 .docusaurus-highlight-code-line {
@@ -39,4 +64,8 @@
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
+}
+
+.text-center {
+  text-align: center;
 }

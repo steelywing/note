@@ -72,11 +72,7 @@ Switch# write
 
 Reset to Factory Default
 
-:::note Reference
-
-[Resetting Catalyst Switches to Factory Defaults](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-2900-xl-series-switches/24328-156.html)
-
-:::
+> Ref: [Resetting Catalyst Switches to Factory Defaults](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-2900-xl-series-switches/24328-156.html)
 
 - Erase startup config
 

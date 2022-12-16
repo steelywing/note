@@ -50,12 +50,9 @@ Restart Apache
 systemctl restart httpd
 ```
 
-:::note Reference
+> Ref: [CentOS WiKi](https://wiki.centos.org/HowTos/php7)
 
-- [CentOS WiKi](https://wiki.centos.org/HowTos/php7)
-- [NextCloud manual](https://docs.nextcloud.com/server/13.0.0/admin_manual/installation/php_70_installation.html)
-
-:::
+> Ref: [NextCloud manual](https://docs.nextcloud.com/server/13.0.0/admin_manual/installation/php_70_installation.html)
 
 ### Using PHP FPM
 
@@ -76,8 +73,4 @@ systemctl enable rh-php70-php-fpm
 systemctl start rh-php70-php-fpm
 ```
 
-:::note Reference
-
-[Apache PHP FPM](https://cwiki.apache.org/confluence/display/HTTPD/PHP-FPM)
-
-:::
+> Ref: [Apache PHP FPM](https://cwiki.apache.org/confluence/display/HTTPD/PHP-FPM)

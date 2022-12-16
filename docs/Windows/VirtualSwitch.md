@@ -8,11 +8,7 @@ Enable-WindowsOptionalFeature -Online -All -FeatureName Microsoft-Hyper-V
 
 Disable Hyper-V without uninstallation
 
-:::note Reference
-
-[BCDEdit /set](https://docs.microsoft.com/en-us/windows-hardware/drivers/devtest/bcdedit--set)
-
-:::
+> Ref: [BCDEdit /set](https://docs.microsoft.com/en-us/windows-hardware/drivers/devtest/bcdedit--set)
 
 ```cmd
 bcdedit /set hypervisorlaunchtype { off | auto }

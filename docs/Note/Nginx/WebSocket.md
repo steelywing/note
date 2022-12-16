@@ -28,11 +28,7 @@ server {
 }
 ```
 
-:::note Reference
-
-[Nginx WebSocket](https://www.nginx.com/blog/websocket-nginx/)
-
-:::
+> Ref: [Nginx WebSocket](https://www.nginx.com/blog/websocket-nginx/)
 
 Proxy all WebSocket traffic
 

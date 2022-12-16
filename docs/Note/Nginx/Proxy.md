@@ -8,11 +8,7 @@ tags: [Nginx, Proxy]
 proxy_pass <scheme>://<host>[:port][/<URI>];
 ```
 
-:::note Reference
-
-[Nginx reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
-
-:::
+> Ref: [Nginx reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
 
 ## `proxy_pass` with URI
 
@@ -146,8 +142,4 @@ real_ip_recursive on;
 real_ip_header    X-Real-IP;
 ```
 
-:::note Reference
-
-[ngx_http_realip_module](https://nginx.org/en/docs/http/ngx_http_realip_module.html)
-
-:::
+> Ref: [ngx_http_realip_module](https://nginx.org/en/docs/http/ngx_http_realip_module.html)

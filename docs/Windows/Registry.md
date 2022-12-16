@@ -2,11 +2,7 @@
 
 ## Registry file location
 
-:::note Reference
-
-[Registry Hives](https://docs.microsoft.com/en-us/windows/win32/sysinfo/registry-hives)
-
-:::
+> Ref: [Registry Hives](https://docs.microsoft.com/en-us/windows/win32/sysinfo/registry-hives)
 
 | Registry hive | Supporting files |
 | - | - |

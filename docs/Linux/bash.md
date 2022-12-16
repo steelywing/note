@@ -76,12 +76,9 @@ done
 
 ### For each `find` result
 
-:::note Reference
+> Ref: [Stack Overflow](https://stackoverflow.com/a/15066129)
 
-- [Stack Overflow](https://stackoverflow.com/a/15066129)
-- [Stack Overflow](https://stackoverflow.com/a/9612232/1877620)
-
-:::
+> Ref: [Stack Overflow](https://stackoverflow.com/a/9612232/1877620)
 
 ```bash
 find [<expression>] -print0 | while IFS= read -r -d $'\0' <file variable name>; do

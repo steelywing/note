@@ -1,10 +1,6 @@
 # GRUB
 
-:::note Reference
-
-[Ubuntu Grub2](https://help.ubuntu.com/community/Grub2)
-
-:::
+> Ref: [Ubuntu Grub2](https://help.ubuntu.com/community/Grub2)
 
 ## Show GRUB when boot
 

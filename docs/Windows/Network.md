@@ -11,11 +11,7 @@ tags: [Windows, Network]
 
 ![Windows Firewall](img/windows-firewall.png)
 
-:::note Reference
-
-[How to Create Advanced Firewall Rules in the Windows Firewall](https://www.howtogeek.com/112564/how-to-create-advanced-firewall-rules-in-the-windows-firewall/)
-
-:::
+> Ref: [How to Create Advanced Firewall Rules in the Windows Firewall](https://www.howtogeek.com/112564/how-to-create-advanced-firewall-rules-in-the-windows-firewall/)
 
 ## Network Profile
 
@@ -60,12 +56,9 @@ netsh int[erface] ipv6 reset
 ipconfig /flushdns
 ```
 
-:::note Reference
+> Ref: [How to reset TCP/IP by using the NetShell utility](https://support.microsoft.com/en-us/help/299357/how-to-reset-tcp-ip-by-using-the-netshell-utility)
 
-- [How to reset TCP/IP by using the NetShell utility](https://support.microsoft.com/en-us/help/299357/how-to-reset-tcp-ip-by-using-the-netshell-utility)
-- [Network troubleshooting](https://support.microsoft.com/en-us/help/10741/windows-fix-network-connection-issues)
-
-:::
+> Ref: [Network troubleshooting](https://support.microsoft.com/en-us/help/10741/windows-fix-network-connection-issues)
 
 ## TCP/IP time-out
 
@@ -83,9 +76,6 @@ Set
 netsh interface tcp set global initialrto=<ms>
 ```
 
-:::note Reference
+> Ref: [You cannot customize some TCP configurations by using the netsh command](https://support.microsoft.com/en-us/topic/you-cannot-customize-some-tcp-configurations-by-using-the-netsh-command-in-windows-server-2008-r2-c1feebea-82a8-cb05-83c7-46ffb5fd9cec)
 
-- [You cannot customize some TCP configurations by using the netsh command](https://support.microsoft.com/en-us/topic/you-cannot-customize-some-tcp-configurations-by-using-the-netsh-command-in-windows-server-2008-r2-c1feebea-82a8-cb05-83c7-46ffb5fd9cec)
-- [How to modify the TCP/IP maximum retransmission time-out](https://support.microsoft.com/en-us/topic/how-to-modify-the-tcp-ip-maximum-retransmission-time-out-7ae0982a-4963-fa7e-ee79-ff6d0da73db8)
-
-:::
+> Ref: [How to modify the TCP/IP maximum retransmission time-out](https://support.microsoft.com/en-us/topic/how-to-modify-the-tcp-ip-maximum-retransmission-time-out-7ae0982a-4963-fa7e-ee79-ff6d0da73db8)

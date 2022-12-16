@@ -10,11 +10,7 @@
 - Stop processing when the first matching regular expression is found and use the corresponding location.
 - If no regular expression matches, use the location corresponding to the stored prefix string.
 
-:::note Reference
-
-[Nginx Location Priority](https://docs.nginx.com/nginx/admin-guide/web-server/web-server/#nginx-location-priority)
-
-:::
+> Ref: [Nginx Location Priority](https://docs.nginx.com/nginx/admin-guide/web-server/web-server/#nginx-location-priority)
 
 ## Named location
 
@@ -27,8 +23,4 @@ location @named_location {
 }
 ```
 
-:::note Reference
-
-[Nginx FAQ](https://www.nginx.com/resources/wiki/community/faq/#what-does-this-thing-mean)
-
-:::
+> Ref: [Nginx FAQ](https://www.nginx.com/resources/wiki/community/faq/#what-does-this-thing-mean)

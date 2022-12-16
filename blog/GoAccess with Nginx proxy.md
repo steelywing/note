@@ -52,11 +52,7 @@ goaccess
 
 Nginx proxy
 
-:::note Reference
-
-[Nginx WebSocket](https://www.nginx.com/blog/websocket-nginx/)
-
-:::
+> Ref: [Nginx WebSocket](https://www.nginx.com/blog/websocket-nginx/)
 
 ```nginx
 server {

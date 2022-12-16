@@ -1,10 +1,6 @@
 # `awk`
 
-:::note Reference
-
-[The GNU Awk User’s Guide](https://www.gnu.org/software/gawk/manual/gawk.html)
-
-:::
+> Ref: [The GNU Awk User’s Guide](https://www.gnu.org/software/gawk/manual/gawk.html)
 
 ```bash
 awk 

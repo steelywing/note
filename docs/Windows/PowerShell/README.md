@@ -167,11 +167,7 @@ Invoke-Command [[-ComputerName] <host[]>]
 
 ## Execution policies
 
-:::note Reference
-
-[about_Execution_Policies](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)
-
-:::
+> Ref: [about_Execution_Policies](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)
 
 ```powershell
 Get-ExecutionPolicy
@@ -206,11 +202,7 @@ Get-Content (Get-PSReadlineOption).HistorySavePath
 
 ## Hash table
 
-:::note Reference
-
-[about_Hash_Tables](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_hash_tables)
-
-:::
+> Ref: [about_Hash_Tables](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_hash_tables)
 
 ```powershell
 $hash = @{

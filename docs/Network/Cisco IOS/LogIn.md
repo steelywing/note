@@ -31,11 +31,7 @@ Switch(config)# username <username>
 
 ## Set enable password
 
-:::note
-
-Unnecessary for `privilege 15` user
-
-:::
+> Ref: Unnecessary for `privilege 15` user
 
 ```
 Switch(config)# enable secret <password>
@@ -76,11 +72,7 @@ Switch(conf-ssh-pubkey-data)# exit
 
 ## Set login password
 
-:::note
-
-Unnecessary if using `login local`
-
-:::
+> Ref: Unnecessary if using `login local`
 
 ```
 Switch(config-line)# password <password>

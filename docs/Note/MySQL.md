@@ -19,12 +19,9 @@ Export with `gzip`
 mysqldump <database> | gzip [-9] > <file.sql.gz>
 ```
 
-:::note Reference
+> Ref: [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)
 
-- [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)
-- [Dumping Stored Programs](https://dev.mysql.com/doc/refman/8.0/en/mysqldump-stored-programs.html)
-
-:::
+> Ref: [Dumping Stored Programs](https://dev.mysql.com/doc/refman/8.0/en/mysqldump-stored-programs.html)
 
 ## Import
 

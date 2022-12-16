@@ -2,11 +2,7 @@
 
 ## LXDE
 
-:::note Reference
-
-[LXDE Auto Start](https://wiki.archlinux.org/index.php/LXDE#Autostart)
-
-:::
+> Ref: [LXDE Auto Start](https://wiki.archlinux.org/index.php/LXDE#Autostart)
 
 加入要自動執行的指令到以下 File
 

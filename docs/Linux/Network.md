@@ -12,11 +12,7 @@ sidebar_label: Network
 
 ## IP forward
 
-:::note Reference
-
-[FORWARD and NAT Rules Red Hat](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Security_Guide/s1-firewall-ipt-fwd.html)
-
-:::
+> Ref: [FORWARD and NAT Rules Red Hat](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Security_Guide/s1-firewall-ipt-fwd.html)
 
 Get IP forward setting
 
@@ -58,11 +54,7 @@ done
 
 ## IP
 
-:::note Reference
-
-`ip help`
-
-:::
+> Ref: `ip help`
 
 | Option | Description |
 | - | - |
@@ -76,11 +68,7 @@ ip [<option>] { link | address | route | neigh | tunnel | tuntap | maddress | mr
 
 ### Interface
 
-:::note Reference
-
-`ip link help`
-
-:::
+> Ref: `ip link help`
 
 ```bash
 ip l [show [<dev>] [up]]
@@ -99,11 +87,7 @@ ifconfig <interface> { up | down }
 
 ### IP address
 
-:::note Reference
-
-`ip address help`
-
-:::
+> Ref: `ip address help`
 
 ```bash
 ip a [show [<device>] [up]]
@@ -144,11 +128,7 @@ ip a flush [dev <device>] [up]
 
 ### ARP / Neighbour
 
-:::note Reference
-
-`ip neighbour help`
-
-:::
+> Ref: `ip neighbour help`
 
 ```bash
 ip n [show]
@@ -167,11 +147,7 @@ ip n flush { all | dev <device> }
 
 ### Route
 
-:::note Reference
-
-`ip route help`
-
-:::
+> Ref: `ip route help`
 
 | Option | Description |
 | - | - |
@@ -288,13 +264,11 @@ lsof [-n] -i [4|6][TCP|UDP][@<host>][:<port>]
 
 ## Traffic control
 
-:::note Reference
+> Ref: [Use Linux Traffic Control as impairment node in a test environment](https://www.excentis.com/blog/use-linux-traffic-control-impairment-node-test-environment-part-2)
 
-- [Use Linux Traffic Control as impairment node in a test environment](https://www.excentis.com/blog/use-linux-traffic-control-impairment-node-test-environment-part-2)
-- [tc-tbf manual](https://man7.org/linux/man-pages/man8/tc-tbf.8.html)
-- `man tc-netem`
+> Ref: [tc-tbf manual](https://man7.org/linux/man-pages/man8/tc-tbf.8.html)
 
-:::
+> Ref: `man tc-netem`
 
 Show `qdisc` (queueing discipline)
 

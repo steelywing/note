@@ -1,10 +1,6 @@
 # Directory Stack
 
-:::note Reference
-
-[Stack Exchange](https://unix.stackexchange.com/a/270437/104608)
-
-:::
+> Ref: [Stack Exchange](https://unix.stackexchange.com/a/270437/104608)
 
 Directory / Folder Stack
 

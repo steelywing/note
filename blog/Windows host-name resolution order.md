@@ -4,11 +4,7 @@ tags: [Windows, Network, DNS]
 
 # Windows host name resolution order
 
-:::note Reference
-
-[Microsoft TCP/IP Host Name Resolution Order](https://support.microsoft.com/en-au/help/172218/microsoft-tcp-ip-host-name-resolution-order)
-
-:::
+> Ref: [Microsoft TCP/IP Host Name Resolution Order](https://support.microsoft.com/en-au/help/172218/microsoft-tcp-ip-host-name-resolution-order)
 
 <!--truncate-->
 

@@ -75,22 +75,14 @@ new Promise((resolve, reject) => {
 - `resolve` and `reject` are callback function
 - `executor()` no need to return value
 
-:::note Reference
-
-[MDN `Promise()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise)
-
-:::
+> Ref: [MDN `Promise()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise)
 
 ## Handler function
 
 - `onFulfilled(value)`
 - `onRejected(value)`
 
-:::note Reference
-
-[`Promise().then()` return value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then#return_value)
-
-:::
+> Ref: [`Promise().then()` return value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then#return_value)
 
 ```js
 var promise = new Promise(

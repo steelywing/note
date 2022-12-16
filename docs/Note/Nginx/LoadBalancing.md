@@ -4,11 +4,7 @@ tags: [Nginx, Proxy, Load Balancing]
 
 # Load balancing
 
-:::note Reference
-
-[Load balancer](http://nginx.org/en/docs/http/load_balancing.html)
-
-:::
+> Ref: [Load balancer](http://nginx.org/en/docs/http/load_balancing.html)
 
 ```nginx
 upstream backends {

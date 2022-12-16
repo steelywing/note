@@ -1,10 +1,6 @@
 # Nmap
 
-:::note Reference
-
-[Nmap Reference Guide](https://nmap.org/book/man.html)
-
-:::
+> Ref: [Nmap Reference Guide](https://nmap.org/book/man.html)
 
 ```bash
 nmap <option>

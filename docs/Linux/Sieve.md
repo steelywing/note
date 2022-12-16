@@ -75,11 +75,7 @@ fileinto "INBOX.<mailbox>";
 
 ## redirect / forward
 
-:::note Reference
-
-[RFC 5228](https://tools.ietf.org/html/rfc5228)
-
-:::
+> Ref: [RFC 5228](https://tools.ietf.org/html/rfc5228)
 
 Forward to `<email address>`
 
@@ -96,11 +92,7 @@ redirect "<email address>";
 redirect "<email address>";
 ```
 
-:::note Reference
-
-[RFC 3894](https://tools.ietf.org/html/rfc3894)
-
-:::
+> Ref: [RFC 3894](https://tools.ietf.org/html/rfc3894)
 
 Redirect and `keep`
 

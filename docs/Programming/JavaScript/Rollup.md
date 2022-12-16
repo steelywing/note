@@ -44,11 +44,7 @@ export default [
 ];
 ```
 
-:::note Reference
-
-[rollup-starter-app](https://github.com/rollup/rollup-starter-app/blob/master/rollup.config.js)
-
-:::
+> Ref: [rollup-starter-app](https://github.com/rollup/rollup-starter-app/blob/master/rollup.config.js)
 
 ## Run
 
@@ -61,11 +57,7 @@ export default [
 rollup -c [rollup.config.js] [-w]
 ```
 
-:::note Reference
-
-[Configuration Files](https://rollupjs.org/guide/en/#configuration-files)
-
-:::
+> Ref: [Configuration Files](https://rollupjs.org/guide/en/#configuration-files)
 
 ## Using SystemJS
 

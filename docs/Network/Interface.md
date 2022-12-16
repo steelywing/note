@@ -1,10 +1,6 @@
 ## Copper
 
-:::note Reference
-
-[Ethernet Media Standards and Distances](https://kb.wisc.edu/ns/page.php?id=7829)
-
-:::
+> Ref: [Ethernet Media Standards and Distances](https://kb.wisc.edu/ns/page.php?id=7829)
 
 ### 10BASE-T
 
@@ -88,21 +84,13 @@ TIA/EIA-568B
 
 ## Auto MDI-X
 
-:::note Reference
-
-[Auto MDI-X](https://en.wikipedia.org/wiki/Medium-dependent_interface)
-
-:::
+> Ref: [Auto MDI-X](https://en.wikipedia.org/wiki/Medium-dependent_interface)
 
 Medium Dependent Interface, X = Crossover
 
 ## Fiber
 
-:::note Reference
-
-[Cisco SFP Modules for Gigabit Ethernet Applications Data Sheet](https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/gigabit-ethernet-gbic-sfp-modules/datasheet-c78-366584.html)
-
-:::
+> Ref: [Cisco SFP Modules for Gigabit Ethernet Applications Data Sheet](https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/gigabit-ethernet-gbic-sfp-modules/datasheet-c78-366584.html)
 
 ### 1000BASE‑LX/LH
 
@@ -128,11 +116,7 @@ Medium Dependent Interface, X = Crossover
 
 ![Cladding](img/Cladding.jpg)
 
-:::note Reference
-
-[The FOA Reference For Fiber Optics - Optical Fiber](https://www.thefoa.org/tech/ref/basic/fiber.html)
-
-:::
+> Ref: [The FOA Reference For Fiber Optics - Optical Fiber](https://www.thefoa.org/tech/ref/basic/fiber.html)
 
 ### SMF (Single Mode Fiber)
 

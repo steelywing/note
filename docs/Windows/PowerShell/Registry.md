@@ -25,11 +25,7 @@ cd Registry:: # Tab / Ctrl + Space
 
 ## Key
 
-:::note Reference
-
-[Working with Registry Keys](https://docs.microsoft.com/en-us/powershell/scripting/samples/working-with-registry-keys?view=powershell-7)
-
-:::
+> Ref: [Working with Registry Keys](https://docs.microsoft.com/en-us/powershell/scripting/samples/working-with-registry-keys?view=powershell-7)
 
 ### List keys
 
@@ -57,11 +53,7 @@ ri <key path>
 
 ## Value
 
-:::note Reference
-
-[Working with Registry Entries](https://docs.microsoft.com/en-us/powershell/scripting/samples/working-with-registry-entries?view=powershell-7)
-
-:::
+> Ref: [Working with Registry Entries](https://docs.microsoft.com/en-us/powershell/scripting/samples/working-with-registry-entries?view=powershell-7)
 
 ### Get values
 

@@ -4,12 +4,9 @@ sidebar_label: Array
 
 # Array - PowerShell
 
-:::note Reference
+> Ref: [about_Arrays](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_arrays)
 
-- [about_Arrays](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_arrays)
-- `help about_Arrays`
-
-:::
+> Ref: `help about_Arrays`
 
 ```powershell
 $array = <value>, <value>[, ...]
