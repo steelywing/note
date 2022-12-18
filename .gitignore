@@ -10,6 +10,7 @@ node_modules
 cache
 .docusaurus
 .cache-loader
+.yarnrc.yml
 
 # Misc
 .DS_Store

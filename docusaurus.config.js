@@ -7,8 +7,8 @@ module.exports = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'steelywing', // Usually your GitHub org/user name.
-  projectName: 'note', // Usually your repo name.
+  organizationName: 'steelywing', // GitHub org/user name.
+  projectName: 'note', // repo name.
   trailingSlash: true,
   themeConfig: {
     prism: {
