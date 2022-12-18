@@ -56,7 +56,7 @@ location / {
 an upstream response is buffered to a temporary file /var/cache/nginx/proxy_temp/XXXXXX while reading upstream
 ```
 
-> [Ref](https://support.f5.com/csp/article/K48373902)
+> Ref: [K48373902](https://support.f5.com/csp/article/K48373902)
 
 - Method 1
   
@@ -83,6 +83,7 @@ location / {
 }
 ```
 
+```nginx
 server {
     listen 80;
     server_name www.example.com;
