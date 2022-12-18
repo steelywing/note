@@ -13,7 +13,7 @@ AKA SymLink / Soft link
 
 ## Hard link
 
-- Hard link is meta data of the file, that is [inode](../../Linux/inode/) on Linux
+- Hard link is meta data of the file, that is [inode](/Linux/inode/) on Linux
 - If target move / remove, the link is broken
 
 <!--truncate-->
