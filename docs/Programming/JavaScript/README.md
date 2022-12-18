@@ -75,6 +75,7 @@ Number.prototype.prefix = function (precision, base) {
 ```
 
 ## Performance / Benchmark
+
 ```js
 function benchmark(run) {
   var start = performance.now();
@@ -83,51 +84,12 @@ function benchmark(run) {
 }
 ```
 
-## Promise
+## HTTP Server
 
-Executor
+- [Version 14 has error ERR_HTTP_HEADERS_SENT](https://github.com/http-party/http-server/issues/634)
 
-> [Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise)
+```bash
+npm i -g http-server@13
 
-```js
-var executor = (resolve, reject) => {
-    // ...
-};
-var promise = new Promise(executor);
-```
-
-- `executor` will be executed when `Promise` create
-  - > [Reference](https://tc39.es/ecma262/#sec-promise-executor)
-- `resolve` and `reject` are callback function
-- If call `resolve(value)`, `promise` will be fulfilled
-- If call `reject(value)`, `promise` will be rejected
-- `executor` doesn't need to return value
-
-Handler function
-- `resolve(value)`
-- `reject(value)`
-
-> [Return value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then#return_value)
-
-- If `value` is not a `Promise`, the promise return `value`.
-- If value is a `Promise`, it will be settled, and return the promise `value`
-- If `reject()` is called, or value is reject, the promise will be rejected.
-- If call `resolve(Promise.reject(value))`, the promise will be rejected.
-- If call `reject(Promise.resolve(value))`, the promise will be rejected. 
-
-```js
-function onFulfilled(value) {
-    // ...
-}
-
-function onRejected(value) {
-    // ...
-}
-
-var promise = new Promise(
-  (resolve, reject) => {
-    // ...
-  }
-);
-promise.then(onFulfilled, onRejected);
+http-server .
 ```
