@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[2730],{6907:a=>{a.exports=JSON.parse('{"label":"Red Hat","permalink":"/note/blog/tags/red-hat","allTagsPath":"/note/blog/tags","count":1}')}}]);

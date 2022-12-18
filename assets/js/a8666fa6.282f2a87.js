@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[7158],{3120:s=>{s.exports=JSON.parse('{"label":"File System","permalink":"/note/blog/tags/file-system","allTagsPath":"/note/blog/tags","count":2}')}}]);
