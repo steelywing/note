@@ -81,6 +81,8 @@ Do not terminate application on unhandled exception
 
 ## Dot Product
 
+- `A`, `B` is `Vector3`
+- `Dot(A, B)` return `float`
 - `Dot(A, B)` 可用於計算 A, B 的角度
   - &gt; 0 時角度 &lt; 90
   - = 0 時角度 = 90
@@ -93,7 +95,9 @@ Do not terminate application on unhandled exception
 
 ## Cross Product
 
-- `Cross(A, B)` 垂直於 A, B 這個平面
+- `A`, `B` is `Vector3`
+- `Cross(A, B)` return `Vector3`
+- `Cross(A, B)` 垂直於 `A`, `B` 這個平面
 - `Cross(A, B)` = `-Cross(B, A)`
 - 可用於計算 Torque (扭力)
 
@@ -138,3 +142,21 @@ Engine.TargetFps
 // Physics FPS
 Engine.IterationsPerSecond
 ```
+
+## Input
+
+```cs
+// Input.IsActionJustPressed() can be used in _PhysicsProcess() / _Process()
+// Godot will auto detect
+public override void _PhysicsProcess(float delta)
+{
+    Input.IsActionJustPressed();
+}
+
+public override void _Process(float delta)
+{
+    Input.IsActionJustPressed();
+}
+```
+
+> Ref: `input.cpp`
