@@ -2,6 +2,12 @@
 
 Domain Name System
 
+## Class
+
+Only `IN` (Internet) is used now
+
+> Ref: [RFC 2929](https://www.rfc-editor.org/rfc/rfc2929#section-3.2)
+
 ## [BIND 9](https://www.isc.org/bind/)
 
 - Stable
