@@ -6,13 +6,72 @@ tags: [Cisco, IOS, SPAN]
 
 Switched Port Analyzer / Port Mirroing / Port Monitoring
 
+> Ref: [SPAN](./span.pdf)
+
 Copy (Mirror) source interface packet to destination interface
 
 ## Local SPAN
 
+Mirror interface **Gi0/1** traffic to **Gi0/2**
+
 ```cisco
-monitor session 1 source interface <interface> both
-monitor session 1 destination interface <interface>
+Switch(config)# monitor session 1 source interface Gi0/1
+Switch(config)# monitor session 1 destination interface Gi0/2
+```
+
+Remove SPAN
+
+```cisco
+Switch(config)# no monitor session 1
+```
+
+### Monitor interface
+
+Default: **both**
+
+```
+Switch(config)# monitor
+    session <session number> 
+    source interface <interface> 
+    [ both | rx | tx ]
+```
+
+### Monitor all ports of specify VLAN
+
+Default: **both**
+
+```
+Switch(config)# monitor
+    session <session number> 
+    source vlan <VLAN list> 
+    [ both | rx | tx ]
+```
+
+### Monitor specific VLAN
+
+For trunk port only
+
+```
+! <VLAN list> = <VLAN> [, <VLAN> ...]
+! <VLAN> = <VLAN ID> | <VLAN ID> - <VLAN ID>
+Switch(config)# monitor
+    session <session number>
+    filter <VLAN list>
+```
+
+### Mirror to specify interface
+
+```
+Switch(config)# monitor
+    session <session number> 
+    destination interface <interface>
+```
+
+### Remove monitor session
+
+```
+Switch(config)# no monitor
+    session <session number>
 ```
 
 ## RSPAN
@@ -53,4 +112,10 @@ interface GigabitEthernet1/0/15
 
 monitor session 1 source remote vlan 100
 monitor session 1 destination interface Gi1/0/2
+```
+
+## Display SPAN status
+
+```cisco
+Switch# show monitor
 ```
