@@ -98,7 +98,7 @@ Switch# show cdp neighbors [<interface>] [detail]
 
 ## LLDP (Link Layer Discovery Protocol)
 
-> [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst4500/12-2/46sg/configuration/guide/Wrapper-46SG/swlldp.html)
+> Ref: [LLDP](./lldp.pdf)
 
 
 Enable / Disable LLDP
@@ -119,44 +119,6 @@ Switch(config)# [no] lldp receive
 Show LLDP neighbor
 ```
 Switch# show lldp neighbors
-```
-
-## SPAN (Switched Port Analyzer) / Port mirror
-
-> [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-1_19_ea1/configuration/guide/3750scg/swspan.html)
-
-Monitor interface
-
-```
-Switch(config)# monitor session <session number> 
-    source interface <interface> 
-    [ both | rx | tx ]
-```
-
-Monitor all ports of specify VLAN
-
-```
-Switch(config)# monitor session <session number> 
-    source vlan <VLAN list> 
-    [ both | rx | tx ]
-```
-
-- Mirror to specify interface
-```
-Switch(config)# monitor session <session number> 
-    destination interface <interface>
-```
-
-- Monitor specific VLAN
-```
-! <VLAN list> = <VLAN ID>[{,|-}<VLAN ID>...]
-Switch(config)# monitor session <session number> 
-    filter <VLAN list>
-```
-
-- Remove monitor session
-```
-Switch(config)# no monitor session <session number>
 ```
 
 ## VLAN
