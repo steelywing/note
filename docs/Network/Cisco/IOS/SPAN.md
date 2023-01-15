@@ -6,7 +6,7 @@ tags: [Cisco, IOS, SPAN]
 
 Switched Port Analyzer / Port Mirroing / Port Monitoring
 
-> Ref: [SPAN](./span.pdf)
+> Ref: [SPAN](span.pdf)
 
 Copy (Mirror) source interface packet to destination interface
 

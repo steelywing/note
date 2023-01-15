@@ -98,7 +98,7 @@ Switch# show cdp neighbors [<interface>] [detail]
 
 ## LLDP (Link Layer Discovery Protocol)
 
-> Ref: [LLDP](./lldp.pdf)
+> Ref: [LLDP](lldp.pdf)
 
 
 Enable / Disable LLDP
