@@ -1,4 +1,8 @@
-# Multicast
+---
+tags: [Cisco, IOS, MultiCast]
+---
+
+# MultiCast
 
 ## PIM (Protocol Independent Multicast)
 

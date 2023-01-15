@@ -1,3 +1,7 @@
+---
+tags: [Cisco, IOS, SPAN]
+---
+
 # SPAN
 
 Switched Port Analyzer / Port Mirroing / Port Monitoring

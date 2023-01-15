@@ -1,3 +1,7 @@
+---
+tags: [Cisco, IOS, Route]
+---
+
 # Routing
 
 ## Gateway

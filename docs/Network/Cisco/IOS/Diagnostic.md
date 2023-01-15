@@ -1,3 +1,7 @@
+---
+tags: [Cisco, IOS, Debug]
+---
+
 # Diagnostic
 
 ## Get CPU usage

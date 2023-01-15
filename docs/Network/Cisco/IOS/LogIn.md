@@ -1,3 +1,7 @@
+---
+tags: [Cisco, IOS]
+---
+
 # Login / Authenticate
 
 Login / Authenticate / User / TelNet / SSH
