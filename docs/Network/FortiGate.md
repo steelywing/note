@@ -19,7 +19,7 @@ diagnose sniffer packet <interface> '<filter>' <verbose> [<count>]
 ```
 config system admin
 edit <user>
-set ssh-public-key1 "{ssh-rsa|ssh-dss} <key>"
+set ssh-public-key1 "{ssh-rsa|ssh-dss} <Base64 key>"
 end
 ```
 

@@ -15,19 +15,23 @@ tags: [Red Hat, Firewall, Network]
 
 ## Zone
 
+Zone can apply to network interface or source address
+
 ### List zones
 
 ```sh
 firewall-cmd --get-zones
 ```
 
-### Show zone detail
+### Display zone detail
+
+Display allowed service, port
 
 ```sh
 firewall-cmd --list-all [--zone=<zone name>]
 ```
 
-### Show all zone detail
+### Display all zone detail
 
 ```sh
 firewall-cmd --list-all-zones

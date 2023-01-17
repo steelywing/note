@@ -5,7 +5,7 @@ tags: [Capture, Network, WireShark]
 # WireShark long-term traffic capture
 
 - WireShark is slow when capture large amount of traffic
-- WireShark has `dumpcap` command to capture traffic in CLI, that is faster
+- WireShark include `dumpcap` command to capture traffic in CLI, that is faster
 
 <!--truncate-->
 

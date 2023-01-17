@@ -2,7 +2,7 @@
 
 `$host` is in this order of precedence (from high to low):
 
-- [Host name from the request line](#host-name-from-the-request-line)
+- [Host name from the request line](#host-name-from-the-request-line) (rarely used)
   ```
   GET http://example.org/test/
   ```

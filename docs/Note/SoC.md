@@ -67,17 +67,17 @@ System on a Chip
 
 ### DB-9
 
-| Pin | SIG | Name | DTE (male) |
-| - | - | - | - |
-| 1 | DCD | Data Carrier Detect | in |
-| 2 | RXD | Receive Data | in |
-| 3 | TXD | Transmit Data | out |
-| 4 | DTR | Data Terminal Ready | out |
-| 5 | GND | Signal Ground | - |
-| 6 | DSR | Data Set Ready | in |
-| 7 | RTS | Request To Send | out |
-| 8 | CTS | Clear To Send | in |
-| 9 | RI | Ring Indicator | in |
+Pin | SIG | Name | DTE (male)
+-|-|-|-
+1 | DCD | Data Carrier Detect | in
+2 | RXD | Receive Data | in
+3 | TXD | Transmit Data | out
+4 | DTR | Data Terminal Ready | out
+5 | GND | Signal Ground | -
+6 | DSR | Data Set Ready | in
+7 | RTS | Request To Send | out
+8 | CTS | Clear To Send | in
+9 | RI | Ring Indicator | in
 
 ![DB-9 pinout](img/db9-pinout.gif)
 

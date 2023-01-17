@@ -151,7 +151,11 @@ man [<page>]
 
 Search manual
 
+```sh
+man -k <keyword>
 ```
+
+```sh
 apropos <keyword>
 ```
 

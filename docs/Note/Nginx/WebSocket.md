@@ -30,7 +30,7 @@ server {
 
 > Ref: [Nginx WebSocket](https://www.nginx.com/blog/websocket-nginx/)
 
-Proxy all WebSocket traffic
+Proxy all WebSocket request to `ws://localhost:7890/`
 
 ```nginx
 map $http_upgrade $connection_upgrade {
