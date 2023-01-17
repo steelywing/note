@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[9985],{5783:s=>{s.exports=JSON.parse('{"label":"Windows","permalink":"/note/tags/windows","allTagsPath":"/note/tags","count":1,"items":[{"id":"Windows/Network","title":"Network - Windows","description":"Firewall","permalink":"/note/Windows/Network"}]}')}}]);

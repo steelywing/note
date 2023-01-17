@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[6448],{41600:a=>{a.exports=JSON.parse('{"label":"Load Balancing","permalink":"/note/tags/load-balancing","allTagsPath":"/note/tags","count":1,"items":[{"id":"Note/Nginx/LoadBalancing","title":"Load balancing","description":"Ref: Load balancer","permalink":"/note/Note/Nginx/LoadBalancing"}]}')}}]);

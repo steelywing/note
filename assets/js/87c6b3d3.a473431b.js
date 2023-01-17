@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[1345],{1924:t=>{t.exports=JSON.parse('{"label":"Route","permalink":"/note/tags/route","allTagsPath":"/note/tags","count":1,"items":[{"id":"Network/Cisco/IOS/Routing","title":"Routing","description":"Gateway","permalink":"/note/Network/Cisco/IOS/Routing"}]}')}}]);
