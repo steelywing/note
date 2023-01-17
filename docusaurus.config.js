@@ -10,6 +10,9 @@ module.exports = {
   organizationName: 'steelywing', // GitHub org/user name.
   projectName: 'note', // repo name.
   trailingSlash: true,
+  markdown: {
+    mermaid: true,
+  },
   themeConfig: {
     prism: {
       additionalLanguages: [
@@ -139,6 +142,7 @@ module.exports = {
         highlightSearchTermsOnTargetPage: true,
       },
     ],
+    '@docusaurus/theme-mermaid',
   ],
   plugins: [
     /*[
