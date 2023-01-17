@@ -1,3 +1,7 @@
+---
+tags: [Cisco, IOS, STP]
+---
+
 # STP
 
 Spanning Tree Protocol

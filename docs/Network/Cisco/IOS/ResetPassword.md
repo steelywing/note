@@ -1,3 +1,7 @@
+---
+tags: [Cisco, IOS, Password]
+---
+
 # Reset password
 
 Reset Cisco IOS Password

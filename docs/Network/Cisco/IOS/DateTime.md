@@ -1,3 +1,7 @@
+---
+tags: [Cisco, IOS, Date]
+---
+
 # Date / Time
 
 Timezone

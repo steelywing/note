@@ -1,3 +1,7 @@
+---
+tags: [Cisco, IOS, Log]
+---
+
 # Log
 
 ## Monitor log in Telnet / SSH
