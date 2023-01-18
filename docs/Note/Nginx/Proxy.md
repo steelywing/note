@@ -10,7 +10,9 @@ proxy_pass <scheme>://<host>[:port][/<URI>];
 
 > Ref: [Nginx reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
 
-## `proxy_pass` with URI
+## If `proxy_pass` with URI
+
+The part of URI matching the location is replaced by `proxy_pass` URI
 
 ```nginx
 location /path/ {
@@ -21,7 +23,9 @@ location /path/ {
 - Request `/path/page.html` will be proxy to `http://www.example.com/app/page.html`
 - Prefix `/path/` will be replaced by `/app/`
 
-## `proxy_pass` without URI
+## If `proxy_pass` without URI
+
+The request URI is passed to the server same as client request
 
 ```nginx
 location /path/ {
@@ -144,3 +148,9 @@ real_ip_header    X-Real-IP;
 ```
 
 > Ref: [ngx_http_realip_module](https://nginx.org/en/docs/http/ngx_http_realip_module.html)
+
+## 502 Bad Gateway
+
+> Ref: [Ensuring Application Availability with F5 DNS Load Balancer Cloud Service and NGINX Plus](https://www.nginx.com/blog/ensuring-application-availability-with-f5-dns-load-balancer-cloud-service-and-nginx-plus/)
+
+If Nginx cannot get response from backend server, Nginx will return **502 Bad Gateway**
