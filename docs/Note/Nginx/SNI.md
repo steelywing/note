@@ -4,6 +4,12 @@ TLS Server Name Indication
 
 SNI allows browser to pass requested server name during the SSL handshake
 
+:::note
+
+To support multiple SSL `server_name` `server` section, Nginx version must support SNI
+
+:::
+
 ## Check SNI support
 
 > [Ref](http://nginx.org/en/docs/http/configuring_https_servers.html)
@@ -29,7 +35,7 @@ If Nginx does not support TLS SNI, Nginx will use default server certificate for
 
 :::
 
-## Example config
+## Testing
 
 Create self signed certificate
 
@@ -42,38 +48,38 @@ openssl req -x509 -newkey rsa -nodes -keyout b.key -days 36500 -out b.crt -subj 
 ```
 
 ```bash
-    server {
-        listen       443 ssl default_server;
-        server_name  "";
+server {
+    listen       443 ssl default_server;
+    server_name  "";
 
-        ssl_certificate      default.crt;
-        ssl_certificate_key  default.key;
+    ssl_certificate      default.crt;
+    ssl_certificate_key  default.key;
 
-        add_header "Content-Type" "text/plain";
-        return 200 "default page";
-    }
+    default_type text/plain;
+    return 200 "default page";
+}
 
-    server {
-        listen       443 ssl;
-        server_name  a.example.org;
+server {
+    listen       443 ssl;
+    server_name  a.example.org;
 
-        ssl_certificate      a.crt;
-        ssl_certificate_key  a.key;
+    ssl_certificate      a.crt;
+    ssl_certificate_key  a.key;
 
-        add_header "Content-Type" "text/plain";
-        return 200 "a.example.org page";
-    }
+    default_type text/plain;
+    return 200 "a.example.org page";
+}
 
-    server {
-        listen       443 ssl;
-        server_name  b.example.org;
+server {
+    listen       443 ssl;
+    server_name  b.example.org;
 
-        ssl_certificate      b.crt;
-        ssl_certificate_key  b.key;
+    ssl_certificate      b.crt;
+    ssl_certificate_key  b.key;
 
-        add_header "Content-Type" "text/plain";
-        return 200 "b.example.org page";
-    }
+    default_type text/plain;
+    return 200 "b.example.org page";
+}
 ```
 
 Test SNI
