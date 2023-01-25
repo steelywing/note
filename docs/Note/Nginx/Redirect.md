@@ -1,6 +1,6 @@
 # Redirect / Rewrite
 
-> [Ref](https://www.nginx.com/blog/creating-nginx-rewrite-rules/)
+> Ref: [Creating NGINX Rewrite Rules](https://www.nginx.com/blog/creating-nginx-rewrite-rules/)
 
 ## Redirect HTTP to HTTPS
 
@@ -21,16 +21,12 @@ server {
 server {
     listen 80 default_server;
     listen 443 ssl default_server;
-    # Use the underscore to avoid matching a real domain name 
-    server_name _;
+    # Use the underscore or empty name to avoid matching a real domain name 
+    server_name "";
     return 301 $scheme://www.example.com;
 }
 ```
-
-## Internal request / Internal redirect
-
-- only allow access for internal requests
-- return error `404` for external requests
+## `internal` location
 
 ```nginx
 location ... {
@@ -38,7 +34,13 @@ location ... {
 }
 ```
 
+- can only be accessed from internal requests
+- return error status `404` if that is external requests
+
+## Internal request / Internal redirect
+
 Internal requests are requests by:
+
 - `rewrite` directive
 - `error_page`, `index`, `random_index`, and `try_files` directives
 - `X-Accel-Redirect` response header field from an upstream server
