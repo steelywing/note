@@ -1,6 +1,6 @@
 # Location
 
-## Priority
+## Priority / Flow
 
 - Test the URI against all prefix strings.
 - If the exact match `=` is found, the search stops.
@@ -24,3 +24,5 @@ location @named_location {
 ```
 
 > Ref: [Nginx FAQ](https://www.nginx.com/resources/wiki/community/faq/#what-does-this-thing-mean)
+
+> Ref: [ngx_http_core_module](https://nginx.org/en/docs/http/ngx_http_core_module.html#location)
