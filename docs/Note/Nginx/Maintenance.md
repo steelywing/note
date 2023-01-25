@@ -1,51 +1,42 @@
 # Maintenance mode
 
-## HTML only
+## For HTML only maintenance page
 
 No CSS, JS, ...
 
-Flow:
-
-- `return 503`
-- Match `error_page 503 <URI>`
-- Internal redirect to `<URI>`
+Method 1 - named location
 
 ```nginx
-# use RegExp because it has higher priority
-location ~ ^ {
-    root /usr/share/nginx/html/maintenance/;
-    error_page 503 /503.html;
+location = @maintenance {
+    root html/;
+    # `break`: use this `location` block
+    rewrite ^ "/maintenance.html" break;
+}
 
-    # return all request with status 503
-    # use the `if ($status != 503)` to check if it is internal redirect
-    if ($status != 503) {
-        return 503;
-    }
+location / {
+    error_page 503 @maintenance;
+    return 503;
+
+    # ...
 }
 ```
 
-## For HTML only, without `if`
-
-Flow:
-
-- `return 503`
-- Match `error_page 503 @503`, `@503` is named location
-- Internal redirect to `@503`
+Method 2 - internal location
 
 ```nginx
-location @503 {
-    root /usr/share/nginx/html/maintenance/;
+location = /maintenance.html {
+    internal;
+    root html/;
 
-    # `break` will stop internal redirect, just return the "/503.html"
-    rewrite ^ "/503.html" break;
+    # if direct access this location, return 503
+    error_page 404 =503 /maintenance.html;
 }
 
-# use RegExp because it has higher priority
-location ~ ^ {
-    error_page 503 @503;
-
-    # return all request with status 503
+location / {
+    error_page 503 /maintenance.html;
     return 503;
+
+    # ...
 }
 ```
 
@@ -53,103 +44,107 @@ location ~ ^ {
 
 ```nginx
 geo $bypass_maintenance {
+    # default return maintenance page
     default         0;
+
+    # allow this to access
     10.0.0.0/24     1;
 }
 
 server {
-    location @503 {
-        root /usr/share/nginx/html/maintenance/;
-        rewrite ^ "/503.html" break;
+    location = /maintenance.html {
+        internal;
+
+        # if direct access, return 503
+        error_page 404 =503 /50x.html;
+
+        root html/;
     }
 
     location / {
-        root /usr/share/nginx/html/;
-        error_page 503 @503;
-
-        # if client IP not allow bypass, return 503 page
+        error_page 503 /maintenance.html;
         if ($bypass_maintenance = 0) {
             return 503;
-        }
-    }
-}
-```
-
-## For web page with static content
-
-HTML page with CSS, JS, ...
-
-Flow:
-- If URI is `/`, `return 503`
-  - Match `error_page 503 <503 page>`
-  - Internal redirect to `<503 page>`
-- If URI found in `root`, return file with status 200
-- If URI not found, redirect to `/`
-
-```nginx
-location @index {
-    # use redirect because if URI has sub-folder ($uri == /path/path/),
-    # the relative path for static contents (CSS, JS, ...) will be incorrect
-    absolute_redirect off;
-    rewrite ^ "/" redirect;
-}
-
-# use RegExp because it has higher priority
-location ~ ^ {
-    root /usr/share/nginx/html/maintenance/;
-
-    # 503 page URI
-    error_page 503 /503.html;
-
-    # if URI is index page, return 503
-    if ($uri = "/") {
-        return 503;
-    }
-
-    # redirect all URI to index (503) page (except static contents)
-    # static contents still return status 200
-    try_files $uri @index;
-}
-```
-
-### Allow specify IP address bypass
-
-```nginx
-geo $bypass_maintenance {
-    default         0;
-    10.0.0.0/24     1;
-}
-
-server {
-    listen 80;
-    location / {
-        if ($bypass_maintenance = 0) {
-            proxy_pass http://unix:/var/run/maintenance.nginx.sock:;
-            # proxy_pass http://127.0.0.1:8000;
         }
 
         # ...
     }
 }
+```
 
+## For web page with asset file
+
+If web page with asset file (CSS, JS, ...)
+
+Flow:
+
+- if URI is `/`, `return 503`
+  - internal redirect to `<maintenance page>`
+- if URI found in `maintenance` asset directory, return file with status `200`
+- redirect all other request to `/`
+
+```nginx
+# for handle maintenance web page
 server {
     listen unix:/var/run/maintenance.nginx.sock;
-    # listen 127.0.0.1:8000;
 
+    # for Windows
+    # listen 8000;
+    
     location @index {
-        absolute_redirect off;
-        rewrite ^ "/" redirect;
+        # use redirect because if URI has sub-folder ($uri == /path/path/),
+        # the relative path for asset file (CSS, JS, ...) will be incorrect
+        rewrite ^ / redirect;
     }
 
-    location / {
-        root /usr/share/nginx/html/maintenance/;
+    location = / {
+        # maintenance page URI
+        error_page 503 /maintenance.html;
 
-        error_page 503 /503.html;
-        if ($uri = "/") {
-            return 503;
+        return 503;
+    }
+
+    # use RegExp because it has higher priority
+    location / {
+        root html/maintenance/;
+
+        # redirect all URI to index (503) page (except asset URI),
+        # asset URI still return status 200
+        try_files $uri @index;
+    }
+}
+
+# original server block
+server {
+    listen 80;
+    location / {
+        proxy_pass http://unix:/var/run/maintenance.nginx.sock:;
+
+        # for Windows
+        # proxy_pass http://127.0.0.1:8000;
+    }
+
+    # ...
+}
+```
+
+Allow specify IP address bypass
+
+```nginx
+geo $bypass_maintenance {
+    default         0;
+    10.0.0.0/24     1;
+}
+
+# ...
+
+server {
+    location / {
+        if ($bypass_maintenance = 0) {
+            proxy_pass http://unix:/var/run/maintenance.nginx.sock:;
         }
 
-        try_files $uri @index;
+        # ...
     }
 }
 ```
