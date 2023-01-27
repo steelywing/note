@@ -65,7 +65,9 @@ System on a Chip
 - SPI (Serial Peripheral Interface)
 - I²C / I2C (Inter-Integrated Circuit)
 
-### DB-9
+### DE-9
+
+AKA DB-9 ()
 
 Pin | SIG | Name | DTE (male)
 -|-|-|-
@@ -79,11 +81,18 @@ Pin | SIG | Name | DTE (male)
 8 | CTS | Clear To Send | in
 9 | RI | Ring Indicator | in
 
+```mermaid
+graph LR
+  txd[RXD] --> rxd[TXD]
+  rts[RTS] --> cts[CTS]
+  dtr[DTR] --> dcd[DCD]
+```
+
 ![DB-9 pinout](img/db9-pinout.gif)
 
 ### Common usage
 
-`RXD TXD GND [RTS] [CTS]`
+`RXD TXD GND`
 
 ## IR (Infrared)
 
