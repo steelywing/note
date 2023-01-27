@@ -75,6 +75,11 @@ module.exports = {
           position: 'left',
         },
         {
+          to: 'Hardware',
+          label: 'Hardware',
+          position: 'left',
+        },
+        {
           to: 'Game',
           label: 'Game',
           position: 'left',
