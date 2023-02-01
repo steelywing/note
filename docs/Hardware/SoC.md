@@ -34,7 +34,7 @@ System on a Chip
 - IDE: [Arduino](https://www.arduino.cc/), [PlatformIO](https://platformio.org/)
 - PCB: [AI-Thinker](http://www.ai-thinker.com/)
 
-### [Raspberry Pi](RaspberryPi.md)
+### [Raspberry Pi](../Note/RaspberryPi.md)
 
 - System: Linux
 
@@ -56,47 +56,7 @@ System on a Chip
 ## Interface
 
 - UART (Universal Asynchronous Receiver Transmitter)
-  - [RS-232](https://en.wikipedia.org/wiki/RS-232) / Serial port
-    - [DB-9](https://www.db9-pinout.com/)
-      - DTE (male)
-      - DCE (female)
-    - DB-25
   - TTL (Transistor–Transistor Logic)
+    - TTL to [RS-232](https://en.wikipedia.org/wiki/RS-232)
 - SPI (Serial Peripheral Interface)
 - I²C / I2C (Inter-Integrated Circuit)
-
-### DE-9
-
-AKA DB-9 ()
-
-Pin | SIG | Name | DTE (male)
--|-|-|-
-1 | DCD | Data Carrier Detect | in
-2 | RXD | Receive Data | in
-3 | TXD | Transmit Data | out
-4 | DTR | Data Terminal Ready | out
-5 | GND | Signal Ground | -
-6 | DSR | Data Set Ready | in
-7 | RTS | Request To Send | out
-8 | CTS | Clear To Send | in
-9 | RI | Ring Indicator | in
-
-```mermaid
-graph LR
-  txd[RXD] --> rxd[TXD]
-  rts[RTS] --> cts[CTS]
-  dtr[DTR] --> dcd[DCD]
-```
-
-![DB-9 pinout](img/db9-pinout.gif)
-
-### Common usage
-
-`RXD TXD GND`
-
-## IR (Infrared)
-
-| Wave length | Command |
-| - | - |
-| 850 nm | Night vision |
-| 940 nm | Remote control |
