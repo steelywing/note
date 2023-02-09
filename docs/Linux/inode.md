@@ -4,10 +4,10 @@
 
 - inode 是 file system 中，檔案的 meta data
 - 很多 file system 的 inode 總數量（可用數量）在建立時就已固定，有些新的 file system 的 inode 總數量可以動態增加
-- 每個 inode 都有一個 i-number (inode number)，在同一個 file system 中是唯一的
-- 存取檔案：找到 file name 所指的 inode
-- Kernal 打開檔案後，就不會記住 file name，而是用 inode 存取檔案
+- 每個 inode 都有一個 i-number (AKA inode number)，在同一個 file system 中是唯一的
 - inode 不包含檔案名 (file name 保存在 dirent)
+- 存取檔案：Kernel 找到 file name 所指的 inode，然後存取 inode 指向的內容
+- Kernel 打開檔案後，就不會記住 file name，而是用 inode 存取檔案
 - defrag 時 i-number 不變，只會改變 inode meta data
 
 ## inode meta data
@@ -41,6 +41,14 @@
 df -i
 ```
 
+## Show file / directory status
+
+Include: i-number, Links (number of hard link), type, ...
+
+```bash
+stat <path>
+```
+
 ## dirent
 
 directory entry
@@ -69,10 +77,20 @@ blockdev --getbsz /dev/<device>
 ## 在檔案中建立 playground file system
 
 ```bash
+# create a 1MB empty file
 truncate -s 1M fs.ext2
+
+# create ext2 file system
 mkfs.ext2 -F fs.ext2
+
 mkdir ext2
+
+# mount the file (ext2 file system) to the mount point ext2
 mount -o loop,rw fs.ext2 ext2
+
+# show stat of inode #2
 debugfs -R "stat <2>" fs.ext2
+
+# enter debugfs CLI
 debugfs -w fs.ext2
 ```
