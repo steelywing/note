@@ -3,9 +3,11 @@
 `$host` is in this order of precedence (from high to low):
 
 - [Host name from the request line](#host-name-from-the-request-line) (rarely used)
-  ```
+
+  ```http
   GET http://example.org/test/
   ```
+
 - `Host` request header field
 - The `server_name` (in Nginx config) matching a request, even if `server_name` is wildcard (`*.example.org`)
 
@@ -15,14 +17,14 @@ When open URL `http://example.org/test/` ...
 
 Most browser send the request like this
 
-```
+```http
 GET /test/ HTTP/1.1
 Host: example.org
 ```
 
 Most browser doesn't send the request like this
 
-```
+```http
 GET http://example.org/test/ HTTP/1.1
 ```
 
@@ -59,7 +61,7 @@ This command will
 - Send request path as `GET http://request.example.org/test/ HTTP/1.1`
 - Set `Host` header to `Host: host.example.org`
 
-```
+```http
 *   Trying 127.0.0.1:80...
 * TCP_NODELAY set
 * Connected to 127.0.0.1 (127.0.0.1) port 80 (#0)
@@ -89,7 +91,7 @@ curl http://127.0.0.1/test/ -v \
   -H "Host: host.example.org"
 ```
 
-```
+```http
 *   Trying 127.0.0.1:80...
 * TCP_NODELAY set
 * Connected to 127.0.0.1 (127.0.0.1) port 80 (#0)
@@ -119,7 +121,7 @@ curl http://127.0.0.1/test/ -v \
 curl http://127.0.0.1/test/ -v -H "Host:" -0
 ```
 
-```
+```http
 *   Trying 127.0.0.1:80...
 * TCP_NODELAY set
 * Connected to 127.0.0.1 (127.0.0.1) port 80 (#0)

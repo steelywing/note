@@ -17,7 +17,7 @@ Create inspection profile
 - Enable **HTTPS** in **Protocol Port Mapping**
 - Click **OK**
 
-:::note
+:::info
 
 If the certificate / key is not correct, FortiGate cannot decrypt the content, then FortiGate just pass the traffic
 
@@ -50,6 +50,7 @@ Trigger IPS
 ``` title="eicar.com.txt"
 X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*
 ```
+
 - Upload the Eicar test file to web server
 - Open the Eicar test file URL in browser to trigger IPS
 

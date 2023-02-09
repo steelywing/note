@@ -1,4 +1,4 @@
-# Install Nginx
+# Install - Nginx
 
 ## Nginx repository
 

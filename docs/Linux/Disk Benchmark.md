@@ -5,7 +5,12 @@ Disk Benchmark / Performance / Speed
 ## Write speed
 
 ```bash
-dd if=/dev/zero of=<file> bs=<size>[K|M|G] count=<count>[K|M|G] { conv=fsync | oflag={sync|dsync|direct} }
+dd 
+    if=/dev/zero 
+    of=<file> 
+    bs=<size>[K|M|G] 
+    count=<count>[K|M|G] 
+    { conv=fsync | oflag={sync|dsync|direct} }
 ```
 
 | Option | Description |
@@ -58,7 +63,6 @@ dd if=<file> of=/dev/null bs=<size>[K|M|G] [count=<count>[K|M|G]]
 ```
 
 > [`drop_caches` doc](https://www.kernel.org/doc/Documentation/sysctl/vm.txt)
-
 
 Read speed test without prior cache
 

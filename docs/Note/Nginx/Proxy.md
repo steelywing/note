@@ -100,7 +100,7 @@ server {
 
 ## SSL/TLS offloading
 
-> [Ref](https://www.nginx.com/blog/nginx-ssl/)
+> Ref: [SSL/TLS Offloading, Encryption, and Certificates with NGINX and NGINX Plus](https://www.nginx.com/blog/nginx-ssl/)
 
 ```nginx
 server {

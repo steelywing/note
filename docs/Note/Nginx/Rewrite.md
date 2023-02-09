@@ -26,6 +26,7 @@ server {
     return 301 $scheme://www.example.com;
 }
 ```
+
 ## `internal` location
 
 ```nginx

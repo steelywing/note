@@ -1,14 +1,8 @@
 # WireGuard
 
-:::tip
+> Ref: [Quick Start](https://www.wireguard.com/quickstart/)
 
-`AllowedIPs` cannot overlap, WireGuard use this to choose peer
-
-:::
-
-### Key Generation
-
-> [Ref](https://www.wireguard.com/quickstart/)
+## Key Generation
 
 Private Key
 
@@ -29,7 +23,7 @@ Private and Public Key
 wg genkey | tee private-key | wg pubkey > public-key
 ```
 
-### CLI
+## CLI
 
 Peer A
 - Public IP `1.1.1.1`
@@ -45,13 +39,11 @@ Peer B
 ip link add dev wg0 type wireguard
 ```
 
-```bash
-# Peer A
+```bash title="Peer A"
 ip address add dev wg0 10.0.0.1/24
 ```
 
-```bash
-# Peer B
+```bash title="Peer B"
 ip address add dev wg0 10.0.0.2/24
 ```
 
@@ -83,7 +75,13 @@ wg set wg0 listen-port 10100 private-key /path/to/private-key peer <peer A publi
 ip link set up dev wg0
 ```
 
-### Config
+## Config
+
+:::tip
+
+`AllowedIPs` cannot overlap, WireGuard use `AllowedIPs` to choose peer
+
+:::
 
 Peer A
 
@@ -109,17 +107,17 @@ PrivateKey = AM/sFBkkiMGL4iGUMV1RO+cVmeaHcE5uGg/xxUoDsH0=
 PublicKey = cWlZ8WRv4D0bGACuHwXGfmudZeMsFDYiVSmjPlVc0ko=
 AllowedIPs = 10.0.0.1/32, 10.0.1.0/24
 
-# Route all traffic to Peer A
+# for routing all traffic to Peer A
 # AllowedIPs = 0.0.0.0/0
 ```
 
-### Show status
+## Show status
 
 ```bash
 wg
 ```
 
-### Show config
+## Show config
 
 ```bash
 wg showconf

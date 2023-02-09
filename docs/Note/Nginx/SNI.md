@@ -4,7 +4,7 @@ TLS Server Name Indication
 
 SNI allows browser to pass requested server name during the SSL handshake
 
-:::note
+:::info
 
 To support multiple SSL `server_name` `server` section, Nginx version must support SNI
 
