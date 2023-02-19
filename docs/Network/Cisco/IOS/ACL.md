@@ -10,7 +10,7 @@ Access Control List
 
 ## MAC ACL
 
-```
+```cisco
 Switch(config)# mac access-list extended <name>
 
 ! <MAC address> = { any | host <MAC address> | <MAC address> <MAC address mask> }
@@ -29,9 +29,9 @@ Switch(config-ext-macl)# { permit | deny }
 
 ### Standard ACL
 
-- Filter by source address 
+- Filter by source address
 
-```
+```cisco
 ! <address> = { any | <IP address> <inverse mask> | host <IP> }
 
 Switch(config)# ip access-list standard 
@@ -44,10 +44,11 @@ Switch(config-std-nacl)# [<sequence number>]
 
 ### Extended ACL
 
+- More useful than [Standard ACL](#standard-acl)
 - Filter by source and destination address
 - Filter by ICMP type / UDP port / TCP port
 
-```
+```cisco title="Syntax"
 ! <port> = { eq | neq | lt | gt } <port> | range <first port> <last port>
 
 Switch(config)# ip access-list extended 
@@ -60,19 +61,37 @@ Switch(config-ext-nacl)# [<sequence number>]
     <destination IP address> [<destination port>]
 ```
 
+```cisco title="Sample"
+Switch(config)# ip access-list extended default
+
+! Append to the end of ACL
+! Allow access any host TCP 80
+Switch(config-ext-nacl)# permit tcp any any eq 80
+Switch(config-ext-nacl)# permit tcp any eq 80 any established
+
+! Insert to sequence number 25, 26
+! Allow access any host TCP 443
+Switch(config-ext-nacl)# 25 permit tcp any any eq 443
+Switch(config-ext-nacl)# 26 permit tcp any eq 443 any established
+
+! Remove sequence number 25, 26
+Switch(config-ext-nacl)# no 25
+Switch(config-ext-nacl)# no 26
+```
+
 ### Remove ACL
 
-```
+```cisco
 Switch(config-std-nacl)# no [<sequence number>]
 ```
 
-```
+```cisco
 Switch(config-ext-nacl)# no [<sequence number>] 
 ```
 
 ## Apply ACL to interface
 
-```
+```cisco
 Switch(config)# interface <interface>
 
 ! not all interface can use { in | out }
@@ -111,7 +130,7 @@ Block specify MAC address
 
 > [Reference](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3550-series-switches/64844-mac-acl-block-arp.html)
 
-```
+```cisco
 ! <MAC address> = { any | host <MAC address> | <MAC address> <MAC address mask> }
 
 Switch(config)# mac access-list extended blacklist
@@ -134,18 +153,18 @@ Resequencing ACL entries
 
 > [Reference](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_data_acl/configuration/xe-3s/sec-data-acl-xe-3s-book/sec-acl-seq-num.html)
 
-```
+```cisco
 Switch(config)# ip access-list resequence <ACL ID> <starting sequence number> <increment>
 ```
 
 Example
 
-```
+```cisco
 ip access-list resequence default-acl 10 10
 ```
 
 Display ACL list
 
-```
+```cisco
 Switch# show ip access-lists
 ```
