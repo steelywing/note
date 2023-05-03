@@ -8,7 +8,7 @@ Logical Volume Management
 
 ## Config file
 
-```
+```sh
 /etc/lvm/lvm.conf
 ```
 
@@ -119,7 +119,7 @@ lvcreate
         -L <size>[K|M|G|T|P|E] |
         -l <percent>[%{VG|FREE}]
     ]
-    –type { linear | raid1 | raid5 | raid6 }
+    -–type { linear | raid1 | raid5 | raid6 }
     -n <LV name>
     <VG name>
 ```
@@ -162,10 +162,13 @@ lvresize
 `lvreduce <size>` = `lvresize -<size>`
 
 - Unmount LV
+
   ```bash
   umount <LV>
   ```
+
 - Resize LV
+
   ```bash
   lvresize 
     -L [-]<size>[K|M|G|T|P|E]
@@ -175,17 +178,20 @@ lvresize
 
   - `--resizefs` is similar to do the following
     - Check file system
+
       ```bash
       fsck -f <LV>
       ```
+
     - Resize file system
+
       ```bash
       resize2fs <LV> <size>[s|K|M|G]
       ```
 
 ## Troubleshooting
 
-### Device `<device>` excluded by a filter.
+### Device `<device>` excluded by a filter
 
 ```bash
 pvcreate -vvv <device> |& grep <device>
