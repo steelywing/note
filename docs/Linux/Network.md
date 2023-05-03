@@ -347,3 +347,9 @@ nmtui
 # Config
 /etc/sysconfig/network-scripts/
 ```
+
+RHEL restart network
+
+```sh
+nmcli networking off; nmcli networking on
+```
