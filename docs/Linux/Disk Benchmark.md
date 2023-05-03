@@ -20,6 +20,10 @@ dd
 | `sync` | Synchronized I/O for data and meta data |
 | `direct` | Direct I/O |
 
+```sh
+dd if=/dev/zero of=temp bs=1M count=1K oflag=direct; rm temp
+```
+
 ## Read speed
 
 | Unit | Description |
@@ -48,6 +52,10 @@ dd
     bs=<size>[<unit>]
     [count=<count>[<unit>]]
     iflag=direct
+```
+
+```sh
+dd if=/dev/sda1 of=/dev/null bs=1M count=1K iflag=direct
 ```
 
 Using `drop_caches`
