@@ -6,6 +6,8 @@ tags: [FortiGate, Network]
 
 Port Forward HTTP (TCP port 80) to web server
 
+<!--truncate-->
+
 ![Network Diagram](img/FortiGate%20Virtual%20IP.drawio.svg)
 
 - In **Policy & Objects** > **Virtual IPs**
