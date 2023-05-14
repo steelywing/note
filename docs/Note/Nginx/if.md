@@ -76,7 +76,7 @@ location / {
 
 Method 1
 
-( **Recommended** )
+> **Recommended**
 
 ```nginx
 # if ($arg_a == "alice" && $arg_b == "bob")

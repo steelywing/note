@@ -1,4 +1,8 @@
-# CA
+---
+sidebar_label: CA
+---
+
+# CA - OpenSSL
 
 Certificate Authority
 

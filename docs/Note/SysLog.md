@@ -1,11 +1,13 @@
 # Sys Log
 
-## syslog-ng
+## `syslog-ng`
 
 **Recommended**
 
-## rsyslog
+## `rsyslog`
 
-## syslog
+**Recommended**
+
+## `syslog`
 
 **Deprecated**

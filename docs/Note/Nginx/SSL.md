@@ -32,6 +32,6 @@ server {
 
 [SSL offloading](Proxy.md#ssltls-offloading)
 
-## SSL recommend config
+## SSL recommended config
 
 [Mozilla SSL Configuration Generator](https://ssl-config.mozilla.org/) ([GitHub](https://github.com/mozilla/ssl-config-generator))

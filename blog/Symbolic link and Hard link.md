@@ -50,9 +50,9 @@ mklink /h <link> <source>
 New-Item -ItemType HardLink -Path "<link>" -Target "<source>"
 ```
 
-## Create hard link for directory
+## Create directory junction
 
-AKA Directory Junction
+Hard link for directory
 
 ```powershell title="PowerShell"
 New-Item -ItemType Junction -Path "<link>" -Target "<source>"

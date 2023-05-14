@@ -218,14 +218,14 @@ interface GigabitEthernet0/2
 end
 ```
 
-Assign interface to port channel group (LACP) (Recommend)
+Assign interface to port channel group (LACP) (Recommended)
 
 ```
 Switch(config-if)# channel-group <port channel number> 
     mode {active|passive}
 ```
 
-Assign interface to port channel group (PAgP) (Not recommend)
+Assign interface to port channel group (PAgP) (Not recommended)
 
 ```
 Switch(config-if)# channel-group <port channel number> 

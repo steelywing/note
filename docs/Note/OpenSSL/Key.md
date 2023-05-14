@@ -1,4 +1,8 @@
-# OpenSSL Key
+---
+sidebar_label: Key
+---
+
+# Key - OpenSSL
 
 ## RSA key
 
