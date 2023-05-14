@@ -4,6 +4,15 @@ tags: [OpenVPN, VPN, Windows]
 
 # Auto connect OpenVPN
 
+## &gt; Version 2.5
+
+> Ref: [Configuring OpenVPN to run automatically on system startup](https://openvpn.net/community-resources/configuring-openvpn-to-run-automatically-on-system-startup/)
+
+- Put `.ovpn` config file in folder `%ProgramFiles%\OpenVPN\config-auto\`
+- Set **OpenVPNService** service to **Automatic**
+
+<!--truncate-->
+
 ## Using PowerShell
 
 ```powershell title="Administrator PowerShell"
