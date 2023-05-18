@@ -35,11 +35,21 @@ flowchart TD
     groups --N--> others
 ```
 
+## Group ACL entry
+
+Group entry is not using the first matched, each matched group entry is checked, if any matched group entry is allow, the request is allow.
+
+## Example
+
+`admin` is in groups `admin` and `user`
+
 ```sh
 id admin
 
 uid=1000(admin) gid=1000(admin) groups=1000(admin),1001(user)
 ```
+
+`user` is in group `user`
 
 ```sh
 id user
@@ -61,12 +71,54 @@ mask::r--
 other::---
 ```
 
-| User | Read `file` |
-|-|-|
-| `admin` | allow |
-| `user` | deny |
+```sh
+getfacl first
 
-`admin` is in 2 groups `admin` and `user`, `user` group is deny access `file`, but `admin` is allow, so `admin` still allow access.
+# file: first
+# owner: root
+# group: root
+user::rw-
+group::r--
+user:admin:---
+group:user:---
+group:admin:r--
+mask::r--
+other::---
+```
+
+| User | `cat file` | `cat first` |
+|-|-|-|
+| `admin` | allow | deny |
+| `user` | deny | deny |
+
+`admin` read `file` is allow
+
+- ```sh
+  getfacl file
+  ...
+  group:user:---
+  group:admin:r--
+  mask::r--
+  ```
+
+- user `admin` still allow access `file`
+  
+  (allow access if any group of the process is granted permission)
+
+`admin` read `first` is deny
+
+- ```sh
+  getfacl first
+  ...
+  user:admin:---
+  group:user:---
+  group:admin:r--
+  mask::r--
+  ```
+
+- user `admin` still deny access `first`
+
+  (first matched named user ACL is used, even group `admin` is allow access)
 
 ## Mask
 
