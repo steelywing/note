@@ -1,3 +1,5 @@
+# `tmux`
+
 ## New session
 
 ```bash
@@ -7,7 +9,7 @@ tmux new[-session] [-n <session name>]
 ## Attach session
 
 ```bash
-tmux attach[-session] [<option>] [-t <session name>]
+tmux a[ttach[-session]] [<option>] [-t <session name>]
 ```
 
 | Option | Description |
@@ -24,42 +26,63 @@ tmux <command>
 
 ### In `tmux`
 
-Default prefix key: <kbd>Ctrl + b</kbd>
+Default prefix key: <kbd>Ctrl</kbd> + <kbd>b</kbd>
 
 Execute command
+
 - <kbd>&lt;prefix key&gt;</kbd>
 - `Key` or `:<command>`
 
 | Key | Command | Alias | Description |
-| - | - | - | - |
+|-|-|-|-|
 | <kbd>:</kbd>`<command>` | `<command>` |  | Command |
 | <kbd>?</kbd> | `list-keys` | `lsk` | List keys binding |
-|  | `list-sessions` | `ls` | List session |
-|  | `bind-key [-n] [-t <table>] <key> <command> [<arguments>]` | `bind` | Bind key |
-|  | `unbind-key [-n] [-t <table>] <key>` | `unbind` | Unbind key |
-| <kbd>c</kbd> | `new-window [-n<name>]` `<command>` | `neww` | New window |
-| <kbd>%</kbd> <kbd>"</kbd> | `split-window [-h] <command>` | `splitw` | Split window
 | <kbd>d</kbd> | `detach-client` | `detach` | Detach |
 | <kbd>D</kbd> | `choose-client` |  | Detach other clients |
+|  | `bind-key [-n] [-t <table>] <key> <command> [<arguments>]` | `bind` | Bind key |
+|  | `unbind-key [-n] [-t <table>] <key>` | `unbind` | Unbind key |
+| <kbd>[</kbd> | `copy-mode` |  | Copy mode |
+| <kbd>]</kbd> | `paste-buffer` |  | Paste buffer |
+| <kbd>=</kbd> | `choose-buffer` |  | Choose buffer |
+
+## Session
+
+| Key | Command | Alias | Description |
+|-|-|-|-|
+|  | `list-sessions` | `ls` | List session |
+| <kbd>s</kbd> | `choose-tree` |  | Tree mode for all session |
+
+## Window
+
+| Key | Command | Alias | Description |
+|-|-|-|-|
+| <kbd>c</kbd> | `new-window [-n<name>]` `<command>` | `neww` | New window |
+| <kbd>%</kbd> <kbd>"</kbd> | `split-window [-h] <command>` | `splitw` | Split window
 | <kbd>0</kbd> to <kbd>9</kbd> | `select-window [-t <window>]` | `selectw` | Select window |
 | <kbd>p</kbd> | `previous-window` | `prev` | Previous window |
 | <kbd>n</kbd> | `next-window` | `next` | Next window |
 | <kbd>l</kbd> | `last-window` | `last` | Last window |
+| <kbd>w</kbd> | `choose-window` |  | Tree mode for all window of attached session |
+| <kbd>f</kbd> | `find-window` |  | Find window or pane |
+| <kbd>&</kbd> | `kill-window` | `killw` | Kill current window |
+
+## Pane
+
+| Key | Command | Alias | Description |
+|-|-|-|-|
 | <kbd>Up</kbd> <kbd>Down</kbd> <kbd>Left</kbd> <kbd>Right</kbd> | `select-pane [-U] [-D] [-L] [-R]` | `selectp` | Select pane |
 | <kbd>q</kbd> | `display-panes` | `displayp` | Print pane numbers |
 | <kbd>x</kbd> | `kill-pane` | `killp` | Kill active pane |
-| <kbd>&</kbd> | `kill-window` | `killw` | Kill current window |
 |  | `kill-server` |  | Kill server |
 |  | `kill-session` |  | Kill session |
 | <kbd>z</kbd> | `resize-pane -Z` |  | Zoom / Unzoom |
+
+## Layout
+
+| Key | Command | Alias | Description |
+|-|-|-|-|
 | <kbd>Space</kbd> | `next-layout` |  | Nex layout |
 | <kbd>Alt + 1</kbd> to <kbd>Alt + 5</kbd> | `select-layout <layout>` |  | Select layout |
-| <kbd>s</kbd> | `choose-tree` |  | Tree mode for all session |
-| <kbd>w</kbd> | `choose-window` |  | Tree mode for all window of attached session |
-| <kbd>f</kbd> | `find-window` |  | Find window or pane |
-| <kbd>[</kbd> | `copy-mode` |  | Copy mode |
-| <kbd>]</kbd> | `paste-buffer` |  | Paste buffer |
-| <kbd>=</kbd> | `choose-buffer` |  | Choose buffer |
 
 ## Config
 
@@ -70,12 +93,12 @@ Execute command
 
 ## Mouse
 
-> [Reference](https://github.com/tmux/tmux/wiki/Getting-Started)
+> Ref: [Getting-Started](https://github.com/tmux/tmux/wiki/Getting-Started)
 
 Enable mouse
 
 ```
-set -g mouse on
+:set -g mouse on
 ```
 
 ## Tree mode
