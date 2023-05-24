@@ -21,7 +21,7 @@ sudo apt install nfs-kernel-server
 RHEL
 
 ```sh
-yum install nfs-utils
+sudo yum install nfs-utils
 ```
 
 ### Config
@@ -30,6 +30,14 @@ yum install nfs-utils
 # <path>  <host>(<options>)  ...
 /srv/nfs  10.0.0.2(rw,sync,no_subtree_check,insecure)  10.0.1.0/24(rw,sync,no_subtree_check,insecure)
 ```
+
+| Option | Description |
+|-|-|
+| `rw` | allow read and write |
+| `sync` | reply after the change is committed (slower, safer) |
+| `async` | reply before the change is committed (faster, corrupted when unclean) |
+| `no_subtree_check` | disable subtree check (less issue) |
+| `insecure` | allow network port ≥ 1024 |
 
 ### Reload / Update `exports`
 
@@ -59,12 +67,14 @@ yum install nfs-utils
 
 ### Show NFS server exports
 
+Run on client host
+
 ```sh
 # showmount -e <host>
 showmount -e 10.0.0.1
 ```
 
-### Test mount
+### `mount` NFS
 
 > NFS options ref: `man nfs`
 
@@ -76,7 +86,10 @@ mount -t nfs 10.0.0.1:/srv/nfs /mnt/nfs
 mount -t nfs -o vers=3 10.0.0.1:/srv/nfs /mnt/nfs
 ```
 
-### Auto mount
+### Auto mount at boot
+
+- option `auto`: auto mount when `mount -a` (at boot time)
+- `defaults` included `auto` option
 
 ```sh title="/etc/fstab"
 # <file system>  <mount point>  <type>  <options>  <dump>  <pass>
@@ -85,3 +98,17 @@ mount -t nfs -o vers=3 10.0.0.1:/srv/nfs /mnt/nfs
 # NFS v3
 10.0.0.1:/srv/nfs  /mnt/nfs  nfs  defaults,vers=3  0  0
 ```
+
+## Troubleshot
+
+Permission denied
+
+- Use `mount` with verbose option for debug
+  
+  ```sh
+  mount -vvvv ...
+  ```
+
+- Check if IP address is match
+- If using NFSv4, try add `sec=sys` option to client and server
+  - NFSv4.0 client connect to NFSv4.2 server need add option `sec=sys`
