@@ -6,7 +6,7 @@ sidebar_label: Network
 
 ## Firewall
 
-### [iptables](iptables.md)
+- [iptables](iptables.md)
 
 ### nftables
 
@@ -47,10 +47,6 @@ ping <IP address> | while read log; do
   echo "$(date): $log";
 done
 ```
-
-## [Nmap](Nmap.md)
-
-## [TCP Dump](tcpdump.md)
 
 ## IP
 
@@ -126,9 +122,9 @@ Flush (Delete all) IP address
 ip a flush [dev <device>] [up]
 ```
 
-### ARP / Neighbour
+### ARP / Neighbor
 
-> Ref: `ip neighbour help`
+> Ref: `ip neighbor help`
 
 ```bash
 ip n [show]
@@ -139,7 +135,7 @@ ip n [show]
 arp
 ```
 
-Clear ARP / NDP / neighbour
+Clear ARP / NDP / Neighbor
 
 ```bash
 ip n flush { all | dev <device> }
@@ -353,3 +349,9 @@ RHEL restart network
 ```sh
 nmcli networking off; nmcli networking on
 ```
+
+## See also
+
+- [Nmap](Nmap.md)
+- [TCP Dump](tcpdump.md)
+- [`ip` command cheatsheet PDF](./ip_command_cheatsheet.pdf)
