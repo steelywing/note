@@ -1,4 +1,4 @@
-# Directory Stack
+# Directory Stack - BASH
 
 > Ref: [Stack Exchange](https://unix.stackexchange.com/a/270437/104608)
 

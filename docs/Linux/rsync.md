@@ -23,7 +23,10 @@ rsync <option> <source> <destination>
 
 ## Trailing slash on `<source>`
 
+- `/src/` means files under `/src/*`
+
 ```bash
+# sync /src to /dest/src
 rsync -av /src /dest
 # same as
 rsync -av /src/ /dest/src

@@ -26,6 +26,21 @@ dd if=/dev/zero of=temp bs=1M count=1K oflag=direct; rm temp
 
 ## Read speed
 
+Using `dd iflag=direct`
+
+```bash
+dd
+    if=<file>
+    of=/dev/null
+    bs=<size>[<unit>]
+    [count=<count>[<unit>]]
+    iflag=direct
+```
+
+```sh
+dd if=/dev/sda1 of=/dev/null bs=1M count=1K iflag=direct
+```
+
 | Unit | Description |
 | - | - |
 | `c` | 1 |
@@ -43,20 +58,7 @@ dd if=/dev/zero of=temp bs=1M count=1K oflag=direct; rm temp
 | `Z` | 1024⁷ |
 | `Y` | 1024⁸ |
 
-Using `dd iflag=direct`
-
-```bash
-dd
-    if=<file>
-    of=/dev/null
-    bs=<size>[<unit>]
-    [count=<count>[<unit>]]
-    iflag=direct
-```
-
-```sh
-dd if=/dev/sda1 of=/dev/null bs=1M count=1K iflag=direct
-```
+---
 
 Using `drop_caches`
 
@@ -71,6 +73,8 @@ dd if=<file> of=/dev/null bs=<size>[K|M|G] [count=<count>[K|M|G]]
 ```
 
 > [`drop_caches` doc](https://www.kernel.org/doc/Documentation/sysctl/vm.txt)
+
+---
 
 Read speed test without prior cache
 

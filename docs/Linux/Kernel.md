@@ -16,6 +16,12 @@ uname -a
 lsmod
 ```
 
+### Module info
+
+```sh
+modinfo <module>
+```
+
 ### Add module
 
 ```bash
@@ -44,7 +50,7 @@ modprobe -r <module>
 
 In `/etc/modprobe.d/*.conf`
 
-```
+```text
 blacklist <module>
 ```
 
@@ -52,7 +58,7 @@ blacklist <module>
 
 In `/etc/modprobe.d/*.conf`
 
-```apacheconf
+```text
 install <module> /bin/false
 ```
 
