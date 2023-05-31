@@ -40,7 +40,7 @@ module.exports = {
       },*/
       items: [
         {
-          to: 'blog',
+          to: 'blog/tags/',
           label: 'Blog',
           position: 'left',
         },
@@ -118,6 +118,9 @@ module.exports = {
             'https://github.com/steelywing/note/edit/master/',
           remarkPlugins: [require('remark-math')],
           rehypePlugins: [require('rehype-katex')],
+        },
+        blog: {
+          blogSidebarCount: 0,
         },
         theme: {
           customCss: [
