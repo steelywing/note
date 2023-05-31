@@ -1,5 +1,5 @@
 ---
-sidebar_label: `Rewrite`
+sidebar_label: Rewrite
 ---
 
 # Rewrite / Redirect URI - Apache
