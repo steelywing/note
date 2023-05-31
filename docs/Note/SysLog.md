@@ -2,12 +2,12 @@
 
 ## `syslog-ng`
 
-**Recommended**
+> Recommended
 
 ## `rsyslog`
 
-**Recommended**
+> Recommended
 
 ## `syslog`
 
-**Deprecated**
+> Deprecated

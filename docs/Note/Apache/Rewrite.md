@@ -1,4 +1,8 @@
-# Rewrite / Redirect URI
+---
+sidebar_label: `Rewrite`
+---
+
+# Rewrite / Redirect URI - Apache
 
 > Ref: [Apache mod_rewrite Introduction](https://httpd.apache.org/docs/2.4/rewrite/intro.html)
 

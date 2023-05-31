@@ -97,7 +97,7 @@ Execute command
 
 Enable mouse
 
-```
+```tmux
 :set -g mouse on
 ```
 

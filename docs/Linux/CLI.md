@@ -1,4 +1,8 @@
-# CLI
+---
+sidebar_label: CLI
+---
+
+# CLI - Linux
 
 Command Line Interface
 
@@ -140,7 +144,6 @@ chattr {+|-}<attribute> <file>
 lsof <path>
 ```
 
-
 ## Manual / Help
 
 Show manual
@@ -261,7 +264,7 @@ Execute command periodically
 watch [-n <seconds>] <command>
 ```
 
-## FHS (Filesystem Hierarchy Standard) / Filesystem Structure
+## FHS (File system Hierarchy Standard) / File system Structure
 
 > Ref: [The FHS 3.0 Specification](http://refspecs.linuxfoundation.org/fhs.shtml)
 

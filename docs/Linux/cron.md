@@ -1,16 +1,16 @@
-# cron
+# `cron`
 
 > Ref: [Linux crontab command](https://www.computerhope.com/unix/ucrontab.htm)
 
 `cron` / `crontab`
 
-## User `crontab` file
+## User `crontab` config file
 
-```
+```text
 /var/spool/cron/crontabs/<user>
 ```
 
-## `crontab` file
+## `crontab` config file
 
 ```bash
 /etc/crontab
@@ -22,9 +22,11 @@ Debian only
 /etc/cron.d/
 ```
 
-## Note
+:::info
 
 - Use the standard system crontab `/etc/crontab`
+
+:::
 
 ## `crontab` format
 

@@ -1,3 +1,7 @@
+---
+sidebar_label: Proxy
+---
+
 # Proxy - Apache
 
 > Ref: [Apache Module mod_proxy](https://httpd.apache.org/docs/2.4/mod/mod_proxy.html)

@@ -1,4 +1,8 @@
-# Linux ACL
+---
+sidebar_label: ACL
+---
+
+# ACL - Linux
 
 Access Control List
 
@@ -8,7 +12,7 @@ Access Control List
 
 > Ref: [POSIX Access Control Lists on Linux](acl.pdf)
 
-First matched entry is used
+**First matched** entry is used
 
 - owner
 - named users
@@ -37,7 +41,8 @@ flowchart TD
 
 ## Group ACL entry
 
-Group entry is not using the first matched, each matched group entry is checked, if any matched group entry is allow, the request is allow.
+- Group entry is not using the first matched, each matched group entry is checked
+- If any matched group entry is allow, the request is allow.
 
 ## Example
 
@@ -45,21 +50,31 @@ Group entry is not using the first matched, each matched group entry is checked,
 
 ```sh
 id admin
+```
 
+```sh
 uid=1000(admin) gid=1000(admin) groups=1000(admin),1001(user)
 ```
+
+---
 
 `user` is in group `user`
 
 ```sh
 id user
-
-uid=1001(user) gid=1001(user) groups=1001(user)
 ```
 
 ```sh
-getfacl file
+uid=1001(user) gid=1001(user) groups=1001(user)
+```
 
+---
+
+```sh
+getfacl file
+```
+
+```sh
 # file: file
 # owner: root
 # group: root
@@ -71,9 +86,13 @@ mask::r--
 other::---
 ```
 
+---
+
 ```sh
 getfacl first
+```
 
+```sh
 # file: first
 # owner: root
 # group: root
@@ -86,10 +105,14 @@ mask::r--
 other::---
 ```
 
+---
+
 | User | `cat file` | `cat first` |
 |-|-|-|
 | `admin` | allow | deny |
 | `user` | deny | deny |
+
+---
 
 `admin` read `file` is allow
 
@@ -101,9 +124,11 @@ other::---
   mask::r--
   ```
 
-- user `admin` still allow access `file`
-  
-  (allow access if any group of the process is granted permission)
+- user `admin` is allow to access `file`
+  - allow access if any group of the process is granted permission
+  - even group `user` is deny
+
+---
 
 `admin` read `first` is deny
 
@@ -116,9 +141,9 @@ other::---
   mask::r--
   ```
 
-- user `admin` still deny access `first`
-
-  (first matched named user ACL is used, even group `admin` is allow access)
+- user `admin` is deny access `first`
+  - first matched named user ACL is used
+  - even group `admin` is allow access
 
 ## Mask
 
@@ -130,15 +155,18 @@ other::---
 - `setfacl` auto create mask entry (union all ACL entries) by default, unless option `-n` is set
 - Masks only apply to extended ACL (`setfacl`), not apply to minimal ACL
 
-```js
+```js title="pseudo code"
 function effective_permission(mask, acl_entry) {
     return mask & acl_entry;
 }
 
-function is_granted(user, operation, acl) {
-    return 
-        operation & 
-        effective_permission(mask(acl) & matched_entry(user, acl))
-        > 0;
+function is_granted(user, operation, file_acl) {
+  return 
+    operation & 
+    effective_permission(
+      file_acl.mask,
+      matched_entry(user, file_acl)
+    )
+    > 0;
 }
 ```
