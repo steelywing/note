@@ -6,6 +6,10 @@ Logical Volume Management
 
 > [Tutorial](https://www.digitalocean.com/community/tutorials/how-to-use-lvm-to-manage-storage-devices-on-ubuntu-16-04)
 
+## See also
+
+- OpenZFS (Volume Manager + File System)
+
 ## Config file
 
 ```sh
@@ -64,7 +68,6 @@ pvcreate <device>[ ...]
 ### Remove PV
 
 ```bash
-pvmove <PV>
 vgreduce <VG> <PV>
 pvremove <PV>
 ```
