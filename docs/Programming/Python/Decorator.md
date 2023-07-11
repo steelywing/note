@@ -24,7 +24,7 @@ def func():
 func = decorator(func)
 ```
 
-## Log message before call
+## Log message before function
 
 ```py
 def log(message):
@@ -34,8 +34,9 @@ def log(message):
             return func(*args, **kwargs)
         return wrapper
     return log_wrapper
-
 ```
+
+---
 
 ```py
 @log('hello')
@@ -52,6 +53,8 @@ def world():
 world = log('hello')(world)
 ```
 
+---
+
 ```py
 world()
 # hello
@@ -61,17 +64,53 @@ world()
 ## Thread decorator
 
 ```py
+from threading import Thread
+
 def thread(function):
-    def closure(*args, **kwargs):
+    def wrapper(*args, **kwargs):
         return Thread(target=function, args=args, kwargs=kwargs)
 
-    return closure
+    return wrapper
 ```
 
 ```py
 @thread
-def thread_func():
+def thread_function():
     pass
 
-thread_func().start()
+thread_function().start()
+```
+
+with return value
+
+```py
+from threading import Thread
+from functools import partial
+
+class ThreadFunction(Thread):
+    def __init__(self, target, args = (), kwargs = {}):
+        super().__init__()
+        self.target = partial(target, *args, **kwargs)
+        # function return value
+        self.value = None
+    def run(self):
+        self.value = self.target()
+
+def thread(function):
+    def wrapper(*args, **kwargs):
+        return ThreadFunction(target=function, args=args, kwargs=kwargs)
+
+    return wrapper
+```
+
+```py
+@thread
+def hello(name):
+    return 'hello ' + name
+
+hello_thread = hello('world')
+hello_thread.start()
+hello_thread.join()
+
+print(hello_thread.value)
 ```
