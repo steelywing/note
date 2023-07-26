@@ -414,8 +414,9 @@ namespace MathExtensionMethods
 
 ## Single file app
 
-> - [Single File deployment](https://docs.microsoft.com/en-us/dotnet/core/deploying/single-file)
-> - [`dotnet publish`](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish)
+> [Single File deployment](https://docs.microsoft.com/en-us/dotnet/core/deploying/single-file)
+
+> [`dotnet publish`](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish)
 
 Single execute file
 
@@ -443,29 +444,6 @@ Single execute file
 
 - Run `dotnet publish`
 - VS Code ▶ **Run Task** ▶ **publish**
-
-## Reference DLL
-
-Add [Steamworks.NET](https://steamworks.github.io/installation/) reference
-
-- Add to `.csproj`
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk">
-  <ItemGroup>
-    <Reference Include="Steamworks.NET">
-      <HintPath>Steamworks.NET.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion> 
-      <!-- Copy DLL to Output folder -->
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-</Project>
-```
-
-- Copy `Steamworks.NET.dll` file to `root` folder
-- Run `dotnet restore [<project.csproj>]`
-- Run `dotnet run`
 
 ## Base Class
 
