@@ -1,3 +1,10 @@
+---
+date: 2023-08-02
+tags: [Boot]
+---
+
+# Boot Tool
+
 ## [Rufus](http://rufus.akeo.ie/)
 
 Write bootable ISO to USB
@@ -9,7 +16,7 @@ Write bootable ISO to USB
 
 ## [fbinst](http://download.gna.org/grubutil/)
 
-create a hidden bootable partition on USB, support grldr
+Create a hidden bootable partition on USB, support grldr
 
 ## FbinstTool
 

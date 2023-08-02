@@ -1,4 +1,9 @@
-## Enable WebRender
+---
+date: 2023-08-02
+tags: [Firefox]
+---
+
+# Enable WebRender in Firefox
 
 > [Reference](https://wiki.mozilla.org/Platform/GFX/Quantum_Render)
 
