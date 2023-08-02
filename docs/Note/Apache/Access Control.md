@@ -6,15 +6,15 @@
 
 ## `Order` of `Allow` and `Deny`
 
-> Ref: [Apache Module mod_access_compat](https://httpd.apache.org/docs/2.4/mod/mod_access_compat.html)
-
 :::info
 
 *Deprecated* by `Require`
 
 :::
 
-`Order Allow, Deny`
+```apache
+Order Allow, Deny
+```
 
 ```javascript
 // Pseudo code
@@ -35,7 +35,11 @@ function isAllow(match_allow, match_deny) {
 }
 ```
 
-`Order Deny, Allow`
+---
+
+```apache
+Order Deny, Allow
+```
 
 ```javascript
 // Pseudo code
@@ -55,3 +59,5 @@ function isAllow(match_allow, match_deny) {
     return allow;
 }
 ```
+
+> Ref: [Apache Module mod_access_compat](https://httpd.apache.org/docs/2.4/mod/mod_access_compat.html)

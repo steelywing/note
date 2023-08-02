@@ -2,8 +2,6 @@
 
 ## Sections order
 
-> Ref: [How the sections are merged](https://httpd.apache.org/docs/2.4/sections.html#merging)
-
 The order (priority / precedence) of merging is
 
 - `<Directory>` and `.htaccess`
@@ -30,3 +28,5 @@ graph TD
     --"[ override ]"-->
     directory("#lt;Directory#gt; .htaccess")
 ```
+
+> Ref: [How the sections are merged](https://httpd.apache.org/docs/2.4/sections.html#merging)

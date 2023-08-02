@@ -8,7 +8,7 @@ sidebar_label: Rewrite
 
 > Ref: [Apache Module mod_rewrite](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)
 
-Use PCRE to rewrite URL
+## Use PCRE to rewrite URL
 
 - `!`: not match
 - `=`: match plain string
@@ -26,7 +26,7 @@ RewriteRule "<RegExp pattern>" "<substitution>" [<flags>]
 - To replace query string, append `?<query>` to `<substitution>`
 - To combin original query string, use `[QSA]` flag
 
-Redirect HTTP to HTTPS
+## Redirect HTTP to HTTPS
 
 ```apacheconf
 RewriteEngine on
@@ -34,7 +34,7 @@ RewriteCond "%{HTTPS}" "=off"
 RewriteRule "^/?(.*)" "https://%{HTTP_HOST}/$1" [R,L]
 ```
 
-Debug
+## Debug
 
 ```apacheconf
 LogLevel alert rewrite:trace3

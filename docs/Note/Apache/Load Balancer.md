@@ -1,9 +1,5 @@
 # Load Balancer
 
-> Ref: [Reverse Proxy Guide](https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html)
-
-> Ref: [Apache Module mod_proxy_balancer](http://httpd.apache.org/docs/2.4/mod/mod_proxy_balancer.html)
-
 ```apacheconf
 <Proxy "balancer://cluster">
     BalancerMember "http://<server 1>"
@@ -12,6 +8,10 @@
 ProxyPass "/" "balancer://cluster/"
 ProxyPassReverse "/" "balancer://cluster/"
 ```
+
+> Ref: [Reverse Proxy Guide](https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html)
+
+> Ref: [Apache Module mod_proxy_balancer](http://httpd.apache.org/docs/2.4/mod/mod_proxy_balancer.html)
 
 ## Sticky session
 
