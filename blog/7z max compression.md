@@ -1,4 +1,5 @@
 ---
+date: 2022-11-30
 tags: [7z, Compress]
 ---
 
@@ -8,7 +9,7 @@ tags: [7z, Compress]
 
 <!--truncate-->
 
-```ps
+```powershell
 # -t7z : 7z archive type
 # -mx=9 : ultra compressing
 # -md=1g : 1GB dictionary size
