@@ -7,14 +7,17 @@ tags: [Boot]
 
 <!--truncate-->
 
-## [Rufus](http://rufus.akeo.ie/)
+## [Rufus](https://rufus.ie/)
+
+*Recommended*
 
 Write bootable ISO to USB
 
-## [BootIce](http://bbs.wuyou.net/forum.php?mod=viewthread&tid=57675)
+## [Ventoy](https://github.com/ventoy/Ventoy)
 
-- Close source
-- Backup MBR, PBR, edit BCD, Grub4DOS menu (grldr)...
+*Recommended*
+
+Boot from USB ISO directly
 
 ## [fbinst](http://download.gna.org/grubutil/)
 
@@ -28,6 +31,7 @@ fbinst GUI
 
 Extended grub bootloader
 
-## [Ventoy](https://github.com/ventoy/Ventoy)
+## [BootIce](http://bbs.wuyou.net/forum.php?mod=viewthread&tid=57675)
 
-Boot from USB ISO directly
+- Close source
+- Backup MBR, PBR, edit BCD, Grub4DOS menu (grldr)...
