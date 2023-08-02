@@ -5,6 +5,8 @@ tags: [Boot]
 
 # Boot Tool
 
+<!--truncate-->
+
 ## [Rufus](http://rufus.akeo.ie/)
 
 Write bootable ISO to USB

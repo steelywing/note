@@ -5,6 +5,8 @@ tags: [Disk Image, Clone]
 
 # Disk Image / Clone
 
+<!--truncate-->
+
 ## DiskGenius
 
 > [Chinese Official Web](https://www.diskgenius.cn/)
