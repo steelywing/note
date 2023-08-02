@@ -1,4 +1,5 @@
 ---
+date: 2022-12-16
 tags: [Red Hat, Firewall, Network]
 ---
 

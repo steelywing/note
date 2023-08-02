@@ -1,8 +1,11 @@
 ---
+date: 2022-12-16
 tags: [Windows, File System]
 ---
 
 # Symbolic link / Hard link on Windows
+
+<!--truncate-->
 
 ## Symbolic link
 

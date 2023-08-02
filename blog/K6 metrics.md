@@ -1,4 +1,5 @@
 ---
+date: 2022-12-16
 tags: [K6, Stress Test]
 ---
 
@@ -7,6 +8,8 @@ tags: [K6, Stress Test]
 > [Official Web](https://k6.io/)
 
 Explain K6 metrics
+
+<!--truncate-->
 
 <table className="text-center">
 <tbody>

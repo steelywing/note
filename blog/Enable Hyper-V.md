@@ -1,4 +1,5 @@
 ---
+date: 2022-12-05
 tags: [VM, Hyper-V, Windows]
 ---
 

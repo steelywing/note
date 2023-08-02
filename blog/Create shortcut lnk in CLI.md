@@ -1,3 +1,8 @@
+---
+date: 2023-05-31
+tags: [PowerShell, Windows]
+---
+
 # Create shortcut `.lnk` in CLI
 
 PowerShell
@@ -10,3 +15,5 @@ $s.TargetPath = 'http://example.com'
 # $s.TargetPath = 'file.txt'
 $s.Save()
 ```
+
+<!--truncate-->

@@ -1,3 +1,8 @@
+---
+date: 2023-01-17
+tags: [PowerShell, Windows]
+---
+
 # FortiGate deep inspection
 
 ## Deep Inspection without SSL/TLS offload
