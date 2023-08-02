@@ -40,7 +40,7 @@ module.exports = {
       },*/
       items: [
         {
-          to: 'blog/tags/',
+          to: 'blog/',
           label: 'Blog',
           position: 'left',
         },
