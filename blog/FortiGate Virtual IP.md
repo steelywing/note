@@ -1,6 +1,6 @@
 ---
 date: 2023-01-17
-tags: [FortiGate, Network]
+tags: [FortiGate, Firewall, Network]
 ---
 
 # FortiGate Virtual IP

@@ -1,6 +1,6 @@
 ---
 date: 2023-01-17
-tags: [PowerShell, Windows]
+tags: [FortiGate, Firewall, Network]
 ---
 
 # FortiGate deep inspection

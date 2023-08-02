@@ -1,6 +1,6 @@
 ---
 date: 2023-08-02
-tags: [PowerShell, Windows]
+tags: [Samba, SMB]
 ---
 
 # Samba VFS full audit log all operations

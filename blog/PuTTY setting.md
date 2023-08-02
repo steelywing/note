@@ -1,6 +1,6 @@
 ---
 date: 2022-11-30
-tags: [PuTTY]
+tags: [PuTTY, SSH]
 ---
 
 # PuTTY import / export setting
