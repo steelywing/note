@@ -1,0 +1,27 @@
+{
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Header": {
+		"scope": "markdown",
+		"prefix": "title",
+		"body": [
+			"---",
+			// "title: $1",
+			"date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			"tags: [$1]",
+			"---",
+			"",
+			"$2",
+			"",
+			"<!--truncate-->"
+		],
+		"description": "Insert a header"
+	}
+}
