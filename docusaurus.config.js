@@ -16,6 +16,7 @@ module.exports = {
   themeConfig: {
     prism: {
       additionalLanguages: [
+        'bash',
         'php',
         'ini',
         'nginx',
