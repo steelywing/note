@@ -121,7 +121,7 @@ module.exports = {
           rehypePlugins: [require('rehype-katex')],
         },
         blog: {
-          blogSidebarCount: 0,
+          blogSidebarCount: 16,
         },
         theme: {
           customCss: [
@@ -129,9 +129,9 @@ module.exports = {
             require.resolve('./src/css/custom.css'),
           ]
         },
-        googleAnalytics: {
+        gtag: {
           trackingID: 'G-0KG7P5XKJP',
-          // anonymizeIP: true, // Should IPs be anonymized?
+          anonymizeIP: true,
         },
       },
     ],
