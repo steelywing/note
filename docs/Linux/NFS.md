@@ -50,6 +50,13 @@ exportfs -rv
 | `-r` | re-export all directories |
 | `-v` | verbose |
 
+### Show exported NFS
+
+```sh
+# showmount { -e | --exports }
+showmount -e
+```
+
 ## NFS client
 
 Ubuntu
@@ -70,7 +77,7 @@ yum install nfs-utils
 Run on client host
 
 ```sh
-# showmount -e <host>
+# showmount { -e | --exports } <host>
 showmount -e 10.0.0.1
 ```
 
