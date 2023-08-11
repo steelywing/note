@@ -75,7 +75,7 @@ Execute command
 | <kbd>x</kbd> | `kill-pane` | `killp` | Kill active pane |
 |  | `kill-server` |  | Kill server |
 |  | `kill-session` |  | Kill session |
-| <kbd>z</kbd> | `resize-pane -Z` |  | Zoom / Unzoom |
+| <kbd>z</kbd> | `resize-pane -Z` |  | Zoom / UnZoom / Maximize |
 
 ## Layout
 

@@ -17,6 +17,8 @@ rsync <option> <source> <destination>
 | `-z`, `--compress` | Compress during the transfer |
 | `--partial` | Keep partially transferred files |
 | `--progress` | Show progress |
+| `--info=progress2` | Show total progress / speed |
+| `--bwlimit=<rate>` | Limit bandwidth, `--bwlimit=1m` = 1 MiB/s |
 | `-P` | `--partial --progress` |
 | `-e "ssh [-p <port>]"` | Use SSH as remote shell |
 | `-s`, `--protect-args` | No space-splitting (If file name has space) |
@@ -26,7 +28,7 @@ rsync <option> <source> <destination>
 - `/src/` means files under `/src/*`
 
 ```bash
-# sync /src to /dest/src
+# sync /src/ to /dest/src/
 rsync -av /src /dest
 # same as
 rsync -av /src/ /dest/src

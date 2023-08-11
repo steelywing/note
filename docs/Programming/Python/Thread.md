@@ -124,7 +124,7 @@ Main acquired lock
 Main released lock
 ```
 
-<hr/>
+---
 
 ```py
 with lock:
@@ -140,3 +140,7 @@ try:
 finally:
     lock.release()
 ```
+
+## Thread Decorator
+
+See [Thread Decorator](Decorator.md#thread-decorator)
