@@ -43,13 +43,21 @@ Unable to negotiate with XXX.XXX.XXX.XXX port XX: no matching host key type foun
 Method 1
 
 ```config title="/etc/ssh/ssh_config"
-HostKeyAlgorithms +ssh-rsa,ssh-dss
+HostKeyAlgorithms +ssh-rsa
+PubkeyAcceptedAlgorithms +ssh-rsa
 ```
 
 Method 2
 
 ```config title="~/.ssh/config"
+HostKeyAlgorithms +ssh-rsa
+PubkeyAcceptedAlgorithms +ssh-rsa
+```
+
+Method 3
+
+```config title="~/.ssh/config"
 Host { <host IP address / host name> | * }
-    PubkeyAcceptedAlgorithms +ssh-rsa
     HostkeyAlgorithms +ssh-rsa
+    PubkeyAcceptedAlgorithms +ssh-rsa
 ```
