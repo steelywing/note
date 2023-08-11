@@ -4,6 +4,8 @@
 $uri = "$uri" = ${uri} = "${uri}"
 ```
 
+> [Var Index](https://nginx.org/en/docs/varindex.html)
+
 | Variable | Alias | Description |
 |-|-|-|
 | `$uri` | `$document_uri` | URI, exclude `$args`, change when internal redirect / using `index` |
@@ -24,55 +26,3 @@ In this order of precedence (from high to low)
 - The server name matching a request
 
 > [Validation](host.md#validation)
-
-## `if`
-
-| Operator | Description |
-|-|-|
-| | `''` == `""` |
-| | `""` == `false` |
-| | `"0"` == `false` |
-| `=` | equal |
-| `!=` | not equal |
-| `~` | match RegExp (case-sensitive) |
-| `~*` | match RegExp (case-insensitive) |
-| `!~` | not match RegExp (case-sensitive) |
-| `!~*` | not match RegExp (case-insensitive) |
-
-## Operator `and`
-
-Method 1
-
-```nginx
-set $and 1;
-
-if (<not condition>) {
-    set $and 0;
-}
-
-if (<not condition>) {
-    set $and 0;
-}
-
-if ($and) {
-    # ...
-}
-```
-
-Method 2
-
-```nginx
-set $and ""
-
-if (<condition>) {
-    set $and "0";
-}
-
-if (<condition>) {
-    set $and "${and}1";
-}
-
-if ($and = "01") {
-    # ...
-}
-```

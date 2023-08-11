@@ -70,7 +70,7 @@ location / {
 :::caution
 
 - Nginx change the context block when `if` matched ([If is evil](https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/))
-- To avoid `if` side effect, using `map` is better
+- To avoid `if` side effect, use `map` if possible
 
 :::
 
