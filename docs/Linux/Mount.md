@@ -1,21 +1,30 @@
 # Mount
 
-```bash
-mount [-t <type>] { <source> | <device> } <directory>
+```sh
+# mount [-t <type>] { <source> | <device> } <directory>
+
+mount /dev/sda1 /srv/
 ```
 
-## Remount mount point in `fstab`
+## Re-mount mount point in `fstab`
 
 ```bash
+# ro: read-only
 # rw: read-write
-mount -o remount[,rw] <directory>
+
+# mount -o remount[,ro][,rw] <directory>
+
+mount -o remount,ro /srv/
 ```
 
 ## Lists all mounted filesystems
 
 ```bash
 # -l: lable
-mount [-l] [-t type]
+
+# mount [-l] [-t type]
+
+mount
 ```
 
 The most common `type` are `ext2 | ext3 | ext4 | xfs | btrfs | vfat | sysfs | proc | nfs | cifs`
@@ -23,7 +32,7 @@ The most common `type` are `ext2 | ext3 | ext4 | xfs | btrfs | vfat | sysfs | pr
 ## Mount CIFS / SMB / Windows Shared Folder
 
 | Option | Description |
-| - | - |
+|-|-|
 | `username=<username>` | Username |
 | `password=<password>` | Password |
 | `domain=<domain>` | Domain |
@@ -35,5 +44,8 @@ The most common `type` are `ext2 | ext3 | ext4 | xfs | btrfs | vfat | sysfs | pr
 
 ```bash
 # mount.cifs = mount -t cifs
-mount.cifs -o <option>[,...] //<host>/<share name> <directory>
+
+# mount.cifs -o <option>[,...] //<host>/<share name> <directory>
+
+mount -t cifs -o username=User,password=Password,vers=3.0,noperm //10.0.0.1/Share/ /mnt/Share/
 ```
