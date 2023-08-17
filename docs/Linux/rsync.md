@@ -2,7 +2,9 @@
 
 ```bash
 # <source>, <destination> = [[<user>@]<host>:]<path>
-rsync <option> <source> <destination>
+# rsync <option> <source> <destination>
+
+rsync -avHAX --info=progress2 ssh://user@host:/path/to/source /path/to/destination
 ```
 
 ## Option
