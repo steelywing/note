@@ -10,25 +10,25 @@ Command Line Interface
 
 ### Shell list
 
-```bash
+```sh
 cat /etc/shells
 ```
 
 ### Change shell
 
-```bash
+```sh
 chsh -s <shell> [<user>]
 ```
 
 or
 
-```bash
+```sh
 usermod -s <shell> <user>
 ```
 
 ## Open file manager from CLI
 
-```bash
+```sh
 xdg-open <path>
 ```
 
@@ -36,14 +36,14 @@ xdg-open <path>
 
 Type: `function`, `builtin`, or `file`
 
-```bash
+```sh
 # -a: display all locations
 type [-a] <command>
 ```
 
 ## Preserve file timestamp after edit (`bash`)
 
-```bash
+```sh
 vi-preserve-time () {
     for file in "$@"; do
         local mtime=$(stat -c %y "$file")
@@ -66,7 +66,7 @@ vi-preserve-time () {
 
 ## Mount image
 
-```bash
+```sh
 mount -o loop <image.iso> <directory>
 ```
 
@@ -80,18 +80,18 @@ mount -o loop <image.iso> <directory>
 
 ~~Only change directory permission~~
 
-```bash
+```sh
 chmod <permission> $(find -type d)
 ```
 
 ~~Only change file permission~~
-```bash
+```sh
 chmod <permission> $(find -type f)
 ```
 
 Change file owner and group
 
-```bash
+```sh
 chown { <owner>[:<group>] | --reference <file> } <file>
 ```
 
@@ -102,13 +102,13 @@ Change file permission to `644`, directory to `755`
 | `-R` | Recursive |
 | `-h` \| `--no-dereference` | Change symbolic links instead of referenced file |
 
-```bash
+```sh
 chmod [-R] u=rw,go=r,a+X <path>
 ```
 
 or
 
-```bash
+```sh
 chmod [-R] a=r+X,u+w <path>
 ```
 
@@ -128,19 +128,19 @@ chmod [-R] a=r+X,u+w <path>
 
 List attribute
 
-```bash
+```sh
 lsattr
 ```
 
 Change attribute
 
-```bash
+```sh
 chattr {+|-}<attribute> <file>
 ```
 
 ### List open files
 
-```bash
+```sh
 lsof <path>
 ```
 
@@ -148,7 +148,7 @@ lsof <path>
 
 Show manual
 
-```bash
+```sh
 man [<page>]
 ```
 
@@ -164,7 +164,7 @@ apropos <keyword>
 
 ## DNS
 
-```bash
+```sh
 vi /etc/resolv.conf
 ```
 
@@ -174,12 +174,12 @@ vi /etc/resolv.conf
 
 > Ref: [Ask Ubuntu](https://askubuntu.com/a/487267/235264)
 
-```bash
+```sh
 dconf-editor
 # org > gnome > desktop > remote-accessand > require-encryption
 ```
 
-```bash
+```sh
 gsettings set org.gnome.Vino require-encryption false
 ```
 
@@ -187,31 +187,32 @@ gsettings set org.gnome.Vino require-encryption false
 
 ### Copy
 
-```bash
+```sh
 cp [<option>] <source> <destination>
 ```
 
 | Option | Description |
-| - | - |
-| `-p` \| `--preserve[=<attributes>]` | Preserve mode, ownership, timestamps |
+|-|-|
+| `-a` \| `--archive` | Archive, same as `-dR --preserve=all` |
+| `-p` \| `--preserve[=<attributes>]` | Preserve `mode`, `ownership`, `timestamps` (Default: `mode,ownership,timestamps`) |
 | `-R` \| `-r` \| `--recursive` | Copy directories recursively |
 
 ## OpenJDK (Java)
 
 ### List installed JVM
-```bash
+```sh
 update-java-alternatives --list
 ```
 
 ### Switch JVM
-```bash
+```sh
 update-java-alternatives --set <JVM name>
 ```
 
 
 ## Show Linux distribution / version
 
-```bash
+```sh
 cat /etc/*-release
 cat /proc/version
 uname -a
@@ -229,23 +230,23 @@ lsb_release -a
 > Ref: [Enable/Disable Last Login Message](https://linuxconfig.org/how-to-disable-last-login-message-on-rhel-linux)
 
 ### Suppress `Last Login` message
-```bash
+```sh
 touch ~/.hushlogin
 ```
 
 ### Clear last login log
-```bash
+```sh
 > /var/log/lastlog
 ```
 
 ### Disable logging last login
-```bash
+```sh
 chattr +i /var/log/lastlog
 ```
 
 ## Identify processes using files or sockets
 
-```bash
+```sh
 fuser <option> <file>
 ```
 
@@ -259,7 +260,7 @@ fuser <option> <file>
 
 Execute command periodically
 
-```bash
+```sh
 # Default: 2 seconds
 watch [-n <seconds>] <command>
 ```
@@ -268,7 +269,7 @@ watch [-n <seconds>] <command>
 
 > Ref: [The FHS 3.0 Specification](http://refspecs.linuxfoundation.org/fhs.shtml)
 
-```bash
+```sh
 man hier
 ```
 
@@ -283,12 +284,12 @@ man hier
 
 ## `true`
 
-```bash
+```sh
 :
 ```
 
 is equivalent to
 
-```bash
+```sh
 true
 ```
