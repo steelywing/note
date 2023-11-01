@@ -174,7 +174,7 @@ Enable SNMP
 Switch(config)# snmp-server community <community string> ro
 ```
 
-## Port channel (Ether channel)
+## Port channel / Ether channel
 
 > [Reference](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus5000/sw/configuration/guide/cli/CLIConfigurationGuide/EtherChannel.html)
 
@@ -190,7 +190,7 @@ Create port channel interface
 Switch(config)# interface port-channel <port channel number>
 ```
 
-If change the configure of `port-channel` interface, that will pass the configure to the assigned interface.
+Changing the configure of `port-channel` interface, will pass the configure to the assigned interface.
 
 ```
 Switch(config)# interface range Gi0/1 - 2

@@ -26,6 +26,8 @@
 
 > "[**Title**](#cc-by)" by **Author** / [CC BY](https://creativecommons.org/licenses/by/4.0)
 
+> "**Title**" by **Author** is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0).
+
 > Music "**Title**" by **Author**, used under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0).
 
 ## CC BY-SA
