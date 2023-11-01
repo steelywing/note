@@ -25,6 +25,9 @@ wg genkey | tee private-key | wg pubkey > public-key
 
 ## CLI
 
+```mermaid
+```
+
 Peer A
 - Public IP `1.1.1.1`
 - LAN `10.0.1.0/24`
@@ -47,41 +50,25 @@ ip address add dev wg0 10.0.0.1/24
 ip address add dev wg0 10.0.0.2/24
 ```
 
-If only 2 peers, peer to peer also works
+If there are only 2 peers, peer to peer also works
 
 ```bash
 ip address add dev wg0 10.0.0.1 peer 10.0.0.2
-```
-
-Use config file
-
-```bash
-wg setconf wg0 wg0.conf
-```
-
-or CLI
-
-```bash
-# Peer A
-wg set wg0 listen-port 10100 private-key /path/to/private-key peer <peer B public key> allowed-ips 10.0.0.2/32,10.0.2.0/24
-```
-
-```bash
-# Peer B
-wg set wg0 listen-port 10100 private-key /path/to/private-key peer <peer A public key> allowed-ips 10.0.0.1/32,10.0.1.0/24 endpoint 1.1.1.1:10100
-```
-
-```bash
-ip link set up dev wg0
 ```
 
 ## Config
 
 :::tip
 
-`AllowedIPs` cannot overlap, WireGuard use `AllowedIPs` to choose peer
+- `AllowedIPs` cannot overlap
+- WireGuard use `AllowedIPs` to choose peer
+- Set `Endpoint` to the peer to initiate the connection
 
 :::
+
+### Method 1
+
+Use config file
 
 Peer A
 
@@ -101,14 +88,58 @@ Peer B
 ```ini
 [Interface]
 Address = 10.0.0.2/24
+# DNS = 10.0.0.2, fd00::1
 PrivateKey = AM/sFBkkiMGL4iGUMV1RO+cVmeaHcE5uGg/xxUoDsH0=
 
 [Peer]
 PublicKey = cWlZ8WRv4D0bGACuHwXGfmudZeMsFDYiVSmjPlVc0ko=
 AllowedIPs = 10.0.0.1/32, 10.0.1.0/24
+Endpoint = 1.1.1.1:10100
 
 # for routing all traffic to Peer A
 # AllowedIPs = 0.0.0.0/0
+```
+
+```bash
+wg setconf wg0 wg0.conf
+```
+
+### Method 2
+
+Use CLI parameters
+
+```bash
+# Peer A
+wg set wg0 listen-port 10100 private-key "/path/to/private-key" peer "<peer B public key>" allowed-ips 10.0.0.2/32,10.0.2.0/24
+```
+
+```bash
+# Peer B
+wg set wg0 listen-port 10100 private-key "/path/to/private-key" peer "<peer A public key>" allowed-ips 10.0.0.1/32,10.0.1.0/24 endpoint 1.1.1.1:10100
+```
+
+```bash
+ip link set up dev wg0
+```
+
+## Route to WireGuard interface
+
+- `AllowedIPs` will auto create route, don't need to manually add route
+
+```sh
+ip route add <subnet>/<mask> dev wg0
+```
+
+Peer A
+
+```sh
+ip route add 10.0.2.0/24 dev wg0
+```
+
+Peer B
+
+```sh
+ip route add 10.0.1.0/24 dev wg0
 ```
 
 ## Show status
@@ -140,7 +171,7 @@ wg-quick up /path/to/wgnet0.conf
 
 ## OpenWRT
 
-```bash
+```sh
 opkg install luci-app-wireguard
 /etc/init.d/network restart
 ```
