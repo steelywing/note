@@ -113,6 +113,18 @@ firewall-cmd --remove-port 8080/tcp
 firewall-cmd --runtime-to-permanent
 ```
 
+## Redirect port
+
+```sh
+firewall-cmd --add-forward-port=port=<port>:proto={udp|tcp}:toport=<to port>
+```
+
+Redirect TCP port 8080 to 80
+
+```sh
+firewall-cmd --add-forward-port=port=8080:proto=tcp:toport=80
+```
+
 ## Make runtime setting persistent
 
 Save runtime setting
