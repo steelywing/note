@@ -2,7 +2,6 @@
 
 - Call `async` method will return a `Task` / `Task<T>`, `<T>` is return value type
   - `Task` == JavaScript `Promise`
-  - `async` method run in new thread
 - C# `async` method must include `await`, otherwise will run sync
 - Use `Task.Delay(<ms>)` to create a delay task
 - Call `await <Task>` to wait the `Task` return result

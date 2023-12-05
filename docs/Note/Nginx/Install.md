@@ -145,6 +145,7 @@ nginx -V
 cd nginx-1.22.0
 
 # Nginx CentOS default config
+# Ref: `nginx -V`
 ./configure \
     --with-openssl="../$OPENSSL" \
     --prefix=/etc/nginx \

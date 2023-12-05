@@ -2,7 +2,7 @@
 
 ## LF (Low Frequency)
 
-RF: 125 KHz
+- RF: 125 KHz
 
 ### EM4100
 
@@ -10,21 +10,17 @@ Alias: ID card
 
 ## HF (High Frequency)
 
-RF: 13.56 MHz
-
-ISO 18000-3
-
-Reader: MFRC522 (SPI port), PN532 (UART port)
+- RF: 13.56 MHz
+- ISO 18000-3
+- Reader: MFRC522 (SPI port), PN532 (UART port)
 
 ### MiFare
 
 #### MiFare Classic
 
-[MiFare Classic 1K Reference](https://www.nxp.com/docs/en/data-sheet/MF1S50YYX_V1.pdf)
-
-[MiFare Classic 4K Reference](https://www.nxp.com/docs/en/data-sheet/MF1S70YYX_V1.pdf)
-
-ISO/IEC 14443 Type A
+- [MiFare Classic 1K Reference](https://www.nxp.com/docs/en/data-sheet/MF1S50YYX_V1.pdf)
+- [MiFare Classic 4K Reference](https://www.nxp.com/docs/en/data-sheet/MF1S70YYX_V1.pdf)
+- ISO/IEC 14443 Type A
 
 Alias: IC card
 
@@ -33,13 +29,13 @@ Alias: IC card
 [MiFare Classic Universal toolKit](https://github.com/nfc-tools/mfcuk)
 
 | Name | Description |
-| - | - |
+|-|-|
 | PICC | Proximity Integrated Circuit Card (Contactless Card) |
 | ACK | Acknowledge |
 | NAK | Not AcKnowledge |
 | RF | Radio Frequency |
 
-##### PICC status
+PICC status
 
 ```
 IDLE
@@ -53,13 +49,12 @@ HALT
 READY
 ```
 
-
-##### Memory Organization
+Memory Organization
 
 ```
 MiFare Classic 1K = 16 ✖ Sector
 
-Sector = 3 ✖ Data Block + Sector Trailer = 4 ✖ (16 Bytes)
+1 Sector = 3 ✖ Data Block + Sector Trailer = 4 ✖ (16 Bytes)
 ```
 
 ```
@@ -71,7 +66,7 @@ MiFare Classic 4K =
 
 ```
 Sector[0] Read Only
-Sector[0] Block[0] = 4 ✖ UID + Manufacturer Data
+Sector[0].Block[0] = 4 ✖ UID + Manufacturer Data
 ```
 
 ```
@@ -83,3 +78,5 @@ Sector Trailer = Key A (6 Bytes) + Access Bits (4 Bytes) + Key B (6 Bytes)
 ```
 
 ### NFC
+
+- RF: 13.56 MHz
