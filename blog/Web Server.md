@@ -17,7 +17,7 @@ tags: [Web, Server]
 
 - Fast
 - Popular
-- Conditional config not flexible (see [Nginx if](Nginx/if.md))
+- Conditional config not flexible
 - Language: C
 
 ## Caddy
