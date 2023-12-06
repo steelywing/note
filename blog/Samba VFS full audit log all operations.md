@@ -5,41 +5,57 @@ tags: [Samba, SMB]
 
 # Samba VFS full audit log all operations
 
-- VFS full audit operations change in different version, even `man vfs_full_audit` is not updated
-- If un-supported operation is defined, `all` is used
+> Ref: `man vfs_full_audit`
 
 <!--truncate-->
 
-Full audit config (this version does not have `chmod`)
+Enable `full_audit`
 
 ```ini
 [global]
+# enable "full_audit"
 vfs objects = full_audit
-map acl inherit = yes
-full_audit:failure = connect disconnect chmod
-full_audit:success = connect disconnect chmod
+
+# the log message prefix, the default is "%u|%I"
+# full_audit:prefix = %u|%I
+
+# log successful "connect", "disconnect" operations
+full_audit:success = connect disconnect
+
+# log all failure operations except "open"
+full_audit:failure = all !open
 ```
 
-Set `full_audit` log level
+:::info
+
+- VFS full audit operations are different in different version, even `man vfs_full_audit` is not updated
+- If un-supported operation is set, `all` is used
+
+:::
+
+## Log level
+
+- Higher log level ▶ More detailed log
+
+To set `full_audit` log level to 10 (debug)
 
 ```ini
 [global]
-log level = full_audit:10@/var/log/samba/audit.log
-# log level = full_audit:10
+log level = full_audit:10
+# log level = full_audit:10@/var/log/samba/audit.log
 ```
 
-or set `log level` to debug
+To set all `log level` to 10 (debug)
 
 ```ini
 [global]
-
 log file = /var/log/samba/log.%m
 log level = 10
 ```
 
-Access Samba from client, Samba will log the debug message
+Now, access Samba from client, Samba will log the debug message
 
-Find the un-supported operations
+## Find the un-supported operations
 
 ```sh
 grep -r "Could not find opname" /var/log/samba/
