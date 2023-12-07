@@ -25,9 +25,6 @@ wg genkey | tee private-key | wg pubkey > public-key
 
 ## CLI
 
-```mermaid
-```
-
 Peer A
 - Public IP `1.1.1.1`
 - LAN `10.0.1.0/24`

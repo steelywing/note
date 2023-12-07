@@ -8,7 +8,7 @@
 | List rules | `iptables -S [<chain>]` |
 | Dump iptables to file | `iptables-save > <file>` |
 | Restore iptables from file | `iptables-restore < <file>` |
-| Save iptables (Red Hat <= 6) | `service iptables save` |
+| Save iptables (Red Hat \<= 6) | `service iptables save` |
 | Create new chain (User-defined) | `iptables -N <chain>` |
 
 ## Flow

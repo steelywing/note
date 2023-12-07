@@ -265,7 +265,7 @@ a?[x]
 
 If a is null, the result is null, otherwise the result is a[x]
 
-## `byte[]` <-> Hex `string`
+## `byte[]` \<-\> Hex `string`
 
 `byte[]` to `string`
 

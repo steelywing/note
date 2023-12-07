@@ -17,7 +17,7 @@ tags: [Web, Server]
 
 - Fast
 - Popular
-- Conditional config not flexible
+- Conditional config not flexible (see [Nginx if](/Note/Nginx/if/))
 - Language: C
 
 ## Caddy
@@ -37,6 +37,7 @@ tags: [Web, Server]
 - Cross platform
 - Self-contained (single executable file)
 - Lightweight ( < 2MB for Windows / Linux x86 )
+- Language: Rust
 
 ### For **node.js**
 

@@ -1,6 +1,6 @@
 ---
 date: 2023-11-30
-tags: [disk]
+tags: [Disk]
 ---
 
 # Disk Usage Tool

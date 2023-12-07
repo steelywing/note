@@ -254,7 +254,7 @@ fuser <option> <file>
 | - | - |
 | `-v`, `--verbose` | Verbose |
 | `-k`, `--kill` | Kill processes accessing the file |
-| { `-c` \| `-m` \| `--mount` } { `<mount point>` \| `<device>` } | Mount point or device |
+| \{ `-c` \| `-m` \| `--mount` \} \{ `<mount point>` \| `<device>` \} | Mount point or device |
 
 ## Watch
 

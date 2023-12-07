@@ -48,7 +48,7 @@ Mail
 
 ## Module / Service
 
-<= Zentyal 4
+\<= Zentyal 4
 
 ```bash
 /etc/init.d/zentyal <module> { start | stop | status | enabled | restart }
