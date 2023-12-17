@@ -125,7 +125,7 @@ module.exports = {
         },
         theme: {
           customCss: [
-            require.resolve('./src/css/katex.css'),
+            // require.resolve('./src/css/katex.css'),
             require.resolve('./src/css/custom.css'),
           ]
         },
@@ -141,10 +141,10 @@ module.exports = {
         language: ["en", "zh"],
         // language: ["en"],
         indexPages: true,
-        indexBlog: false,
+        indexBlog: true,
         indexDocs: true,
         // docsRouteBasePath: '/',
-        highlightSearchTermsOnTargetPage: true,
+        // highlightSearchTermsOnTargetPage: true,
       },
     ],
     '@docusaurus/theme-mermaid',
@@ -159,5 +159,11 @@ module.exports = {
         docsRouteBasePath: '/',
       }
     ]*/
+  ],
+  stylesheets: [
+    {
+      href: '/katex/katex.min.css',
+      type: 'text/css',
+    },
   ],
 };
