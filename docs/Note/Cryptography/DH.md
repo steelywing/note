@@ -1,22 +1,8 @@
-## Symmetric key
+# DH
 
-### DES (Data Encryption Standard)
+Diffie–Hellman
 
-*deprecated*
-
-### 3DES (Triple Data Encryption Algorithm)
-
-*deprecated*
-
-### AES (Advanced Encryption Standard)
-
-*recommended*
-
-## Asymmetric key (public/private key)
-
-### RSA (Rivest–Shamir–Adleman)
-
-## DH (Diffie–Hellman) key exchange
+## DH Key Exchange
 
 | Variable | Description | Property | Value |
 | - | - | - | - |
@@ -52,7 +38,7 @@ s = (gᵃ mod p)ᵇ mod p = (gᵇ mod p)ᵃ mod p
   - 只有 `g`, `p`, `A` 值很難計算出 `a` 的值 (Discrete logarithm 離散對數)
   - 只有 `g`, `p`, `B` 值很難計算出 `b` 的值 (Discrete logarithm 離散對數)
 
-### 密鑰交換過程
+## 密鑰交換過程
 
 - Alice 傳送 `g`, `p`, `A` 的值給 Bob，Bob 可以計算 `Aᵇ mod p` 得到 `s` 值
 - Bob 傳送 `B` 值給 Alice，Alice 可以計算 `Bᵃ mod p` 得到 `s` 值
