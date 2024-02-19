@@ -1,3 +1,6 @@
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Steely Wing Note',
@@ -15,10 +18,12 @@ module.exports = {
   },
   themeConfig: {
     prism: {
+      // https://prismjs.com/#supported-languages
       additionalLanguages: [
         'bash',
         'php',
         'ini',
+        'toml',
         'nginx',
         'csharp',
         'powershell',
@@ -117,16 +122,15 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
             'https://github.com/steelywing/note/edit/master/',
-          remarkPlugins: [require('remark-math')],
-          rehypePlugins: [require('rehype-katex')],
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
         },
         blog: {
           blogSidebarCount: 16,
         },
         theme: {
           customCss: [
-            // require.resolve('./src/css/katex.css'),
-            require.resolve('./src/css/custom.css'),
+            './src/css/custom.css',
           ]
         },
       },
