@@ -2,10 +2,13 @@
 
 > Video Guide: [Security-Enhanced Linux for mere mortals](https://youtu.be/_WOKRaM-HI4)
 
-|||
--|-
-Enforcing | apply policy
-Permissive | log but do not apply policy
+- RedHat use SELinux by default
+- Debian / Ubuntu use AppArmor by default
+
+|-|-|
+|-|-|
+| Enforcing | apply policy |
+| Permissive | log but do not apply policy |
 
 ## Get SELinux status
 
@@ -56,10 +59,10 @@ journalctl
 - moved (`mv`) file will not change context
 - SELinux use config file `/etc/selinux/targeted/contexts/files/file_contexts` to set default context
 
-|||
--|-
-`-r` \| `-R` | recursive
-`-v` | verbose, show changes in file labels
+| | |
+|-|-|
+| `-r` \| `-R` | recursive |
+| `-v` | verbose, show changes in file labels |
 
 ```sh
 restorecon [<options>] <path>
