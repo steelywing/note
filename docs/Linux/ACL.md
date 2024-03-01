@@ -6,7 +6,10 @@ sidebar_label: ACL
 
 Access Control List
 
-- Directory has default ACL, the ACL is applied to the file and directory created in that directory
+- Directory has `default` ACL, `default` ACL is applied to the file and directory created in that directory
+- `default` 允許為目錄設定預設的 ACL 權限。當一個目錄設定了 `default` ACL 後，新建的檔案和子目錄會繼承該目錄的 `default` ACL
+- Only **root** can set owner / group, owner cannot set the owner of file / directory
+- Only **owner** / **root** can change permission, user in group cannot change permission
 
 ## ACL order
 
@@ -116,34 +119,36 @@ other::---
 
 `admin` read `file` is allow
 
-- ```sh
-  getfacl file
-  ...
-  group:user:---
-  group:admin:r--
-  mask::r--
-  ```
+```sh
+getfacl file
+...
+group:user:---
+group:admin:r--
+mask::r--
+```
 
-- user `admin` is allow to access `file`
-  - allow access if any group of the process is granted permission
-  - even group `user` is deny
+user `admin` is allow to access `file`:
+
+- allow access if any group of the process is granted permission
+- even group `user` is deny
 
 ---
 
 `admin` read `first` is deny
 
-- ```sh
-  getfacl first
-  ...
-  user:admin:---
-  group:user:---
-  group:admin:r--
-  mask::r--
-  ```
+```sh
+getfacl first
+...
+user:admin:---
+group:user:---
+group:admin:r--
+mask::r--
+```
 
-- user `admin` is deny access `first`
-  - first matched named user ACL is used
-  - even group `admin` is allow access
+user `admin` is deny to access `first`:
+
+- first matched named user ACL is used
+- even group `admin` is allow access
 
 ## Mask
 
