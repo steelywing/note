@@ -17,9 +17,9 @@
   /* font-style: normal; */
   font-weight: 100;
   src: local('Noto Sans TC'),
-    url('/static/noto-sans-tc-v26-latin_chinese-traditional-regular.woff2') format('woff2'),
+    url('/noto-sans-tc-v26-latin_chinese-traditional-regular.woff2') format('woff2'),
     /* Chrome 26+, Opera 23+, Firefox 39+ */
-    url('/static/noto-sans-tc-v26-latin_chinese-traditional-regular.woff') format('woff');
+    url('/noto-sans-tc-v26-latin_chinese-traditional-regular.woff') format('woff');
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
