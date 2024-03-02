@@ -74,7 +74,7 @@ restorecon [<options>] <path>
 semanage fcontext -a -t <context type> <path RegExp>
 ```
 
-Set `/www` default context to `httpd_sys_content_t`
+Set `/web` default context to `httpd_sys_content_t`
 
 ```sh
 semanage fcontext -a -t httpd_sys_content_t "/web(/.*)?"
