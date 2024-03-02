@@ -6,31 +6,61 @@
 
 Lightweight Directory Access Protocol
 
+## DSA
+
+Directory System Agent
+
+Provide LDAP service
+
+## Entry
+
+Include
+
+- [DN](#dn)
+- Attributes
+- Classes
+
+## DN
+
+Distinguished Name
+
+Unique ID string of entry
+
 ## `<filter>`
 
-```
+```ldap
 (<attribute><operator><value>)
 ```
 
-| `<operator>` | Meaning |
-| - | - |
-| = | Equality |
-| >= | Greater than or equal to (lexicographical) |
-| <= | Less than or equal to (lexicographical) |
+> Ref: [Search Filter Syntax](https://learn.microsoft.com/en-us/windows/win32/adsi/search-filter-syntax)
 
-## not `<filter>`
+## Matching rule
 
+```ldap
+(<attribute>:<matching rule OID>:=<value>)
 ```
+
+| `<operator>` | Meaning |
+|-|-|
+| `=` | Equality |
+| `>=` | Greater than or equal to (lexicographical) |
+| `<=` | Less than or equal to (lexicographical) |
+
+not
+
+```ldap
 (!<filter>)
 ```
 
-## or `<filter>`
-```
+or
+
+```ldap
 (|<filter><filter>...)
 ```
 
-## and `<filter>`
-```
+and
+
+```ldap
 (&<filter><filter>...)
 ```
 
@@ -38,17 +68,17 @@ Lightweight Directory Access Protocol
 
 Wildcard
 
-```
+```ldap
 [*]<value>[*]
 ```
 
-```
+```ldap
 <text>
 ```
 
 ## Not empty `<attribute>`
 
-```
+```ldap
 (<attribute>=*)
 ```
 
@@ -66,23 +96,23 @@ Escape Characters `\<ascii code (2 digits)>`
 
 ## `objectCategory` and `objectClass`
 
-- `objectCategory` is both single valued and indexed
+- `objectCategory` is single valued and indexed
 - `objectClass` is multi-valued and not indexed
 
 | `objectCategory` | `objectClass` | Result |
 | - | - | - |
-| person | user | user objects |
-| person |  | user and contact objects |
-| person | contact | contact objects |
-|  | user | user and computer objects |
-| computer |  | computer objects |
-| user |  | user and contact objects |
-|  | contact | contact objects |
-|  | computer | computer objects |
-|  | person | user, computer, and contact objects |
-| contact |  | user and contact objects |
-| group |  | group objects |
-|  | group | group objects |
-| person | organizationalPerson | user and contact objects |
-|  | organizationalPerson | user, computer, and contact objects |
-| organizationalPerson |  | user and contact objects |
+| `person` | `user` | user objects |
+| `person` |  | user and contact objects |
+| `person` | `contact` | contact objects |
+|  | `user` | user and computer objects |
+| `computer` |  | computer objects |
+| `user` |  | user and contact objects |
+|  | `contact` | contact objects |
+|  | `computer` | computer objects |
+|  | `person` | user, computer, and contact objects |
+| `contact` |  | user and contact objects |
+| `group` |  | group objects |
+|  | `group` | group objects |
+| `person` | `organizationalPerson` | user and contact objects |
+|  | `organizationalPerson` | user, computer, and contact objects |
+| `organizationalPerson` |  | user and contact objects |
