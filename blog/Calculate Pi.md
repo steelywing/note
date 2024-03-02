@@ -7,7 +7,9 @@ tags: [Math, Programming]
 
 Calculating Pi with code
 
-$\pi = 4 \cdot {(1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + ...)}$
+$$
+\pi = 4 \cdot (1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + ...)
+$$
 
 <!--truncate-->
 
