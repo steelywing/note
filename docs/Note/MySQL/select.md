@@ -1,5 +1,5 @@
 ---
-sidebar_label: `select`
+sidebar_label: select
 ---
 
 # `select` in MySQL
