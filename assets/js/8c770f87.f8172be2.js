@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[2518],{71197:s=>{s.exports=JSON.parse('{"label":"VPN","permalink":"/note/blog/tags/vpn","allTagsPath":"/note/blog/tags","count":1,"unlisted":false}')}}]);

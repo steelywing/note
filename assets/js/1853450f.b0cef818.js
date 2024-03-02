@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[7358],{90188:s=>{s.exports=JSON.parse('{"label":"PDM","permalink":"/note/blog/tags/pdm","allTagsPath":"/note/blog/tags","count":1,"unlisted":false}')}}]);

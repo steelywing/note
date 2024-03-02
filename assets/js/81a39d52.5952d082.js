@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[1394],{40528:s=>{s.exports=JSON.parse('{"label":"Stress Test","permalink":"/note/blog/tags/stress-test","allTagsPath":"/note/blog/tags","count":1,"unlisted":false}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[2224],{33455:s=>{s.exports=JSON.parse('{"label":"Disk Image","permalink":"/note/blog/tags/disk-image","allTagsPath":"/note/blog/tags","count":1,"unlisted":false}')}}]);

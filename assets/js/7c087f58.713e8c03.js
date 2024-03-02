@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[9129],{28341:s=>{s.exports=JSON.parse('{"label":"OUI","permalink":"/note/blog/tags/oui","allTagsPath":"/note/blog/tags","count":1}')}}]);

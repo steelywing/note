@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[1851],{9921:a=>{a.exports=JSON.parse('{"label":"FortiGate","permalink":"/note/blog/tags/forti-gate","allTagsPath":"/note/blog/tags","count":2}')}}]);

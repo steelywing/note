@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[5526],{91872:e=>{e.exports=JSON.parse('{"label":"Speed Test","permalink":"/note/blog/tags/speed-test","allTagsPath":"/note/blog/tags","count":1}')}}]);

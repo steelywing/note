@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[42],{89102:s=>{s.exports=JSON.parse('{"label":"Firewall","permalink":"/note/blog/tags/firewall","allTagsPath":"/note/blog/tags","count":3,"unlisted":false}')}}]);

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[2563],{5995:s=>{s.exports=JSON.parse('{"label":"OpenVPN","permalink":"/note/blog/tags/open-vpn","allTagsPath":"/note/blog/tags","count":1}')}}]);

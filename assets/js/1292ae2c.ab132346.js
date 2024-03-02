@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[3771],{1867:s=>{s.exports=JSON.parse('{"label":"SFTP","permalink":"/note/blog/tags/sftp","allTagsPath":"/note/blog/tags","count":1,"unlisted":false}')}}]);

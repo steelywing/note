@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[880],{92114:e=>{e.exports=JSON.parse('{"label":"DHCP","permalink":"/note/tags/dhcp","allTagsPath":"/note/tags","count":1,"items":[{"id":"Network/Cisco/IOS/DHCP","title":"DHCP","description":"Ref","permalink":"/note/Network/Cisco/IOS/DHCP"}],"unlisted":false}')}}]);

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[4605],{578:e=>{e.exports=JSON.parse('{"label":"Debug","permalink":"/note/tags/debug","allTagsPath":"/note/tags","count":1,"items":[{"id":"Network/Cisco/IOS/Diagnostic","title":"Diagnostic","description":"Get CPU usage","permalink":"/note/Network/Cisco/IOS/Diagnostic"}]}')}}]);

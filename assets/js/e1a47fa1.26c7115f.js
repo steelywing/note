@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[3120],{27740:e=>{e.exports=JSON.parse('{"label":"STP","permalink":"/note/tags/stp","allTagsPath":"/note/tags","count":1,"items":[{"id":"Network/Cisco/IOS/STP","title":"STP","description":"Spanning Tree Protocol","permalink":"/note/Network/Cisco/IOS/STP"}]}')}}]);

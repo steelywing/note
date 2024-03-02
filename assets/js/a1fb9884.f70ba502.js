@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[8854],{52201:s=>{s.exports=JSON.parse('{"label":"ACL","permalink":"/note/tags/acl","allTagsPath":"/note/tags","count":1,"items":[{"id":"Network/Cisco/IOS/ACL","title":"ACL","description":"Access Control List","permalink":"/note/Network/Cisco/IOS/ACL"}],"unlisted":false}')}}]);
