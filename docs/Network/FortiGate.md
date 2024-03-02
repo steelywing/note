@@ -1,3 +1,9 @@
+# FortiGate
+
+- If policy is set to **Proxy-based** mode, that use CPU to process traffic (low performance)
+  - SSL/TLS offload only works in **Proxy-based** mode
+- If policy is set to **Flow-based** mode, that use nTurbo / SPU (hardware encrypt/decrypt) to process traffic (high performance)
+
 ## Packet Sniffer
 
 > [Reference](http://kb.fortinet.com/kb/viewContent.do?externalId=11186)
