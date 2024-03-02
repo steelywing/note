@@ -1,4 +1,8 @@
-# `select`
+---
+sidebar_label: `select`
+---
+
+# `select` in MySQL
 
 ## Select `date` from `datetime` with index
 

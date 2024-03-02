@@ -4,24 +4,30 @@ sidebar_label: User
 
 # User - MySQL
 
-## Parameter
+`<host>`
 
-```sh
-# <host>
+```sql
 localhost | <IP address>[/<net mask>] | %
 ```
 
-```sh
-# <IP address>
+`<IP address>[/<net mask>]`
+
+```sql
 10.0.0.1
 10.0.0.0/255.255.255.0
 10.0.%
 ```
 
+- `%` is wildcard
+
 ## Create user
 
 ```sql
 create user '<user>'@'<host>' identified by '<password>';
+```
+
+```sql
+create user alice@localhost identified by 'password';
 ```
 
 ## Display user
@@ -30,26 +36,32 @@ create user '<user>'@'<host>' identified by '<password>';
 select user, host from mysql.user;
 ```
 
+```sql
+select * from mysql.user \G
+```
+
 ## Drop user
 
 ```sql
 drop user '<user>'@'<host>';
 ```
 
-## Permission / Privilege
-
-### Grant permission
-
 ```sql
-grant all
-  on {*|<database>}.{*|<table>}
-  to '<user>'@'<host>';
-
-flush privileges;
+drop user alice@localhost;
 ```
 
-### Show permission
+## Allow **root** login with password
 
 ```sql
-show grants [for <user>];
+ALTER USER '<user>'@'<host>'
+    IDENTIFIED WITH { mysql_native_password | caching_sha2_password }
+    BY '<password>';
+```
+
+- `caching_sha2_password` is added in MySQL 8
+
+```sql
+ALTER USER root@localhost
+    IDENTIFIED WITH mysql_native_password
+    BY 'password';
 ```
