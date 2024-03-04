@@ -21,7 +21,7 @@ ProxyPass "/" "http://<server>/"
 
 Proxy request that is start with `/api/`
 
-- Request `/api/get` get proxy to `http://<server>/get`
+- Request `/api/get` will get proxy to `http://<server>/get`
 
 ```apacheconf
 ProxyPass "/api/" "http://<server>/"
@@ -54,10 +54,9 @@ ProxyPassReverse "/" "https://<server>/"
 ## `ProxyPass` in `<VirtualHost>`
 
 ```apacheconf
-<VirtualHost *:443>
-    SSLEngine on
+<VirtualHost *:80>
     ServerName host.example.com
-    ProxyPass
+    ProxyPass ...
 </VirtualHost>
 ```
 
