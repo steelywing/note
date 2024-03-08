@@ -43,3 +43,13 @@ Show PDM cache directory
 ```sh
 pdm config cache_dir
 ```
+
+Show PyTorch version
+
+```sh
+pdm run python -c "import torch; print(torch.__version__)"
+```
+
+```text
+2.2.0+cu121
+```
