@@ -125,7 +125,7 @@ if ($and) {
 Method 3
 
 ```nginx
-set $and ""
+set $and "";
 
 if (<condition>) {
     set $and "0";

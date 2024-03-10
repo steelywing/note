@@ -40,6 +40,8 @@ location / {
 }
 ```
 
+See also [`internal` location](./Location.md#internal-location)
+
 ### Allow specify IP address bypass
 
 ```nginx
@@ -71,6 +73,8 @@ server {
     }
 }
 ```
+
+See also [`internal` location](./Location.md#internal-location)
 
 ## For web page with asset file
 
