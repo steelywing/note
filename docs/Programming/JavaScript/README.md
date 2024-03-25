@@ -83,7 +83,9 @@ function benchmark(run) {
 }
 ```
 
-## HTTP Server
+## Static Web Server
+
+### `http-server`
 
 - [Version 14 has error ERR_HTTP_HEADERS_SENT](https://github.com/http-party/http-server/issues/634)
 
@@ -92,3 +94,7 @@ npm i -g http-server@13
 
 http-server .
 ```
+
+### Vercel `serve`
+
+See [serve](https://github.com/vercel/serve)

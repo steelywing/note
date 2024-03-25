@@ -38,7 +38,7 @@ class Program
 }
 ```
 
-- If the delegate has a return value and/or out parameters, it returns the return value and parameters of the last method invoked. 
+- If the delegate has a return value and/or out parameters, it returns the return value and parameters of the last method invoked
 - Delegate can bind to instance
 
 ```cs

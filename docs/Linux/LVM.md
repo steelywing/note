@@ -82,6 +82,20 @@ pvs
 pvdisplay
 ```
 
+## Resize PV
+
+`pvs` will auto detect available space and extend the PV
+
+```sh
+# pvs <pv> [--setphysicalvolumesize <size>]
+
+pvs /dev/sda1
+
+# or specify size 1T
+
+pvs /dev/sda1 --setphysicalvolumesize 1T
+```
+
 ## VG (Volume Group)
 
 ### Create VG
@@ -156,41 +170,33 @@ lvresize
     <LV>
 ```
 
-### Extent LV
+Unmount LV (Optional)
 
-`lvextend <size>` = `lvresize +<size>`
+```bash
+umount <LV>
+```
 
-### Reduce LV
+Resize LV to use all free space
 
-`lvreduce <size>` = `lvresize -<size>`
+```sh
+# lvresize -l +100%FREE -r <LV>
 
-- Unmount LV
+lvresize -l +100%FREE -r /dev/ubuntu-vg/ubuntu-lv
+```
+
+`--resizefs` is similar to do the following
+
+- Check file system
 
   ```bash
-  umount <LV>
+  fsck -f <LV>
   ```
 
-- Resize LV
+- Resize file system
 
   ```bash
-  lvresize 
-    -L [-]<size>[K|M|G|T|P|E]
-    --resizefs
-    <LV>
+  resize2fs <LV> <size>[s|K|M|G]
   ```
-
-  - `--resizefs` is similar to do the following
-    - Check file system
-
-      ```bash
-      fsck -f <LV>
-      ```
-
-    - Resize file system
-
-      ```bash
-      resize2fs <LV> <size>[s|K|M|G]
-      ```
 
 ## Troubleshooting
 

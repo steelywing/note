@@ -11,9 +11,11 @@ client-config-dir <path>
 
 ## Site to Site
 
-> - [OpenVPN](https://community.openvpn.net/openvpn/wiki/RoutedLans)
-> - [OpenWRT](https://openwrt.org/docs/guide-user/services/vpn/openvpn/extras)
-> - [pfSense](https://docs.netgate.com/pfsense/en/latest/troubleshooting/openvpn-iroute.html)
+> [OpenVPN](https://community.openvpn.net/openvpn/wiki/RoutedLans)
+
+> [OpenWRT](https://openwrt.org/docs/guide-user/services/vpn/openvpn/extras)
+
+> [pfSense](https://docs.netgate.com/pfsense/en/latest/troubleshooting/openvpn-iroute.html)
 
 - Server: `10.10.0.0/24`
 - Client 1: `10.10.1.0/24`

@@ -101,14 +101,18 @@ optimize table <table> [, ...];
 
 [client]
 # Option for client (mysql, mysqldump, ...)
-port=<port>
-password=<password>
+
+# port=<port>
+port=3306
+
+# password=<password>
+password=This15Password
 
 <option>
-# This is equivalent to --<option> on the command line
+# equivalent to "--<option>" on the command line
 
 <option>=<value>
-# This is equivalent to --<option>=<value> on the command line
+# equivalent to "--<option>=<value>" on the command line
 
 !include <file>
 # include config file

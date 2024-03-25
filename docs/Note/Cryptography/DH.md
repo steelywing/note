@@ -25,6 +25,7 @@ s = gᵃᵇ mod p = gᵇᵃ mod p
 ```
 
 Modulo Distributive 模除 分配律
+
 ```
 s = (gᵃ mod p)ᵇ mod p = (gᵇ mod p)ᵃ mod p
 ```
