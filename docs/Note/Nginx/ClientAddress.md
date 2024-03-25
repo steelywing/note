@@ -7,7 +7,7 @@ $remote_addr
 
 ## Get client IP address from header
 
-For Nginx behind proxy, use [Real IP address](Proxy.md#real-ip-address)
+For Nginx behind proxy, use [Real IP address](Proxy.md#real-client-ip-address)
 
 ## Map IP address
 
