@@ -127,6 +127,8 @@ module.exports = {
         },
         blog: {
           blogSidebarCount: 16,
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
         },
         theme: {
           customCss: [
@@ -166,7 +168,7 @@ module.exports = {
   ],
   stylesheets: [
     {
-      href: '/katex/katex.min.css',
+      href: '/note/katex/katex.min.css',
       type: 'text/css',
     },
   ],
