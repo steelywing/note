@@ -23,7 +23,7 @@ TLS SNI support enabled
 
 Check the `error_log` that without
 
-```
+```text
 nginx was built with SNI support, however, now it is linked
 dynamically to an OpenSSL library which has no tlsext support,
 therefore SNI is not available
