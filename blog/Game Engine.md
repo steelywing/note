@@ -1,4 +1,13 @@
+---
+date: 2022-01-02
+tags: [Game, Game Dev]
+---
+
 # Game Engine
+
+Feature of Game Engine
+
+<!--truncate-->
 
 ## Unity
 
@@ -17,7 +26,8 @@
 - Script: GDScript, C#, Visual Script
 - License: MIT
 - Lack of Physics API
-- 2D, 3D, Bullet Physics
+- 2D, 3D
+- In V3.X, use Bullet Physics as 3D physics engine
 
 ## Unreal
 
