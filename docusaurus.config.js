@@ -7,7 +7,7 @@ module.exports = {
   tagline: '夜羽筆記',
   url: 'https://steelywing.github.io',
   baseUrl: '/note/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'log',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'steelywing', // GitHub org/user name.
