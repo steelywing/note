@@ -10,6 +10,10 @@ Spanning Tree Protocol
 
 > [AlliedWare Reference](https://www.alliedtelesis.com/sites/default/files/documents/how-alliedware-plus/howto_aw-_config_pvst_interop_cisco_revb.pdf)
 
+> Ref: [H3C STP](./H3C-STP.pdf)
+
+> Ref: [Arista STP with Cisco](./STP-with-Cisco.pdf)
+
 - STP (Spanning Tree Protocol) / CST (Common Spanning Tree)
   - IEEE 802.1D
 - RSTP (Rapid Spanning Tree Protocol)
@@ -23,7 +27,6 @@ Spanning Tree Protocol
 - Rapid-PVST
   - Cisco proprietary protocol
   - Compatible with PVST
-  - PVST = RSTP BPDU on native VLAN + SSTP per VLAN
 
 | Port role | Forward BPDU | Forward frame |
 |-|-|-|
@@ -32,8 +35,6 @@ Spanning Tree Protocol
 | Designated | O | O |
 
 ## STP mode
-
-Recommended: Rapid-PVST
 
 ```
 Switch(config)# spanning-tree mode { pvst | rapid-pvst | mst }
