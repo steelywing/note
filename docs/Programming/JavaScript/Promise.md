@@ -1,34 +1,70 @@
 # Promise
 
 ```js
-var executor = (resolve, reject) => {
+var promise = new Promise(
+  (resolve, reject) => {
     // ...
-    let value = "value";
+  }
+);
 
-    resolve(value);
-    // promise.<state> = "fulfilled";
-    // promise.<value> = value;
+```
 
-    reject(value);
-    // promise.<state> = "rejected";
-    // promise.<value> = value;
+## Executor
+
+- `executor` will be executed when `Promise` create ([Ref](https://tc39.es/ecma262/#sec-promise-executor))
+- `resolve` and `reject` are callback function
+- `executor()` no need to return value
+
+> Ref: [MDN `Promise()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise)
+
+```js
+var executor = (resolve, reject) => {
+    // if success, call resolve()
+    resolve("value");
+    // after call resolve():
+    // Promise { <state>: "fulfilled", <value>: "value" }
+
+    // if fail, call reject()
+    reject("error");
+    // after call reject():
+    // Promise { <state>: "rejected", <reason>: "error" }
 };
 
 var promise = new Promise(executor);
-// promise.<state> = "pending";
+// Promise { <state>: "pending" }
 ```
 
-```js title="pseudo code"
-while (promise.<state> == "pending") {  }
+Example
 
-if (promise.<state> == "fulfilled") {
-    promise.<onFulfilled>(promise.<value>);
-}
+```js
+var promise = new Promise((resolve, reject) => {
+    // fetch the data
+    let data = localStorage.getItem("data");
 
-if (promise.<state> == "rejected") {
-    promise.<onRejected>(promise.<value>);
-}
+    if (data === null) {
+        // failed
+        reject("no data");
+    }
+    
+    // success
+    resolve(data);
+});
+
+promise
+    .then((value) => {
+        console.log('data: ' + value);
+    })
+    .catch((value) => {
+        console.log('error: ' + value);
+    })
 ```
+
+## Handler function
+
+- `onFulfilled(value)`
+- `onRejected(value)`
+
+> Ref: [`Promise().then()` return value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then#return_value)
 
 ```js
 function onFulfilled(value) {
@@ -69,33 +105,11 @@ new Promise((resolve, reject) => {
 });
 ```
 
-## Executor
+### About handler function return value
 
-- `executor` will be executed when `Promise` create ([Ref](https://tc39.es/ecma262/#sec-promise-executor))
-- `resolve` and `reject` are callback function
-- `executor()` no need to return value
+If handler function doesn't return value
 
-> Ref: [MDN `Promise()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise)
-
-## Handler function
-
-- `onFulfilled(value)`
-- `onRejected(value)`
-
-> Ref: [`Promise().then()` return value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then#return_value)
-
-```js
-var promise = new Promise(
-  (resolve, reject) => {
-    // ...
-  }
-);
-
-```
-
-If handler function ...
-
-- doesn't return value
+- `value` is `undefined`
 
 ```js
 var promise = Promise.resolve().then(() => {
@@ -104,16 +118,18 @@ var promise = Promise.resolve().then(() => {
 
 promise.then((value) => {
   console.log(promise);
-  console.log("value =", value);
+  console.log("value:", value);
 });
 ```
 
 ```js title="Output"
 Promise { <state>: "fulfilled", <value>: undefined }
-value = undefined
+value: undefined
 ```
 
-- return value that is not `Promise`
+If handler function return value that is not `Promise`
+
+- `value` is the return value
 
 ```js
 var promise = Promise.resolve().then(() => {
@@ -122,16 +138,18 @@ var promise = Promise.resolve().then(() => {
 
 promise.then((value) => {
   console.log(promise);
-  console.log("value =", value);
+  console.log("value:", value);
 });
 ```
 
 ```js title="Output"
 Promise { <state>: "fulfilled", <value>: "value" }
-value = value
+value: value
 ```
 
-- `return Promise.resolve()`
+If handler function return a `Promise.resolve()`
+
+- `value` is `promise.<value>`
 
 ```js
 var promise = Promise.resolve().then(() => {
@@ -140,16 +158,18 @@ var promise = Promise.resolve().then(() => {
 
 promise.then((value) => {
   console.log(promise);
-  console.log("value =", value);
+  console.log("value:", value);
 });
 ```
 
 ```js title="Output"
 Promise { <state>: "fulfilled", <value>: "value" }
-value = value
+value: value
 ```
 
-- `return Promise.reject()`
+If handler function return a `Promise.reject()`
+
+- `value` is `promise.<reason>`
 
 ```js
 var promise = Promise.resolve().then(() => {
@@ -158,16 +178,19 @@ var promise = Promise.resolve().then(() => {
 
 promise.catch((value) => {
   console.log(promise);
-  console.log("value =", value);
+  console.log("value:", value);
 });
 ```
 
 ```js title="Output"
 Promise { <state>: "rejected", <reason>: "value" }
-value = value
+value: value
 ```
 
-- return pending `Promise()`
+If handler function return pending `Promise`
+
+- it will wait the `Promise` to resolve
+- the `value` is the pending `Promise` resolve value
 
 ```js
 var promise = Promise.resolve().then(() => {
@@ -178,16 +201,19 @@ var promise = Promise.resolve().then(() => {
 
 promise.then((value) => {
   console.log(promise);
-  console.log("value =", value);
+  console.log("value:", value);
 });
 ```
 
 ```js title="Output"
 Promise { <state>: "fulfilled", <value>: "value" }
-value = value
+value: value
 ```
 
-- `throws "error";`
+If handler function `throw "value"`
+
+- the promise will be rejected
+- `value` is the throw `value`
 
 ```js
 var promise = Promise.resolve().then(() => {
@@ -196,11 +222,11 @@ var promise = Promise.resolve().then(() => {
 
 promise.catch((value) => {
   console.log(promise);
-  console.log("value =", value);
+  console.log("value:", value);
 });
 ```
 
 ```js title="Output"
 Promise { <state>: "rejected", <reason>: "error" }
-value = error
+value: error
 ```
