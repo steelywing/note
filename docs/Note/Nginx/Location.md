@@ -1,4 +1,8 @@
-# Location
+---
+sidebar_label: Location
+---
+
+# Location - Nginx
 
 ## Priority / Flow
 

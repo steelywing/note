@@ -1,7 +1,16 @@
-# Variable
+---
+sidebar_label: Variable
+---
+
+# Variable - Nginx
+
+These expressions are equivalent
 
 ```nginx
-$uri = "$uri" = ${uri} = "${uri}"
+$uri
+"$uri"
+${uri}
+"${uri}"
 ```
 
 > [Var Index](https://nginx.org/en/docs/varindex.html)

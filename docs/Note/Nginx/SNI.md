@@ -10,9 +10,9 @@ To support multiple SSL `server_name` `server` section, Nginx version must suppo
 
 :::
 
-## Check SNI support
+## To check if Nginx supports SNI
 
-> [Ref](http://nginx.org/en/docs/http/configuring_https_servers.html)
+> Ref: [Configuring HTTPS servers](http://nginx.org/en/docs/http/configuring_https_servers.html)
 
 ```bash
 $ nginx -V
@@ -39,7 +39,7 @@ If Nginx does not support TLS SNI, Nginx will use default server certificate for
 
 Create self signed certificate
 
-```bash
+```sh
 openssl req -x509 -newkey rsa -nodes -keyout default.key -days 36500 -out default.crt -subj "/CN=example.org"
 
 openssl req -x509 -newkey rsa -nodes -keyout a.key -days 36500 -out a.crt -subj "/CN=a.example.org"
@@ -84,18 +84,32 @@ server {
 
 Test SNI
 
-```bash
-# Use -v to see the certificate
+Use `curl -v` to show the certificate
 
-$ curl --insecure --resolve "a.example.org:443:127.0.0.1" https://a.example.org
+```sh
+curl --insecure --resolve "a.example.org:443:127.0.0.1" https://a.example.org
+```
 
+```text
 a.example.org page
+```
 
-$ curl --insecure --resolve "b.example.org:443:127.0.0.1" https://b.example.org
+---
 
+```sh
+curl --insecure --resolve "b.example.org:443:127.0.0.1" https://b.example.org
+```
+
+```text
 b.example.org page
+```
 
-$ curl --insecure https://127.0.0.1
+---
 
+```sh
+curl --insecure https://127.0.0.1
+```
+
+```text
 default page
 ```
