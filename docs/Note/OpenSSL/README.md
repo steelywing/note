@@ -22,7 +22,7 @@ Bundle X509 full chain certificate, private key
 
 > [Reference](https://www.openssl.org/docs/manmaster/man1/openssl-pkcs12.html)
 
-```bash
+```sh
 openssl pkcs12 -export
   -in <cert.{crt|pem}>
   [-certfile <ca.crt>]
@@ -33,6 +33,8 @@ openssl pkcs12 -export
 ```
 
 ## Certificate signature
+
+> Ref: [Digital signatures in SSL/TLS](./mq93.secure.pdf#unique_22)
 
 Certificate content
 
@@ -66,55 +68,24 @@ decrypt(CASignature, CAPublicKey) == hash(Content)
 
 ## Version
 
-```bash
+```sh
 openssl version
-```
-
-## Test SSL/TLS connection
-
-| Protocol | Port |
-| - | - |
-| HTTPS | 443 |
-| IMAPS | 993 |
-| IMAP STARTTLS | 143 |
-| POP3S | 995 |
-| SMTPS | 465 |
-| SMTP STARTTLS | 587 |
-
-| Option | Description |
-| - | - |
-| `-showcerts` | Show full chain certificate |
-
-```bash
-openssl s_client [-showcerts] -connect <host>:<port>
-```
-
-Show SSL certificate
-
-```bash
-openssl s_client -connect <host>:<port> | openssl x509 [-noout] [-text]
-```
-
-## Test SMTP / IMAP StartTLS
-
-```bash
-openssl s_client -starttls { smtp | imap | pop3 } -showcerts -connect <host>:<port> -servername <domain>
 ```
 
 ## Env
 
-```bash
+```sh
 OPENSSL_CONF=<openssl.cnf>
 ```
 
 Same as
 
-```bash
+```sh
 openssl ... -config <openssl.cnf>
 ```
 
 ## Show version
 
-```bash
+```sh
 openssl version
 ```
