@@ -2,9 +2,20 @@
 
 Certificate Signing Request
 
-> - [Reference](https://www.digicert.com/ssl-support/openssl-quick-reference-guide.htm)
-> - [openssl req](https://www.openssl.org/docs/manmaster/man1/openssl-req.html)
-> - [RFC 2986](https://tools.ietf.org/html/rfc2986)
+> [Reference](https://www.digicert.com/ssl-support/openssl-quick-reference-guide.htm)
+
+> [openssl req](https://www.openssl.org/docs/manmaster/man1/openssl-req.html)
+
+> [RFC 2986](https://tools.ietf.org/html/rfc2986)
+
+## CN and SAN
+
+Common Name (CN) and Subject Alternative Name (SAN)
+
+> Ref: [RFC 6125](https://datatracker.ietf.org/doc/html/rfc6125#autoid-63)]
+
+- If `subjectAltName` present, it must be used.
+- If `subjectAltName` not present, `CN` must be used.
 
 ## `<key option>`
 
