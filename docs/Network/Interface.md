@@ -97,7 +97,7 @@ Medium Dependent Interface, X = Crossover
 |  |  |
 | - | - |
 | Fiber type | SMF / MMF with Mode Conditioning Patch Cable |
-| Distance | SMF: 5 km, MMF: 550 m |
+| Max Distance | SMF: 5 km, MMF: 550 m |
 | Wavelength | 1,310 nm, 1,550 nm |
 | Slot | GBIC, SFP |
 | Connector | SC, LC |
@@ -107,7 +107,7 @@ Medium Dependent Interface, X = Crossover
 |  |  |
 | - | - |
 | Fiber type | MMF |
-| Distance | 550 m |
+| Max Distance | 550 m |
 | Wavelength | 770 - 860 nm |
 | Slot | GBIC, SFP |
 | Connector | SC, LC |
@@ -122,7 +122,7 @@ Medium Dependent Interface, X = Crossover
 
 > [FOA Reference](https://www.thefoa.org/tech/ref/basic/fiber.html)
 
-> [ISO/IEC 11801](https://en.wikipedia.org/wiki/ISO/IEC_11801)
+> [ISO/IEC 11801 - Wikipedia](https://en.wikipedia.org/wiki/ISO/IEC_11801)
 
 |  |  |
 | - | - |
@@ -130,19 +130,23 @@ Medium Dependent Interface, X = Crossover
 | Core diameter | 8 - 10.5 µm |
 | Cladding diameter | 125 µm |
 
+- OS2 dB lower (better) than OS1
+
 ### MMF (Multi Mode Fiber)
 
-> [Reference](https://en.wikipedia.org/wiki/Multi-mode_optical_fiber)
+> [Multi-mode optical fiber - Wikipedia](https://en.wikipedia.org/wiki/Multi-mode_optical_fiber)
 
 > [FOA Reference](https://www.thefoa.org/tech/ref/basic/fiber.html)
 
-> [ISO/IEC 11801](https://en.wikipedia.org/wiki/ISO/IEC_11801)
+> [ISO/IEC 11801 - Wikipedia](https://en.wikipedia.org/wiki/ISO/IEC_11801)
 
-|  |  |
-| - | - |
+| | |
+|-|-|
 | OM (Optical Multi-mode) | OM1 - OM5 |
 | Core diameter | 50 – 100 µm, OM1 = 62.5 µm, OM2, OM3, OM4, OM5 = 50 µm |
 | Cladding diameter | 125 µm |
+
+- OM5 dB lower (better) than OM1
 
 ### Connector
 
@@ -152,6 +156,12 @@ Medium Dependent Interface, X = Crossover
 | - | - |
 | SC | ![SC](img/SC.jpg) |
 | LC | ![LC](img/LC.jpg) |
+
+![Fiber Connector](img/fiber%20connector.jpg)
+
+- APC has a 8° angle end-face
+- UPC has a flat end-face
+- UPC and APC connectors can’t be used interchangeably
 
 ## Slot
 
@@ -195,12 +205,14 @@ Hot-pluggable
 
 ### GBIC (GigaBit Interface Converter)
 
-##obsolete
+- obsolete
 
 ### XFP
 
-##uncommon #obsolete
+- uncommon
+- obsolete
 
 ### X2
 
-##uncommon #obsolete
+- uncommon
+- obsolete
