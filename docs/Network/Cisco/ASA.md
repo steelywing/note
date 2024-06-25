@@ -62,6 +62,8 @@ ASA(config-applet)# [no] event syslog id <start ID>[-<end ID>] [occurs <times>] 
 
 #### Absolute event
 
+At specified time
+
 ```
 ASA(config-applet)# [no] event timer absolute time <hh:mm:ss>
 ```
@@ -247,4 +249,27 @@ asa# show failover state
 
 ```
 asa# show failover history
+```
+
+## Logging
+
+```
+asa(config)# logging enable
+```
+
+### Buffer size
+
+```
+asa(config)# logging buffer-size <bytes>
+
+! 10MB buffer
+asa(config)# logging buffer-size 10485760
+```
+
+### Filter message
+
+Log 1 message of `<event ID>` per 8,640,000 seconds (100 days)
+
+```
+asa(config)# logging rate-limit 1 8640000 message <event ID>
 ```
