@@ -9,30 +9,93 @@ For Linux / Raspberry Pi
 
 <!--truncate-->
 
-## Install `hostapd`
+## Method 1: Use `Network Manager`
+
+> Ref: [Configuration - Raspberry Pi Documentation](https://www.raspberrypi.com/documentation/computers/configuration.html#use-your-raspberry-pi-as-a-network-bridge)
+
+- **Recommended**
+
+### Bridge interface
+
+Create the bridge interface
+
+```sh
+sudo nmcli connection add type bridge con-name 'Bridge' ifname br0
+```
+
+Add `eth0` to the bridge
+
+```sh
+sudo nmcli connection add type ethernet slave-type bridge \
+    con-name 'Ethernet' ifname eth0 master br0
+```
+
+Add a HotSpot to the bridge
+
+```sh
+sudo nmcli connection add con-name 'HotSpot' \
+    ifname wlan0 type wifi slave-type bridge master br0 \
+    wifi.mode ap wifi.ssid Hotspot wifi-sec.key-mgmt wpa-psk \
+    wifi-sec.proto rsn wifi-sec.pairwise ccmp \
+    wifi-sec.psk <WiFi password>
+```
+
+or
+
+Use `nmtui` ▶ **Edit a connection** ▶ **Bridge** ▶ **Edit...** ▶ **Add** ▶ **WiFi** ▶
+
+| | |
+|-|-|
+| Profile name | `HotSpot` |
+| Device | `wlan0` |
+| SSID | `Hot Spot` |
+| Mode | `Access Point` |
+| Security | `WPA & WPA2 Personal` or `WPA3 Personal` |
+| Password | `<Password>` |
+
+### Activate the interface
+
+Activate the bridge
+
+```sh
+sudo nmcli connection up Bridge
+```
+
+Active the HotSpot
+
+```sh
+sudo nmcli connection up HotSpot
+```
+
+## Method 2: Use `hostapd`
+
+- Unable to auto activate the bridge at boot
+
+### Install `hostapd`
 
 ```sh
 sudo apt update
 sudo apt install hostapd
 ```
 
-## Bridge interface
+### Bridge interface
 
 For `systemd-networkd`:
 
 > Ref: [Network bridge - ArchWiki](https://wiki.archlinux.org/title/Network_bridge#With_NetworkManager)
 
-## Method 1:
+#### Method 1
 
 Use the `nmtui` (Text UI) to create
 
-## Method 2:
+#### Method 2
 
-Create a bridge `br0` with STP disabled
+Create a bridge `br0`
 
 ```sh
-sudo nmcli connection add type bridge ifname br0 stp no
+sudo nmcli connection add type bridge ifname br0
 ```
+
 Add the interface `eth0` to the bridge
 
 ```sh
@@ -52,7 +115,7 @@ Bridge interface does NOT need `sudo sysctl net.ipv4.ip_forward=1`
 
 :::
 
-## Config `hostapd`
+### Config `hostapd`
 
 > Ref: [`hostapd.conf`](https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf)
 
