@@ -160,6 +160,8 @@ Switch# show interfaces trunk
 
 > [Reference](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3560/software/release/12-2_52_se/configuration/guide/3560scg/swvtp.html)
 
+See also: IEEE 802.1ak MVRP
+
 ```
 Switch(config)# vtp mode { off | transparent | server | client }
 Switch(config)# vtp domain <name>

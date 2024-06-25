@@ -19,7 +19,7 @@ tsig-keygen ddns > /etc/bind/ddns.key
 
 ### Add TSIG key to config
 
-```conf title="named.conf"
+```sh title="named.conf"
 # include "<key-path.key>";
 include "/etc/bind/ddns.key";
 ```
@@ -71,17 +71,17 @@ If dynamic update is enabled, `rndc reload` will not reload the zone file
 :::
 
 - Stop dynamic update
-
-```sh
-rndc freeze
-```
+  
+  ```sh
+  rndc freeze
+  ```
 
 - Edit the zone file
 - Reload the zone file and start dynamic update
-
-```sh
-rndc thaw
-```
+  
+  ```sh
+  rndc thaw
+  ```
 
 > Ref: [Address Match List](https://bind9.readthedocs.io/en/v9_18/reference.html#address-match-lists)
 

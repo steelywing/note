@@ -18,8 +18,10 @@ Switch(config)# [no] logging console
 
 ## Display timestamp in log / debug
 
+`localtime`: Use local time zone
+
 ```
-Switch(config)# service timestamps { log | debug } datetime localtime
+Switch(config)# service timestamps { log | debug } datetime [localtime]
 ```
 
 ## Log to SysLog server

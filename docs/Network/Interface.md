@@ -195,13 +195,13 @@ Compatible SFP module
 
 Speed: 10 Gb/s
 
-Hot-pluggable
+Hot plugging
 
 ### SFP (Small Form-factor Pluggable)
 
 Speed: 1 Gb/s
 
-Hot-pluggable
+Hot plugging
 
 ### GBIC (GigaBit Interface Converter)
 

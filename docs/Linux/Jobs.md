@@ -74,10 +74,10 @@ disown [%<job spec>]
 
 ## `nohup`
 
-no hangup
-
-don't terminate `<command>` when terminal exit
+no hangup, ignore hangup signal
 
 ```bash
 nohup <command>
 ```
+
+don't terminate `<command>` when terminal exit
