@@ -1,6 +1,5 @@
 # Dependencies
 node_modules
-# .yarn
 
 # Production
 /build
@@ -10,6 +9,10 @@ node_modules
 cache
 .docusaurus
 .cache-loader
+.yarnrc.yml
+.yarn
+.stfolder
+yarn.lock
 
 # Misc
 .DS_Store
