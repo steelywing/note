@@ -45,7 +45,7 @@ innodb_force_recovery = 1
 
 If the log loops with
 
-```
+```log
 InnoDB: Waiting for the background threads to start
 ```
 

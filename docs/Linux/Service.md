@@ -5,6 +5,7 @@ For [`systemd` (Ubuntu 16, Red Hat 7)](systemd.md)
 For System V
 
 ## Add / Delete service
+
 ```bash
 # Red Hat
 chkconfig { --add | --del } <service>

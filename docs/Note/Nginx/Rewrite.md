@@ -15,6 +15,8 @@ server {
 }
 ```
 
+See also: [HSTS](../HTTP.md#strict-transport-security)
+
 ## Redirect all to correct domain name
 
 ```nginx

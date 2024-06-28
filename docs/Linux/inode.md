@@ -4,7 +4,7 @@
 
 - inode 是 file system 中，檔案的 meta data
 - 很多 file system 的 inode 總數量（可用數量）在建立時就已固定，有些新的 file system 的 inode 總數量可以動態增加
-- 每個 inode 都有一個 i-number (AKA inode number)，在同一個 file system 中是唯一的
+- 每個 inode 都有一個 i-number (inode number)，在同一個 file system 中是唯一的
 - inode 不包含檔案名 (file name 保存在 dirent)
 - 存取檔案：Kernel 找到 file name 所指的 inode，然後存取 inode 指向的內容
 - Kernel 打開檔案後，就不會記住 file name，而是用 inode 存取檔案

@@ -1,8 +1,15 @@
+---
+date: 2024-06-26
+tags: [Video, Streaming]
+---
+
 # Display Cast Protocol
 
 Video / Screen / Display
 
 Casting / Mirroring
+
+<!--truncate-->
 
 ## MiraCast
 

@@ -61,8 +61,8 @@ pvs
 
 ## Resize PV
 
-See [Resize PV](../../Linux/LVM/#resize-pv)
+See [LVM PV](../../Linux/LVM/#pv-physical-volume)
 
 ## Resize LV
 
-See [Resize LV](../../Linux/LVM/#resize-lv)
+See [LVM PV](../../Linux/LVM/#pv-physical-volume)
