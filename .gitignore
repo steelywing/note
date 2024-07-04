@@ -12,7 +12,6 @@ cache
 .yarnrc.yml
 .yarn
 .stfolder
-yarn.lock
 
 # Misc
 .DS_Store
