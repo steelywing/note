@@ -1,6 +1,13 @@
+---
+date: 2023-02-01
+tags: [Hardware]
+---
+
 # SoC
 
 System on a Chip
+
+<!--truncate-->
 
 - Atmel (Microchip)
   - AVR

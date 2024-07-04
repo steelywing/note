@@ -1,8 +1,15 @@
+---
+date: 2023-02-01
+tags: [Hardware]
+---
+
 # RS-232
 
 > Ref: [Wikipedia](https://en.wikipedia.org/wiki/RS-232)
 
 RS-232 / COM port / Serial port
+
+<!--truncate-->
 
 ## Connector
 
@@ -39,7 +46,7 @@ graph LR
   dtr[DTR] --> dcd[DCD]
 ```
 
-![DB-9 pinout](img/db9-pinout.gif)
+![DB-9 pinout](db9-pinout.gif)
 
 ### Common usage
 

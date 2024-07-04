@@ -81,16 +81,6 @@ module.exports = {
           position: 'left',
         },
         {
-          to: 'Hardware',
-          label: 'Hardware',
-          position: 'left',
-        },
-        {
-          to: 'Game',
-          label: 'Game',
-          position: 'left',
-        },
-        {
           href: 'https://github.com/steelywing/note',
           label: 'GitHub',
           position: 'right',

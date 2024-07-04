@@ -1,4 +1,11 @@
+---
+date: 2023-01-27
+tags: [Hardware]
+---
+
 # IR (Infrared)
+
+<!--truncate-->
 
 | Wave length | Command |
 | - | - |

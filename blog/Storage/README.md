@@ -1,4 +1,11 @@
+---
+date: 2023-05-31
+tags: [Hardware, SATA, SSD]
+---
+
 # Storage
+
+<!--truncate-->
 
 ## SATA
 
