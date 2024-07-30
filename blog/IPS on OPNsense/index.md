@@ -1,6 +1,13 @@
+---
+date: 2024-06-25
+tags: [Firewall, IPS]
+---
+
 # Enable IPS on OPNsense
 
 ![Enable IPS](./IPS-1.png)
+
+<!--truncate-->
 
 Select **Enabled**
 
@@ -45,8 +52,8 @@ Select **Rulesets**
 
 - Enable rule set **OPNsense-App-detect/test**, and add the rule set to policy
 - Open any EICAR test URL
-  - http://malware.wicar.org/data/eicar.com
-  - http://www.csm-testcenter.org/csm-eicar.txt
+  - [eicar.com](http://malware.wicar.org/data/eicar.com)
+  - [csm-eicar.txt](http://www.csm-testcenter.org/csm-eicar.txt)
   
 [Test Malware! - WICAR.org](https://www.wicar.org/test-malware.html)
 
