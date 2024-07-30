@@ -22,6 +22,7 @@ module.exports = {
       additionalLanguages: [
         'bash',
         'php',
+        'sql',
         'ini',
         'toml',
         'nginx',
@@ -116,7 +117,7 @@ module.exports = {
           rehypePlugins: [rehypeKatex],
         },
         blog: {
-          blogSidebarCount: 16,
+          blogSidebarCount: 0,
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
         },
