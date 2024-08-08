@@ -1,4 +1,11 @@
-# Bundler
+---
+date: 2024-08-01
+tags: [JavaScript]
+---
+
+# Bundler for JavaScript
+
+<!--truncate-->
 
 ## WebPack
 
@@ -9,6 +16,14 @@
 - Slow
 - Complex configuration
 - Written in JavaScript
+
+## RsPack
+
+[RsPack](https://github.com/web-infra-dev/rspack)
+
+- WebPack compatible API
+- Written in Rust
+- Created by ByteDance
 
 ## Rollup
 
@@ -32,6 +47,11 @@
 
 [Bun](https://bun.sh/)
 
+- Bun is all-in-one toolkit, include:
+  - JavaScript / TypeScript runtime
+  - Package manager
+  - Bundler
+  - Test runner
 - For TS, JS, JSX
 - Extremely fast
 - Written in Zig
@@ -41,10 +61,25 @@
 
 [Vite](https://vitejs.dev/)
 
+- **Recommended**
 - For TS, JS, CSS, HTML
 - Faster
 - Vite use [Rollup](#rollup) for `vite build`
 - Vite use [ESBuild](#esbuild) for `vite dev`
+
+## Farm
+
+[Farm](https://github.com/farm-fe/farm)
+
+- Written in Rust
+- Vite compatible
+
+## Mako
+
+[Mako](https://github.com/umijs/mako)
+
+- Written in Rust
+- Used by Ant Group
 
 ## Parcel
 
