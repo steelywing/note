@@ -43,20 +43,6 @@ Peer B
 ip link add dev wg0 type wireguard
 ```
 
-```bash title="Peer A"
-ip address add dev wg0 10.0.0.1/24
-```
-
-```bash title="Peer B"
-ip address add dev wg0 10.0.0.2/24
-```
-
-If there are only 2 peers, peer to peer also works
-
-```bash
-ip address add dev wg0 10.0.0.1 peer 10.0.0.2
-```
-
 ## Config
 
 :::tip
@@ -73,7 +59,7 @@ Use config file
 
 Peer A
 
-```ini
+```ini title="wg0.conf"
 [Interface]
 Address = 192.168.0.1/24
 PrivateKey = 4IMHVUu9Ug0oujxxWdOiZXMQ74Sq5gag5ND6cbaIQX4=
@@ -84,9 +70,21 @@ PublicKey = /QgJoWF3KA2K5CHPfIc/T0KhXKuFe1k5V75mQuK5vEo=
 AllowedIPs = 192.168.0.2/32, 10.0.2.0/24
 ```
 
+:::note
+
+If Endpoint is not set, when WireGuard receives a correctly authenticated packet, WireGuard will set Endpoint to the source address of the packet.
+
+:::
+
+:::note
+
+Host ID in `AllowedIPs` must be zero, otherwise WireGuard will get "**Bad address**" error
+
+:::
+
 Peer B
 
-```ini
+```ini title="wg0.conf"
 [Interface]
 Address = 192.168.0.2/24
 # DNS = 192.168.0.2, fd00::1
@@ -97,17 +95,31 @@ PublicKey = cWlZ8WRv4D0bGACuHwXGfmudZeMsFDYiVSmjPlVc0ko=
 AllowedIPs = 192.168.0.1/32, 10.0.1.0/24
 Endpoint = 1.1.1.1:10100
 
-# for routing all traffic to Peer A
+# To routing all traffic to Peer A
 # AllowedIPs = 0.0.0.0/0
 ```
 
 ```bash
-wg setconf wg0 wg0.conf
+wg-quick up ./wg0.conf
 ```
 
 ### Method 2
 
 Use CLI parameters
+
+```bash title="Peer A"
+ip address add dev wg0 192.168.0.1/24
+```
+
+```bash title="Peer B"
+ip address add dev wg0 192.168.0.2/24
+```
+
+If there are only 2 peers, peer to peer also works
+
+```bash
+ip address add dev wg0 192.168.0.1 peer 192.168.0.2
+```
 
 ```bash
 # Peer A
