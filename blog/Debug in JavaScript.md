@@ -3,7 +3,7 @@ date: 2024-08-01
 tags: [JavaScript, Debug]
 ---
 
-# Debug in JavaScrip
+# Debug in JavaScript
 
 <!--truncate-->
 
@@ -19,6 +19,8 @@ debugger;
 
 ```js
 function debug(fn) {
+    // Arrow function () => {} cannot be used,
+    // Because `this` needs to be bound
     return function () {
         debugger;
         return fn.apply(this, arguments);
@@ -39,6 +41,8 @@ console.log = debug(console.log);
 ```
 
 ## Inject function
+
+Inject a function before the target function
 
 ```js
 function inject(to, fn) {
