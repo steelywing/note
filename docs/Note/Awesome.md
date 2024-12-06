@@ -1,6 +1,10 @@
 # Awesome
 
-My personal awesome list
+Personal awesome list
+
+App / Tool / Protocol / Format
+
+Recommended / Deprecated / Alternative list
 
 🔒: Not open source
 
@@ -58,7 +62,7 @@ My personal awesome list
 
 ## Shell
 
-- [Nushell](https://www.nushell.sh/)
+- [Nu Shell](https://www.nushell.sh/)
 - [PowerShell](https://github.com/PowerShell/PowerShell)
 
 <details>
@@ -70,6 +74,15 @@ My personal awesome list
 - [fish](https://fishshell.com/)
 - [Zsh](https://www.zsh.org/)
 
+</details>
+
+## File Search
+
+- [Everything](https://www.voidtools.com/): Instant search the entire NTFS file system
+
+<details>
+    <summary>Other</summary>
+    - Windows Search
 </details>
 
 ## Git self-hosted service
@@ -93,10 +106,14 @@ My personal awesome list
 
 ## Network Tools
 
+## Network
+
 - [Nmap](https://nmap.org/): Host discovery
 - [WireShark](https://www.wireshark.org/): GUI network traffic capture / analyzer
 - [tcpdump](https://www.tcpdump.org/): CLI network traffic capture / analyzer
 - [iperf2](https://sourceforge.net/projects/iperf2/): Network speed test
+- [clumsy](https://github.com/jagt/clumsy): Simulate network latency, delay, packet loss on Windows
+- `netem`: Simulate network latency, delay, packet loss on Linux
 
 ## Text / Code Editor
 
@@ -156,3 +173,27 @@ My personal awesome list
 - 🔒 [Parsec](https://parsec.app/)
 - 🔒 [TeamViewer](https://www.teamviewer.com/)
 - 🔒 [AnyDesk](https://anydesk.com/)
+
+</details>
+
+## Terminal Workspace
+
+Terminal workspace / multiplexer
+
+- [Zellij](https://zellij.dev/)
+
+<details>
+    <summary>Other</summary>
+    - [tmux](https://github.com/tmux/tmux)
+</details>
+
+## Web Load Testing
+
+Web Server Stress Test
+
+- [K6](https://k6.io/)
+
+<details>
+    <summary>Not recommended</summary>
+    - [Apache JMeter](https://jmeter.apache.org/)
+</details>
