@@ -4,8 +4,8 @@
 
 | Description | Command |
 | - | - |
-| Verbose list rules | `iptables -v -L [<chain>]` |
-| List rules | `iptables -S [<chain>]` |
+| List rules | `iptables [--line-numbers] -L [<chain>]` |
+| List rules with command syntax | `iptables -S [<chain>]` |
 | Dump iptables to file | `iptables-save > <file>` |
 | Restore iptables from file | `iptables-restore < <file>` |
 | Save iptables (Red Hat \<= 6) | `service iptables save` |
