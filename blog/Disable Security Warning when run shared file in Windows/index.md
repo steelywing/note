@@ -1,8 +1,15 @@
+---
+date: 2025-01-12
+tags: [Windows]
+---
+
 # Disable **Security Warning** when run shared file in Windows
 
 When run shared file, Windows will display **Security Warning**
 
 ![Security Warning](Security%20Warning.png)
+
+<!-- truncate -->
 
 To disable **Security Warning**
 

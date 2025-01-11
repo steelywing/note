@@ -5,29 +5,21 @@ tags: [JavaScript]
 
 # Bundler for JavaScript
 
+## Vite
+
+> [Vite](https://vitejs.dev/)
+
+- **Recommended**
+- For TS, JS, CSS, HTML
+- Faster
+- Vite use [Rollup](#rollup) for `vite build`
+- Vite use [ESBuild](#esbuild) for `vite dev`
+
 <!--truncate-->
-
-## WebPack
-
-[WebPack](https://webpack.js.org/)
-
-- For JS, CSS, HTML
-- Popular
-- Slow
-- Complex configuration
-- Written in JavaScript
-
-## RsPack
-
-[RsPack](https://github.com/web-infra-dev/rspack)
-
-- WebPack compatible API
-- Written in Rust
-- Created by ByteDance
 
 ## Rollup
 
-[Rollup](https://rollupjs.org/)
+> [Rollup](https://rollupjs.org/)
 
 - For JS
 - Faster than WebPack
@@ -35,9 +27,17 @@ tags: [JavaScript]
 - Support output format: AMD, CommonJS, ES, IIFE, UMD, SystemJS
 - Written in JavaScript
 
+## Rolldown
+
+> [Rolldown](https://rolldown.rs/)
+
+- Rollup compatible API
+- Faster than Rollup
+- Written in Rust
+
 ## ESBuild
 
-[ESBuild](https://esbuild.github.io/)
+> [ESBuild](https://esbuild.github.io/)
 
 - For JS, JSX
 - Extremely fast
@@ -45,7 +45,7 @@ tags: [JavaScript]
 
 ## Bun
 
-[Bun](https://bun.sh/)
+> [Bun](https://bun.sh/)
 
 - Bun is all-in-one toolkit, include:
   - JavaScript / TypeScript runtime
@@ -57,15 +57,23 @@ tags: [JavaScript]
 - Written in Zig
 - Use JavaScriptCore (WebKit) as JS engine
 
-## Vite
+## WebPack
 
-[Vite](https://vitejs.dev/)
+> [WebPack](https://webpack.js.org/)
 
-- **Recommended**
-- For TS, JS, CSS, HTML
-- Faster
-- Vite use [Rollup](#rollup) for `vite build`
-- Vite use [ESBuild](#esbuild) for `vite dev`
+- For JS, CSS, HTML
+- Popular
+- Slow
+- Complex configuration
+- Written in JavaScript
+
+## RsPack
+
+> [RsPack](https://github.com/web-infra-dev/rspack)
+
+- WebPack compatible API
+- Written in Rust
+- Created by ByteDance
 
 ## Farm
 
