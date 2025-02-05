@@ -70,7 +70,7 @@ class Program
         // method += a.Add;
         // += can be use even delegate is null
 
-        // Use ?.Invoke() will check if delegate is null, call null delegate() will throw error
+        // Use ?. will not call if `method` is null
         method?.Invoke();
         Console.WriteLine(a.count); // 1
 
