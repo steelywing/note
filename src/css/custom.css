@@ -11,16 +11,13 @@
   src: url('/static/NotoSansTC-Regular.woff') format('woff');
 } */
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* noto-sans-tc-regular - latin_chinese-traditional */
 @font-face {
-  font-family: 'Noto Sans TC';
+  font-family: 'Noto Sans';
   /* font-style: normal; */
   font-weight: 100;
-  src: local('Noto Sans TC'),
-    url('/noto-sans-tc-v26-latin_chinese-traditional-regular.woff2') format('woff2'),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */
-    url('/noto-sans-tc-v26-latin_chinese-traditional-regular.woff') format('woff');
-    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap'); */
